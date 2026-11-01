@@ -1,18 +1,111 @@
+# SecureNotes v2: entorno local endurecido (Módulo 2)
+#
+#   navegador ──HTTPS──> proxy (Caddy, TLS) ──> app (Node, no root) ──> db (PostgreSQL)
+#                        red "frontend"            red "backend" (internal: sin salida a Internet)
+#
+# Uso:  ./scripts/gen-secrets.sh && docker compose -f infra/docker/docker-compose.yml -p securenotes-v2 up -d --build
+# URL:  https://localhost:8443  (certificado de la CA interna de Caddy)
+
+x-hardening: &hardening
+  read_only: true
+  cap_drop: [ALL]
+  security_opt:
+    - no-new-privileges:true
+  restart: unless-stopped
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+
 services:
-  app:
-    build: ../../app
-    image: securenotes:v1
+  proxy:
+    <<: *hardening
+    image: caddy:2.11.7-alpine@sha256:e70b164da81ef698b3ad19af799ea6086ce6d9e48ed4079eb9fe26f6fbf14ee5
+    cap_add: [NET_BIND_SERVICE]
+    # Solo HTTPS y solo en la interfaz local del equipo
     ports:
-      - "3000:3000"
-    environment:
-      DB_HOST: db
+      - "127.0.0.1:8443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+    tmpfs:
+      - /config
+      - /tmp
+    networks: [frontend]
+    mem_limit: 128m
+    pids_limit: 100
     depends_on:
-      - db
+      app:
+        condition: service_healthy
+
+  app:
+    <<: *hardening
+    build:
+      context: ../../app
+    image: securenotes:v2
+    user: "65532:65532"
+    environment:
+      NODE_ENV: production
+      DB_HOST: db
+      DB_USER: securenotes
+      DB_NAME: securenotes
+      DB_PASSWORD_FILE: /run/secrets/db_password
+      JWT_SECRET_FILE: /run/secrets/jwt_secret
+      ADMIN_PASSWORD_FILE: /run/secrets/admin_password
+      COOKIE_SECURE: "true"
+      TRUST_PROXY: "1"
+      SEED_DEMO: "true"
+    secrets: [db_password, jwt_secret, admin_password]
+    tmpfs:
+      - /tmp
+    networks: [frontend, backend]
+    mem_limit: 512m
+    cpus: 1.0
+    pids_limit: 100
+    depends_on:
+      db:
+        condition: service_healthy
 
   db:
-    image: postgres:latest
-    ports:
-      - "5432:5432"
+    <<: *hardening
+    image: postgres:17.11-alpine3.24@sha256:266d3c257594e195b309ae9d1805e54c788f1d7b375f56bf6c367aac6c917e7b
+    # El usuario "postgres" de la imagen alpine (uid 70): sin root ni capacidades
+    user: "70:70"
     environment:
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: securenotes
       POSTGRES_DB: securenotes
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+      POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256"
+    secrets: [db_password]
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    tmpfs:
+      - /tmp
+      - /var/run/postgresql
+    networks: [backend]
+    mem_limit: 512m
+    pids_limit: 200
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U securenotes -d securenotes"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+networks:
+  frontend: {}
+  backend:
+    internal: true
+
+volumes:
+  db_data: {}
+  caddy_data: {}
+
+# Secretos generados localmente por scripts/gen-secrets.sh (carpeta ignorada por Git)
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+  jwt_secret:
+    file: ./secrets/jwt_secret.txt
+  admin_password:
+    file: ./secrets/admin_password.txt

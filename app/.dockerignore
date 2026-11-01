@@ -1,0 +1,13 @@
+# Solo entra a la imagen lo necesario para ejecutar la app
+node_modules
+npm-debug.log*
+test
+.env
+.env.*
+*.md
+Dockerfile
+.dockerignore
+.git
+.gitignore
+coverage
+.scannerwork

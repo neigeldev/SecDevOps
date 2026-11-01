@@ -1,0 +1,22 @@
+# Proxy inverso con TLS para el entorno local (Módulo 2)
+{
+	admin off
+	skip_install_trust
+	servers {
+		protocols h1 h2
+	}
+}
+
+localhost, proxy {
+	tls internal
+	encode gzip
+	header {
+		-Server
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+	}
+	reverse_proxy app:3000
+	log {
+		output stdout
+		format json
+	}
+}
