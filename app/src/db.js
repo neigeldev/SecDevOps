@@ -55,7 +55,7 @@ async function init() {
   for (const [u, p, name, email, role] of users) {
     await pool.query(
       'INSERT INTO users (username, password_hash, full_name, email, role) VALUES ($1, $2, $3, $4, $5)',
-      [u, password.hash(p), name, email, role]
+      [u, await password.hash(p), name, email, role]
     );
   }
   await pool.query(
