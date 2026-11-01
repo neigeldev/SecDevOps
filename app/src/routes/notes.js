@@ -4,16 +4,21 @@ const { requireAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
+// Escapa los comodines de LIKE para que el texto del usuario se busque literalmente
+function likePattern(text) {
+  return '%' + text.replace(/[\\%_]/g, (c) => '\\' + c) + '%';
+}
+
 // Búsqueda de notas públicas
 router.get('/explore', async (req, res, next) => {
-  const q = req.query.q || '';
+  const q = typeof req.query.q === 'string' ? req.query.q.slice(0, 100) : '';
   try {
-    const sql =
+    // V02: consulta parametrizada
+    const result = await db.query(
       'SELECT n.id, n.title, n.body, u.username FROM notes n JOIN users u ON u.id = n.owner_id ' +
-      "WHERE n.is_public = true AND n.title ILIKE '%" +
-      q +
-      "%' ORDER BY n.id DESC";
-    const result = await db.query(sql);
+        'WHERE n.is_public = true AND n.title ILIKE $1 ORDER BY n.id DESC',
+      [likePattern(q)]
+    );
     res.render('explore', { q, notes: result.rows });
   } catch (err) {
     next(err);

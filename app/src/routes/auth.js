@@ -11,17 +11,15 @@ router.post('/login', async (req, res, next) => {
   const { username, password } = req.body;
   console.log(`Intento de login: usuario=${username} password=${password}`);
   try {
-    const sql =
-      "SELECT id, username, role FROM users WHERE username = '" +
-      username +
-      "' AND password_hash = '" +
-      passwordUtil.hash(password) +
-      "'";
-    const result = await db.query(sql);
-    if (result.rows.length === 0) {
+    // V01: consulta parametrizada; el valor nunca se concatena al SQL
+    const result = await db.query(
+      'SELECT id, username, role, password_hash FROM users WHERE username = $1',
+      [String(username || '')]
+    );
+    const user = result.rows[0];
+    if (!user || !passwordUtil.verify(String(password || ''), user.password_hash)) {
       return res.status(401).render('login', { error: 'Usuario o contraseña incorrectos' });
     }
-    const user = result.rows[0];
     res.cookie('token', tokens.sign(user));
     res.redirect('/notes');
   } catch (err) {
