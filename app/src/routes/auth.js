@@ -29,7 +29,7 @@ router.post('/login', async (req, res, next) => {
     if (!user || !valid) {
       return res.status(401).render('login', { error: 'Usuario o contraseña incorrectos' });
     }
-    res.cookie('token', tokens.sign(user));
+    tokens.setSessionCookie(res, user);
     res.redirect('/notes');
   } catch (err) {
     next(err);
@@ -54,7 +54,7 @@ router.post('/register', async (req, res, next) => {
 });
 
 router.post('/logout', (req, res) => {
-  res.clearCookie('token');
+  tokens.clearSessionCookie(res);
   res.redirect('/');
 });
 

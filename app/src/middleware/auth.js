@@ -2,7 +2,7 @@ const tokens = require('../security/tokens');
 
 // Carga el usuario autenticado a partir de la cookie
 function loadUser(req, res, next) {
-  const token = req.cookies.token;
+  const token = req.cookies[tokens.COOKIE_NAME];
   req.user = null;
   if (token) {
     try {

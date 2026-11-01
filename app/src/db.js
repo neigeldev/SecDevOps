@@ -43,29 +43,31 @@ async function init() {
       created_at TIMESTAMPTZ NOT NULL DEFAULT now()
     )`);
 
-  const { rows } = await pool.query('SELECT COUNT(*)::int AS n FROM users');
-  if (rows[0].n > 0) return;
+  await seed();
+}
 
-  // Datos de demostración
-  const users = [
-    ['admin', 'admin123', 'Administrador', 'admin@securenotes.local', 'admin'],
-    ['alice', 'alice123', 'Alice Rojas', 'alice@securenotes.local', 'user'],
-    ['bob', 'bob123', 'Bob Pérez', 'bob@securenotes.local', 'user']
-  ];
-  for (const [u, p, name, email, role] of users) {
+// V06: sin credenciales en el código. El administrador inicial solo se crea si
+// se entrega ADMIN_PASSWORD(_FILE) desde un gestor de secretos.
+async function seed() {
+  const { admin, seedDemo } = config;
+  if (admin.password) {
+    const policyError = password.validatePolicy(admin.password);
+    if (policyError) throw new Error(`ADMIN_PASSWORD no cumple la política: ${policyError}`);
+    const result = await pool.query(
+      `INSERT INTO users (username, password_hash, full_name, role) VALUES ($1, $2, 'Administrador', 'admin')
+       ON CONFLICT (username) DO NOTHING RETURNING id`,
+      [admin.username, await password.hash(admin.password)]
+    );
+    if (result.rowCount) console.log('Usuario administrador inicial creado');
+  }
+  if (seedDemo) {
     await pool.query(
-      'INSERT INTO users (username, password_hash, full_name, email, role) VALUES ($1, $2, $3, $4, $5)',
-      [u, await password.hash(p), name, email, role]
+      `INSERT INTO notes (owner_id, title, body, is_public)
+       SELECT id, 'Bienvenida', 'Bienvenido a SecureNotes. Esta nota es pública.', true
+       FROM users WHERE username = $1 AND NOT EXISTS (SELECT 1 FROM notes)`,
+      [admin.username]
     );
   }
-  await pool.query(
-    `INSERT INTO notes (owner_id, title, body, is_public) VALUES
-      (1, 'Bienvenida', 'Bienvenido a SecureNotes. Esta nota es pública.', true),
-      (2, 'Lista de compras', 'Café, pan, leche.', true),
-      (2, 'Privado: clave del banco', 'La clave de la tarjeta es 4321. ¡No compartir!', false),
-      (3, 'Ideas del proyecto', 'Integrar DevSecOps en el pipeline.', false)`
-  );
-  console.log('Datos de demostración creados');
 }
 
 module.exports = { query, init, pool };
