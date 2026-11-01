@@ -1,7 +1,7 @@
 </main>
 <footer class="footer">
   <span>SecureNotes · Caso de estudio DevSecOps</span>
-  <a href="/api/diag?host=127.0.0.1">Estado del sistema</a>
+  <% if (user && user.role === 'admin') { %><a href="/api/diag?host=localhost">Estado del sistema</a><% } %>
 </footer>
 </body>
 </html>
