@@ -23,3 +23,9 @@ infra/docker/secrets/
 # Caches de herramientas
 .cache/
 .scannerwork/
+
+# Claves locales para escáneres (NVD_API_KEY, SONAR_TOKEN...). Nunca se suben.
+.secrets.env
+
+# El lockfile de providers se genera con "terraform init" en tu equipo
+.terraform.lock.hcl

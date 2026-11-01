@@ -1,0 +1,81 @@
+#!/bin/bash
+# Arranque de la instancia SecureNotes (Amazon Linux 2023)
+# No contiene secretos: solo nombres de parámetros SSM que se leen con el rol IAM.
+set -euo pipefail
+
+dnf -y upgrade --security || true
+dnf -y install docker amazon-ecr-credential-helper
+systemctl enable --now docker
+
+# Credenciales de ECR obtenidas al vuelo con el rol IAM (nada guardado en disco)
+install -d -m 0700 /root/.docker
+echo '{"credsStore": "ecr-login"}' > /root/.docker/config.json
+
+install -d -m 0755 /opt/securenotes
+# Cadena de certificados de RDS para validar el TLS hacia la base de datos
+curl -fsSL -o /opt/securenotes/rds-ca.pem "https://truststore.pki.rds.amazonaws.com/${region}/${region}-bundle.pem"
+chmod 0644 /opt/securenotes/rds-ca.pem
+
+# Antes de cada arranque: leer secretos de SSM a tmpfs (solo root) y descargar la imagen
+cat > /opt/securenotes/prestart.sh <<'PRESTART'
+#!/bin/bash
+set -euo pipefail
+get() {
+  aws ssm get-parameter --region "${region}" --with-decryption --name "${ssm_prefix}/$1" \
+    --query Parameter.Value --output text
+}
+install -d -m 0700 /run/securenotes
+umask 077
+cat > /run/securenotes/app.env <<ENV
+NODE_ENV=production
+PORT=3000
+DB_HOST=${db_host}
+DB_USER=${db_user}
+DB_NAME=${db_name}
+DB_SSL=true
+DB_SSL_CA=/certs/rds-ca.pem
+COOKIE_SECURE=true
+TRUST_PROXY=1
+SEED_DEMO=true
+DB_PASSWORD=$(get db_password)
+JWT_SECRET=$(get jwt_secret)
+ADMIN_PASSWORD=$(get admin_password)
+ORIGIN_VERIFY_SECRET=$(get origin_verify_secret)
+ENV
+docker pull "${image}"
+PRESTART
+chmod 0700 /opt/securenotes/prestart.sh
+
+# Servicio systemd: el contenedor corre endurecido y envía sus logs a CloudWatch
+cat > /etc/systemd/system/securenotes.service <<'UNIT'
+[Unit]
+Description=SecureNotes
+After=docker.service network-online.target
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStartPre=/opt/securenotes/prestart.sh
+ExecStartPre=-/usr/bin/docker rm -f ${project_name}
+ExecStart=/usr/bin/docker run --name ${project_name} \
+  --env-file /run/securenotes/app.env \
+  --publish 80:3000 \
+  --read-only --tmpfs /tmp \
+  --cap-drop ALL --security-opt no-new-privileges \
+  --user 65532:65532 \
+  --memory 512m --pids-limit 100 \
+  --log-driver awslogs \
+  --log-opt awslogs-region=${region} \
+  --log-opt awslogs-group=${log_group} \
+  --volume /opt/securenotes/rds-ca.pem:/certs/rds-ca.pem:ro \
+  ${image}
+ExecStop=/usr/bin/docker stop --time 15 ${project_name}
+
+[Install]
+WantedBy=multi-user.target
+UNIT
+
+systemctl daemon-reload
+systemctl enable --now securenotes.service || true

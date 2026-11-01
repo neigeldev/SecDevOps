@@ -1,0 +1,14 @@
+# Copia este archivo a terraform.tfvars (ignorado por Git) y ajústalo.
+project     = "securenotes"
+environment = "demo"
+owner       = "tu-nombre"
+region      = "us-east-1"
+
+# Recibe las alarmas de seguridad por correo (hay que confirmar la suscripción)
+alert_email = ""
+
+# Etiqueta de la imagen que publicará scripts/m3-push-image.sh
+image_tag = "2.0.0"
+
+# WAF: ~USD 0.20/día. Ponlo en false si tu plan de AWS no lo permite.
+enable_waf = true
