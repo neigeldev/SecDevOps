@@ -4,12 +4,12 @@
   <input type="text" name="q" value="<%= q %>" placeholder="Buscar por título">
   <button type="submit">Buscar</button>
 </form>
-<% if (q) { %><p class="muted">Resultados para: <strong><%- q %></strong></p><% } %>
+<% if (q) { %><p class="muted">Resultados para: <strong><%= q %></strong></p><% } %>
 <% if (notes.length === 0) { %><p class="muted">No hay notas que coincidan.</p><% } %>
 <% notes.forEach(function (n) { %>
   <article class="card">
     <h2><%= n.title %></h2>
-    <div class="body"><%- n.body %></div>
+    <div class="body"><%= n.body %></div>
     <p class="muted">por <%= n.username %></p>
   </article>
 <% }) %>
