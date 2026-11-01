@@ -1,0 +1,140 @@
+# Pipeline DevSecOps "shift-left": la seguridad se evalúa en cada push/PR.
+# Los hallazgos se publican en la pestaña Security de GitHub (formato SARIF).
+name: DevSecOps
+
+on:
+  push:
+    branches: [main, "claude/**"]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write # subir resultados SARIF a Code Scanning
+
+jobs:
+  # ---------------- Módulo 1: código ----------------
+  sast-semgrep:
+    name: M1 · SAST (Semgrep)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Semgrep
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: >-
+            p/owasp-top-ten p/javascript p/nodejs p/expressjs p/secrets
+            security/semgrep
+          generateSarif: "true"
+      - name: Publicar SARIF
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: semgrep.sarif
+          category: semgrep
+
+  sca:
+    name: M1 · SCA (npm audit + Dependency-Check)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci --ignore-scripts
+        working-directory: app
+      - name: npm audit (producción)
+        run: npm audit --omit=dev
+        working-directory: app
+      - name: OWASP Dependency-Check
+        uses: dependency-check/Dependency-Check_Action@main
+        with:
+          project: SecureNotes
+          path: app
+          format: SARIF
+          args: >-
+            --failOnCVSS 7 --nvdApiKey ${{ secrets.NVD_API_KEY }}
+            --exclude "**/node_modules/**"
+      - name: Publicar SARIF
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: reports/dependency-check-report.sarif
+          category: dependency-check
+
+  # ---------------- Módulo 2: IaC y contenedores ----------------
+  iac-scan:
+    name: M2 · IaC (Checkov + Trivy config)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: .
+          framework: terraform,dockerfile
+          output_format: cli,sarif
+          output_file_path: console,checkov.sarif
+          soft_fail: false
+      - name: Publicar SARIF (Checkov)
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: checkov.sarif
+          category: checkov
+      - name: Trivy config
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: config
+          scan-ref: .
+          format: sarif
+          output: trivy-config.sarif
+          severity: CRITICAL,HIGH,MEDIUM
+      - name: Publicar SARIF (Trivy config)
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-config.sarif
+          category: trivy-config
+
+  image-scan:
+    name: M2 · Imagen (Hadolint + Trivy image)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Hadolint
+        uses: hadolint/hadolint-action@v3.1.0
+        with:
+          dockerfile: app/Dockerfile
+      - name: Construir imagen
+        run: docker build -t securenotes:ci app
+      - name: Trivy image (falla con CRITICAL/HIGH)
+        uses: aquasecurity/trivy-action@0.28.0
+        with:
+          scan-type: image
+          image-ref: securenotes:ci
+          format: sarif
+          output: trivy-image.sarif
+          severity: CRITICAL,HIGH
+          exit-code: "1"
+          ignore-unfixed: true
+      - name: Publicar SARIF (Trivy image)
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: trivy-image.sarif
+          category: trivy-image
+
+  # ---------------- Pruebas unitarias de los controles ----------------
+  unit-tests:
+    name: Pruebas de seguridad (node:test)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci --ignore-scripts
+        working-directory: app
+      - run: npm test
+        working-directory: app

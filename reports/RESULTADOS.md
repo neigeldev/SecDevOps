@@ -1,6 +1,6 @@
 # Resultados consolidados — SecureNotes (antes / después)
 
-_Generado el 2026-11-01T06:20:11.327Z a partir de los reportes en `reports/`._
+_Generado el 2026-11-01T06:24:40.890Z a partir de los reportes en `reports/`._
 
 > Las celdas con «—» indican que ese escaneo aún no se ha ejecutado en este equipo.
 > Reconstruye esta tabla en cualquier momento con `node scripts/summarize.mjs`.
@@ -15,7 +15,7 @@ _Generado el 2026-11-01T06:20:11.327Z a partir de los reportes en `reports/`._
 | OWASP Dependency-Check (SCA) | CVE únicos | — | — |
 | SonarQube | Issues | — | — |
 | SonarQube | Security hotspots | — | — |
-| OWASP ZAP (DAST) | Alto / Medio / Bajo | A:0 M:3 B:2 | A:0 M:0 B:0 |
+| OWASP ZAP (DAST) | Alto / Medio / Bajo | A:5 M:3 B:2 | A:0 M:0 B:0 |
 
 ## Módulo 2 — Infraestructura como código y contenedores
 
