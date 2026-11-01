@@ -35,3 +35,6 @@ reports/**/zap.yaml
 reports/**/zap_*.json
 reports/**/*.log
 reports/**/.scannerwork/
+
+# Bundle portable (artefacto)
+SecDevOps-securenotes.bundle
