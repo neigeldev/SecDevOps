@@ -1,0 +1,14 @@
+{
+  "image": "securenotes:v2",
+  "size_mb": 223,
+  "user": "65532:65532",
+  "healthcheck": true,
+  "entrypoint": [
+    "/nodejs/bin/node"
+  ],
+  "cmd": [
+    "src/server.js"
+  ],
+  "env_with_secrets": [],
+  "layers": 28
+}

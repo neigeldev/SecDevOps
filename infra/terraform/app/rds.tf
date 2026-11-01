@@ -59,6 +59,8 @@ resource "aws_iam_role_policy_attachment" "rds_monitoring" {
   policy_arn = "arn:${local.partition}:iam::aws:policy/service-role/AmazonRDSEnhancedMonitoringRole"
 }
 
+# Performance Insights no está disponible en db.t4g.micro (ver CKV_AWS_353).
+#trivy:ignore:AWS-0133
 resource "aws_db_instance" "main" {
   #checkov:skip=CKV_AWS_157:Multi-AZ desactivado para mantener el entorno académico en la capa gratuita (riesgo de disponibilidad aceptado y documentado).
   #checkov:skip=CKV_AWS_353:Performance Insights no está disponible en db.t4g.micro; se usa monitoreo mejorado y logs.

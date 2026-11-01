@@ -1,0 +1,66 @@
+{
+  "SchemaVersion": 2,
+  "Trivy": {
+    "Version": "0.76.1"
+  },
+  "ReportID": "01a195bc-12f6-7c31-8137-27728852867c",
+  "CreatedAt": "2026-11-01T06:11:33.238801114Z",
+  "ArtifactID": "sha256:18d231472f55eaee139b71c615014ba0b7a445085341a316ce0f004afc3de2d6",
+  "ArtifactName": "/src",
+  "ArtifactType": "repository",
+  "Metadata": {
+    "RepoURL": "https://github.com/neigeldev/SecDevOps",
+    "Branch": "claude/sharp-lamport-tszvm0",
+    "Tags": [
+      "v2.0-secure"
+    ],
+    "Commit": "45cfda28092d0f3ca0f55d429b3a9e6c5da08056",
+    "CommitMsg": "feat(M3): línea base de seguridad de la cuenta AWS (CIS AWS Foundations)\n\nCorrige a nivel de cuenta los hallazgos CSPM que no dependen de la app:\n- CloudTrail multirregión con validación de integridad, cifrado KMS,\n  envío a CloudWatch Logs y eventos de datos S3; bucket endurecido\n  (bloqueo público, versionado, SSE-KMS, TLS obligatorio, access logging).\n- 15 filtros de métricas + alarmas CIS 4.1-4.15 -\u003e SNS cifrado.\n- IAM: política de contraseñas CIS, rol de soporte, rol de auditoría de\n  solo lectura para Prowler/ScoutSuite, IAM Access Analyzer.\n- Cifrado EBS por defecto, bloqueo público de S3 a nivel de cuenta, IMDSv2\n  por defecto, bloqueo de snapshots públicos, consola serie deshabilitada.\n- GuardDuty con alertas de severidad alta vía EventBridge -\u003e SNS.\n- Opcionales: Security Hub (CIS v3.0), AWS Config, contacto de seguridad,\n  presupuesto con alertas; endurecimiento de la VPC por defecto.\nCheckov: 0 fallos (excepciones justificadas en el código).\n\nCo-Authored-By: Claude Opus 5.5 \u003cnoreply@anthropic.com\u003e\nClaude-Session: https://claude.ai/code/session_01C74sqKw5rfHNZ12tPeqLVA",
+    "Author": "Claude \u003cnoreply@anthropic.com\u003e",
+    "Committer": "Claude \u003cnoreply@anthropic.com\u003e"
+  },
+  "Results": [
+    {
+      "Target": "app/Dockerfile",
+      "Class": "config",
+      "Type": "dockerfile",
+      "MisconfSummary": {
+        "Successes": 27,
+        "Failures": 0
+      }
+    },
+    {
+      "Target": "infra/terraform/account-baseline",
+      "Class": "config",
+      "Type": "terraform",
+      "MisconfSummary": {
+        "Successes": 71,
+        "Failures": 0
+      }
+    },
+    {
+      "Target": "infra/terraform/app",
+      "Class": "config",
+      "Type": "terraform",
+      "MisconfSummary": {
+        "Successes": 89,
+        "Failures": 0
+      }
+    },
+    {
+      "Target": "infra/terraform/app/cloudfront.tf",
+      "Class": "config",
+      "Type": "terraform"
+    },
+    {
+      "Target": "infra/terraform/app/rds.tf",
+      "Class": "config",
+      "Type": "terraform"
+    },
+    {
+      "Target": "infra/terraform/app/security_groups.tf",
+      "Class": "config",
+      "Type": "terraform"
+    }
+  ]
+}

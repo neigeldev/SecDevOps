@@ -1,0 +1,129 @@
+{
+  "generated": "2026-11-01T06:20:11.327Z",
+  "m1": {
+    "semgrep": {
+      "v1": {
+        "total": 16,
+        "WARNING": 5,
+        "ERROR": 11
+      },
+      "v2": {
+        "total": 0
+      }
+    },
+    "npm_audit": {
+      "v1": {
+        "total": 16,
+        "critical": 2,
+        "high": 6,
+        "moderate": 3,
+        "low": 5
+      },
+      "v2": {
+        "total": 0,
+        "critical": 0,
+        "high": 0,
+        "moderate": 0,
+        "low": 0
+      }
+    },
+    "dependency_check": {
+      "v1": null,
+      "v2": null
+    },
+    "sonarqube": {
+      "v1": null,
+      "v2": null
+    },
+    "zap": {
+      "v1": {
+        "high": 0,
+        "medium": 3,
+        "low": 2,
+        "info": 2
+      },
+      "v2": {
+        "high": 0,
+        "medium": 0,
+        "low": 0,
+        "info": 3
+      }
+    }
+  },
+  "m2": {
+    "checkov": {
+      "v1": {
+        "passed": 50,
+        "failed": 31,
+        "skipped": 0
+      },
+      "v2": {
+        "passed": 444,
+        "failed": 0,
+        "skipped": 30
+      }
+    },
+    "trivy_image": {
+      "v1": {
+        "CRITICAL": 19,
+        "HIGH": 406,
+        "MEDIUM": 538,
+        "LOW": 117,
+        "UNKNOWN": 2,
+        "secrets": 0
+      },
+      "v2": {
+        "CRITICAL": 0,
+        "HIGH": 0,
+        "MEDIUM": 24,
+        "LOW": 8,
+        "secrets": 0
+      }
+    },
+    "image": {
+      "v1": {
+        "image": "securenotes:v1",
+        "size_mb": 1349,
+        "user": "root (por defecto)",
+        "healthcheck": false,
+        "entrypoint": [
+          "docker-entrypoint.sh"
+        ],
+        "cmd": [
+          "/bin/sh",
+          "-c",
+          "npm start"
+        ],
+        "env_with_secrets": [
+          "JWT_SECRET",
+          "DB_PASSWORD"
+        ],
+        "layers": 10
+      },
+      "v2": {
+        "image": "securenotes:v2",
+        "size_mb": 223,
+        "user": "65532:65532",
+        "healthcheck": true,
+        "entrypoint": [
+          "/nodejs/bin/node"
+        ],
+        "cmd": [
+          "src/server.js"
+        ],
+        "env_with_secrets": [],
+        "layers": 28
+      }
+    }
+  },
+  "m3": {
+    "prowler": {
+      "before": null,
+      "after": null
+    },
+    "scoutsuite": {
+      "before": null,
+      "after": null
+    }
+  }
+}

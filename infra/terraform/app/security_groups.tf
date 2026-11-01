@@ -24,6 +24,9 @@ resource "aws_vpc_security_group_ingress_rule" "web_from_cloudfront" {
   to_port           = 80
 }
 
+# Riesgo aceptado: sin NAT ni VPC endpoints (~USD 7/mes c/u) la EC2 necesita HTTPS saliente
+# hacia los servicios de AWS (ECR, SSM, CloudWatch) y los repositorios de paquetes.
+#trivy:ignore:AWS-0104
 resource "aws_vpc_security_group_egress_rule" "web_https_out" {
   security_group_id = aws_security_group.web.id
   description       = "HTTPS saliente: ECR, SSM, CloudWatch y repositorios de paquetes"

@@ -56,6 +56,9 @@ services:
       COOKIE_SECURE: "true"
       TRUST_PROXY: "1"
       SEED_DEMO: "true"
+      # Para el escaneo DAST completo se puede ampliar el límite y probar el código, no el limitador
+      RATE_LIMIT_PER_MIN: "${RATE_LIMIT_PER_MIN:-300}"
+      LOGIN_RATE_LIMIT: "${LOGIN_RATE_LIMIT:-10}"
     secrets: [db_password, jwt_secret, admin_password]
     tmpfs:
       - /tmp

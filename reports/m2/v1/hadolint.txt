@@ -1,0 +1,3 @@
+-:7 DL3064 [1m[93mwarning[0m: Potentially sensitive data should not be used in the `ARG` or `ENV` commands
+-:8 DL3064 [1m[93mwarning[0m: Potentially sensitive data should not be used in the `ARG` or `ENV` commands
+-:11 DL3025 [1m[93mwarning[0m: Use arguments JSON notation for CMD and ENTRYPOINT arguments

@@ -29,3 +29,9 @@ infra/docker/secrets/
 
 # El lockfile de providers se genera con "terraform init" en tu equipo
 .terraform.lock.hcl
+
+# Artefactos internos de ZAP
+reports/**/zap.yaml
+reports/**/zap_*.json
+reports/**/*.log
+reports/**/.scannerwork/

@@ -36,7 +36,8 @@ COPY src ./src
 COPY views ./views
 COPY public ./public
 
-USER nonroot
+# Usuario no root por UID numérico (nonroot de distroless = 65532)
+USER 65532:65532
 EXPOSE 3000
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \

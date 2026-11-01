@@ -1,0 +1,406 @@
+
+Report Summary
+
+┌─────────────────────────────┬────────────┬───────────────────┐
+│           Target            │    Type    │ Misconfigurations │
+├─────────────────────────────┼────────────┼───────────────────┤
+│ app/Dockerfile              │ dockerfile │         4         │
+├─────────────────────────────┼────────────┼───────────────────┤
+│ infra/terraform/app         │ terraform  │         0         │
+├─────────────────────────────┼────────────┼───────────────────┤
+│ infra/terraform/app/main.tf │ terraform  │        16         │
+└─────────────────────────────┴────────────┴───────────────────┘
+Legend:
+- '-': Not scanned
+- '0': Clean (no security findings detected)
+
+
+app/Dockerfile (dockerfile)
+===========================
+Tests: 28 (SUCCESSES: 24, FAILURES: 4)
+Failures: 4 (UNKNOWN: 0, LOW: 1, MEDIUM: 0, HIGH: 1, CRITICAL: 2)
+
+DS-0002 (HIGH): Specify at least 1 USER command in Dockerfile with non-root user as argument
+════════════════════════════════════════
+Running containers with 'root' user can lead to a container escape situation. It is a best practice to run containers as non-root users, which can be done by adding a 'USER' statement to the Dockerfile.
+
+See https://avd.aquasec.com/misconfig/ds-0002
+────────────────────────────────────────
+
+
+DS-0026 (LOW): Add HEALTHCHECK instruction in your Dockerfile
+════════════════════════════════════════
+You should add HEALTHCHECK instruction in your docker container images to perform the health check on running containers.
+
+See https://avd.aquasec.com/misconfig/ds-0026
+────────────────────────────────────────
+
+
+DS-0031 (CRITICAL): Possible exposure of secret env "DB_PASSWORD" in ENV
+════════════════════════════════════════
+Passing secrets via `build-args` or envs or copying secret files can leak them out
+
+See https://avd.aquasec.com/misconfig/ds-0031
+────────────────────────────────────────
+ app/Dockerfile:8
+────────────────────────────────────────
+   8 [ ENV DB_PASSWORD=postgres
+────────────────────────────────────────
+
+
+DS-0031 (CRITICAL): Possible exposure of secret env "JWT_SECRET" in ENV
+════════════════════════════════════════
+Passing secrets via `build-args` or envs or copying secret files can leak them out
+
+See https://avd.aquasec.com/misconfig/ds-0031
+────────────────────────────────────────
+ app/Dockerfile:7
+────────────────────────────────────────
+   7 [ ENV JWT_SECRET=secret123
+────────────────────────────────────────
+
+
+
+infra/terraform/app/main.tf (terraform)
+=======================================
+Tests: 16 (SUCCESSES: 0, FAILURES: 16)
+Failures: 16 (UNKNOWN: 0, LOW: 5, MEDIUM: 1, HIGH: 8, CRITICAL: 2)
+
+AWS-0028 (HIGH): Instance does not require IMDS access to require a token.
+════════════════════════════════════════
+IMDS v2 (Instance Metadata Service) introduced session authentication tokens which improve security when talking to IMDS.
+
+By default <code>aws_instance</code> resource sets IMDS session auth tokens to be optional.
+
+To fully protect IMDS you need to enable session tokens by using <code>metadata_options</code> block and its <code>http_tokens</code> variable set to <code>required</code>.
+
+
+See https://avd.aquasec.com/misconfig/aws-0028
+────────────────────────────────────────
+ infra/terraform/app/main.tf:85-111
+────────────────────────────────────────
+  85 ┌ resource "aws_instance" "web" {
+  86 │   ami                         = "ami-0c02fb55956c7d316"
+  87 │   instance_type               = "t2.micro"
+  88 │   key_name                    = "securenotes-key"
+  89 │   vpc_security_group_ids      = [aws_security_group.web.id]
+  90 │   associate_public_ip_address = true
+  91 │   iam_instance_profile        = aws_iam_instance_profile.web.name
+  92 │ 
+  93 └   root_block_device {
+  ..   
+────────────────────────────────────────
+
+
+AWS-0029 (CRITICAL): Sensitive data found in instance user data: Password literal text
+════════════════════════════════════════
+EC2 instance data is used to pass start up information into the EC2 instance. This userdata must not contain access key credentials. Instead use an IAM Instance Profile assigned to the instance to grant access to other AWS Services.
+
+
+See https://avd.aquasec.com/misconfig/aws-0029
+────────────────────────────────────────
+ infra/terraform/app/main.tf:98-106
+   via infra/terraform/app/main.tf:85-111 (aws_instance.web)
+────────────────────────────────────────
+  85   resource "aws_instance" "web" {
+  ..   
+  98 ┌   user_data = <<-EOF
+  99 │     #!/bin/bash
+ 100 │     yum install -y docker git
+ 101 │     service docker start
+ 102 │     docker run -d --name db -p 5432:5432 -e POSTGRES_PASSWORD=${var.db_password} -e POSTGRES_DB=securenotes postgres:latest
+ 103 │     git clone https://github.com/neigeldev/SecDevOps.git /opt/securenotes
+ 104 └     cd /opt/securenotes/app && docker build -t securenotes .
+ ...   
+────────────────────────────────────────
+
+
+AWS-0086 (HIGH): Public access block does not block public ACLs
+════════════════════════════════════════
+S3 buckets should block public ACLs on buckets and any objects they contain. By blocking, PUTs with fail if the object has any public ACL a.
+
+
+See https://avd.aquasec.com/misconfig/aws-0086
+────────────────────────────────────────
+ infra/terraform/app/main.tf:119
+   via infra/terraform/app/main.tf:117-123 (aws_s3_bucket_public_access_block.backups)
+────────────────────────────────────────
+ 117   resource "aws_s3_bucket_public_access_block" "backups" {
+ 118     bucket                  = aws_s3_bucket.backups.id
+ 119 [   block_public_acls       = false
+ 120     block_public_policy     = false
+ 121     ignore_public_acls      = false
+ 122     restrict_public_buckets = false
+ 123   }
+────────────────────────────────────────
+
+
+AWS-0087 (HIGH): Public access block does not block public policies
+════════════════════════════════════════
+S3 bucket policy should have block public policy to prevent users from putting a policy that enable public access.
+
+
+See https://avd.aquasec.com/misconfig/aws-0087
+────────────────────────────────────────
+ infra/terraform/app/main.tf:120
+   via infra/terraform/app/main.tf:117-123 (aws_s3_bucket_public_access_block.backups)
+────────────────────────────────────────
+ 117   resource "aws_s3_bucket_public_access_block" "backups" {
+ 118     bucket                  = aws_s3_bucket.backups.id
+ 119     block_public_acls       = false
+ 120 [   block_public_policy     = false
+ 121     ignore_public_acls      = false
+ 122     restrict_public_buckets = false
+ 123   }
+────────────────────────────────────────
+
+
+AWS-0089 (LOW): Bucket has logging disabled
+════════════════════════════════════════
+Ensures S3 bucket logging is enabled for S3 buckets
+
+See https://avd.aquasec.com/misconfig/aws-0089
+────────────────────────────────────────
+ infra/terraform/app/main.tf:113-115
+────────────────────────────────────────
+ 113 ┌ resource "aws_s3_bucket" "backups" {
+ 114 │   bucket = "securenotes-backups"
+ 115 └ }
+────────────────────────────────────────
+
+
+AWS-0090 (MEDIUM): Bucket does not have versioning enabled
+════════════════════════════════════════
+Versioning in Amazon S3 is a means of keeping multiple variants of an object in the same bucket.
+
+You can use the S3 Versioning feature to preserve, retrieve, and restore every version of every object stored in your buckets.
+
+With versioning you can recover more easily from both unintended user actions and application failures.
+
+When you enable versioning, also keep in mind the potential costs of storing noncurrent versions of objects. To help manage those costs, consider setting up an S3 Lifecycle configuration.
+
+
+See https://avd.aquasec.com/misconfig/aws-0090
+────────────────────────────────────────
+ infra/terraform/app/main.tf:113-115
+────────────────────────────────────────
+ 113 ┌ resource "aws_s3_bucket" "backups" {
+ 114 │   bucket = "securenotes-backups"
+ 115 └ }
+────────────────────────────────────────
+
+
+AWS-0091 (HIGH): Public access block does not ignore public ACLs
+════════════════════════════════════════
+S3 buckets should ignore public ACLs on buckets and any objects they contain. By ignoring rather than blocking, PUT calls with public ACLs will still be applied but the ACL will be ignored.
+
+
+See https://avd.aquasec.com/misconfig/aws-0091
+────────────────────────────────────────
+ infra/terraform/app/main.tf:121
+   via infra/terraform/app/main.tf:117-123 (aws_s3_bucket_public_access_block.backups)
+────────────────────────────────────────
+ 117   resource "aws_s3_bucket_public_access_block" "backups" {
+ 118     bucket                  = aws_s3_bucket.backups.id
+ 119     block_public_acls       = false
+ 120     block_public_policy     = false
+ 121 [   ignore_public_acls      = false
+ 122     restrict_public_buckets = false
+ 123   }
+────────────────────────────────────────
+
+
+AWS-0093 (HIGH): Public access block does not restrict public buckets
+════════════════════════════════════════
+S3 buckets should restrict public policies for the bucket. By enabling, the restrict_public_buckets, only the bucket owner and AWS Services can access if it has a public policy.
+
+
+See https://avd.aquasec.com/misconfig/aws-0093
+────────────────────────────────────────
+ infra/terraform/app/main.tf:122
+   via infra/terraform/app/main.tf:117-123 (aws_s3_bucket_public_access_block.backups)
+────────────────────────────────────────
+ 117   resource "aws_s3_bucket_public_access_block" "backups" {
+ 118     bucket                  = aws_s3_bucket.backups.id
+ 119     block_public_acls       = false
+ 120     block_public_policy     = false
+ 121     ignore_public_acls      = false
+ 122 [   restrict_public_buckets = false
+ 123   }
+────────────────────────────────────────
+
+
+AWS-0104 (CRITICAL): Security group rule allows unrestricted egress to any IP address.
+════════════════════════════════════════
+Opening up ports to connect out to the public internet is generally to be avoided. You should restrict access to IP addresses or ranges that are explicitly required where possible.
+
+
+See https://avd.aquasec.com/misconfig/aws-0104
+────────────────────────────────────────
+ infra/terraform/app/main.tf:51
+   via infra/terraform/app/main.tf:47-52 (egress)
+    via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
+────────────────────────────────────────
+  21   resource "aws_security_group" "web" {
+  ..   
+  51 [     cidr_blocks = ["0.0.0.0/0"]
+  ..   
+  53   }
+────────────────────────────────────────
+
+
+AWS-0107 (HIGH): Security group rule allows unrestricted ingress from any IP address.
+════════════════════════════════════════
+Security groups provide stateful filtering of ingress and egress network traffic to AWS
+resources. It is recommended that no security group allows unrestricted ingress access to
+remote server administration ports, such as SSH to port 22 and RDP to port 3389.
+
+
+See https://avd.aquasec.com/misconfig/aws-0107
+────────────────────────────────────────
+ infra/terraform/app/main.tf:30
+   via infra/terraform/app/main.tf:26-31 (ingress)
+    via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
+────────────────────────────────────────
+  21   resource "aws_security_group" "web" {
+  ..   
+  30 [     cidr_blocks = ["0.0.0.0/0"]
+  ..   
+  53   }
+────────────────────────────────────────
+
+
+AWS-0124 (LOW): Security group rule does not have a description.
+════════════════════════════════════════
+Security group rules should include a description for auditing purposes.
+
+Simplifies auditing, debugging, and managing security groups.
+
+
+See https://avd.aquasec.com/misconfig/aws-0124
+────────────────────────────────────────
+ infra/terraform/app/main.tf:47-52
+   via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
+────────────────────────────────────────
+  21   resource "aws_security_group" "web" {
+  ..   
+  47 ┌   egress {
+  48 │     from_port   = 0
+  49 │     to_port     = 0
+  50 │     protocol    = "-1"
+  51 │     cidr_blocks = ["0.0.0.0/0"]
+  52 └   }
+  53   }
+────────────────────────────────────────
+
+
+AWS-0124 (LOW): Security group rule does not have a description.
+════════════════════════════════════════
+Security group rules should include a description for auditing purposes.
+
+Simplifies auditing, debugging, and managing security groups.
+
+
+See https://avd.aquasec.com/misconfig/aws-0124
+────────────────────────────────────────
+ infra/terraform/app/main.tf:40-45
+   via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
+────────────────────────────────────────
+  21   resource "aws_security_group" "web" {
+  ..   
+  40 ┌   ingress {
+  41 │     from_port   = 5432
+  42 │     to_port     = 5432
+  43 │     protocol    = "tcp"
+  44 │     cidr_blocks = ["0.0.0.0/0"]
+  45 └   }
+  ..   
+  53   }
+────────────────────────────────────────
+
+
+AWS-0124 (LOW): Security group rule does not have a description.
+════════════════════════════════════════
+Security group rules should include a description for auditing purposes.
+
+Simplifies auditing, debugging, and managing security groups.
+
+
+See https://avd.aquasec.com/misconfig/aws-0124
+────────────────────────────────────────
+ infra/terraform/app/main.tf:33-38
+   via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
+────────────────────────────────────────
+  21   resource "aws_security_group" "web" {
+  ..   
+  33 ┌   ingress {
+  34 │     from_port   = 3000
+  35 │     to_port     = 3000
+  36 │     protocol    = "tcp"
+  37 │     cidr_blocks = ["0.0.0.0/0"]
+  38 └   }
+  ..   
+  53   }
+────────────────────────────────────────
+
+
+AWS-0124 (LOW): Security group rule does not have a description.
+════════════════════════════════════════
+Security group rules should include a description for auditing purposes.
+
+Simplifies auditing, debugging, and managing security groups.
+
+
+See https://avd.aquasec.com/misconfig/aws-0124
+────────────────────────────────────────
+ infra/terraform/app/main.tf:26-31
+   via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
+────────────────────────────────────────
+  21   resource "aws_security_group" "web" {
+  ..   
+  26 ┌   ingress {
+  27 │     from_port   = 22
+  28 │     to_port     = 22
+  29 │     protocol    = "tcp"
+  30 │     cidr_blocks = ["0.0.0.0/0"]
+  31 └   }
+  ..   
+  53   }
+────────────────────────────────────────
+
+
+AWS-0131 (HIGH): Root block device is not encrypted.
+════════════════════════════════════════
+Block devices should be encrypted to ensure sensitive data is held securely at rest.
+
+
+See https://avd.aquasec.com/misconfig/aws-0131
+────────────────────────────────────────
+ infra/terraform/app/main.tf:95
+   via infra/terraform/app/main.tf:93-96 (root_block_device)
+    via infra/terraform/app/main.tf:85-111 (aws_instance.web)
+────────────────────────────────────────
+  85   resource "aws_instance" "web" {
+  ..   
+  95 [     encrypted   = false
+ ...   
+ 111   }
+────────────────────────────────────────
+
+
+AWS-0132 (HIGH): Bucket does not encrypt data with a customer managed key.
+════════════════════════════════════════
+Encryption using AWS keys provides protection for your S3 buckets. To gain greater control over encryption, such as key rotation, access policies, and auditability, use customer managed keys (CMKs) with SSE-KMS.
+Note that SSE-KMS is not supported for S3 server access logging destination buckets; in such cases, use SSE-S3 instead.
+
+
+See https://avd.aquasec.com/misconfig/aws-0132
+────────────────────────────────────────
+ infra/terraform/app/main.tf:113-115
+────────────────────────────────────────
+ 113 ┌ resource "aws_s3_bucket" "backups" {
+ 114 │   bucket = "securenotes-backups"
+ 115 └ }
+────────────────────────────────────────
+
+

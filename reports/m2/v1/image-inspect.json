@@ -1,0 +1,19 @@
+{
+  "image": "securenotes:v1",
+  "size_mb": 1349,
+  "user": "root (por defecto)",
+  "healthcheck": false,
+  "entrypoint": [
+    "docker-entrypoint.sh"
+  ],
+  "cmd": [
+    "/bin/sh",
+    "-c",
+    "npm start"
+  ],
+  "env_with_secrets": [
+    "JWT_SECRET",
+    "DB_PASSWORD"
+  ],
+  "layers": 10
+}

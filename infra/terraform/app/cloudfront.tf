@@ -15,6 +15,8 @@ data "aws_cloudfront_response_headers_policy" "security" {
   name = "Managed-SecurityHeadersPolicy"
 }
 
+# Riesgo aceptado (ver CKV_AWS_86): registros cubiertos por WAF y la app en CloudWatch.
+#trivy:ignore:AWS-0010
 resource "aws_cloudfront_distribution" "app" {
   #checkov:skip=CKV_AWS_174:Sin dominio propio se usa el certificado por defecto *.cloudfront.net, que no permite fijar TLSv1.2_2021. Con dominio + ACM se fija minimum_protocol_version.
   #checkov:skip=CKV2_AWS_42:Requiere dominio propio y certificado ACM (ver CKV_AWS_174).

@@ -1,0 +1,126 @@
+                    
+                    
+┌──────────────────┐
+│ 16 Code Findings │
+└──────────────────┘
+                   
+    /src/src/app.js
+    ❯❱ rules.express-missing-helmet
+          ❰❰ Blocking ❱❱
+          La aplicación Express no aplica cabeceras de seguridad (helmet) ni desactiva X-Powered-By.
+                                                                                                    
+            7┆ const app = express();
+   
+    ❯❱ rules.stack-trace-exposed-to-client
+          ❰❰ Blocking ❱❱
+          Se envía el stack trace al cliente. Registra el detalle en el servidor y responde un mensaje
+          genérico.                                                                                   
+                                                                                                      
+           31┆ res.status(500).send(`<h1>Error interno</h1><pre>${err.stack}</pre>`);
+                      
+    /src/src/config.js
+   ❯❯❱ rules.hardcoded-secret-in-config
+          ❰❰ Blocking ❱❱
+          Secreto o contraseña escrito en el código fuente. Léelo de un gestor de secretos o de variables de
+          entorno / archivos montados.                                                                      
+                                                                                                            
+            8┆ password: 'postgres',
+            ⋮┆----------------------------------------
+           11┆ jwtSecret: 'secret123'
+                          
+    /src/src/routes/api.js
+   ❯❯❱ rules.child-process-exec-user-input
+          ❰❰ Blocking ❱❱
+          child_process.exec ejecuta una shell con una cadena construida dinámicamente (inyección de
+          comandos). Evita la shell o usa execFile con lista blanca.                                
+                                                                                                    
+           11┆ exec('ping -c 1 ' + host, (error, stdout, stderr) => {
+           12┆   res.type('text/plain').send(stdout + stderr);
+           13┆ });
+                           
+    /src/src/routes/auth.js
+   ❯❯❱ rules.password-written-to-log
+          ❰❰ Blocking ❱❱
+          Se escribe una contraseña en los logs.
+                                                
+           12┆ console.log(`Intento de login: usuario=${username} password=${password}`);
+   
+   ❯❯❱ rules.sql-string-concatenation
+          ❰❰ Blocking ❱❱
+          Consulta SQL construida concatenando datos. Usa consultas parametrizadas (db.query('... $1',
+          [valor])).                                                                                  
+                                                                                                      
+           14┆ const sql =
+           15┆   "SELECT id, username, role FROM users WHERE username = '" +
+           16┆   username +
+           17┆   "' AND password_hash = '" +
+           18┆   passwordUtil.hash(password) +
+           19┆   "'";
+           20┆ const result = await db.query(sql);
+   
+    ❯❱ rules.cookie-without-security-flags
+          ❰❰ Blocking ❱❱
+          La cookie se emite sin opciones (HttpOnly, Secure, SameSite).
+                                                                       
+           25┆ res.cookie('token', tokens.sign(user));
+                            
+    /src/src/routes/notes.js
+   ❯❯❱ rules.sql-string-concatenation
+          ❰❰ Blocking ❱❱
+          Consulta SQL construida concatenando datos. Usa consultas parametrizadas (db.query('... $1',
+          [valor])).                                                                                  
+                                                                                                      
+           11┆ const sql =
+           12┆   'SELECT n.id, n.title, n.body, u.username FROM notes n JOIN users u ON u.id = n.owner_id
+               ' +                                                                                       
+           13┆   "WHERE n.is_public = true AND n.title ILIKE '%" +
+           14┆   q +
+           15┆   "%' ORDER BY n.id DESC";
+           16┆ const result = await db.query(sql);
+                              
+    /src/src/routes/profile.js
+   ❯❯❱ rules.mass-assignment-from-request-body
+          ❰❰ Blocking ❱❱
+          Se mezcla req.body completo en un objeto del modelo (asignación masiva): el cliente puede cambiar
+          campos como 'role' o 'id'. Usa una lista blanca.                                                 
+                                                                                                           
+           23┆ const profile = _.merge(await loadProfile(req.user.id), req.body);
+                                 
+    /src/src/security/password.js
+   ❯❯❱ rules.weak-password-hash
+          ❰❰ Blocking ❱❱
+          MD5/SHA-1 no son aptos para almacenar contraseñas (rápidos y sin sal). Usa scrypt, Argon2id o bcrypt
+          con sal aleatoria.                                                                                  
+                                                                                                              
+            5┆ return crypto.createHash('md5').update(plain).digest('hex');
+                               
+    /src/src/security/tokens.js
+    ❯❱ rules.jwt-sign-without-expiration
+          ❰❰ Blocking ❱❱
+          El token JWT se firma sin expiración (expiresIn). Una sesión robada sería válida para siempre.
+                                                                                                        
+            5┆ return jwt.sign({ id: user.id, username: user.username, role: user.role },
+               config.jwtSecret);                                                        
+   
+    ❯❱ rules.jwt-verify-without-algorithms
+          ❰❰ Blocking ❱❱
+          jwt.verify sin la opción 'algorithms' acepta el algoritmo que indique el token. Fija el algoritmo
+          (p. ej. { algorithms: ['HS256'] }) y valida issuer/audience.                                     
+                                                                                                           
+            9┆ return jwt.verify(token, config.jwtSecret);
+                          
+    /src/views/explore.ejs
+   ❯❯❱ rules.ejs-unescaped-output
+          ❰❰ Blocking ❱❱
+          Salida sin escapar en EJS (<%- ... %>) con datos que no son un include: permite XSS. Usa <%= ... %>.
+                                                                                                              
+            7┆ <% if (q) { %><p class="muted">Resultados para: <strong><%- q %></strong></p><% } %>
+            ⋮┆----------------------------------------
+           12┆ <div class="body"><%- n.body %></div>
+                       
+    /src/views/note.ejs
+   ❯❯❱ rules.ejs-unescaped-output
+          ❰❰ Blocking ❱❱
+          Salida sin escapar en EJS (<%- ... %>) con datos que no son un include: permite XSS. Usa <%= ... %>.
+                                                                                                              
+            4┆ <div class="body"><%- note.body %></div>
