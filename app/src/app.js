@@ -3,8 +3,9 @@ const path = require('path');
 const crypto = require('crypto');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
-const morgan = require('morgan');
 const config = require('./config');
+const logger = require('./logger');
+const { globalLimiter } = require('./middleware/rateLimit');
 const { loadUser } = require('./middleware/auth');
 const { csrfProtection } = require('./security/csrf');
 
@@ -22,7 +23,10 @@ if (config.originVerifySecret) {
   app.use((req, res, next) => {
     if (req.path === '/api/health') return next();
     const got = crypto.createHash('sha256').update(String(req.get('x-origin-verify') || '')).digest();
-    if (!crypto.timingSafeEqual(got, expected)) return res.status(403).send('Forbidden');
+    if (!crypto.timingSafeEqual(got, expected)) {
+      logger.security('origin_verify_failed', req);
+      return res.status(403).send('Forbidden');
+    }
     next();
   });
 }
@@ -57,7 +61,22 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(morgan('dev'));
+// V12: registro de cada petición en JSON (sin query string ni cuerpo)
+app.use((req, res, next) => {
+  const start = process.hrtime.bigint();
+  res.on('finish', () => {
+    logger.info('http_request', {
+      method: req.method,
+      path: req.path,
+      status: res.statusCode,
+      ms: Number((process.hrtime.bigint() - start) / 1000000n),
+      ip: req.ip,
+      userId: req.user ? req.user.id : undefined
+    });
+  });
+  next();
+});
+app.use(globalLimiter);
 app.use(express.urlencoded({ extended: false, limit: '20kb' }));
 app.use(express.json({ limit: '20kb' }));
 app.use(cookieParser());
@@ -86,7 +105,7 @@ app.use((req, res) => res.status(404).render('error', { message: 'Página no enc
 app.use((err, req, res, next) => {
   const status = Number.isInteger(err.status) && err.status >= 400 && err.status < 500 ? err.status : 500;
   const errorId = crypto.randomUUID();
-  console.error(JSON.stringify({ level: 'error', event: 'unhandled_error', errorId, status, message: err.message, stack: err.stack }));
+  logger.error('unhandled_error', { errorId, status, path: req.path, message: err.message, stack: err.stack });
   res.status(status);
   if (!res.locals.user) res.locals.user = null;
   if (!res.locals.csrfToken) res.locals.csrfToken = '';

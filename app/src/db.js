@@ -1,6 +1,7 @@
 const { Pool } = require('pg');
 const config = require('./config');
 const password = require('./security/password');
+const logger = require('./logger');
 
 const pool = new Pool(config.db);
 
@@ -14,7 +15,7 @@ async function waitForDb(retries = 30) {
       await pool.query('SELECT 1');
       return;
     } catch (err) {
-      console.log(`Esperando a la base de datos (${i}/${retries})...`);
+      logger.warn('db_waiting', { attempt: i, retries, reason: err.code || err.message });
       await new Promise((r) => setTimeout(r, 2000));
     }
   }
@@ -58,7 +59,7 @@ async function seed() {
        ON CONFLICT (username) DO NOTHING RETURNING id`,
       [admin.username, await password.hash(admin.password)]
     );
-    if (result.rowCount) console.log('Usuario administrador inicial creado');
+    if (result.rowCount) logger.info('admin_bootstrap', { username: admin.username });
   }
   if (seedDemo) {
     await pool.query(

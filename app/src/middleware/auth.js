@@ -1,5 +1,6 @@
 const tokens = require('../security/tokens');
 const db = require('../db');
+const logger = require('../logger');
 
 // Carga el usuario autenticado a partir de la cookie de sesión.
 // V09: el rol se consulta en la base de datos en cada petición; el token solo
@@ -28,6 +29,7 @@ function requireAuth(req, res, next) {
 
 function requireAdmin(req, res, next) {
   if (!req.user || req.user.role !== 'admin') {
+    logger.security('access_denied', req, { required: 'admin' });
     return res.status(403).render('error', { message: 'Acceso denegado' });
   }
   next();

@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const config = require('../config');
+const logger = require('../logger');
 
 // V10: protección CSRF con el patrón "Signed Double-Submit Cookie" (OWASP).
 // - La cookie guarda un valor aleatorio (HttpOnly, SameSite=Strict).
@@ -32,6 +33,7 @@ function csrfProtection(req, res, next) {
 
   const sent = req.body && req.body._csrf;
   if (!req.cookies[COOKIE_NAME] || typeof sent !== 'string' || !safeEqual(sent, res.locals.csrfToken)) {
+    logger.security('csrf_failed', req);
     return res.status(403).render('error', { message: 'La solicitud no es válida (token CSRF). Recarga la página e intenta de nuevo.' });
   }
   next();
