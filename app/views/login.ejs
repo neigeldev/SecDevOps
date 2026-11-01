@@ -2,6 +2,7 @@
 <h1>Ingresar</h1>
 <% if (error) { %><p class="alert"><%= error %></p><% } %>
 <form method="post" action="/login" class="form">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
   <label>Usuario <input type="text" name="username" required autocomplete="username"></label>
   <label>Contraseña <input type="password" name="password" required autocomplete="current-password"></label>
   <button type="submit">Ingresar</button>

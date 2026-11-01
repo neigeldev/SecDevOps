@@ -1,6 +1,7 @@
 <%- include('partials/header', { title: 'Mis notas' }) %>
 <h1>Mis notas</h1>
 <form method="post" action="/notes" class="form card">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
   <label>Título <input type="text" name="title" required maxlength="200"></label>
   <label>Contenido <textarea name="body" rows="4" required></textarea></label>
   <label class="check"><input type="checkbox" name="is_public"> Nota pública</label>
@@ -13,6 +14,7 @@
     <a href="/notes/<%= n.id %>"><%= n.title %></a>
     <span class="tag"><%= n.is_public ? 'pública' : 'privada' %></span>
     <form class="inline" method="post" action="/notes/<%= n.id %>/delete">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
       <button type="submit" class="link danger">Eliminar</button>
     </form>
   </li>
