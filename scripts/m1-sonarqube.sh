@@ -64,7 +64,7 @@ fi
 
 log "Analizando $V con sonar-scanner (proyecto $KEY)"
 rm -rf "$OUT/.scannerwork"
-docker run --rm --network "$NET" --user "$(id -u):$(id -g)" \
+docker run --rm --network "$NET" "${DOCKER_USER[@]}" \
   -e SONAR_HOST_URL="http://$CONTAINER:9000" -e SONAR_TOKEN \
   -v "$SRC/app:/usr/src:ro" -v "$OUT:/out" \
   "$SONAR_SCANNER_IMAGE" \

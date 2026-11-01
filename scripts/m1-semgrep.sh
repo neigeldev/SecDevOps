@@ -15,7 +15,7 @@ if [[ "${SEMGREP_OFFLINE:-0}" != "1" ]]; then
 fi
 
 log "Semgrep sobre $V ($SRC/app)"
-docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off \
+docker run --rm "${DOCKER_USER[@]}" -e HOME=/tmp -e SEMGREP_ENABLE_VERSION_CHECK=0 -e SEMGREP_SEND_METRICS=off \
   -v "$SRC/app:/src:ro" -v "$ROOT/security/semgrep:/rules:ro" -v "$OUT:/out" \
   "$SEMGREP_IMAGE" semgrep scan "${CONFIGS[@]}" --metrics=off \
   --exclude node_modules --exclude test \

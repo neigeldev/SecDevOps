@@ -13,7 +13,7 @@ need docker
 mkdir -p "$CACHE/trivy"
 
 log "Checkov sobre la IaC de $V"
-docker run --rm --user "$(id -u):$(id -g)" -e HOME=/tmp \
+docker run --rm "${DOCKER_USER[@]}" -e HOME=/tmp \
   -v "$SRC:/src:ro" -v "$OUT:/out" "$CHECKOV_IMAGE" \
   -d /src/infra/terraform -d /src/app --framework terraform dockerfile \
   --skip-download --compact \

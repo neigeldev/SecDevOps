@@ -71,6 +71,38 @@ Guarda las claves locales en `.secrets.env` (ignorado por Git):
 echo 'NVD_API_KEY=tu-clave-aqui' > .secrets.env
 ```
 
+## Uso en Windows (Git Bash)
+
+Los scripts detectan automáticamente Git Bash / MSYS2 / Cygwin y aplican dos
+ajustes que evitan los problemas típicos con Docker Desktop en Windows:
+
+1. **`MSYS_NO_PATHCONV=1`** — desactiva la conversión automática de rutas
+   (`/src` → `C:\src`) que Git Bash aplica a los argumentos de Docker.
+2. **Sin `--user`** — `id -u` / `id -g` no tienen sentido en Windows;
+   los contenedores corren con el usuario por defecto de la imagen.
+
+**Requisitos previos en Windows:**
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) instalado y
+  en ejecución (backend WSL 2 recomendado).
+- [Git for Windows](https://gitforwindows.org/) (incluye Git Bash).
+- Node.js 22+ instalado en Windows (para `npm audit` y `summarize.mjs`).
+- Abre una terminal **Git Bash** (no PowerShell ni CMD) y ejecuta los scripts
+  con `./scripts/m1-semgrep.sh v1` etc.
+
+**Si Dependency-Check falla con código 1:**
+
+1. Asegúrate de tener `.secrets.env` con tu clave NVD:
+   ```bash
+   echo 'NVD_API_KEY=tu-clave-aqui' >> .secrets.env
+   ```
+2. La primera ejecución descarga la base NVD (~10-30 min); revisa el log:
+   ```bash
+   cat reports/m1/v1/dependency-check.log | tail -30
+   ```
+3. Si el log muestra errores de red/TLS, puede deberse al proxy corporativo.
+   Define `EXTRA_CA_FILE=/ruta/al/certificado-proxy.pem` en `.secrets.env`.
+
 ## Guía rápida
 
 ```bash

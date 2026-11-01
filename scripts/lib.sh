@@ -4,6 +4,29 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+# ---- Compatibilidad Windows (Git Bash / MSYS2 / Cygwin) ----
+# Git Bash convierte automáticamente rutas /ruta -> C:\ruta en argumentos de Docker.
+# MSYS_NO_PATHCONV=1 desactiva esa conversión; cygpath -m da rutas mixtas que Docker
+# Desktop acepta en lugar de rutas POSIX puras que Git Bash reescribiría.
+IS_WINDOWS=0
+case "$(uname -s)" in
+  MINGW*|MSYS*|CYGWIN*)
+    IS_WINDOWS=1
+    export MSYS_NO_PATHCONV=1
+    export MSYS2_ARG_CONV_EXCL='*'
+    ROOT="$(cygpath -m "$ROOT")"
+    ;;
+esac
+
+# En Windows, --user "$(id -u):$(id -g)" produce valores sin sentido.
+# Los scripts usan "${DOCKER_USER[@]}" en su lugar.
+if [[ "$IS_WINDOWS" == 0 ]]; then
+  DOCKER_USER=(--user "$(id -u):$(id -g)")
+else
+  DOCKER_USER=()
+fi
+
 REPORTS="$ROOT/reports"
 CACHE="$ROOT/.cache"
 

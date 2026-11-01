@@ -50,4 +50,33 @@ cmd "TLS obligatorio en PostgreSQL (rds.force_ssl)" aws rds describe-db-paramete
 log "Cómputo e IAM"
 section "2. Cómputo e identidades (IAM)"
 cmd "IMDSv2 obligatorio, sin llave SSH, EBS cifrado" aws ec2 describe-instances --region "$R" --instance-ids "$INSTANCE" \
-  --query 'Reservations[0].Instances[0].{IMDSv2:MetadataOptions.HttpTok
+  --query 'Reservations[0].Instances[0].{IMDSv2:MetadataOptions.HttpTokens,HopLimit:MetadataOptions.HttpPutResponseHopLimit,LlaveSSH:KeyName,IPPublica:PublicIpAddress,PerfilIAM:IamInstanceProfile.Arn}' --output table
+cmd "Volúmenes EBS cifrados" aws ec2 describe-volumes --region "$R" \
+  --filters "Name=attachment.instance-id,Values=$INSTANCE" --query 'Volumes[].{Id:VolumeId,Cifrado:Encrypted,KMS:KmsKeyId}' --output table
+cmd "Cifrado de EBS por defecto en la cuenta" aws ec2 get-ebs-encryption-by-default --region "$R" --output table
+cmd "Políticas del rol de la EC2 (mínimo privilegio)" aws iam list-role-policies --role-name securenotes-demo-app --output table
+cmd "Política de contraseñas de la cuenta (CIS)" aws iam get-account-password-policy --output table
+cmd "Acceso por Session Manager (sin SSH)" aws ssm describe-instance-information --region "$R" \
+  --filters "Key=InstanceIds,Values=$INSTANCE" --query 'InstanceInformationList[].{Id:InstanceId,Estado:PingStatus,Agente:AgentVersion}' --output table
+
+log "Cifrado en reposo y secretos"
+section "3. Cifrado en reposo y secretos"
+cmd "CMK de KMS con rotación" aws kms get-key-rotation-status --region "$R" --key-id alias/securenotes-demo --output table
+cmd "Secretos en SSM como SecureString (solo metadatos, sin valores)" aws ssm describe-parameters --region "$R" \
+  --parameter-filters "Key=Name,Option=BeginsWith,Values=/securenotes" --query 'Parameters[].{Nombre:Name,Tipo:Type,KMS:KeyId}' --output table
+cmd "ECR inmutable, escaneo al publicar y cifrado KMS" aws ecr describe-repositories --region "$R" \
+  --query 'repositories[?starts_with(repositoryName, `securenotes`)].{Repo:repositoryName,Inmutable:imageTagMutability,Escaneo:imageScanningConfiguration.scanOnPush,Cifrado:encryptionConfiguration.encryptionType}' --output table
+cmd "Log groups cifrados con KMS" aws logs describe-log-groups --region "$R" --log-group-name-prefix /securenotes \
+  --query 'logGroups[].{Nombre:logGroupName,KMS:kmsKeyId,Retencion:retentionInDays}' --output table
+
+log "Monitoreo y detección"
+section "4. Monitoreo y detección"
+cmd "CloudTrail (multirregión, validación de integridad, KMS)" aws cloudtrail describe-trails --region "$R" \
+  --query 'trailList[].{Nombre:Name,Multirregion:IsMultiRegionTrail,Validacion:LogFileValidationEnabled,KMS:KmsKeyId}' --output table
+cmd "GuardDuty activo" aws guardduty list-detectors --region "$R" --output table
+cmd "IAM Access Analyzer" aws accessanalyzer list-analyzers --region "$R" --query 'analyzers[].{Nombre:name,Tipo:type,Estado:status}' --output table
+cmd "Alarmas de CloudWatch" aws cloudwatch describe-alarms --region "$R" \
+  --query 'MetricAlarms[].{Alarma:AlarmName,Estado:StateValue}' --output table
+cmd "WAF asociado a CloudFront" aws wafv2 list-web-acls --region us-east-1 --scope CLOUDFRONT --query 'WebACLs[].Name' --output table
+
+ok "Reporte de verificación: $REPORT"

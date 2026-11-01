@@ -28,7 +28,7 @@ fi
 
 mkdir -p "$CACHE/dependency-check"
 log "OWASP Dependency-Check sobre $V (la primera vez descarga la base NVD: 10-30 min)"
-docker run --rm --user "$(id -u):$(id -g)" \
+docker run --rm "${DOCKER_USER[@]}" \
   -e NVD_API_KEY \
   -v "$SRC/app:/src:ro" \
   -v "$CACHE/dependency-check:/usr/share/dependency-check/data" \
