@@ -1,0 +1,11 @@
+<%- include('partials/header', { title: 'Perfil' }) %>
+<h1>Mi perfil</h1>
+<% if (message) { %><p class="notice"><%= message %></p><% } %>
+<form method="post" action="/profile" class="form">
+  <label>Usuario <input type="text" value="<%= profile.username %>" disabled></label>
+  <label>Nombre completo <input type="text" name="full_name" value="<%= profile.full_name || '' %>"></label>
+  <label>Correo <input type="email" name="email" value="<%= profile.email || '' %>"></label>
+  <label>Rol <input type="text" value="<%= profile.role %>" disabled></label>
+  <button type="submit">Guardar</button>
+</form>
+<%- include('partials/footer') %>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= typeof title !== 'undefined' ? title + ' · SecureNotes' : 'SecureNotes' %></title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">SecureNotes</a>
+  <nav>
+    <a href="/explore">Explorar</a>
+    <% if (user) { %>
+      <a href="/notes">Mis notas</a>
+      <a href="/profile">Perfil</a>
+      <% if (user.role === 'admin') { %><a href="/admin">Administración</a><% } %>
+      <form class="inline" method="post" action="/logout">
+        <button type="submit" class="link">Salir (<%= user.username %>)</button>
+      </form>
+    <% } else { %>
+      <a href="/login">Ingresar</a>
+      <a href="/register">Registrarse</a>
+    <% } %>
+  </nav>
+</header>
+<main class="container">

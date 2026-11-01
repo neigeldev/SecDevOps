@@ -1,0 +1,11 @@
+<%- include('partials/header', { title: 'Registro' }) %>
+<h1>Crear cuenta</h1>
+<% if (error) { %><p class="alert"><%= error %></p><% } %>
+<form method="post" action="/register" class="form">
+  <label>Usuario <input type="text" name="username" required autocomplete="username"></label>
+  <label>Nombre completo <input type="text" name="full_name"></label>
+  <label>Correo <input type="email" name="email"></label>
+  <label>Contraseña <input type="password" name="password" required autocomplete="new-password"></label>
+  <button type="submit">Registrarme</button>
+</form>
+<%- include('partials/footer') %>

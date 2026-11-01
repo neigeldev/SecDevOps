@@ -1,0 +1,21 @@
+<%- include('partials/header', { title: 'Mis notas' }) %>
+<h1>Mis notas</h1>
+<form method="post" action="/notes" class="form card">
+  <label>Título <input type="text" name="title" required maxlength="200"></label>
+  <label>Contenido <textarea name="body" rows="4" required></textarea></label>
+  <label class="check"><input type="checkbox" name="is_public"> Nota pública</label>
+  <button type="submit">Guardar nota</button>
+</form>
+<% if (notes.length === 0) { %><p class="muted">Aún no tienes notas.</p><% } %>
+<ul class="list">
+<% notes.forEach(function (n) { %>
+  <li>
+    <a href="/notes/<%= n.id %>"><%= n.title %></a>
+    <span class="tag"><%= n.is_public ? 'pública' : 'privada' %></span>
+    <form class="inline" method="post" action="/notes/<%= n.id %>/delete">
+      <button type="submit" class="link danger">Eliminar</button>
+    </form>
+  </li>
+<% }) %>
+</ul>
+<%- include('partials/footer') %>

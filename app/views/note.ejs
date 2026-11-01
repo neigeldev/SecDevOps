@@ -1,0 +1,8 @@
+<%- include('partials/header', { title: note.title }) %>
+<article class="card">
+  <h1><%= note.title %></h1>
+  <div class="body"><%- note.body %></div>
+  <p class="muted">por <%= note.username %> · <%= note.is_public ? 'pública' : 'privada' %></p>
+</article>
+<p><a href="/notes">← Volver a mis notas</a></p>
+<%- include('partials/footer') %>

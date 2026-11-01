@@ -1,0 +1,10 @@
+<%- include('partials/header', { title: 'Inicio' }) %>
+<section class="hero">
+  <h1>SecureNotes</h1>
+  <p>Guarda notas privadas y comparte notas públicas con otros usuarios.</p>
+  <p>
+    <a class="button" href="/explore">Explorar notas públicas</a>
+    <% if (!user) { %><a class="button secondary" href="/register">Crear cuenta</a><% } %>
+  </p>
+</section>
+<%- include('partials/footer') %>

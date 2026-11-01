@@ -1,0 +1,25 @@
+node_modules/
+npm-debug.log*
+.env
+*.log
+.DS_Store
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+terraform.tfvars
+.terraform.tfstate.lock.info
+
+# Secretos locales generados por scripts/gen-secrets.sh
+infra/docker/secrets/
+
+# Copias de trabajo de versiones anteriores (scripts/lib.sh)
+.worktrees/
+
+# Caches de herramientas
+.cache/
+.scannerwork/

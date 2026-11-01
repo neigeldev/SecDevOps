@@ -1,0 +1,17 @@
+<%- include('partials/header', { title: 'Administración' }) %>
+<h1>Usuarios registrados</h1>
+<table class="table">
+  <thead>
+    <tr><th>ID</th><th>Usuario</th><th>Nombre</th><th>Correo</th><th>Rol</th><th>Hash</th><th>Creado</th></tr>
+  </thead>
+  <tbody>
+  <% users.forEach(function (u) { %>
+    <tr>
+      <td><%= u.id %></td><td><%= u.username %></td><td><%= u.full_name %></td>
+      <td><%= u.email %></td><td><%= u.role %></td><td><code><%= u.password_hash %></code></td>
+      <td><%= new Date(u.created_at).toISOString().slice(0, 10) %></td>
+    </tr>
+  <% }) %>
+  </tbody>
+</table>
+<%- include('partials/footer') %>
