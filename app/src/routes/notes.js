@@ -4,6 +4,11 @@ const { requireAuth } = require('../middleware/auth');
 
 const router = express.Router();
 
+// Valida que el identificador sea un entero positivo
+function parseId(value) {
+  return /^[1-9][0-9]{0,9}$/.test(value) ? Number(value) : null;
+}
+
 // Escapa los comodines de LIKE para que el texto del usuario se busque literalmente
 function likePattern(text) {
   return '%' + text.replace(/[\\%_]/g, (c) => '\\' + c) + '%';
@@ -38,7 +43,9 @@ router.get('/notes', requireAuth, async (req, res, next) => {
 });
 
 router.post('/notes', requireAuth, async (req, res, next) => {
-  const { title, body } = req.body;
+  const title = typeof req.body.title === 'string' ? req.body.title.trim().slice(0, 200) : '';
+  const body = typeof req.body.body === 'string' ? req.body.body.slice(0, 10000) : '';
+  if (!title || !body) return res.redirect('/notes');
   try {
     await db.query('INSERT INTO notes (owner_id, title, body, is_public) VALUES ($1, $2, $3, $4)', [
       req.user.id,
@@ -52,11 +59,16 @@ router.post('/notes', requireAuth, async (req, res, next) => {
   }
 });
 
+// V08: control de acceso a nivel de objeto. Solo el dueño (o cualquiera si la
+// nota es pública) puede verla; se responde 404 para no revelar su existencia.
 router.get('/notes/:id', requireAuth, async (req, res, next) => {
+  const id = parseId(req.params.id);
+  if (!id) return res.status(404).render('error', { message: 'Nota no encontrada' });
   try {
     const result = await db.query(
-      'SELECT n.*, u.username FROM notes n JOIN users u ON u.id = n.owner_id WHERE n.id = $1',
-      [req.params.id]
+      'SELECT n.id, n.title, n.body, n.is_public, n.created_at, u.username FROM notes n ' +
+        'JOIN users u ON u.id = n.owner_id WHERE n.id = $1 AND (n.owner_id = $2 OR n.is_public = true)',
+      [id, req.user.id]
     );
     if (result.rows.length === 0) {
       return res.status(404).render('error', { message: 'Nota no encontrada' });
@@ -68,8 +80,12 @@ router.get('/notes/:id', requireAuth, async (req, res, next) => {
 });
 
 router.post('/notes/:id/delete', requireAuth, async (req, res, next) => {
+  const id = parseId(req.params.id);
+  if (!id) return res.status(404).render('error', { message: 'Nota no encontrada' });
   try {
-    await db.query('DELETE FROM notes WHERE id = $1', [req.params.id]);
+    // V08: solo el dueño puede eliminar su nota
+    const result = await db.query('DELETE FROM notes WHERE id = $1 AND owner_id = $2', [id, req.user.id]);
+    if (result.rowCount === 0) return res.status(404).render('error', { message: 'Nota no encontrada' });
     res.redirect('/notes');
   } catch (err) {
     next(err);

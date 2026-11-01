@@ -1,15 +1,21 @@
 const tokens = require('../security/tokens');
+const db = require('../db');
 
-// Carga el usuario autenticado a partir de la cookie
-function loadUser(req, res, next) {
-  const token = req.cookies[tokens.COOKIE_NAME];
+// Carga el usuario autenticado a partir de la cookie de sesión.
+// V09: el rol se consulta en la base de datos en cada petición; el token solo
+// identifica al usuario, así un cambio de rol o una baja surten efecto de inmediato.
+async function loadUser(req, res, next) {
   req.user = null;
+  const token = req.cookies[tokens.COOKIE_NAME];
   if (token) {
     try {
-      req.user = tokens.verify(token);
+      const claims = tokens.verify(token);
+      const result = await db.query('SELECT id, username, role FROM users WHERE id = $1', [claims.id]);
+      req.user = result.rows[0] || null;
     } catch (e) {
       req.user = null;
     }
+    if (!req.user) tokens.clearSessionCookie(res);
   }
   res.locals.user = req.user;
   next();
