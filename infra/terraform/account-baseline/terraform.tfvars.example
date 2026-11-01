@@ -1,0 +1,23 @@
+# Copia este archivo a terraform.tfvars (ignorado por Git) y ajústalo.
+project     = "securenotes"
+owner       = "tu-nombre"
+region      = "us-east-1"
+alert_email = "tu-correo@ejemplo.com"
+
+# Servicios con período de prueba gratuito / costo
+enable_guardduty   = true  # 30 días gratis
+enable_securityhub = false # 30 días gratis, luego costo por chequeo
+enable_config      = false # costo por ítem registrado
+
+# Si ya existe un Access Analyzer o un detector de GuardDuty en la región, pon false
+enable_access_analyzer = true
+
+monthly_budget_usd = 10
+
+# Contacto de seguridad (CIS 1.2). Deja email vacío para omitir.
+security_contact = {
+  name  = "Tu Nombre"
+  title = "Security"
+  email = ""
+  phone = "+570000000000"
+}
