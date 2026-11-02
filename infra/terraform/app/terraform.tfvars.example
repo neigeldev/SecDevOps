@@ -16,3 +16,10 @@ enable_waf = true
 # Backups de RDS: el Free plan de AWS solo permite 1 día (FreeTierRestrictionError).
 # Con Paid plan usa 7 o más.
 db_backup_retention_days = 7
+
+# Versión de los secretos generados (BD, JWT, admin). Incrementa para rotarlos.
+# IMPORTANTE: si un "apply" falla a medias (p. ej. después de crear los parámetros
+# SSM pero antes de crear RDS), la contraseña de SSM y la de RDS quedan distintas
+# (Terraform no guarda los valores efímeros). Súbelo a 2 y vuelve a aplicar para
+# reescribir ambas con el mismo valor.
+secrets_version = 1
