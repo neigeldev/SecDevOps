@@ -18,6 +18,11 @@ INSTANCE="$(tfo instance_id)"
 DB_ID="securenotes-demo-db"
 R="$AWS_REGION"
 
+# Peticiones HTTP sin "-o /dev/null": en Git Bash (MSYS_NO_PATHCONV=1) el curl nativo
+# de Windows no entiende /dev/null. El cuerpo se descarta con tuberías de bash.
+http_headers() { curl -sS -D - -o - "$1" | sed -n '1,/^\r\{0,1\}$/p'; }
+http_status()  { curl -sS -m 8 -o - -w '\n%{http_code} -> %{redirect_url}\n' "$1" 2>&1 | tail -1; }
+
 section() { printf '\n## %s\n\n' "$1" >>"$REPORT"; }
 cmd() { # cmd <descripción> <comando...>
   printf '**%s**\n\n```text\n$ %s\n' "$1" "${*:2}" >>"$REPORT"
@@ -35,9 +40,9 @@ cmd() { # cmd <descripción> <comando...>
 
 log "Red y transporte"
 section "1. Red y cifrado en tránsito"
-cmd "HTTPS con cabeceras de seguridad (CloudFront + app)" curl -sS -o /dev/null -D - "$URL/"
-cmd "HTTP se redirige a HTTPS" curl -sS -o /dev/null -w '%{http_code} -> %{redirect_url}\n' "http://${URL#https://}/"
-cmd "Acceso directo al origen EC2 (debe fallar: solo CloudFront)" curl -sS -m 8 -o /dev/null -w '%{http_code}\n' "http://$ORIGIN/"
+cmd "HTTPS con cabeceras de seguridad (CloudFront + app)" http_headers "$URL/"
+cmd "HTTP se redirige a HTTPS" http_status "http://${URL#https://}/"
+cmd "Acceso directo al origen EC2 (debe fallar: solo CloudFront)" http_status "http://$ORIGIN/"
 cmd "Grupo de seguridad de la EC2 (solo prefix list de CloudFront, sin SSH)" \
   aws ec2 describe-security-group-rules --region "$R" \
   --filters "Name=group-id,Values=$(aws ec2 describe-instances --region "$R" --instance-ids "$INSTANCE" --query 'Reservations[0].Instances[0].SecurityGroups[0].GroupId' --output text)" \
@@ -61,7 +66,8 @@ cmd "Acceso por Session Manager (sin SSH)" aws ssm describe-instance-information
 
 log "Cifrado en reposo y secretos"
 section "3. Cifrado en reposo y secretos"
-cmd "CMK de KMS con rotación" aws kms get-key-rotation-status --region "$R" --key-id alias/securenotes-demo --output table
+KMS_KEY_ID="$(aws kms describe-key --region "$R" --key-id alias/securenotes-demo --query KeyMetadata.KeyId --output text 2>/dev/null || true)"
+cmd "CMK de KMS con rotación" aws kms get-key-rotation-status --region "$R" --key-id "$KMS_KEY_ID" --output table
 cmd "Secretos en SSM como SecureString (solo metadatos, sin valores)" aws ssm describe-parameters --region "$R" \
   --parameter-filters "Key=Name,Option=BeginsWith,Values=/securenotes" --query 'Parameters[].{Nombre:Name,Tipo:Type,KMS:KeyId}' --output table
 cmd "ECR inmutable, escaneo al publicar y cifrado KMS" aws ecr describe-repositories --region "$R" \
