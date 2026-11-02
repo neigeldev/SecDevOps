@@ -89,7 +89,7 @@ resource "aws_db_instance" "main" {
 
   iam_database_authentication_enabled = true
   auto_minor_version_upgrade          = true
-  backup_retention_period             = 7
+  backup_retention_period             = var.db_backup_retention_days
   copy_tags_to_snapshot               = true
   deletion_protection                 = var.rds_deletion_protection
   skip_final_snapshot                 = true

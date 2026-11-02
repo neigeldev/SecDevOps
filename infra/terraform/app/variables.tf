@@ -102,3 +102,13 @@ variable "secrets_version" {
   type        = number
   default     = 1
 }
+
+variable "db_backup_retention_days" {
+  description = "Días de retención de backups automáticos de RDS. El Free plan de AWS solo permite 1."
+  type        = number
+  default     = 7
+  validation {
+    condition     = var.db_backup_retention_days >= 1 && var.db_backup_retention_days <= 35
+    error_message = "Debe estar entre 1 y 35 (0 desactivaría los backups)."
+  }
+}
