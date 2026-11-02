@@ -1,0 +1,1053 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "dependency-check",
+          "version": "12.2.2",
+          "informationUri": "https://dependency-check.github.io/DependencyCheck/",
+        "rules": [
+{
+              "id": "CVE-2023-29827",
+              "shortDescription": {
+                 "text": "critical severity - CVE-2023-29827 Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection') vulnerability in pkg:npm\/ejs@7.0.2"
+              },
+              "fullDescription": {
+                "text": "ejs v3.1.9 is vulnerable to server-side template injection. If the ejs file is controllable, template injection can be implemented through the configuration settings of the closeDelimiter parameter. NOTE: this is disputed by the vendor because the render function is not intended to be used with untrusted input."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [CVE-2023-29827](https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2023-29827).\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 9.8,
+                    "security-severity": "9.8",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "HIGH",
+                    "cvssv3_integrityImpact": "HIGH",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "CRITICAL",
+"cvssv3_exploitabilityScore": "3.9","cvssv3_impactScore": "5.9","cvssv3_version": "_3_1",                "source": "NVD"
+              }
+            }          ],
+        "properties": {
+          "disclaimer": "Dependency-Check is an open source tool performing a best effort analysis of 3rd party dependencies; false positives and false negatives may exist in the analysis performed by the tool. Use of the tool and the reporting provided constitutes acceptance for use in an AS IS condition, and there are NO warranties, implied or otherwise, with regard to the analysis or its use. Any use of the tool and the reporting provided is at the user's risk. In no event shall the copyright holder or OWASP be held liable for any damages whatsoever arising out of or in connection with the use of this tool, the analysis performed, or the resulting report.",
+          "nvd": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
+          "cisa": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
+          "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
+          "ossindex": "This report may contain data retrieved from the Sonatype Guide OSS Index API: https://www.sonatype.com/products/sonatype-guide/oss-index-users"
+            ,"NVD API Last Checked": "2026-11-02T02:07:46Z"
+            ,"NVD API Last Modified": "2026-11-02T01:17:27Z"
+          }
+        }
+      },
+      "artifacts": [
+{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?express:5.3.0\/accepts:^2.0.0"
+          },
+          "properties": {
+                    "id1": "pkg:npm\/accepts@%5E2.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/routes\/admin.js"
+          },
+          "hashes": {
+            "md5": "cf353b4bb5aff8d170715f9d6fbdec73",
+            "sha1": "c8e54dc7f11afb848de70d62c0e94bc9d570a936",
+            "sha256": "6848180a81f98702da2a820b068964c90aded190cc6a6b8a37d8da90f2554c43"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/routes\/api.js"
+          },
+          "hashes": {
+            "md5": "a24698c08039e50ce7d4ec0e5cc37c89",
+            "sha1": "57a56bf8cec0e7db7fd6b93a0b7008319761d6af",
+            "sha256": "43c2afa5244f515452e5e6facc0ff4145d07b60dba68e8f62e8af5bb34039d6f"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/app.js"
+          },
+          "hashes": {
+            "md5": "b83a70606c686955ec5fc2d32d4e0b92",
+            "sha1": "12884f873e89299ec469688b3fa7aceb55b17f75",
+            "sha256": "175e63c231e4ca7d09172a31f11784855a5d091a0206e04cd309392f03150b37"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/middleware\/auth.js"
+          },
+          "hashes": {
+            "md5": "46bb8d724e05d821c13954d7a293c4c1",
+            "sha1": "4e74256560adeb00211fd91432aac411599ad0b1",
+            "sha256": "43846fb4933613eca8c6f579b6e875900b712f801737a37820b567a19b541247"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/routes\/auth.js"
+          },
+          "hashes": {
+            "md5": "35593df8649e5582bc3b5ecf162b7e5d",
+            "sha1": "60b324e01eb48969f89814d5003d507e4607ffb8",
+            "sha256": "7d23867ba93e1070a6248b627701ede1cb7c22830b261059d436eb89f3c84c58"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?express:5.3.0\/body-parser:^2.3.0"
+          },
+          "properties": {
+                    "id2": "pkg:npm\/body-parser@%5E2.3.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?jwa:2.0.1\/buffer-equal-constant-time:^1.0.1"
+          },
+          "properties": {
+                    "id3": "pkg:npm\/buffer-equal-constant-time@%5E1.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?raw-body:3.0.2\/bytes:~3.1.2"
+          },
+          "properties": {
+                    "id4": "pkg:npm\/bytes@~3.1.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?get-intrinsic:1.3.0\/call-bind-apply-helpers:^1.0.2"
+          },
+          "properties": {
+                    "id5": "pkg:npm\/call-bind-apply-helpers@%5E1.0.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?side-channel-weakmap:1.0.2\/call-bound:^1.0.2"
+          },
+          "properties": {
+                    "id6": "pkg:npm\/call-bound@%5E1.0.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/config.js"
+          },
+          "hashes": {
+            "md5": "864c5725a553b78f74397112f63f3918",
+            "sha1": "87043ad076f8aec384386b9fd738bd33d9a47ef4",
+            "sha256": "11bd1cc44144d6aa16d40d632c9753baddd4abfd3c726661f5557dedd2b6da48"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?express:5.3.0\/content-disposition:^2.0.1"
+          },
+          "properties": {
+                    "id7": "pkg:npm\/content-disposition@%5E2.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?type-is:2.1.0\/content-type:^2.0.0"
+          },
+          "properties": {
+                    "id8": "pkg:npm\/content-type@%5E2.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/cookie-parser:1.4.7"
+          },
+          "properties": {
+                    "id9": "pkg:npm\/cookie-parser@1.4.7"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/cookie-signature:1.0.6"
+          },
+          "properties": {
+                    "id10": "pkg:npm\/cookie-signature@1.0.6"
+,                    "vid1": "cpe:2.3:a:cookie-signature_project:cookie-signature:1.0.6:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/cookie-signature:1.2.2"
+          },
+          "properties": {
+                    "id11": "pkg:npm\/cookie-signature@1.2.2"
+,                    "vid2": "cpe:2.3:a:cookie-signature_project:cookie-signature:1.2.2:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?express:5.3.0\/cookie:^0.7.1"
+          },
+          "properties": {
+                    "id12": "pkg:npm\/cookie@%5E0.7.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/security\/csrf.js"
+          },
+          "hashes": {
+            "md5": "c37a6f204c72ecd160095205356fefb8",
+            "sha1": "eb22ce2fa769f319130c4dc2f5e7718483c48efa",
+            "sha256": "71d1e17ac4b51c8f4457de18b16e16ba2ac26115909a387b8a309a34aab51226"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/db.js"
+          },
+          "hashes": {
+            "md5": "6fda2315c90dd0fc43807e3d0f1d8900",
+            "sha1": "8a41393a2e784f78bcc7b75c8b4428e7bc22847b",
+            "sha256": "e38f89956682ae0c721d1f9dcac704e9674d6709ebbf027213b59b4e2fbbc4bf"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?send:1.2.1\/debug:^4.4.3"
+          },
+          "properties": {
+                    "id13": "pkg:npm\/debug@%5E4.4.3"
+,                    "vid3": "cpe:2.3:a:debug_project:debug:4.4.3:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?router:2.2.0\/depd:^2.0.0"
+          },
+          "properties": {
+                    "id14": "pkg:npm\/depd@%5E2.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?get-proto:1.0.1\/dunder-proto:^1.0.1"
+          },
+          "properties": {
+                    "id15": "pkg:npm\/dunder-proto@%5E1.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?jwa:2.0.1\/ecdsa-sig-formatter:1.0.11"
+          },
+          "properties": {
+                    "id16": "pkg:npm\/ecdsa-sig-formatter@1.0.11"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?on-finished:2.4.2\/ee-first:1.1.1"
+          },
+          "properties": {
+                    "id17": "pkg:npm\/ee-first@1.1.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/ejs:7.0.2"
+          },
+          "properties": {
+                    "id18": "pkg:npm\/ejs@7.0.2"
+,                    "vid4": "cpe:2.3:a:ejs:ejs:7.0.2:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?serve-static:2.2.1\/encodeurl:^2.0.0"
+          },
+          "properties": {
+                    "id19": "pkg:npm\/encodeurl@%5E2.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?qs:6.17.1\/es-define-property:^1.0.1"
+          },
+          "properties": {
+                    "id20": "pkg:npm\/es-define-property@%5E1.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?side-channel-weakmap:1.0.2\/es-errors:^1.3.0"
+          },
+          "properties": {
+                    "id21": "pkg:npm\/es-errors@%5E1.3.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?get-proto:1.0.1\/es-object-atoms:^1.0.0"
+          },
+          "properties": {
+                    "id22": "pkg:npm\/es-object-atoms@%5E1.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?serve-static:2.2.1\/escape-html:^1.0.3"
+          },
+          "properties": {
+                    "id23": "pkg:npm\/escape-html@%5E1.0.3"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?send:1.2.1\/etag:^1.8.1"
+          },
+          "properties": {
+                    "id24": "pkg:npm\/etag@%5E1.8.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/express-rate-limit:8.7.2"
+          },
+          "properties": {
+                    "id25": "pkg:npm\/express-rate-limit@8.7.2"
+,                    "vid5": "cpe:2.3:a:express-rate-limit_project:express-rate-limit:8.7.2:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/express:5.3.0"
+          },
+          "properties": {
+                    "id26": "pkg:npm\/express@5.3.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/finalhandler:2.1.1"
+          },
+          "properties": {
+                    "id27": "pkg:npm\/finalhandler@2.1.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?proxy-addr:2.0.8\/forwarded:0.2.0"
+          },
+          "properties": {
+                    "id28": "pkg:npm\/forwarded@0.2.0"
+,                    "vid6": "cpe:2.3:a:forwarded_project:forwarded:0.2.0:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?send:1.2.1\/fresh:^2.0.0"
+          },
+          "properties": {
+                    "id29": "pkg:npm\/fresh@%5E2.0.0"
+,                    "vid7": "cpe:2.3:a:fresh_project:fresh:2.0.0:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?hasown:2.0.4\/function-bind:^1.1.2"
+          },
+          "properties": {
+                    "id30": "pkg:npm\/function-bind@%5E1.1.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?side-channel-weakmap:1.0.2\/get-intrinsic:^1.2.5"
+          },
+          "properties": {
+                    "id31": "pkg:npm\/get-intrinsic@%5E1.2.5"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/get-proto:1.0.1"
+          },
+          "properties": {
+                    "id32": "pkg:npm\/get-proto@1.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/gopd:1.2.0"
+          },
+          "properties": {
+                    "id33": "pkg:npm\/gopd@1.2.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/has-symbols:1.1.0"
+          },
+          "properties": {
+                    "id34": "pkg:npm\/has-symbols@1.1.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/hasown:2.0.4"
+          },
+          "properties": {
+                    "id35": "pkg:npm\/hasown@2.0.4"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/healthcheck.js"
+          },
+          "hashes": {
+            "md5": "10a26d9de056f889ed438ca243ab3b19",
+            "sha1": "10fa20dfd9666f1059cf5f2f27fb13004c05c6e4",
+            "sha256": "aefeb2a457052607ac4476af4b433d1cc516a08c85b19fd5f193d3f91a571956"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/helmet:8.3.0"
+          },
+          "properties": {
+                    "id36": "pkg:npm\/helmet@8.3.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?send:1.2.1\/http-errors:^2.0.1"
+          },
+          "properties": {
+                    "id37": "pkg:npm\/http-errors@%5E2.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?raw-body:3.0.2\/iconv-lite:~0.7.0"
+          },
+          "properties": {
+                    "id38": "pkg:npm\/iconv-lite@~0.7.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/inherits:2.0.4"
+          },
+          "properties": {
+                    "id39": "pkg:npm\/inherits@2.0.4"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/ip-address:10.7.5"
+          },
+          "properties": {
+                    "id40": "pkg:npm\/ip-address@10.7.5"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?proxy-addr:2.0.8\/ipaddr.js:1.9.1"
+          },
+          "properties": {
+                    "id41": "pkg:npm\/ipaddr.js@1.9.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?router:2.2.0\/is-promise:^4.0.0"
+          },
+          "properties": {
+                    "id42": "pkg:npm\/is-promise@%5E4.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/jsonwebtoken:9.0.3"
+          },
+          "properties": {
+                    "id43": "pkg:npm\/jsonwebtoken@9.0.3"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?jws:4.0.1\/jwa:^2.0.1"
+          },
+          "properties": {
+                    "id44": "pkg:npm\/jwa@%5E2.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/jws:4.0.1"
+          },
+          "properties": {
+                    "id45": "pkg:npm\/jws@4.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/lodash.includes:4.3.0"
+          },
+          "properties": {
+                    "id46": "pkg:npm\/lodash.includes@4.3.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/lodash.isboolean:3.0.3"
+          },
+          "properties": {
+                    "id47": "pkg:npm\/lodash.isboolean@3.0.3"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/lodash.isinteger:4.0.4"
+          },
+          "properties": {
+                    "id48": "pkg:npm\/lodash.isinteger@4.0.4"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/lodash.isnumber:3.0.3"
+          },
+          "properties": {
+                    "id49": "pkg:npm\/lodash.isnumber@3.0.3"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/lodash.isplainobject:4.0.6"
+          },
+          "properties": {
+                    "id50": "pkg:npm\/lodash.isplainobject@4.0.6"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/lodash.isstring:4.0.1"
+          },
+          "properties": {
+                    "id51": "pkg:npm\/lodash.isstring@4.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/lodash.once:4.1.1"
+          },
+          "properties": {
+                    "id52": "pkg:npm\/lodash.once@4.1.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/logger.js"
+          },
+          "hashes": {
+            "md5": "4d210ff56c2222e2bca019995e4728ec",
+            "sha1": "db302283677a15dbdf389e567f89b3b2bb722b14",
+            "sha256": "f710b69f498d7fc20564bead9162e5d4e3d7c80ed3f1d3c61e87c73b0eca65eb"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/math-intrinsics:1.1.0"
+          },
+          "properties": {
+                    "id53": "pkg:npm\/math-intrinsics@1.1.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?type-is:2.1.0\/media-typer:^1.1.0"
+          },
+          "properties": {
+                    "id54": "pkg:npm\/media-typer@%5E1.1.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/merge-descriptors:2.0.0"
+          },
+          "properties": {
+                    "id55": "pkg:npm\/merge-descriptors@2.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?mime-types:3.0.2\/mime-db:^1.54.0"
+          },
+          "properties": {
+                    "id56": "pkg:npm\/mime-db@%5E1.54.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?type-is:2.1.0\/mime-types:^3.0.0"
+          },
+          "properties": {
+                    "id57": "pkg:npm\/mime-types@%5E3.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?send:1.2.1\/ms:^2.1.3"
+          },
+          "properties": {
+                    "id58": "pkg:npm\/ms@%5E2.1.3"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/negotiator:1.1.0"
+          },
+          "properties": {
+                    "id59": "pkg:npm\/negotiator@1.1.0"
+,                    "vid8": "cpe:2.3:a:negotiator_project:negotiator:1.1.0:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/routes\/notes.js"
+          },
+          "hashes": {
+            "md5": "d7ed3c1f641874279cfb1f48e1830394",
+            "sha1": "0253e4348f8e30c7b422924d356755efd731142f",
+            "sha256": "ead1b7a66891cc164fd1723e968097fac52704055538c7ea763c6665bbd2e7ef"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?side-channel-weakmap:1.0.2\/object-inspect:^1.13.3"
+          },
+          "properties": {
+                    "id60": "pkg:npm\/object-inspect@%5E1.13.3"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?send:1.2.1\/on-finished:^2.4.1"
+          },
+          "properties": {
+                    "id61": "pkg:npm\/on-finished@%5E2.4.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/once:1.4.0"
+          },
+          "properties": {
+                    "id62": "pkg:npm\/once@1.4.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?serve-static:2.2.1\/parseurl:^1.3.3"
+          },
+          "properties": {
+                    "id63": "pkg:npm\/parseurl@%5E1.3.3"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/security\/password.js"
+          },
+          "hashes": {
+            "md5": "f8504f1b784532e0deb513bc6388593a",
+            "sha1": "6caccca94494554c643ae15cef4acc2cdaeb6af0",
+            "sha256": "c7fb6fb4e23cfbb602953ab2aee4dbc5f4dc4595c69a10b713bd28ad78d5fe97"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?router:2.2.0\/path-to-regexp:^8.0.0"
+          },
+          "properties": {
+                    "id64": "pkg:npm\/path-to-regexp@%5E8.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/pg-connection-string:2.14.1"
+          },
+          "properties": {
+                    "id65": "pkg:npm\/pg-connection-string@2.14.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?pg-types:2.2.0\/pg-int8:1.0.1"
+          },
+          "properties": {
+                    "id66": "pkg:npm\/pg-int8@1.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/pg-pool:3.14.0"
+          },
+          "properties": {
+                    "id67": "pkg:npm\/pg-pool@3.14.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/pg-protocol:1.16.1"
+          },
+          "properties": {
+                    "id68": "pkg:npm\/pg-protocol@1.16.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/pg-types:2.2.0"
+          },
+          "properties": {
+                    "id69": "pkg:npm\/pg-types@2.2.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/pg:8.23.1"
+          },
+          "properties": {
+                    "id70": "pkg:npm\/pg@8.23.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/pgpass:1.0.5"
+          },
+          "properties": {
+                    "id71": "pkg:npm\/pgpass@1.0.5"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/postgres-array:2.0.0"
+          },
+          "properties": {
+                    "id72": "pkg:npm\/postgres-array@2.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/postgres-bytea:1.0.1"
+          },
+          "properties": {
+                    "id73": "pkg:npm\/postgres-bytea@1.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/postgres-date:1.0.7"
+          },
+          "properties": {
+                    "id74": "pkg:npm\/postgres-date@1.0.7"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/postgres-interval:1.2.0"
+          },
+          "properties": {
+                    "id75": "pkg:npm\/postgres-interval@1.2.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/routes\/profile.js"
+          },
+          "hashes": {
+            "md5": "91685fb2a30fd32fa8dfbef394579498",
+            "sha1": "254f71226fe8d9de9798239e365a79d7a9ffdbfc",
+            "sha256": "6f3eef78a76a1edc8a497f915c14d1a03c67a01ae6d8c8e8192e9aafd53a794c"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/proxy-addr:2.0.8"
+          },
+          "properties": {
+                    "id76": "pkg:npm\/proxy-addr@2.0.8"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/qs:6.17.1"
+          },
+          "properties": {
+                    "id77": "pkg:npm\/qs@6.17.1"
+,                    "vid9": "cpe:2.3:a:qs_project:qs:6.17.1:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?send:1.2.1\/range-parser:^1.2.1"
+          },
+          "properties": {
+                    "id78": "pkg:npm\/range-parser@%5E1.2.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/middleware\/rateLimit.js"
+          },
+          "hashes": {
+            "md5": "dbc1889b5f504d155d3abb1ed42d792d",
+            "sha1": "3bc3f3abed9c9a6411228b9acfbdaba111f867f9",
+            "sha256": "90a2e615bc52e7336dfc4fc419fcdbf7f0f38b9abe8f5c6ae0673582a5be1c7f"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/raw-body:3.0.2"
+          },
+          "properties": {
+                    "id79": "pkg:npm\/raw-body@3.0.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/router:2.2.0"
+          },
+          "properties": {
+                    "id80": "pkg:npm\/router@2.2.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/safe-buffer:5.2.1"
+          },
+          "properties": {
+                    "id81": "pkg:npm\/safe-buffer@5.2.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/safer-buffer:2.1.2"
+          },
+          "properties": {
+                    "id82": "pkg:npm\/safer-buffer@2.1.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/semver:7.8.5"
+          },
+          "properties": {
+                    "id83": "pkg:npm\/semver@7.8.5"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?serve-static:2.2.1\/send:^1.2.0"
+          },
+          "properties": {
+                    "id84": "pkg:npm\/send@%5E1.2.0"
+,                    "vid10": "cpe:2.3:a:send_project:send:1.2.0:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/serve-static:2.2.1"
+          },
+          "properties": {
+                    "id85": "pkg:npm\/serve-static@2.2.1"
+,                    "vid11": "cpe:2.3:a:serve-static_project:serve-static:2.2.1:*:*:*:*:*:*:*"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/server.js"
+          },
+          "hashes": {
+            "md5": "48394944e384eccf39f432135f9dc356",
+            "sha1": "3cc095369320d5cdc146e5406927b36e911dd843",
+            "sha256": "4d002aa8299181d5c4d56fce5d9515ceedfa094bf4f3824de182aa97733daf69"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/setprototypeof:1.2.0"
+          },
+          "properties": {
+                    "id86": "pkg:npm\/setprototypeof@1.2.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/side-channel-list:1.0.1"
+          },
+          "properties": {
+                    "id87": "pkg:npm\/side-channel-list@1.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?side-channel-weakmap:1.0.2\/side-channel-map:^1.0.1"
+          },
+          "properties": {
+                    "id88": "pkg:npm\/side-channel-map@%5E1.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/side-channel-weakmap:1.0.2"
+          },
+          "properties": {
+                    "id89": "pkg:npm\/side-channel-weakmap@1.0.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/side-channel:1.1.1"
+          },
+          "properties": {
+                    "id90": "pkg:npm\/side-channel@1.1.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/split2:4.2.0"
+          },
+          "properties": {
+                    "id91": "pkg:npm\/split2@4.2.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/statuses:2.0.2"
+          },
+          "properties": {
+                    "id92": "pkg:npm\/statuses@2.0.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/toidentifier:1.0.1"
+          },
+          "properties": {
+                    "id93": "pkg:npm\/toidentifier@1.0.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/security\/tokens.js"
+          },
+          "hashes": {
+            "md5": "5b897e5aae76c64592585ac839d7f6bc",
+            "sha1": "27e7f7fc87da59325810be96897fbbb397a2b129",
+            "sha256": "ad44717fee3d1edeb8f6d5645499cfbc2c26dcc9717527afaee85b6ff21bf6c8"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/type-is:2.1.0"
+          },
+          "properties": {
+                    "id94": "pkg:npm\/type-is@2.1.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/unpipe:1.0.0"
+          },
+          "properties": {
+                    "id95": "pkg:npm\/unpipe@1.0.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/vary:1.1.2"
+          },
+          "properties": {
+                    "id96": "pkg:npm\/vary@1.1.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/wrappy:1.0.2"
+          },
+          "properties": {
+                    "id97": "pkg:npm\/wrappy@1.0.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?\/xtend:4.0.2"
+          },
+          "properties": {
+                    "id98": "pkg:npm\/xtend@4.0.2"
+          }
+        }
+      ],
+      "results": [
+ {
+          "ruleId": "CVE-2023-29827",
+          "level": "warning",
+          "message": {
+            "text": "CVE-2023-29827 - ejs v3.1.9 is vulnerable to server-side template injection. If the ejs file is controllable, template injection can be implemented through the configuration settings of the closeDelimiter parameter. NOTE: this is disputed by the vendor because the render function is not intended to be used with untrusted input."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "b9f1993892693105f391453cbec39080"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?\/ejs:7.0.2"
+                  ,"index": 25
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/ejs@7.0.2"
+                    }
+                ]
+              
+            }
+          ]
+          }      ]
+    }
+  ]
+}

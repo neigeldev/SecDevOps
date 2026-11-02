@@ -1,0 +1,2117 @@
+{
+    "reportSchema": "1.1",
+    "scanInfo": {
+        "engineVersion": "12.2.2",
+        "dataSource": [
+{
+                "name": "NVD API Last Checked",
+                "timestamp": "2026-11-01T20:34:51Z"
+            }
+,{
+                "name": "NVD API Last Modified",
+                "timestamp": "2026-11-01T20:17:32Z"
+            }
+        ]
+
+
+    },
+    "projectInfo": {
+        "name": "SecureNotes v1",
+        "reportDate": "2026-11-01T20:43:33.981542351Z",
+        "credits": {
+            "NVD": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
+            "CISA": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+            "NPM": "This report may contain data retrieved from the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
+            "RETIREJS": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
+            "OSSINDEX": "This report may contain data retrieved from the Sonatype Guide OSS Index API: https://www.sonatype.com/products/sonatype-guide/oss-index-users"
+        }
+    },
+    "dependencies": [
+{
+            "isVirtual": false,
+            "fileName": "admin.js",
+            "filePath": "\/src\/src\/routes\/admin.js"
+,"md5": "1e176a0f35bf20f647f7e1e98d433010",
+            "sha1": "318a25135a90424dd9d64d4ca84ae5252c1f07cb",
+            "sha256": "cf0a0e831520a51e6a193512cdc0dba81e57ffbb5c08b12ba9f7ce3b63306495"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": false,
+            "fileName": "api.js",
+            "filePath": "\/src\/src\/routes\/api.js"
+,"md5": "67eb1d0d9c54425a36bed9d3087a45c8",
+            "sha1": "274f5435b803f4bf9eec582834f0f15f61b40034",
+            "sha256": "98857099fcc83249fbebdd55d7e72e41e1f95408430256f64865b039f81e83ea"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": false,
+            "fileName": "app.js",
+            "filePath": "\/src\/src\/app.js"
+,"md5": "16c6147afb4bcdc53a7e53a83e4df2e6",
+            "sha1": "a06cf795a09f97045a8a7d272ec0c83d6fa9362b",
+            "sha256": "7b569cc790e25167a1a306a4d776503aeba8a4d1d29fa9f82bf16004bb08d86e"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": false,
+            "fileName": "auth.js",
+            "filePath": "\/src\/src\/middleware\/auth.js"
+,"md5": "dc7eb85f5afc1feee358283fd78c6abb",
+            "sha1": "515943eab35097bbc01c41a24eef99b87b281a2e",
+            "sha256": "98a3d6ab8851b728cdb7773ef9cf62669b4e71a67edc2ed31a8df789f1f1f677"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": false,
+            "fileName": "auth.js",
+            "filePath": "\/src\/src\/routes\/auth.js"
+,"md5": "b4afa772318e1e3af75d2198335d70f1",
+            "sha1": "9cf5f398bbc6fe623e1e942573a2886320ca0f8a",
+            "sha256": "60ab49eb936b715a195a3732c2b6e7dbc4184feb9530c4c5be4f3db2ccf8ae45"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": true,
+            "fileName": "body-parser:1.19.0",
+            "filePath": "\/src\/package-lock.json?body-parser"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "body-parser"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "body-parser"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "1.19.0"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/body-parser@1.19.0"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-27r3-jxmh-p828",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 7.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-248"                    ],
+                "description": "### Impact\n\nA single request can crash any application using `body-parser` with default options. When a request carries a `Content-Encoding` (for example `gzip`), `body-parser` pipes it into a decompression stream and, after reading the body, leaves that stream piped with no error listener. A payload of one valid compressed frame followed by trailing bytes decodes and the application responds normally, but the trailing bytes then reach the already-finished decoder, which emits an error that is re-thrown as an uncaught exception and terminates the process. No authentication or matching route is required, since parsing runs before routing.\n\n### Patches\n\nFixed in body-parser 2.4.0 and 1.20.9. Upgrade to one of these versions.\n\n### Workarounds\n\nPass `inflate: false` to the body-parser middleware if the application does not need to accept compressed request bodies. This rejects encoded requests before any decompression stream is created.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/commit\/1260c3845f54502a05a87594f09a334786bb34d7","name": "https:\/\/github.com\/expressjs\/body-parser\/commit\/1260c3845f54502a05a87594f09a334786bb34d7"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-27r3-jxmh-p828","name": "https:\/\/github.com\/advisories\/GHSA-27r3-jxmh-p828"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cna.openjsf.org\/security-advisories.html","name": "https:\/\/cna.openjsf.org\/security-advisories.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/1.20.9","name": "https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/1.20.9"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-111181","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-111181"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/security\/advisories\/GHSA-27r3-jxmh-p828","name": "https:\/\/github.com\/expressjs\/body-parser\/security\/advisories\/GHSA-27r3-jxmh-p828"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/commit\/f7075eae3a84c3473ab4bf0a777da28db208e916","name": "https:\/\/github.com\/expressjs\/body-parser\/commit\/f7075eae3a84c3473ab4bf0a777da28db208e916"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/v2.4.0","name": "https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/v2.4.0"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:body-parser:\\<1.20.9:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-qwcr-r2fm-qrc7",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 7.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-405"                    ],
+                "description": "### Impact\n\nbody-parser <1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service.\n\n### Patches\n\nthis issue is patched in 1.20.3\n\n### References\n",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-45590","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-45590"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-qwcr-r2fm-qrc7","name": "https:\/\/github.com\/advisories\/GHSA-qwcr-r2fm-qrc7"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/commit\/b2695c4450f06ba3b0ccf48d872a229bb41c9bce","name": "https:\/\/github.com\/expressjs\/body-parser\/commit\/b2695c4450f06ba3b0ccf48d872a229bb41c9bce"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/security\/advisories\/GHSA-qwcr-r2fm-qrc7","name": "https:\/\/github.com\/expressjs\/body-parser\/security\/advisories\/GHSA-qwcr-r2fm-qrc7"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:body-parser:\\<1.20.3:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-v422-hmwv-36x6",
+"unscored": "true", "severity" : "low",
+                    "cvssv3": {
+                        "baseScore": 3.700000047683716
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "LOW"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-770"                    ],
+                "description": "### Impact\n\nWhen body-parser is configured with an invalid `limit` option value, such as an unparseable string or `NaN`, `bytes.parse()` returns `null` and the request body size check is silently skipped. Applications that rely on `limit` as their primary safeguard against oversized request bodies will accept arbitrarily large payloads, leading to excessive memory and CPU usage and denial of service.\n\nThis issue affects applications that pass a programmatically computed or user-configurable value to the `limit` option without validating it first.\n\n### Patches\n\nThis issue is fixed in [body-parser@2.3.0](https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/v2.3.0) and [body-parser@1.20.6](https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/v1.20.6) via [#698](https:\/\/github.com\/expressjs\/body-parser\/pull\/698). After the fix, invalid `limit` values throw a clear error at parser construction time instead of silently disabling enforcement. `null` and `undefined` continue to fall back to the default limit (`100kb`).\n\n### Workarounds\n\nValidate `limit` before passing it to body-parser. For example, parse the value with [`bytes.parse()`](https:\/\/github.com\/visionmedia\/bytes.js) at startup and reject any configuration where it returns `null` or a non-finite number.\n\n### References\n\n- [#698](https:\/\/github.com\/expressjs\/body-parser\/pull\/698): fix PR\n- [bytes.js](https:\/\/github.com\/visionmedia\/bytes.js): limit parser",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cna.openjsf.org\/security-advisories.html","name": "https:\/\/cna.openjsf.org\/security-advisories.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-12590","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-12590"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/commit\/3492672eee593d5c158f239b6e9115498a5dbeac","name": "https:\/\/github.com\/expressjs\/body-parser\/commit\/3492672eee593d5c158f239b6e9115498a5dbeac"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/v2.3.0","name": "https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/v2.3.0"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/1.20.6","name": "https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/1.20.6"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-v422-hmwv-36x6","name": "https:\/\/github.com\/advisories\/GHSA-v422-hmwv-36x6"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/commit\/2322e111cc321413ec2b7b76d01be533d3de9d7d","name": "https:\/\/github.com\/expressjs\/body-parser\/commit\/2322e111cc321413ec2b7b76d01be533d3de9d7d"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/pull\/698","name": "https:\/\/github.com\/expressjs\/body-parser\/pull\/698"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/pull\/741","name": "https:\/\/github.com\/expressjs\/body-parser\/pull\/741"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/body-parser\/security\/advisories\/GHSA-v422-hmwv-36x6","name": "https:\/\/github.com\/expressjs\/body-parser\/security\/advisories\/GHSA-v422-hmwv-36x6"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:body-parser:\\<1.20.6:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": false,
+            "fileName": "config.js",
+            "filePath": "\/src\/src\/config.js"
+,"md5": "55fe12c4967ff16879bd1c294512ca30",
+            "sha1": "89f96ff25188a3f38d37ff6459a87a417d192dfb",
+            "sha256": "db46d6a9ad0a21f8932e204bf25aa6d6dc1a9a4459bf4c28efa82b7399e70a23"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": true,
+            "fileName": "cookie:0.3.1",
+            "filePath": "\/src\/package-lock.json?cookie"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "cookie"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "cookie"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "0.3.1"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/cookie@0.3.1"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-pxg6-pf52-xh8x",
+"unscored": "true", "severity" : "low",
+                    "cwes": [
+                        "CWE-74"                    ],
+                "description": "### Impact\n\nThe cookie name could be used to set other fields of the cookie, resulting in an unexpected cookie value. For example, `serialize(\"userName=<script>alert('XSS3')<\/script>; Max-Age=2592000; a\", value)` would result in `\"userName=<script>alert('XSS3')<\/script>; Max-Age=2592000; a=test\"`, setting `userName` cookie to `<script>` and ignoring `value`.\n\nA similar escape can be used for `path` and `domain`, which could be abused to alter other fields of the cookie.\n\n### Patches\n\nUpgrade to 0.7.0, which updates the validation for `name`, `path`, and `domain`.\n\n### Workarounds\n\nAvoid passing untrusted or arbitrary values for these fields, ensure they are set by the application instead of user input.\n\n### References\n\n* https:\/\/github.com\/jshttp\/cookie\/pull\/167",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/jshttp\/cookie\/security\/advisories\/GHSA-pxg6-pf52-xh8x","name": "https:\/\/github.com\/jshttp\/cookie\/security\/advisories\/GHSA-pxg6-pf52-xh8x"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/jshttp\/cookie\/commit\/e10042845354fea83bd8f34af72475eed1dadf5c","name": "https:\/\/github.com\/jshttp\/cookie\/commit\/e10042845354fea83bd8f34af72475eed1dadf5c"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-pxg6-pf52-xh8x","name": "https:\/\/github.com\/advisories\/GHSA-pxg6-pf52-xh8x"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/jshttp\/cookie\/pull\/167","name": "https:\/\/github.com\/jshttp\/cookie\/pull\/167"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:cookie:\\<0.7.0:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": false,
+            "fileName": "db.js",
+            "filePath": "\/src\/src\/db.js"
+,"md5": "e24bc5b99c954f4c9a8c01dc64b4123a",
+            "sha1": "44a1adf277f556455424f2db099020e42ba85a30",
+            "sha256": "faf4bd43ce5a1cb3b27651cf311a2058ad9dda9dca87dedfc652818dd96919dd"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": true,
+            "fileName": "ejs:3.1.6",
+            "filePath": "\/src\/package-lock.json?ejs"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "ejs"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "ejs"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "3.1.6"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/ejs@3.1.6"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-phwq-j96m-2c2q",
+"unscored": "true", "severity" : "critical",
+                    "cvssv3": {
+                        "baseScore": 9.800000190734863
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "HIGH"
+                        ,"integrityImpact": "HIGH"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "CRITICAL"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-74"                    ],
+                "description": "The ejs (aka Embedded JavaScript templates) package 3.1.6 for Node.js allows server-side template injection in settings[view options][outputFunctionName]. This is parsed as an internal option, and overwrites the outputFunctionName option with an arbitrary OS command (which is executed upon template compilation).",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20220804-0001\/","name": "https:\/\/security.netapp.com\/advisory\/ntap-20220804-0001\/"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/mde\/ejs\/releases","name": "https:\/\/github.com\/mde\/ejs\/releases"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-phwq-j96m-2c2q","name": "https:\/\/github.com\/advisories\/GHSA-phwq-j96m-2c2q"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/mde\/ejs\/commit\/15ee698583c98dadc456639d6245580d17a24baf","name": "https:\/\/github.com\/mde\/ejs\/commit\/15ee698583c98dadc456639d6245580d17a24baf"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2022-29078","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2022-29078"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/eslam.io\/posts\/ejs-server-side-template-injection-rce\/","name": "https:\/\/eslam.io\/posts\/ejs-server-side-template-injection-rce\/"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:ejs:\\<3.1.7:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-ghr5-ch3p-vcr6",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 4.0
+                        ,"attackVector": "LOCAL"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-1321",                        "CWE-693"                    ],
+                "description": "The ejs (aka Embedded JavaScript templates) package before 3.1.10 for Node.js lacks certain pollution protection.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-ghr5-ch3p-vcr6","name": "https:\/\/github.com\/advisories\/GHSA-ghr5-ch3p-vcr6"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/mde\/ejs\/compare\/v3.1.9...v3.1.10","name": "https:\/\/github.com\/mde\/ejs\/compare\/v3.1.9...v3.1.10"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-33883","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-33883"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20240605-0003","name": "https:\/\/security.netapp.com\/advisory\/ntap-20240605-0003"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/mde\/ejs\/commit\/e469741dca7df2eb400199e1cdb74621e3f89aa5","name": "https:\/\/github.com\/mde\/ejs\/commit\/e469741dca7df2eb400199e1cdb74621e3f89aa5"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:ejs:\\<3.1.10:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": true,
+            "fileName": "express:4.17.1",
+            "filePath": "\/src\/package-lock.json?express"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "express"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "express"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "4.17.1"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/express@4.17.1"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-rv95-896h-c2vc",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 6.099999904632568
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "REQUIRED"
+                        ,"scope": "CHANGED"
+                        ,"confidentialityImpact": "LOW"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "NONE"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-601",                        "CWE-1286"                    ],
+                "description": "### Impact\n\nVersions of Express.js prior to 4.19.2 and pre-release alpha and beta versions before 5.0.0-beta.3 are affected by an open redirect vulnerability using malformed URLs.\n\nWhen a user of Express performs a redirect using a user-provided URL Express performs an encode [using `encodeurl`](https:\/\/github.com\/pillarjs\/encodeurl) on the contents before passing it to the `location` header. This can cause malformed URLs to be evaluated in unexpected ways by common redirect allow list implementations in Express applications, leading to an Open Redirect via bypass of a properly implemented allow list.\n\nThe main method impacted is `res.location()` but this is also called from within `res.redirect()`.\n\n### Patches\n\nhttps:\/\/github.com\/expressjs\/express\/commit\/0867302ddbde0e9463d0564fea5861feb708c2dd\nhttps:\/\/github.com\/expressjs\/express\/commit\/0b746953c4bd8e377123527db11f9cd866e39f94\n\nAn initial fix went out with `express@4.19.0`, we then patched a feature regression in `4.19.1` and added improved handling for the bypass in `4.19.2`.\n\n### Workarounds\n\nThe fix for this involves pre-parsing the url string with either `require('node:url').parse` or `new URL`. These are steps you can take on your own before passing the user input string to `res.location` or `res.redirect`.\n\n### Resources\n\nhttps:\/\/github.com\/expressjs\/express\/pull\/5539\nhttps:\/\/github.com\/koajs\/koa\/issues\/1800\nhttps:\/\/expressjs.com\/en\/4x\/api.html#res.location",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/express\/security\/advisories\/GHSA-rv95-896h-c2vc","name": "https:\/\/github.com\/expressjs\/express\/security\/advisories\/GHSA-rv95-896h-c2vc"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/express\/commit\/0867302ddbde0e9463d0564fea5861feb708c2dd","name": "https:\/\/github.com\/expressjs\/express\/commit\/0867302ddbde0e9463d0564fea5861feb708c2dd"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-29041","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-29041"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/express\/pull\/5539","name": "https:\/\/github.com\/expressjs\/express\/pull\/5539"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-rv95-896h-c2vc","name": "https:\/\/github.com\/advisories\/GHSA-rv95-896h-c2vc"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/koajs\/koa\/issues\/1800","name": "https:\/\/github.com\/koajs\/koa\/issues\/1800"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/express\/commit\/0b746953c4bd8e377123527db11f9cd866e39f94","name": "https:\/\/github.com\/expressjs\/express\/commit\/0b746953c4bd8e377123527db11f9cd866e39f94"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/expressjs.com\/en\/4x\/api.html#res.location","name": "https:\/\/expressjs.com\/en\/4x\/api.html#res.location"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:express:\\<4.19.2:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-qw6h-vgh9-j6wx",
+"unscored": "true", "severity" : "low",
+                    "cvssv3": {
+                        "baseScore": 5.0
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "REQUIRED"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "LOW"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-79"                    ],
+                "description": "### Impact\n\nIn express <4.20.0, passing untrusted user input - even after sanitizing it - to `response.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in express 4.20.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-qw6h-vgh9-j6wx","name": "https:\/\/github.com\/advisories\/GHSA-qw6h-vgh9-j6wx"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/express\/security\/advisories\/GHSA-qw6h-vgh9-j6wx","name": "https:\/\/github.com\/expressjs\/express\/security\/advisories\/GHSA-qw6h-vgh9-j6wx"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/express\/commit\/54271f69b511fea198471e6ff3400ab805d6b553","name": "https:\/\/github.com\/expressjs\/express\/commit\/54271f69b511fea198471e6ff3400ab805d6b553"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-43796","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-43796"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:express:\\<4.20.0:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": true,
+            "fileName": "jsonwebtoken:8.5.1",
+            "filePath": "\/src\/package-lock.json?jsonwebtoken"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "jsonwebtoken"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "jsonwebtoken"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "8.5.1"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/jsonwebtoken@8.5.1"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-8cf7-32gw-wr33",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 8.100000381469727
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "LOW"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "HIGH"
+                        ,"integrityImpact": "HIGH"
+                        ,"availabilityImpact": "NONE"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-327"                    ],
+                "description": "# Overview\n\nVersions `<=8.5.1` of `jsonwebtoken` library could be misconfigured so that legacy, insecure key types are used for signature verification. For example, DSA keys could be used with the RS256 algorithm. \n\n# Am I affected?\n\nYou are affected if you are using an algorithm and a key type other than the combinations mentioned below\n\n| Key type |  algorithm                                    |\n|----------|------------------------------------------|\n| ec           | ES256, ES384, ES512                      |\n| rsa          | RS256, RS384, RS512, PS256, PS384, PS512 |\n| rsa-pss  | PS256, PS384, PS512                      |\n\nAnd for Elliptic Curve algorithms:\n\n| `alg` | Curve      |\n|-------|------------|\n| ES256 | prime256v1 |\n| ES384 | secp384r1  |\n| ES512 | secp521r1  |\n\n# How do I fix it?\n\nUpdate to version 9.0.0. This version validates for asymmetric key type and algorithm combinations. Please refer to the above mentioned algorithm \/ key type combinations for the valid secure configuration. After updating to version 9.0.0, If you still intend to continue with signing or verifying tokens using invalid key type\/algorithm value combinations, you\u2019ll need to set the `allowInvalidAsymmetricKeyTypes` option to `true` in the `sign()` and\/or `verify()` functions.\n\n# Will the fix impact my users?\n\nThere will be no impact, if you update to version 9.0.0 and you already use a valid secure combination of key type and algorithm. Otherwise,  use the  `allowInvalidAsymmetricKeyTypes` option  to `true` in the `sign()` and `verify()` functions to continue usage of invalid key type\/algorithm combination in 9.0.0 for legacy compatibility. \n\n",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2022-23539","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2022-23539"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/commit\/e1fa9dcc12054a8681db4e6373da1b30cf7016e3","name": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/commit\/e1fa9dcc12054a8681db4e6373da1b30cf7016e3"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20240621-0007","name": "https:\/\/security.netapp.com\/advisory\/ntap-20240621-0007"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/security\/advisories\/GHSA-8cf7-32gw-wr33","name": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/security\/advisories\/GHSA-8cf7-32gw-wr33"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-8cf7-32gw-wr33","name": "https:\/\/github.com\/advisories\/GHSA-8cf7-32gw-wr33"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:jsonwebtoken:\\<\\=8.5.1:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-qwph-4952-7xr6",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 6.400000095367432
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "LOW"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "LOW"
+                        ,"integrityImpact": "HIGH"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-347",                        "CWE-327",                        "CWE-287"                    ],
+                "description": "# Overview\n\nIn versions <=8.5.1 of jsonwebtoken library, lack of algorithm definition and a falsy secret or key in the `jwt.verify()` function can lead to signature validation bypass due to defaulting to the `none` algorithm for signature verification.\n\n# Am I affected?\nYou will be affected if all the following are true in the `jwt.verify()` function:\n- a token with no signature is received\n- no algorithms are specified \n- a falsy (e.g. null, false, undefined) secret or key is passed \n\n# How do I fix it?\n \nUpdate to version 9.0.0 which removes the default support for the none algorithm in the `jwt.verify()` method. \n\n# Will the fix impact my users?\n\nThere will be no impact, if you update to version 9.0.0 and you don\u2019t need to allow for the `none` algorithm. If you need 'none' algorithm, you have to explicitly specify that in `jwt.verify()` options.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-qwph-4952-7xr6","name": "https:\/\/github.com\/advisories\/GHSA-qwph-4952-7xr6"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/commit\/e1fa9dcc12054a8681db4e6373da1b30cf7016e3","name": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/commit\/e1fa9dcc12054a8681db4e6373da1b30cf7016e3"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20240621-0007","name": "https:\/\/security.netapp.com\/advisory\/ntap-20240621-0007"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/security\/advisories\/GHSA-qwph-4952-7xr6","name": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/security\/advisories\/GHSA-qwph-4952-7xr6"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2022-23540","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2022-23540"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:jsonwebtoken:\\<9.0.0:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-hjrf-2m68-5959",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 5.0
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "LOW"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "LOW"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-287",                        "CWE-1259"                    ],
+                "description": "# Overview\n\nVersions `<=8.5.1` of `jsonwebtoken` library can be misconfigured so that passing a poorly implemented key retrieval function (referring to the `secretOrPublicKey` argument from the [readme link](https:\/\/github.com\/auth0\/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback)) will result in incorrect verification of tokens. There is a possibility of using a different algorithm and key combination in verification  than the one that was used to sign the tokens. Specifically, tokens signed with an asymmetric public key could be verified with a symmetric HS256 algorithm. This can lead to successful validation of forged tokens. \n\n# Am I affected?\n\nYou will be affected if your application is supporting usage of both symmetric key and asymmetric key in jwt.verify() implementation with the same key retrieval function. \n\n# How do I fix it?\n \nUpdate to version 9.0.0.\n\n# Will the fix impact my users?\n\nThere is no impact for end users",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/commit\/e1fa9dcc12054a8681db4e6373da1b30cf7016e3","name": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/commit\/e1fa9dcc12054a8681db4e6373da1b30cf7016e3"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2022-23541","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2022-23541"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20240621-0007","name": "https:\/\/security.netapp.com\/advisory\/ntap-20240621-0007"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/security\/advisories\/GHSA-hjrf-2m68-5959","name": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/security\/advisories\/GHSA-hjrf-2m68-5959"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-hjrf-2m68-5959","name": "https:\/\/github.com\/advisories\/GHSA-hjrf-2m68-5959"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/releases\/tag\/v9.0.0","name": "https:\/\/github.com\/auth0\/node-jsonwebtoken\/releases\/tag\/v9.0.0"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:jsonwebtoken:\\<\\=8.5.1:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": true,
+            "fileName": "lodash:4.17.15",
+            "filePath": "\/src\/package-lock.json?lodash"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "lodash"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "lodash"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "4.17.15"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/lodash@4.17.15"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-r5fr-rjxr-66jc",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 8.100000381469727
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "HIGH"
+                        ,"integrityImpact": "HIGH"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-94"                    ],
+                "description": "### Impact\n\nThe fix for [CVE-2021-23337](https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm) added validation for the `variable` option in `_.template` but did not apply the same validation to `options.imports` key names. Both paths flow into the same `Function()` constructor sink.\n\nWhen an application passes untrusted input as `options.imports` key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time.\n\nAdditionally, `_.template` uses `assignInWith` to merge imports, which enumerates inherited properties via `for..in`. If `Object.prototype` has been polluted by any other vector, the polluted keys are copied into the imports object and passed to `Function()`.\n\n### Patches\n\nUsers should upgrade to version 4.18.0.\n\nThe fix applies two changes:\n1. Validate `importsKeys` against the existing `reForbiddenIdentifierChars` regex (same check already used for the `variable` option)\n2. Replace `assignInWith` with `assignWith` when merging imports, so only own properties are enumerated\n\n### Workarounds\n\nDo not pass untrusted input as key names in `options.imports`. Only use developer-controlled, static key names.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-4800","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-4800"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cna.openjsf.org\/security-advisories.html","name": "https:\/\/cna.openjsf.org\/security-advisories.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm","name": "https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-r5fr-rjxr-66jc","name": "https:\/\/github.com\/advisories\/GHSA-r5fr-rjxr-66jc"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-r5fr-rjxr-66jc","name": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-r5fr-rjxr-66jc"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/commit\/3469357cff396a26c363f8c1b5a91dde28ba4b1c","name": "https:\/\/github.com\/lodash\/lodash\/commit\/3469357cff396a26c363f8c1b5a91dde28ba4b1c"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\>\\=4.0.0\\<\\=4.17.23:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-p6mc-m468-83gw",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 7.400000095367432
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "HIGH"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-1321",                        "CWE-770"                    ],
+                "description": "Versions of lodash prior to 4.17.19 are vulnerable to Prototype Pollution. The functions `pick`, `set`, `setWith`, `update`, `updateWith`, and `zipObjectDeep` allow a malicious user to modify the prototype of Object if the property identifiers are user-supplied. Being affected by this issue requires manipulating objects based on user-provided property values or arrays.\n\nThis vulnerability causes the addition or modification of an existing property that will exist on all objects and may lead to Denial of Service or Code Execution under specific circumstances.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2020-8203","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2020-8203"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2020-8203.yml","name": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2020-8203.yml"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/github\/advisory-database\/pull\/2884","name": "https:\/\/github.com\/github\/advisory-database\/pull\/2884"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/web.archive.org\/web\/20210914001339\/https:\/\/github.com\/lodash\/lodash\/issues\/4744","name": "https:\/\/web.archive.org\/web\/20210914001339\/https:\/\/github.com\/lodash\/lodash\/issues\/4744"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/issues\/4874","name": "https:\/\/github.com\/lodash\/lodash\/issues\/4874"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/hackerone.com\/reports\/864701","name": "https:\/\/hackerone.com\/reports\/864701"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/commit\/c84fe82760fb2d3e03a63379b297a1cc1a2fce12","name": "https:\/\/github.com\/lodash\/lodash\/commit\/c84fe82760fb2d3e03a63379b297a1cc1a2fce12"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/hackerone.com\/reports\/712065","name": "https:\/\/hackerone.com\/reports\/712065"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20200724-0006","name": "https:\/\/security.netapp.com\/advisory\/ntap-20200724-0006"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/issues\/4744","name": "https:\/\/github.com\/lodash\/lodash\/issues\/4744"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/wiki\/Changelog#v41719","name": "https:\/\/github.com\/lodash\/lodash\/wiki\/Changelog#v41719"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-p6mc-m468-83gw","name": "https:\/\/github.com\/advisories\/GHSA-p6mc-m468-83gw"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\>\\=3.7.0\\<4.17.19:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-35jh-r3h4-6jhm",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 7.199999809265137
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "HIGH"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "HIGH"
+                        ,"integrityImpact": "HIGH"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-77",                        "CWE-94"                    ],
+                "description": "`lodash` versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWER-1074928","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWER-1074928"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm","name": "https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JS-LODASH-1040724","name": "https:\/\/snyk.io\/vuln\/SNYK-JS-LODASH-1040724"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpujul2022.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpujul2022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2021-23337.yml","name": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2021-23337.yml"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/\/security-alerts\/cpujul2021.html","name": "https:\/\/www.oracle.com\/\/security-alerts\/cpujul2021.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2021-23337","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2021-23337"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpuoct2021.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpuoct2021.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cert-portal.siemens.com\/productcert\/pdf\/ssa-637483.pdf","name": "https:\/\/cert-portal.siemens.com\/productcert\/pdf\/ssa-637483.pdf"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSNPM-1074929","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSNPM-1074929"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGFUJIONWEBJARS-1074932","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGFUJIONWEBJARS-1074932"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/commit\/3469357cff396a26c363f8c1b5a91dde28ba4b1c","name": "https:\/\/github.com\/lodash\/lodash\/commit\/3469357cff396a26c363f8c1b5a91dde28ba4b1c"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/blob\/ddfd9b11a0126db2302cb70ec9973b66baec0975\/lodash.js#L14851","name": "https:\/\/github.com\/lodash\/lodash\/blob\/ddfd9b11a0126db2302cb70ec9973b66baec0975\/lodash.js#L14851"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpujan2022.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpujan2022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20210312-0006","name": "https:\/\/security.netapp.com\/advisory\/ntap-20210312-0006"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARS-1074930","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARS-1074930"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\<4.17.21:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-f23m-r3pf-42rh",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 6.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-1321"                    ],
+                "description": "### Impact\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. The fix for [CVE-2025-13465](https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as `Object.prototype`, `Number.prototype`, and `String.prototype`.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\n### Patches\n\nThis issue is patched in 4.18.0.\n\n### Workarounds\n\nNone. Upgrade to the patched version.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-f23m-r3pf-42rh","name": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-f23m-r3pf-42rh"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-2950","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-2950"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-f23m-r3pf-42rh","name": "https:\/\/github.com\/advisories\/GHSA-f23m-r3pf-42rh"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg","name": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\<\\=4.17.23:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-xxjr-mmjv-4gpg",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 6.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-1321"                    ],
+                "description": "### Impact\n\nLodash versions 4.0.0 through 4.17.22 are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. \n\nThe issue permits deletion of properties but does not allow overwriting their original behavior.  \n\n### Patches\n\nThis issue is patched on 4.17.23.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2025-13465","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2025-13465"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/commit\/edadd452146f7e4bad4ea684e955708931d84d81","name": "https:\/\/github.com\/lodash\/lodash\/commit\/edadd452146f7e4bad4ea684e955708931d84d81"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-xxjr-mmjv-4gpg","name": "https:\/\/github.com\/advisories\/GHSA-xxjr-mmjv-4gpg"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg","name": "https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cert-portal.siemens.com\/productcert\/html\/ssa-253495.html","name": "https:\/\/cert-portal.siemens.com\/productcert\/html\/ssa-253495.html"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\>\\=4.0.0\\<\\=4.17.22:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-29mw-wpgm-hmr9",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 5.300000190734863
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-400",                        "CWE-1333"                    ],
+                "description": "All versions of package lodash prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the `toNumber`, `trim` and `trimEnd` functions. \n\nSteps to reproduce (provided by reporter Liyuan Chen):\n```js\nvar lo = require('lodash');\n\nfunction build_blank(n) {\n    var ret = \"1\"\n    for (var i = 0; i < n; i++) {\n        ret += \" \"\n    }\n    return ret + \"1\";\n}\nvar s = build_blank(50000) var time0 = Date.now();\nlo.trim(s) \nvar time_cost0 = Date.now() - time0;\nconsole.log(\"time_cost0: \" + time_cost0);\nvar time1 = Date.now();\nlo.toNumber(s) var time_cost1 = Date.now() - time1;\nconsole.log(\"time_cost1: \" + time_cost1);\nvar time2 = Date.now();\nlo.trimEnd(s);\nvar time_cost2 = Date.now() - time2;\nconsole.log(\"time_cost2: \" + time_cost2);\n```",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JS-LODASH-1018905","name": "https:\/\/snyk.io\/vuln\/SNYK-JS-LODASH-1018905"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-29mw-wpgm-hmr9","name": "https:\/\/github.com\/advisories\/GHSA-29mw-wpgm-hmr9"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074895","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074895"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/pull\/5065\/commits\/02906b8191d3c100c193fe6f7b27d1c40f200bb7","name": "https:\/\/github.com\/lodash\/lodash\/pull\/5065\/commits\/02906b8191d3c100c193fe6f7b27d1c40f200bb7"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARS-1074894","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARS-1074894"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpujul2022.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpujul2022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/blob\/npm\/trimEnd.js%23L8","name": "https:\/\/github.com\/lodash\/lodash\/blob\/npm\/trimEnd.js%23L8"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSNPM-1074893","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSNPM-1074893"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/\/security-alerts\/cpujul2021.html","name": "https:\/\/www.oracle.com\/\/security-alerts\/cpujul2021.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpuoct2021.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpuoct2021.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2020-28500","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2020-28500"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cert-portal.siemens.com\/productcert\/pdf\/ssa-637483.pdf","name": "https:\/\/cert-portal.siemens.com\/productcert\/pdf\/ssa-637483.pdf"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/github\/advisory-database\/pull\/6139","name": "https:\/\/github.com\/github\/advisory-database\/pull\/6139"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGFUJIONWEBJARS-1074896","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGFUJIONWEBJARS-1074896"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/commit\/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a","name": "https:\/\/github.com\/lodash\/lodash\/commit\/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/lodash\/lodash\/pull\/5065","name": "https:\/\/github.com\/lodash\/lodash\/pull\/5065"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWER-1074892","name": "https:\/\/snyk.io\/vuln\/SNYK-JAVA-ORGWEBJARSBOWER-1074892"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2020-28500.yml","name": "https:\/\/github.com\/rubysec\/ruby-advisory-db\/blob\/master\/gems\/lodash-rails\/CVE-2020-28500.yml"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.oracle.com\/security-alerts\/cpujan2022.html","name": "https:\/\/www.oracle.com\/security-alerts\/cpujan2022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20210312-0006","name": "https:\/\/security.netapp.com\/advisory\/ntap-20210312-0006"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:lodash:\\>\\=4.0.0\\<4.17.21:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": true,
+            "fileName": "minimatch:5.1.9",
+            "filePath": "\/src\/package-lock.json?minimatch"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "minimatch"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "minimatch"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "5.1.9"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/minimatch@5.1.9"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-g3hv-75wg-m249",
+"unscored": "true", "severity" : "moderate",
+                    "cwes": [
+                        "CWE-405"                    ],
+                "description": "minimatch 10.2.6 contains an attacker-controlled pattern amplification in firstPhasePreProcess() when optimizationLevel >= 2.\n\nresearcher: Reid Downing (b1nv0id)\nfiles: \n\n- src\/index.ts: 690-770\n- src\/index.ts: 780-796\n\nissue:\ninput-controlled growth of globParts during first-phase preprocessing, followed by quadratic second-phase processing.\n\nthe **\/..\/ transformation clones a globparts entry and appends the clone to the same globparts array:\n```\nparts.splice(gs, 1)\nconst other = parts.slice(0)\nother[gs] = '**'\nglobParts.push(other)\n```\nthis occurs inside a do...while (didSomething) fixpoint loop, allowing generated entries to be processed again.\n\nthe expanded globparts array is subsequently processed by secondPhasePreProcess(), which performs pairwise comparisons:\n```\nfor (let i = 0; i < globParts.length - 1; i++) {\n  for (let j = i + 1; j < globParts.length; j++) {\n    this.partsMatch(...)\n  }\n}\n```\nan attacker who can supply a glob pattern can therefore cause additional pattern entries to be generated during preprocessing, followed by quadratic pairwise processing, resulting in excessive cpu and memory consumption.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/isaacs\/minimatch\/releases\/tag\/v11.0.1","name": "https:\/\/github.com\/isaacs\/minimatch\/releases\/tag\/v11.0.1"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/isaacs\/minimatch\/security\/advisories\/GHSA-g3hv-75wg-m249","name": "https:\/\/github.com\/isaacs\/minimatch\/security\/advisories\/GHSA-g3hv-75wg-m249"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-g3hv-75wg-m249","name": "https:\/\/github.com\/advisories\/GHSA-g3hv-75wg-m249"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-118764","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-118764"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/isaacs\/minimatch\/commit\/77a0f5c4b80bdc641c3c930a1d9edf5ad2db57f8","name": "https:\/\/github.com\/isaacs\/minimatch\/commit\/77a0f5c4b80bdc641c3c930a1d9edf5ad2db57f8"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:minimatch:\\<11.0.1:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": true,
+            "fileName": "morgan:1.9.0",
+            "filePath": "\/src\/package-lock.json?morgan"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "morgan"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "morgan"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "1.9.0"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/morgan@1.9.0"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-gwg9-rgvj-4h5j",
+"unscored": "true", "severity" : "critical",
+                    "cvssv3": {
+                        "baseScore": 9.800000190734863
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "HIGH"
+                        ,"integrityImpact": "HIGH"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "CRITICAL"
+,"version": "3.0"                    },
+                    "cwes": [
+                        "CWE-94"                    ],
+                "description": "Verisons of `morgan` before 1.9.1 are vulnerable to code injection when user input is allowed into the filter or combined with a prototype pollution attack.\n\n\n## Recommendation\n\nUpdate to version 1.9.1 or later.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/lists.apache.org\/thread.html\/r8ba4c628fba7181af58817d452119481adce4ba92e889c643e4c7dd3@%3Ccommits.netbeans.apache.org%3E","name": "https:\/\/lists.apache.org\/thread.html\/r8ba4c628fba7181af58817d452119481adce4ba92e889c643e4c7dd3@%3Ccommits.netbeans.apache.org%3E"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/www.npmjs.com\/advisories\/736","name": "https:\/\/www.npmjs.com\/advisories\/736"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/lists.apache.org\/thread.html\/rb5ac16fad337d1f3bb7079549f97d8166d0ef3082629417c39f12d63@%3Cnotifications.netbeans.apache.org%3E","name": "https:\/\/lists.apache.org\/thread.html\/rb5ac16fad337d1f3bb7079549f97d8166d0ef3082629417c39f12d63@%3Cnotifications.netbeans.apache.org%3E"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2019-5413","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2019-5413"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/hackerone.com\/reports\/390881","name": "https:\/\/hackerone.com\/reports\/390881"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-gwg9-rgvj-4h5j","name": "https:\/\/github.com\/advisories\/GHSA-gwg9-rgvj-4h5j"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/nodejs\/security-wg\/blob\/master\/vuln\/npm\/473.json","name": "https:\/\/github.com\/nodejs\/security-wg\/blob\/master\/vuln\/npm\/473.json"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:morgan:\\<1.9.1:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-4vj7-5mj6-jm8m",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 5.300000190734863
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "NONE"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-117"                    ],
+                "description": "### Impact\n\nMorgan's `:remote-user` token extracts the Basic auth username from the `Authorization` header and writes it to the log stream without neutralizing control characters. An attacker can send a crafted `Authorization: Basic` header containing CR\/LF characters to inject forged log lines, corrupting the one-request-per-line structure of access logs.\n\nThe built-in `combined`, `common`, `default`, and `short` formats are affected, as well as any custom format that includes `:remote-user`.\n\n### Patches\n\nUsers should upgrade to version 1.11.0.\n\n### Workarounds\n\nUse a custom format string that does not include `:remote-user`.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-4vj7-5mj6-jm8m","name": "https:\/\/github.com\/advisories\/GHSA-4vj7-5mj6-jm8m"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cna.openjsf.org\/security-advisories.html","name": "https:\/\/cna.openjsf.org\/security-advisories.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/morgan\/security\/advisories\/GHSA-4vj7-5mj6-jm8m","name": "https:\/\/github.com\/expressjs\/morgan\/security\/advisories\/GHSA-4vj7-5mj6-jm8m"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-5078","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-5078"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:morgan:\\>\\=1.2.0\\<\\=1.10.1:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-9f6g-j8ch-79g4",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 5.300000190734863
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "NONE"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-117"                    ],
+                "description": "### Impact\n\nMorgan writes attacker-controlled request data to the access log. Its escaping (added in 1.11.0 and 1.12.0) neutralizes control characters, the Unicode line separators, and backslash, but not the double quote (`0x22`), which is the field delimiter of the Apache combined log format morgan emits. An attacker who controls a quoted field (`:user-agent`, `:referrer`, the request URL, or the Basic auth `:remote-user`) can inject a double quote to close the field early and forge additional fields in the log record. The `combined`, `common`, and `default` formats, and any custom format that quotes a token, are affected. This is an incomplete fix of CVE-2026-5078 and CVE-2026-15603.\n\n### Patches\n\nUsers should upgrade to version 1.12.1.\n\n### Workarounds\n\nUpdate to version 1.12.1.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cna.openjsf.org\/security-advisories.html","name": "https:\/\/cna.openjsf.org\/security-advisories.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-9f6g-j8ch-79g4","name": "https:\/\/github.com\/advisories\/GHSA-9f6g-j8ch-79g4"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-87859","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-87859"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/morgan\/commit\/4b695edf967ce179cdf4009fe8cddd184b7511ee","name": "https:\/\/github.com\/expressjs\/morgan\/commit\/4b695edf967ce179cdf4009fe8cddd184b7511ee"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/morgan\/releases\/tag\/1.12.1","name": "https:\/\/github.com\/expressjs\/morgan\/releases\/tag\/1.12.1"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/morgan\/security\/advisories\/GHSA-9f6g-j8ch-79g4","name": "https:\/\/github.com\/expressjs\/morgan\/security\/advisories\/GHSA-9f6g-j8ch-79g4"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:morgan:\\<1.12.1:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-jxfw-x594-9x9m",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 5.300000190734863
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "NONE"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-117"                    ],
+                "description": "### Impact\n\nMorgan writes attacker-controlled request data to the access log through its tokens. The 1.11.0 fix neutralizes C0 control characters, DEL, and backslash, but it does not escape the Unicode line separators `U+0085` (NEL), `U+2028` (LINE SEPARATOR), or `U+2029` (PARAGRAPH SEPARATOR). These code points are reachable through several tokens, including the request URL (`:url`), request headers such as `:user-agent` and `:referrer`, arbitrary `:req[header]` values, and the Basic auth username (`:remote-user`). NEL is valid `obs-text` in HTTP header values, so an attacker can place it in an ordinary request header.\n\nWhen such a value is logged, the raw code points survive into the emitted access-log record, and downstream ECMAScript-aware or Unicode-aware log processing splits the single physical record into multiple logical records. This allows an attacker to forge log entries. The built-in `combined`, `common`, `default`, and `short` formats are affected, as well as any custom format. This is an incomplete fix of CVE-2026-5078.\n\n### Patches\n\nUsers should upgrade to version 1.12.0.\n\n### Workarounds\n\nNone. The affected values include the request URL and request headers, which are core to access logging, so there is no practical format-based mitigation. Upgrade to 1.12.0.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cna.openjsf.org\/security-advisories.html","name": "https:\/\/cna.openjsf.org\/security-advisories.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-jxfw-x594-9x9m","name": "https:\/\/github.com\/advisories\/GHSA-jxfw-x594-9x9m"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-15603","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-15603"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/morgan\/commit\/fbf93833186920cc39bb19b247e4a86b61bef4fe","name": "https:\/\/github.com\/expressjs\/morgan\/commit\/fbf93833186920cc39bb19b247e4a86b61bef4fe"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/morgan\/releases\/tag\/1.12.0","name": "https:\/\/github.com\/expressjs\/morgan\/releases\/tag\/1.12.0"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/morgan\/security\/advisories\/GHSA-jxfw-x594-9x9m","name": "https:\/\/github.com\/expressjs\/morgan\/security\/advisories\/GHSA-jxfw-x594-9x9m"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:morgan:\\<1.12.0:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": false,
+            "fileName": "notes.js",
+            "filePath": "\/src\/src\/routes\/notes.js"
+,"md5": "5d163c5ef9afbd9a8f826c3d7b72e711",
+            "sha1": "d173f28ab00e8d7259949826460d96eb4b75fab4",
+            "sha256": "3a34986f27f35c8c9146d059cd12f1707594f958dd61d608576ce9209ebe3886"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": true,
+            "fileName": "on-headers:1.0.2",
+            "filePath": "\/src\/package-lock.json?on-headers"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "on-headers"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "on-headers"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "1.0.2"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/on-headers@1.0.2"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-76c9-3jph-rj3q",
+"unscored": "true", "severity" : "low",
+                    "cvssv3": {
+                        "baseScore": 3.4000000953674316
+                        ,"attackVector": "LOCAL"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "HIGH"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "LOW"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "NONE"
+                        ,"baseSeverity": "LOW"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-241"                    ],
+                "description": "### Impact\n\nA bug in on-headers versions `< 1.1.0` may result in response headers being inadvertently modified when an array is passed to `response.writeHead()`\n\n### Patches\n\nUsers should upgrade to `1.1.0`\n\n### Workarounds\n\nUses are encouraged to upgrade to `1.1.0`, but this issue can be worked around by passing an object to `response.writeHead()` rather than an array.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/jshttp\/on-headers\/security\/advisories\/GHSA-76c9-3jph-rj3q","name": "https:\/\/github.com\/jshttp\/on-headers\/security\/advisories\/GHSA-76c9-3jph-rj3q"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cna.openjsf.org\/security-advisories.html","name": "https:\/\/cna.openjsf.org\/security-advisories.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-76c9-3jph-rj3q","name": "https:\/\/github.com\/advisories\/GHSA-76c9-3jph-rj3q"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/jshttp\/on-headers\/issues\/15","name": "https:\/\/github.com\/jshttp\/on-headers\/issues\/15"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2025-7339","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2025-7339"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/morgan\/issues\/315","name": "https:\/\/github.com\/expressjs\/morgan\/issues\/315"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/jshttp\/on-headers\/commit\/c6e384908c9c6127d18831d16ab0bd96e1231867","name": "https:\/\/github.com\/jshttp\/on-headers\/commit\/c6e384908c9c6127d18831d16ab0bd96e1231867"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:on-headers:\\<1.1.0:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": false,
+            "fileName": "password.js",
+            "filePath": "\/src\/src\/security\/password.js"
+,"md5": "c05f21944af162c1afe640262cf29e67",
+            "sha1": "1f9516a2a7ca0feee8edf45f67adfb0f7ff71abb",
+            "sha256": "33732a4cd781c4d4c84c10513e45a0e19f3cd536b843d59f13d4c7f67bafad00"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": true,
+            "fileName": "path-to-regexp:0.1.7",
+            "filePath": "\/src\/package-lock.json?path-to-regexp"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "path-to-regexp"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "path-to-regexp"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "0.1.7"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/path-to-regexp@0.1.7"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-37ch-88jc-xwx2",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 7.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-1333"                    ],
+                "description": "### Impact\n\nA bad regular expression is generated any time you have three or more parameters within a single segment, separated by something that is not a period (`.`). For example, `\/:a-:b-:c` or `\/:a-:b-:c-:d`. The backtrack protection added in `path-to-regexp@0.1.12` only prevents ambiguity for two parameters. With three or more, the generated lookahead does not block single separator characters, so capture groups overlap and cause catastrophic backtracking.\n\n### Patches\n\nUpgrade to [path-to-regexp@0.1.13](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v.0.1.13)\n\nCustom regex patterns in route definitions (e.g., `\/:a-:b([^-\/]+)-:c([^-\/]+)`) are not affected because they override the default capture group.\n\n### Workarounds\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `\/:a-:b-:c` to `\/:a-:b([^-\/]+)-:c([^-\/]+)`.\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length.\n\n### References\n\n- [GHSA-9wv6-86v2-598j](https:\/\/github.com\/advisories\/GHSA-9wv6-86v2-598j)\n- [Detailed blog post: ReDoS the web](https:\/\/blakeembrey.com\/posts\/2024-09-web-redos\/)",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/cna.openjsf.org\/security-advisories.html","name": "https:\/\/cna.openjsf.org\/security-advisories.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/security\/advisories\/GHSA-37ch-88jc-xwx2","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/security\/advisories\/GHSA-37ch-88jc-xwx2"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v.0.1.13","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v.0.1.13"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/blakeembrey.com\/posts\/2024-09-web-redos","name": "https:\/\/blakeembrey.com\/posts\/2024-09-web-redos"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-9wv6-86v2-598j","name": "https:\/\/github.com\/advisories\/GHSA-9wv6-86v2-598j"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-37ch-88jc-xwx2","name": "https:\/\/github.com\/advisories\/GHSA-37ch-88jc-xwx2"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-4867","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-4867"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:path-to-regexp:\\<0.1.13:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-9wv6-86v2-598j",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 7.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-1333"                    ],
+                "description": "### Impact\n\nA bad regular expression is generated any time you have two parameters within a single segment, separated by something that is not a period (`.`). For example, `\/:a-:b`.\n\n### Patches\n\nFor users of 0.1, upgrade to `0.1.10`. All other users should upgrade to `8.0.0`.\n\nThese versions add backtrack protection when a custom regex pattern is not provided:\n\n- [0.1.10](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v0.1.10)\n- [1.9.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v1.9.0)\n- [3.3.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v3.3.0)\n- [6.3.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v6.3.0)\n\nThey do not protect against vulnerable user supplied capture groups. Protecting against explicit user patterns is out of scope for old versions and not considered a vulnerability.\n\nVersion [7.1.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v7.1.0) can enable `strict: true` and get an error when the regular expression might be bad.\n\nVersion [8.0.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v8.0.0) removes the features that can cause a ReDoS.\n\n### Workarounds\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `\/:a-:b` to `\/:a-:b([^-\/]+)`.\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length. For example, halving the attack string improves performance by 4x faster.\n\n### Details\n\nUsing `\/:a-:b` will produce the regular expression `\/^\\\/([^\\\/]+?)-([^\\\/]+?)\\\/?$\/`. This can be exploited by a path such as `\/a${'-a'.repeat(8_000)}\/a`. [OWASP](https:\/\/owasp.org\/www-community\/attacks\/Regular_expression_Denial_of_Service_-_ReDoS) has a good example of why this occurs, but the TL;DR is the `\/a` at the end ensures this route would never match but due to naive backtracking it will still attempt every combination of the `:a-:b` on the repeated 8,000 `-a`.\n\nBecause JavaScript is single threaded and regex matching runs on the main thread, poor performance will block the event loop and can lead to a DoS. In local benchmarks, exploiting the unsafe regex will result in performance that is over 1000x worse than the safe regex. In a more realistic environment using Express v4 and 10 concurrent connections, this translated to average latency of ~600ms vs 1ms.\n\n### References\n\n* [OWASP](https:\/\/owasp.org\/www-community\/attacks\/Regular_expression_Denial_of_Service_-_ReDoS)\n* [Detailed blog post](https:\/\/blakeembrey.com\/posts\/2024-09-web-redos\/)",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/29b96b4a1de52824e1ca0f49a701183cc4ed476f","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/29b96b4a1de52824e1ca0f49a701183cc4ed476f"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/d31670ae8f6e69cbfd56e835742195b7d10942ef","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/d31670ae8f6e69cbfd56e835742195b7d10942ef"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/security\/advisories\/GHSA-9wv6-86v2-598j","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/security\/advisories\/GHSA-9wv6-86v2-598j"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-45296","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-45296"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20250124-0001","name": "https:\/\/security.netapp.com\/advisory\/ntap-20250124-0001"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-9wv6-86v2-598j","name": "https:\/\/github.com\/advisories\/GHSA-9wv6-86v2-598j"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/925ac8e3c5780b02f58cbd4e52f95da8ad2ac485","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/925ac8e3c5780b02f58cbd4e52f95da8ad2ac485"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/60f2121e9b66b7b622cc01080df0aabda9eedee6","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/60f2121e9b66b7b622cc01080df0aabda9eedee6"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v6.3.0","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v6.3.0"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/f1253b47b347dcb909e3e80b0eb2649109e59894","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/f1253b47b347dcb909e3e80b0eb2649109e59894"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:path-to-regexp:\\<0.1.10:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-rhx6-c78j-4q9w",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 7.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-1333"                    ],
+                "description": "### Impact\n\nThe regular expression that is vulnerable to backtracking can be generated in versions before 0.1.12 of `path-to-regexp`, originally reported in CVE-2024-45296\n\n### Patches\n\nUpgrade to 0.1.12.\n\n### Workarounds\n\nAvoid using two parameters within a single path segment, when the separator is not `.` (e.g. no `\/:a-:b`). Alternatively, you can define the regex used for both parameters and ensure they do not overlap to allow backtracking.\n\n### References\n\n- https:\/\/github.com\/advisories\/GHSA-9wv6-86v2-598j\n- https:\/\/blakeembrey.com\/posts\/2024-09-web-redos\/",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/blakeembrey.com\/posts\/2024-09-web-redos","name": "https:\/\/blakeembrey.com\/posts\/2024-09-web-redos"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/f01c26a013b1889f0c217c643964513acf17f6a4","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/commit\/f01c26a013b1889f0c217c643964513acf17f6a4"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-rhx6-c78j-4q9w","name": "https:\/\/github.com\/advisories\/GHSA-rhx6-c78j-4q9w"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20250124-0002","name": "https:\/\/security.netapp.com\/advisory\/ntap-20250124-0002"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/path-to-regexp\/security\/advisories\/GHSA-rhx6-c78j-4q9w","name": "https:\/\/github.com\/pillarjs\/path-to-regexp\/security\/advisories\/GHSA-rhx6-c78j-4q9w"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-52798","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-52798"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:path-to-regexp:\\<0.1.12:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": false,
+            "fileName": "profile.js",
+            "filePath": "\/src\/src\/routes\/profile.js"
+,"md5": "8cce4fb9e571be39b573e560f618ee2c",
+            "sha1": "87d6c83a87b5717f878a7f99f9f3385305c50e5f",
+            "sha256": "ac763f08c1f3c8ac398d73d69cb289697e59e44dcb019369773885824ee1da10"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": true,
+            "fileName": "qs:6.7.0",
+            "filePath": "\/src\/package-lock.json?qs"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "qs"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "qs"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "6.7.0"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/qs@6.7.0"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-hrpp-h998-j3pp",
+"unscored": "true", "severity" : "high",
+                    "cvssv3": {
+                        "baseScore": 7.5
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "HIGH"
+                        ,"baseSeverity": "HIGH"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-1321"                    ],
+                "description": "qs before 6.10.3 allows attackers to cause a Node process hang because an `__ proto__` key can be used. In many typical web framework use cases, an unauthenticated remote attacker can place the attack payload in the query string of the URL that is used to visit the application, such as `a[__proto__]=b&a[__proto__]&a[length]=100000000`. The fix was backported to qs 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, and 6.2.4.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-hrpp-h998-j3pp","name": "https:\/\/github.com\/advisories\/GHSA-hrpp-h998-j3pp"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/security.netapp.com\/advisory\/ntap-20230908-0005","name": "https:\/\/security.netapp.com\/advisory\/ntap-20230908-0005"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/lists.debian.org\/debian-lts-announce\/2023\/01\/msg00039.html","name": "https:\/\/lists.debian.org\/debian-lts-announce\/2023\/01\/msg00039.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2022-24999","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2022-24999"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/8b4cc14cda94a5c89341b77e5fe435ec6c41be2d","name": "https:\/\/github.com\/ljharb\/qs\/commit\/8b4cc14cda94a5c89341b77e5fe435ec6c41be2d"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/ba24e74dd17931f825adb52f5633e48293b584e1","name": "https:\/\/github.com\/ljharb\/qs\/commit\/ba24e74dd17931f825adb52f5633e48293b584e1"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/73205259936317b40f447c5cdb71c5b341848e1b","name": "https:\/\/github.com\/ljharb\/qs\/commit\/73205259936317b40f447c5cdb71c5b341848e1b"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/fc3682776670524a42e19709ec4a8138d0d7afda","name": "https:\/\/github.com\/ljharb\/qs\/commit\/fc3682776670524a42e19709ec4a8138d0d7afda"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/express\/releases\/tag\/4.17.3","name": "https:\/\/github.com\/expressjs\/express\/releases\/tag\/4.17.3"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/e799ba57e573a30c14b67c1889c7c04d508b9105","name": "https:\/\/github.com\/ljharb\/qs\/commit\/e799ba57e573a30c14b67c1889c7c04d508b9105"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/727ef5d34605108acb3513f72d5435972ed15b68","name": "https:\/\/github.com\/ljharb\/qs\/commit\/727ef5d34605108acb3513f72d5435972ed15b68"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/n8tz\/CVE-2022-24999","name": "https:\/\/github.com\/n8tz\/CVE-2022-24999"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/pull\/428","name": "https:\/\/github.com\/ljharb\/qs\/pull\/428"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/4310742efbd8c03f6495f07906b45213da0a32ec","name": "https:\/\/github.com\/ljharb\/qs\/commit\/4310742efbd8c03f6495f07906b45213da0a32ec"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/ed0f5dcbef4b168a8ae299d78b1e4a2e9b1baf1f","name": "https:\/\/github.com\/ljharb\/qs\/commit\/ed0f5dcbef4b168a8ae299d78b1e4a2e9b1baf1f"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/f945393cfe442fe8c6e62b4156fd35452c0686ee","name": "https:\/\/github.com\/ljharb\/qs\/commit\/f945393cfe442fe8c6e62b4156fd35452c0686ee"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:qs:\\>\\=6.7.0\\<6.7.3:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-4mjr-xmp4-gh2g",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 5.300000190734863
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-248",                        "CWE-703"                    ],
+                "description": "### Summary\n\n`qs.stringify()` calls `utils.isBuffer()` on every value it serializes, and `utils.isBuffer()` invokes `obj.constructor.isBuffer(obj)` without checking that it is callable. A value whose own `constructor.isBuffer` is a non-function makes `qs` call a non-callable and throw `TypeError`. Such a value is produced **by `qs.parse` itself** from an untrusted query string when `plainObjects: true` or `allowPrototypes: true` is set, so a pure-`qs` `parse` \u2192 `stringify` round-trip \u2014 no `JSON.parse` \u2014 turns an unauthenticated query string into an uncaught throw.\n\nAn attacker-controlled `parse` input reaches the host application's availability asset \u2014 via `qs`'s own recommended `plainObjects` mitigation \u2014 and triggers an uncaught exception during a `parse` \u2192 `stringify` round-trip.\n\n### Details\n`utils.isBuffer` runs at `lib\/stringify.js:127` for every serialized value:\n\n```js\nif (isNonNullishPrimitive(obj) || utils.isBuffer(obj)) { ... }\n```\n\n`utils.isBuffer` (`lib\/utils.js:327-333`) invokes `obj.constructor.isBuffer` without verifying it is callable:\n\n```js\nvar isBuffer = function isBuffer(obj) {\n    if (!obj || typeof obj !== 'object') { return false; }\n    return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));\n};\n```\n\n`constructor` and `isBuffer` are ordinary keys. `qs.parse` with `plainObjects: true` or `allowPrototypes: true` keeps them as own properties, so the parsed value carries a non-function `constructor.isBuffer`; `stringify` then calls a non-callable and throws `TypeError`. By contrast `utils.isRegExp` uses a brand check (`Object.prototype.toString`); the missing guard here is an internal inconsistency, not a platform limitation.\n\n\n### Trust Boundary Note\n\n`qs.stringify` alone treats its input as caller-constructed, so serializing a hostile object could be argued outside its contract. This report does not depend on that framing: the malicious shape is produced by **`qs.parse`, whose input is untrusted by design**. `qs.parse` normally strips a `constructor` key via its prototype guard, but with the documented options `plainObjects: true` or `allowPrototypes: true` the key survives and lands as an own property. Feeding the parsed object back into `qs.stringify` \u2014 the standard round-trip in gateways and request-forwarders \u2014 then hits the unchecked call. \n\n\n### PoC\n`poc02c_isBuffer_qs_only_roundtrip.js` \u2014 pure-`qs` chain, no `JSON.parse`; an untrusted query string alone reaches the throw:\n\n```js\n'use strict';\nvar qs = require('qs');\n\nvar untrustedQueryString = 'x%5Bconstructor%5D%5BisBuffer%5D=y'; \/\/ x[constructor][isBuffer]=y\n\nvar parsed = qs.parse(untrustedQueryString, { plainObjects: true });\nconsole.log('[parse] kept constructor key:', JSON.stringify(parsed));\n\ntry {\n    qs.stringify(parsed);\n    console.log('[stringify] no throw (unexpected)');\n} catch (e) {\n    console.log('[stringify] DoS reproduced ->', e.constructor.name + ':', e.message);\n}\n```\n\n`poc02_isBuffer.js` \u2014 the minimal defect:\n\n```js\n'use strict';\nvar qs = require('qs');\ntry {\n    qs.stringify(JSON.parse('{\"a\":{\"constructor\":{\"isBuffer\":\"x\"}}}'));\n} catch (e) {\n    console.log('[A] DoS reproduced ->', e.constructor.name + ':', e.message);\n}\n```\n\n`poc02b_isBuffer_async_crash.js` \u2014 worker death in an async sink:\n\n```js\n'use strict';\nvar qs = require('qs');\n\nfunction handleRequestAsync(clientJsonBody) {\n    try {\n        setImmediate(function () {                 \/\/ async continuation, outside the try\n            qs.stringify(JSON.parse(clientJsonBody)); \/\/ throws here, uncaught\n        });\n        console.log('[handler] returned 200 synchronously; async work scheduled');\n    } catch (e) {\n        console.log('[handler] caught synchronously (will NOT happen):', e.message);\n    }\n}\nprocess.on('exit', function (code) {\n    console.log('[proc] process exiting with code:', code);\n});\nhandleRequestAsync('{\"filters\":{\"constructor\":{\"isBuffer\":\"x\"}}}');\n```\n\n### Execution Steps\n\n```bash\ncd poc\nnpm install qs@6.15.3\nnode poc02c_isBuffer_qs_only_roundtrip.js  # pure qs parse->stringify -> TypeError\nnode poc02_isBuffer.js                      # minimal defect -> TypeError inside stringify\nnode poc02b_isBuffer_async_crash.js         # async sink -> uncaught throw -> exit code 1\n```\n\n### Reproduction Evidence\n\n`poc02c_isBuffer_qs_only_roundtrip.js` :\n\n```\n[parse] kept constructor key: {\"x\":{\"constructor\":{\"isBuffer\":\"y\"}}}\n[stringify] DoS reproduced -> TypeError: obj.constructor.isBuffer is not a function\n```\n\n`poc02_isBuffer.js`:\n\n```\n[A] DoS reproduced -> TypeError: obj.constructor.isBuffer is not a function\n```\n\n`poc02b_isBuffer_async_crash.js` :\n\n```\n[handler] returned 200 synchronously; async work scheduled\n[proc] process exiting with code: 1\nTypeError: obj.constructor.isBuffer is not a function\n    at Object.isBuffer (...\/qs\/lib\/utils.js:332:78)\n    at stringify (...\/qs\/lib\/stringify.js:127:45)\n=== EXIT CODE: 1 ===\n```\n\nThe pure-`qs` round-trip shows the malicious shape originates from `qs.parse` of an untrusted query string, with no `JSON.parse`. The synchronous `try\/catch` in the async case does not catch the throw; the process exits with code 1, denying service to all requests on that worker.\n\n### Impact\n\nAn unauthenticated request degrades any endpoint that re-serializes deserialized client data with `qs.stringify`. The primary impact is a per-request failure: the handler throws and the framework returns HTTP 500. Where the call sits in an unguarded async continuation, the throw escapes and the worker process exits, denying service to all requests it was handling, which means a higher impact that depends on the application's error handling, not on `qs`.\n\n### Recommended Fix\n\nReplace the duck-type with a brand check mirroring `utils.isRegExp`:\n\n```js\nvar isBuffer = function isBuffer(obj) {\n    if (!obj || typeof obj !== 'object') { return false; }\n    if (typeof Buffer !== 'undefined' && typeof Buffer.isBuffer === 'function') {\n        return Buffer.isBuffer(obj);\n    }\n    return Object.prototype.toString.call(obj) === '[object Uint8Array]';\n};\n```\n\nIf duck-typing must remain, require `typeof obj.constructor.isBuffer === 'function'` before invoking and wrap the call in `try\/catch`.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-82417","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-82417"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/security\/advisories\/GHSA-4mjr-xmp4-gh2g","name": "https:\/\/github.com\/ljharb\/qs\/security\/advisories\/GHSA-4mjr-xmp4-gh2g"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-4mjr-xmp4-gh2g","name": "https:\/\/github.com\/advisories\/GHSA-4mjr-xmp4-gh2g"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/e83d321ffafb38cf210683ac31714fce6ce1c6c6","name": "https:\/\/github.com\/ljharb\/qs\/commit\/e83d321ffafb38cf210683ac31714fce6ce1c6c6"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:qs:\\>\\=2.2.5\\<6.16.0:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-6pq8-jhm2-2vcw",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 5.300000190734863
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "LOW"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-248",                        "CWE-704"                    ],
+                "description": "## Summary\n\n`qs.stringify(obj, { arrayFormat: 'comma' })` throws an uncaught `TypeError: Cannot convert object to primitive value` when an array in `obj` contains an element that carries an own, non-callable `toString` property (for example `{ a: [ { toString: 'x' } ] }`). A remote, unauthenticated attacker who can influence an object that the application later re-serializes with the comma array format triggers the throw. In a service that lacks a synchronous error boundary around the serialization call, the uncaught exception crashes the worker process, producing a denial of service.\n\n## Root Cause\n\nWhen `arrayFormat: 'comma'` is selected, the comma branch collapses the whole array into a single value via `Array.prototype.join`, or, under `encodeValuesOnly: true`, maps each element through the value encoder before joining. Both paths perform an implicit string coercion (`ToPrimitive` with hint `\"string\"`) on each element. For an object whose own `toString` is a non-callable value, coercion skips the shadowed non-callable `toString`, falls through to `Object.prototype.valueOf` (which returns the object rather than a primitive), and throws. The comma branch runs this coercion before the per-element null and skip handling in the main loop, so nothing downstream can neutralize the hostile element, and the throw is never caught inside the library.\n\n```text\nlib\/stringify.js  (comma-array branch)\n  line 152-154: obj = utils.maybeMap(obj, function (v) { return v == null ? v : encoder(v); });  \/\/ encodeValuesOnly path\n  line 156:     objKeys = [{ value: obj.length > 0 ? obj.join(',') || null : void undefined }];   \/\/ default comma path\nlib\/utils.js\n  line 292:     string = String(str);   \/\/ value encoder coercion reached via the encodeValuesOnly path\n```\n\n## Impact\n\nPrerequisites: the application calls `qs.stringify` with `arrayFormat: 'comma'` (a documented, supported option) on an object whose shape can be influenced by attacker input. Attacker-controllable sources include `qs.parse(input, { allowPrototypes: true })`, which retains a `toString` segment (Express 4's default query parser, Express 5's `extended` query parser, and body-parser's `extended` urlencoded parser all set it), `qs.parse(input, { plainObjects: true })`, whose null-prototype elements throw even without a `toString` key (eg, `a[][b]=c`), and `JSON.parse` of a request body, which needs no qs parse option at all. No authentication or user interaction is required. Demonstrated capability: a single request forces an uncaught synchronous `TypeError` in the serialization call. In a naive single-process Node service with no synchronous error boundary, this crashes the process and takes the service offline (availability impact). Under a framework such as Express that traps synchronous handler throws, the plausible outcome is a per-request 500 rather than a full outage; that lower-impact case is noted but not the worst credible supported deployment. There is no confidentiality or integrity impact, no memory unsafety, and no prototype pollution.\n\n## Proof of Concept\n\n`Install qs at the affected version (for example 6.16.0) and run the following script with Node.js. No network setup is required; it demonstrates the throw in isolation.`\n\n```js\nvar qs = require('qs');\n\n\/\/ Source A: qs.parse with allowPrototypes retains the hostile toString segment\nqs.stringify(qs.parse('a[0][toString]=x', { allowPrototypes: true }), { arrayFormat: 'comma' });\n\n\/\/ Source B: a JSON request body, no qs parse option needed\nqs.stringify(JSON.parse('{\"a\":[{\"toString\":\"x\"}]}'), { arrayFormat: 'comma' });\n\n\/\/ Also affected: the encodeValuesOnly sub-path\nqs.stringify(JSON.parse('{\"a\":[{\"toString\":\"x\"}]}'), { arrayFormat: 'comma', encodeValuesOnly: true });\n```\n\n```text\nA default-join (allowPrototypes) => THREW: TypeError: Cannot convert object to primitive value\nB default-join (JSON.parse) => THREW: TypeError: Cannot convert object to primitive value\nC encodeValuesOnly path => THREW: TypeError: Cannot convert object to primitive value\nN2 callable toString => NO THROW; output=\"a=z\"\nN3 isBuffer vector (CVE-2026-82417) => NO THROW; output=\"a%5Bconstructor%5D%5BisBuffer%5D=x\"\nqs version: 6.16.0\n```\n\n## Attack Chain\n\n1. **Exposure:** A remote, unauthenticated request reaches an endpoint whose handler eventually serializes attacker-influenced data with `qs.stringify(obj, { arrayFormat: 'comma' })`.\n2. **Control:** The attacker supplies data that becomes `{ a: [ { toString: <non-callable value> } ] }`, either via `a[0][toString]=x` parsed with `allowPrototypes`, or via a JSON body `{\"a\":[{\"toString\":\"x\"}]}`.\n3. **Path:** In `stringify`, the primitive\/buffer guard at `lib\/stringify.js:134` is false for an array, so control reaches the comma branch at `lib\/stringify.js:149`.\n4. **Guard:** On the `encodeValuesOnly` path, the closure `v == null ? v : encoder(v)` at `lib\/stringify.js:152-154` passes only `null`\/`undefined` through; a non-null object still reaches the encoder. The default path skips that closure entirely and reaches `obj.join(',')` at `lib\/stringify.js:156` with no guard at all.\n5. **Primitive:** The element is coerced to a string (`Array.prototype.join`, or `String(str)` at `lib\/utils.js:292`). `ToPrimitive` skips the non-callable own `toString`, `valueOf` returns the object, and a `TypeError` is thrown.\n6. **Result:** The uncaught synchronous exception propagates out of the serialization call, failing the request and, in a service without a synchronous error boundary, crashing the process (denial of service).\n\n## Bypass Evidence\n\nThis is a different element type on the code path CVE-2026-8723 (GHSA-q8mj-m7cp-5q26) patched, plus the default comma path, which that fix never covered. CVE-2026-8723 addressed a `TypeError` crash on `null`\/`undefined` entries in the comma plus `encodeValuesOnly` path. Its fix (commit 21f80b3) wraps the encoder in `function (v) { return v == null ? v : encoder(v); }`, so it only passes `null` and `undefined` through. A non-null element with a hostile own `toString` fails the `v == null` test, so the encoder still runs and still throws; the encodeValuesOnly case (case C above) throws on the exact fixed code. The default comma path (`encodeValuesOnly` unset, the library default) never entered that fix at all: `git log -S \"obj.join(','\" -- lib\/stringify.js` shows no security fix has ever touched the `obj.join(',')` line, and cases A and B throw with `encodeValuesOnly` unset. The related isBuffer hardening for CVE-2026-82417 (commit e83d321) is a different sink at the `lib\/stringify.js:134` guard, which is never entered for the array element; the negative control `{a:{constructor:{isBuffer:'x'}}}` serializes cleanly. Disproof attempts that failed: a `valueOf`-only object does not throw (it serializes to `[object Object]`), confirming the trigger is an element with no callable `toString` (an own non-callable `toString`, or a null-prototype object with no `toString` at all, as `qs.parse` produces under `plainObjects`); nested arrays (`{\"a\":[[{\"toString\":\"x\"}]]}`) throw the same way; a callable `toString` serializes cleanly; and the default (non-comma) array format serializes cleanly, confirming the comma format is required. All positive and negative cases were reproduced on the exact published 6.16.0 artifact.\n\n## Affected Versions\n\n- `Ecosystem: npm`\n- `Package: qs`\n- `Confirmed affected range: >= 6.7.0, <= 6.16.0`\n- `Latest release checked: 6.16.0 (npm latest; git tag v6.16.0)`\n- `Fix status: fixed in 6.16.1 (a952e75)`\n\nThe `arrayFormat: 'comma'` join sink was introduced in qs 6.7.0, so 6.7.0 is the lower boundary; releases before 6.7.0 lack the sink. No released version fixes this vector, and the latest published release (6.16.0) reproduces the throw, so the closed upper bound `<= 6.16.0` covers every affected release. The `encodeValuesOnly` sub-path was added later, but the default comma-join vector already affects 6.7.0, so 6.7.0 governs the lower boundary.\n\n## Suggested Fix\n\nThe comma array serialization must not allow an implicit string coercion of an array element to throw an uncaught exception. Coercion of each comma element should be performed defensively (for example by wrapping the join and per-element encode so that a coercion failure is caught and handled), and this protection must cover both the default `obj.join(',')` path and the `encodeValuesOnly` encoder path, not only the previously patched `null`\/`undefined` case. As an interim mitigation without a code change, applications can avoid `arrayFormat: 'comma'` when serializing data derived from untrusted input, sanitize parsed objects (avoid `allowPrototypes`\/`plainObjects` on untrusted input and strip unexpected own properties), or wrap `qs.stringify` calls in a synchronous error boundary so a coercion failure cannot crash the process.\n\nReported by zx (GitHub: @manus-pi).\n\n---\n\n## Independent report by @Lucidsec\n\nThe following was reported separately, after this advisory, and is merged here as a duplicate.\n\n### Summary\n\nIn project [qs](https:\/\/github.com\/ljharb\/qs), in versions `>= 6.7.0, <= 6.16.0` (every version that supports `arrayFormat: 'comma'`), `qs.stringify` with `arrayFormat: 'comma'` can throw an uncaught `TypeError: Cannot convert object to primitive value` when an array element has a non-callable own `toString`. It is fixed in 6.16.1. Related: CWE-248 and CWE-704.\n\n### Technical Details\n\n`qs.stringify` with `arrayFormat: 'comma'` joins an array at `lib\/stringify.js:156` via `obj.join(',')`. An element whose own `toString` is not callable makes `Array.prototype.join` throw. There is no type check and no catch on that path.\n\nA second path exists with `encodeValuesOnly`: at `lib\/stringify.js:151-154`, `maybeMap` only skips `v == null`, then `lib\/utils.js:292` does `String(str)` and throws the same `TypeError` (this second site exists since v6.11.1; before that, the same input throws at `join`).\n\nWho can trigger: someone who can shape an array element passed to `stringify`. The host must use non-default `arrayFormat: 'comma'`. Default `arrayFormat` `indices` does not fold arrays and is not affected. A parse-then-stringify path also needs `plainObjects: true` (null-prototype elements from `lib\/parse.js:200`) or `allowPrototypes: true` (which Express 4's default query parser, Express 5's `extended` query parser, and body-parser's `extended` urlencoded parser all set). Default `qs.parse('a[0][toString]=x')` returns `{}` because the prototype guard drops `toString`. Direct JSON handed to `stringify` can supply `{\"a\":[{\"toString\":\"x\"}]}`.\n\nCause: the comma fold at `lib\/stringify.js:149-156` collapses the array into a single value before the main loop at `lib\/stringify.js:172-212`, so `skipNulls` and `strictNullHandling` only ever see the joined value, never individual elements. `isNonNullishPrimitive` \/ `isBuffer` at `lib\/stringify.js:134` inspect the whole value, not each element. A normal object uses `Object.prototype.toString` and becomes `[object Object]`. An own non-callable `toString` is skipped, `valueOf` returns the object, and `join` throws. (The skipped TODO test at `test\/stringify.js:684-689` uses a plain `{ b: 1 }` element, which does not throw; it covers the separate question of what comma format should output for object elements, not this crash.) Earlier comma crash fixes did not cover object elements.\n\n### Impact\n\nOne small input makes that serialization path throw a synchronous, catchable `TypeError`. Behind a framework error boundary (eg, a synchronous Express handler), the request fails with a 500 and the process survives. In a host with no error boundary (eg, a bare `http.createServer` handler), the uncaught exception exits the process (the client sees `ECONNRESET`). Availability only.\n\n### Proof of Concept\n\n<details>\n<summary>Show the proof of concept<\/summary>\n\nChecked on the latest commit that was checked: `07b1d4d82c8f9301c105ea4b94fa2302cfd6e8b4`. Still present. Demonstrated.\n\n- Payload `{\"a\":[{\"toString\":\"x\"}]}` throws at `lib\/stringify.js:156`.\n- Baseline `{\"a\":[\"x\",\"y\"]}` returns 200 with body `a=x%2Cy`.\n- A plain object element stringifies to `a=%5Bobject%20Object%5D` and does not throw.\n- `encodeValuesOnly: true` throws via `utils.js:292`.\n- `plainObjects` parse plus comma throws.\n\n<\/details>\n\n### Suggested Fix\n\nBefore `join`, map elements with the existing primitive check; skip or replace non-primitives so `join` cannot throw. On the `encodeValuesOnly` path, do not send non-primitives into `String()`. Optionally guard `lib\/utils.js:292`. Add new regression tests.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/a952e7519338ef0cfb25694a2988848f93333727","name": "https:\/\/github.com\/ljharb\/qs\/commit\/a952e7519338ef0cfb25694a2988848f93333727"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/security\/advisories\/GHSA-6pq8-jhm2-2vcw","name": "https:\/\/github.com\/ljharb\/qs\/security\/advisories\/GHSA-6pq8-jhm2-2vcw"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-6pq8-jhm2-2vcw","name": "https:\/\/github.com\/advisories\/GHSA-6pq8-jhm2-2vcw"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/releases\/tag\/v6.16.1","name": "https:\/\/github.com\/ljharb\/qs\/releases\/tag\/v6.16.1"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-110816","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-110816"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:qs:\\>\\=6.7.0\\<\\=6.16.0:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-6rw7-vpxm-498p",
+"unscored": "true", "severity" : "moderate",
+                    "cvssv3": {
+                        "baseScore": 3.700000047683716
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "LOW"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-20"                    ],
+                "description": "### Summary\n\nThe `arrayLimit` option in qs did not enforce limits for bracket notation (`a[]=1&a[]=2`), only for indexed notation (`a[0]=1`). This is a consistency bug; `arrayLimit` should apply uniformly across all array notations.\n\n**Note:** The default `parameterLimit` of 1000 effectively mitigates the DoS scenario originally described. With default options, bracket notation cannot produce arrays larger than `parameterLimit` regardless of `arrayLimit`, because each `a[]=value` consumes one parameter slot. The severity has been reduced accordingly.\n\n### Details\n\nThe `arrayLimit` option only checked limits for indexed notation (`a[0]=1&a[1]=2`) but did not enforce it for bracket notation (`a[]=1&a[]=2`).\n\n**Vulnerable code** (`lib\/parse.js:159-162`):\n```javascript\nif (root === '[]' && options.parseArrays) {\n    obj = utils.combine([], leaf);  \/\/ No arrayLimit check\n}\n```\n\n**Working code** (`lib\/parse.js:175`):\n```javascript\nelse if (index <= options.arrayLimit) {  \/\/ Limit checked here\n    obj = [];\n    obj[index] = leaf;\n}\n```\n\nThe bracket notation handler at line 159 uses `utils.combine([], leaf)` without validating against `options.arrayLimit`, while indexed notation at line 175 checks `index <= options.arrayLimit` before creating arrays.\n\n### PoC\n\n```javascript\nconst qs = require('qs');\nconst result = qs.parse('a[]=1&a[]=2&a[]=3&a[]=4&a[]=5&a[]=6', { arrayLimit: 5 });\nconsole.log(result.a.length);  \/\/ Output: 6 (should be max 5)\n```\n\n**Note on parameterLimit interaction:** The original advisory's \"DoS demonstration\" claimed a length of 10,000, but `parameterLimit` (default: 1000) caps parsing to 1,000 parameters. With default options, the actual output is 1,000, not 10,000.\n\n### Impact\n\nConsistency bug in `arrayLimit` enforcement. With default `parameterLimit`, the practical DoS risk is negligible since `parameterLimit` already caps the total number of parsed parameters (and thus array elements from bracket notation). The risk increases only when `parameterLimit` is explicitly set to a very high value.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/security\/advisories\/GHSA-6rw7-vpxm-498p","name": "https:\/\/github.com\/ljharb\/qs\/security\/advisories\/GHSA-6rw7-vpxm-498p"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-6rw7-vpxm-498p","name": "https:\/\/github.com\/advisories\/GHSA-6rw7-vpxm-498p"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2025-15284","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2025-15284"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/3086902ecf7f088d0d1803887643ac6c03d415b9","name": "https:\/\/github.com\/ljharb\/qs\/commit\/3086902ecf7f088d0d1803887643ac6c03d415b9"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:qs:\\<6.14.1:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }, {
+                "source": "NPM",
+                "name": "GHSA-w7fw-mjwx-w883",
+"unscored": "true", "severity" : "low",
+                    "cvssv3": {
+                        "baseScore": 3.700000047683716
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "NONE"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "NONE"
+                        ,"integrityImpact": "NONE"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "LOW"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-20"                    ],
+                "description": "### Summary\nThe `arrayLimit` option in qs does not enforce limits for comma-separated values when `comma: true` is enabled, allowing attackers to cause denial-of-service via memory exhaustion. This is a bypass of the array limit enforcement, similar to the bracket notation bypass addressed in GHSA-6rw7-vpxm-498p (CVE-2025-15284).\n\n### Details\nWhen the `comma` option is set to `true` (not the default, but configurable in applications), qs allows parsing comma-separated strings as arrays (e.g., `?param=a,b,c` becomes `['a', 'b', 'c']`). However, the limit check for `arrayLimit` (default: 20) and the optional throwOnLimitExceeded occur after the comma-handling logic in `parseArrayValue`, enabling a bypass. This permits creation of arbitrarily large arrays from a single parameter, leading to excessive memory allocation.\n\n**Vulnerable code** (lib\/parse.js: lines ~40-50):\n```js\nif (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {\n    return val.split(',');\n}\n\nif (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) {\n    throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n}\n\nreturn val;\n```\nThe `split(',')` returns the array immediately, skipping the subsequent limit check. Downstream merging via `utils.combine` does not prevent allocation, even if it marks overflows for sparse arrays.This discrepancy allows attackers to send a single parameter with millions of commas (e.g., `?param=,,,,,,,,...`), allocating massive arrays in memory without triggering limits. It bypasses the intent of `arrayLimit`, which is enforced correctly for indexed (`a[0]=`) and bracket (`a[]=`) notations (the latter fixed in v6.14.1 per GHSA-6rw7-vpxm-498p).\n\n### PoC\n**Test 1 - Basic bypass:**\n```\nnpm install qs\n```\n\n```js\nconst qs = require('qs');\n\nconst payload = 'a=' + ','.repeat(25);  \/\/ 26 elements after split (bypasses arrayLimit: 5)\nconst options = { comma: true, arrayLimit: 5, throwOnLimitExceeded: true };\n\ntry {\n  const result = qs.parse(payload, options);\n  console.log(result.a.length);  \/\/ Outputs: 26 (bypass successful)\n} catch (e) {\n  console.log('Limit enforced:', e.message);  \/\/ Not thrown\n}\n```\n**Configuration:**\n- `comma: true`\n- `arrayLimit: 5`\n- `throwOnLimitExceeded: true`\n\nExpected: Throws \"Array limit exceeded\" error.\nActual: Parses successfully, creating an array of length 26.\n\n\n### Impact\nDenial of Service (DoS) via memory exhaustion.\n\n### Suggested Fix\nMove the `arrayLimit` check before the comma split in `parseArrayValue`, and enforce it on the resulting array length. Use `currentArrayLength` (already calculated upstream) for consistency with bracket notation fixes.\n\n**Current code** (lib\/parse.js: lines ~40-50):\n```js\nif (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {\n    return val.split(',');\n}\n\nif (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) {\n    throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n}\n\nreturn val;\n```\n\n**Fixed code:**\n```js\nif (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {\n    const splitArray = val.split(',');\n    if (splitArray.length > options.arrayLimit - currentArrayLength) {  \/\/ Check against remaining limit\n        if (options.throwOnLimitExceeded) {\n            throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n        } else {\n            \/\/ Optionally convert to object or truncate, per README\n            return splitArray.slice(0, options.arrayLimit - currentArrayLength);\n        }\n    }\n    return splitArray;\n}\n\nif (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) {\n    throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n}\n\nreturn val;\n```\nThis aligns behavior with indexed and bracket notations, reuses `currentArrayLength`, and respects `throwOnLimitExceeded`. Update README to note the consistent enforcement.",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/security\/advisories\/GHSA-w7fw-mjwx-w883","name": "https:\/\/github.com\/ljharb\/qs\/security\/advisories\/GHSA-w7fw-mjwx-w883"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/ljharb\/qs\/commit\/f6a7abff1f13d644db9b05fe4f2c98ada6bf8482","name": "https:\/\/github.com\/ljharb\/qs\/commit\/f6a7abff1f13d644db9b05fe4f2c98ada6bf8482"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-w7fw-mjwx-w883","name": "https:\/\/github.com\/advisories\/GHSA-w7fw-mjwx-w883"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-2391","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2026-2391"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:qs:\\>\\=6.7.0\\<\\=6.14.1:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": true,
+            "fileName": "send:0.17.1",
+            "filePath": "\/src\/package-lock.json?send"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "send"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "send"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "0.17.1"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/send@0.17.1"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-m6fv-jmcg-4jfg",
+"unscored": "true", "severity" : "low",
+                    "cvssv3": {
+                        "baseScore": 5.0
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "REQUIRED"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "LOW"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-79"                    ],
+                "description": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `SendStream.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in send 0.19.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/send\/commit\/ae4f2989491b392ae2ef3b0015a019770ae65d35","name": "https:\/\/github.com\/pillarjs\/send\/commit\/ae4f2989491b392ae2ef3b0015a019770ae65d35"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-43799","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-43799"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/lists.debian.org\/debian-lts-announce\/2025\/06\/msg00022.html","name": "https:\/\/lists.debian.org\/debian-lts-announce\/2025\/06\/msg00022.html"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/pillarjs\/send\/security\/advisories\/GHSA-m6fv-jmcg-4jfg","name": "https:\/\/github.com\/pillarjs\/send\/security\/advisories\/GHSA-m6fv-jmcg-4jfg"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-m6fv-jmcg-4jfg","name": "https:\/\/github.com\/advisories\/GHSA-m6fv-jmcg-4jfg"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:send:\\<0.19.0:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": true,
+            "fileName": "serve-static:1.14.1",
+            "filePath": "\/src\/package-lock.json?serve-static"
+            ,"projectReferences": [
+                "package-lock.json: transitive"
+            ]
+            ,"evidenceCollected": {
+                "vendorEvidence": [
+{
+                            "type": "vendor",
+                            "confidence": "HIGH",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "serve-static"
+                        }
+                ],
+                "productEvidence": [
+{
+                            "type": "product",
+                            "confidence": "HIGHEST",
+                            "source": "package.json",
+                            "name": "name",
+                            "value": "serve-static"
+                    }
+                ],
+                "versionEvidence": [
+                    {
+                        "type": "version",
+                        "confidence": "HIGHEST",
+                        "source": "package.json",
+                        "name": "version",
+                        "value": "1.14.1"
+                    }
+                ]
+            }
+                ,"packages": [
+                    {
+                        "id": "pkg:npm\/serve-static@1.14.1"
+,"confidence": "HIGHEST"                    }
+            ]
+            ,"vulnerabilities": [
+ {
+                "source": "NPM",
+                "name": "GHSA-cm22-4g7w-348p",
+"unscored": "true", "severity" : "low",
+                    "cvssv3": {
+                        "baseScore": 5.0
+                        ,"attackVector": "NETWORK"
+                        ,"attackComplexity": "HIGH"
+                        ,"privilegesRequired": "NONE"
+                        ,"userInteraction": "REQUIRED"
+                        ,"scope": "UNCHANGED"
+                        ,"confidentialityImpact": "LOW"
+                        ,"integrityImpact": "LOW"
+                        ,"availabilityImpact": "LOW"
+                        ,"baseSeverity": "MEDIUM"
+,"version": "3.1"                    },
+                    "cwes": [
+                        "CWE-79"                    ],
+                "description": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in serve-static 1.16.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n",
+                "notes": "",
+                "references": [
+ {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/advisories\/GHSA-cm22-4g7w-348p","name": "https:\/\/github.com\/advisories\/GHSA-cm22-4g7w-348p"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/serve-static\/security\/advisories\/GHSA-cm22-4g7w-348p","name": "https:\/\/github.com\/expressjs\/serve-static\/security\/advisories\/GHSA-cm22-4g7w-348p"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/serve-static\/commit\/0c11fad159898cdc69fd9ab63269b72468ecaf6b","name": "https:\/\/github.com\/expressjs\/serve-static\/commit\/0c11fad159898cdc69fd9ab63269b72468ecaf6b"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/github.com\/expressjs\/serve-static\/commit\/ce730896fddce1588111d9ef6fdf20896de5c6fa","name": "https:\/\/github.com\/expressjs\/serve-static\/commit\/ce730896fddce1588111d9ef6fdf20896de5c6fa"                    }, {
+                        "source": "NPM Advisory reference: "
+,"url": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-43800","name": "https:\/\/nvd.nist.gov\/vuln\/detail\/CVE-2024-43800"                    }                ],
+                "vulnerableSoftware": [
+ {
+                        "software": { 
+                            "id":"cpe:2.3:a:*:serve-static:\\<1.16.0:*:*:*:*:*:*:*"
+                        }
+                    }                ]
+                }            ]        },{
+            "isVirtual": false,
+            "fileName": "server.js",
+            "filePath": "\/src\/src\/server.js"
+,"md5": "7c4885b6778ea59455d02e9ec144b18a",
+            "sha1": "3a5b1eaf6c56ca2613afd29bd323d04a8ca596ba",
+            "sha256": "9cc865502a21e81f54b644749e6860c4edbb49fa27fdea759e3c2bdf5eadeb83"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        },{
+            "isVirtual": false,
+            "fileName": "tokens.js",
+            "filePath": "\/src\/src\/security\/tokens.js"
+,"md5": "6adae675ba024e25c9223ca01c2fb471",
+            "sha1": "7c210660cd8ea4ed7781dd84a47a88ac30afa5d5",
+            "sha256": "39bde2e75d6613ff3e7b29d2af5aad107a4b426fcb80f62a56d6f09fcd3fc221"            ,"evidenceCollected": {
+                "vendorEvidence": [
+                ],
+                "productEvidence": [
+                ],
+                "versionEvidence": [
+                ]
+            }
+
+        }    ]
+}

@@ -1,11 +1,11 @@
 {
-  "generated": "2026-11-01T06:24:40.890Z",
+  "generated": "2026-11-02T02:12:55.923Z",
   "m1": {
     "semgrep": {
       "v1": {
-        "total": 16,
-        "WARNING": 5,
-        "ERROR": 11
+        "total": 19,
+        "ERROR": 14,
+        "WARNING": 5
       },
       "v2": {
         "total": 0
@@ -28,25 +28,88 @@
       }
     },
     "dependency_check": {
-      "v1": null,
-      "v2": null
+      "v1": {
+        "total": 33,
+        "HIGH": 10,
+        "LOW": 7,
+        "CRITICAL": 2,
+        "MODERATE": 14
+      },
+      "v2": {
+        "total": 1,
+        "CRITICAL": 1
+      }
     },
     "sonarqube": {
-      "v1": null,
-      "v2": null
+      "v1": {
+        "issues_total": 2,
+        "by_software_quality": {
+          "MAINTAINABILITY": 0,
+          "SECURITY": 2,
+          "RELIABILITY": 0
+        },
+        "by_impact_severity": {
+          "HIGH": 1,
+          "MEDIUM": 0,
+          "LOW": 1,
+          "INFO": 0,
+          "BLOCKER": 0
+        },
+        "security_hotspots": 0,
+        "hotspots_by_probability": {},
+        "measures": {
+          "bugs": "0",
+          "reliability_rating": "1.0",
+          "code_smells": "0",
+          "security_rating": "4.0",
+          "ncloc": "362",
+          "vulnerabilities": "2",
+          "security_hotspots": "0",
+          "sqale_rating": "1.0"
+        },
+        "quality_gate": "OK"
+      },
+      "v2": {
+        "issues_total": 0,
+        "by_software_quality": {
+          "MAINTAINABILITY": 0,
+          "SECURITY": 0,
+          "RELIABILITY": 0
+        },
+        "by_impact_severity": {
+          "HIGH": 0,
+          "MEDIUM": 0,
+          "LOW": 0,
+          "INFO": 0,
+          "BLOCKER": 0
+        },
+        "security_hotspots": 0,
+        "hotspots_by_probability": {},
+        "measures": {
+          "bugs": "0",
+          "reliability_rating": "1.0",
+          "code_smells": "0",
+          "security_rating": "1.0",
+          "ncloc": "643",
+          "vulnerabilities": "0",
+          "security_hotspots": "0",
+          "sqale_rating": "1.0"
+        },
+        "quality_gate": "OK"
+      }
     },
     "zap": {
       "v1": {
-        "high": 5,
+        "high": 0,
         "medium": 3,
-        "low": 2,
-        "info": 3
+        "low": 7,
+        "info": 6
       },
       "v2": {
         "high": 0,
         "medium": 0,
-        "low": 0,
-        "info": 4
+        "low": 1,
+        "info": 5
       }
     }
   },
@@ -58,7 +121,7 @@
         "skipped": 0
       },
       "v2": {
-        "passed": 444,
+        "passed": 443,
         "failed": 0,
         "skipped": 30
       }
@@ -83,7 +146,7 @@
     "image": {
       "v1": {
         "image": "securenotes:v1",
-        "size_mb": 1349,
+        "size_mb": 1360,
         "user": "root (por defecto)",
         "healthcheck": false,
         "entrypoint": [
@@ -98,7 +161,7 @@
           "JWT_SECRET",
           "DB_PASSWORD"
         ],
-        "layers": 10
+        "layers": 11
       },
       "v2": {
         "image": "securenotes:v2",
@@ -119,11 +182,26 @@
   "m3": {
     "prowler": {
       "before": null,
-      "after": null
+      "after": {
+        "stage": "after",
+        "pass": 352,
+        "fail": 95,
+        "fail_by_severity": {
+          "Medium": 40,
+          "Low": 30,
+          "High": 20,
+          "Critical": 5
+        }
+      }
     },
     "scoutsuite": {
       "before": null,
-      "after": null
+      "after": {
+        "stage": "after",
+        "rules_danger": 6,
+        "rules_warning": 15,
+        "flagged_items": 47
+      }
     }
   }
 }

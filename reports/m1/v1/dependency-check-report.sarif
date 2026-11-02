@@ -1,0 +1,1928 @@
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "dependency-check",
+          "version": "12.2.2",
+          "informationUri": "https://dependency-check.github.io/DependencyCheck/",
+        "rules": [
+{
+              "id": "GHSA-jxfw-x594-9x9m",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-jxfw-x594-9x9m Improper Output Neutralization for Logs vulnerability in pkg:npm\/morgan@1.9.0"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nMorgan writes attacker-controlled request data to the access log through its tokens. The 1.11.0 fix neutralizes C0 control characters, DEL, and backslash, but it does not escape the Unicode line separators `U+0085` (NEL), `U+2028` (LINE SEPARATOR), or `U+2029` (PARAGRAPH SEPARATOR). These code points are reachable through several tokens, including the request URL (`:url`), request headers such as `:user-agent` and `:referrer`, arbitrary `:req[header]` values, and the Basic auth username (`:remote-user`). NEL is valid `obs-text` in HTTP header values, so an attacker can place it in an ordinary request header.\n\nWhen such a value is logged, the raw code points survive into the emitted access-log record, and downstream ECMAScript-aware or Unicode-aware log processing splits the single physical record into multiple logical records. This allows an attacker to forge log entries. The built-in `combined`, `common`, `default`, and `short` formats are affected, as well as any custom format. This is an incomplete fix of CVE-2026-5078.\n\n### Patches\n\nUsers should upgrade to version 1.12.0.\n\n### Workarounds\n\nNone. The affected values include the request URL and request headers, which are core to access logging, so there is no practical format-based mitigation. Upgrade to 1.12.0."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-jxfw-x594-9x9m](https://github.com/advisories/GHSA-jxfw-x594-9x9m)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 5.300000190734863,
+                    "security-severity": "5.300000190734863",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "NONE",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-p6mc-m468-83gw",
+              "shortDescription": {
+                 "text": "high severity - GHSA-p6mc-m468-83gw Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') vulnerability in pkg:npm\/lodash@4.17.15"
+              },
+              "fullDescription": {
+                "text": "Versions of lodash prior to 4.17.19 are vulnerable to Prototype Pollution. The functions `pick`, `set`, `setWith`, `update`, `updateWith`, and `zipObjectDeep` allow a malicious user to modify the prototype of Object if the property identifiers are user-supplied. Being affected by this issue requires manipulating objects based on user-provided property values or arrays.\n\nThis vulnerability causes the addition or modification of an existing property that will exist on all objects and may lead to Denial of Service or Code Execution under specific circumstances."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-p6mc-m468-83gw](https://github.com/advisories/GHSA-p6mc-m468-83gw)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 7.400000095367432,
+                    "security-severity": "7.400000095367432",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "HIGH",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "HIGH",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-f23m-r3pf-42rh",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-f23m-r3pf-42rh Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') vulnerability in pkg:npm\/lodash@4.17.15"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. The fix for [CVE-2025-13465](https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as `Object.prototype`, `Number.prototype`, and `String.prototype`.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\n### Patches\n\nThis issue is patched in 4.18.0.\n\n### Workarounds\n\nNone. Upgrade to the patched version."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-f23m-r3pf-42rh](https://github.com/advisories/GHSA-f23m-r3pf-42rh)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 6.5,
+                    "security-severity": "6.5",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-v422-hmwv-36x6",
+              "shortDescription": {
+                 "text": "low severity - GHSA-v422-hmwv-36x6 Allocation of Resources Without Limits or Throttling vulnerability in pkg:npm\/body-parser@1.19.0"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nWhen body-parser is configured with an invalid `limit` option value, such as an unparseable string or `NaN`, `bytes.parse()` returns `null` and the request body size check is silently skipped. Applications that rely on `limit` as their primary safeguard against oversized request bodies will accept arbitrarily large payloads, leading to excessive memory and CPU usage and denial of service.\n\nThis issue affects applications that pass a programmatically computed or user-configurable value to the `limit` option without validating it first.\n\n### Patches\n\nThis issue is fixed in [body-parser@2.3.0](https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/v2.3.0) and [body-parser@1.20.6](https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/v1.20.6) via [#698](https:\/\/github.com\/expressjs\/body-parser\/pull\/698). After the fix, invalid `limit` values throw a clear error at parser construction time instead of silently disabling enforcement. `null` and `undefined` continue to fall back to the default limit (`100kb`).\n\n### Workarounds\n\nValidate `limit` before passing it to body-parser. For example, parse the value with [`bytes.parse()`](https:\/\/github.com\/visionmedia\/bytes.js) at startup and reject any configuration where it returns `null` or a non-finite number.\n\n### References\n\n- [#698](https:\/\/github.com\/expressjs\/body-parser\/pull\/698): fix PR\n- [bytes.js](https:\/\/github.com\/visionmedia\/bytes.js): limit parser"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-v422-hmwv-36x6](https://github.com/advisories/GHSA-v422-hmwv-36x6)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 3.700000047683716,
+                    "security-severity": "3.700000047683716",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "HIGH",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "LOW",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-6rw7-vpxm-498p",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-6rw7-vpxm-498p Improper Input Validation vulnerability in pkg:npm\/qs@6.7.0"
+              },
+              "fullDescription": {
+                "text": "### Summary\n\nThe `arrayLimit` option in qs did not enforce limits for bracket notation (`a[]=1&a[]=2`), only for indexed notation (`a[0]=1`). This is a consistency bug; `arrayLimit` should apply uniformly across all array notations.\n\n**Note:** The default `parameterLimit` of 1000 effectively mitigates the DoS scenario originally described. With default options, bracket notation cannot produce arrays larger than `parameterLimit` regardless of `arrayLimit`, because each `a[]=value` consumes one parameter slot. The severity has been reduced accordingly.\n\n### Details\n\nThe `arrayLimit` option only checked limits for indexed notation (`a[0]=1&a[1]=2`) but did not enforce it for bracket notation (`a[]=1&a[]=2`).\n\n**Vulnerable code** (`lib\/parse.js:159-162`):\n```javascript\nif (root === '[]' && options.parseArrays) {\n    obj = utils.combine([], leaf);  \/\/ No arrayLimit check\n}\n```\n\n**Working code** (`lib\/parse.js:175`):\n```javascript\nelse if (index <= options.arrayLimit) {  \/\/ Limit checked here\n    obj = [];\n    obj[index] = leaf;\n}\n```\n\nThe bracket notation handler at line 159 uses `utils.combine([], leaf)` without validating against `options.arrayLimit`, while indexed notation at line 175 checks `index <= options.arrayLimit` before creating arrays.\n\n### PoC\n\n```javascript\nconst qs = require('qs');\nconst result = qs.parse('a[]=1&a[]=2&a[]=3&a[]=4&a[]=5&a[]=6', { arrayLimit: 5 });\nconsole.log(result.a.length);  \/\/ Output: 6 (should be max 5)\n```\n\n**Note on parameterLimit interaction:** The original advisory's \"DoS demonstration\" claimed a length of 10,000, but `parameterLimit` (default: 1000) caps parsing to 1,000 parameters. With default options, the actual output is 1,000, not 10,000.\n\n### Impact\n\nConsistency bug in `arrayLimit` enforcement. With default `parameterLimit`, the practical DoS risk is negligible since `parameterLimit` already caps the total number of parsed parameters (and thus array elements from bracket notation). The risk increases only when `parameterLimit` is explicitly set to a very high value."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-6rw7-vpxm-498p](https://github.com/advisories/GHSA-6rw7-vpxm-498p)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 3.700000047683716,
+                    "security-severity": "3.700000047683716",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "HIGH",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "LOW",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-4mjr-xmp4-gh2g",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-4mjr-xmp4-gh2g Uncaught Exception vulnerability in pkg:npm\/qs@6.7.0"
+              },
+              "fullDescription": {
+                "text": "### Summary\n\n`qs.stringify()` calls `utils.isBuffer()` on every value it serializes, and `utils.isBuffer()` invokes `obj.constructor.isBuffer(obj)` without checking that it is callable. A value whose own `constructor.isBuffer` is a non-function makes `qs` call a non-callable and throw `TypeError`. Such a value is produced **by `qs.parse` itself** from an untrusted query string when `plainObjects: true` or `allowPrototypes: true` is set, so a pure-`qs` `parse` \u2192 `stringify` round-trip \u2014 no `JSON.parse` \u2014 turns an unauthenticated query string into an uncaught throw.\n\nAn attacker-controlled `parse` input reaches the host application's availability asset \u2014 via `qs`'s own recommended `plainObjects` mitigation \u2014 and triggers an uncaught exception during a `parse` \u2192 `stringify` round-trip.\n\n### Details\n`utils.isBuffer` runs at `lib\/stringify.js:127` for every serialized value:\n\n```js\nif (isNonNullishPrimitive(obj) || utils.isBuffer(obj)) { ... }\n```\n\n`utils.isBuffer` (`lib\/utils.js:327-333`) invokes `obj.constructor.isBuffer` without verifying it is callable:\n\n```js\nvar isBuffer = function isBuffer(obj) {\n    if (!obj || typeof obj !== 'object') { return false; }\n    return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));\n};\n```\n\n`constructor` and `isBuffer` are ordinary keys. `qs.parse` with `plainObjects: true` or `allowPrototypes: true` keeps them as own properties, so the parsed value carries a non-function `constructor.isBuffer`; `stringify` then calls a non-callable and throws `TypeError`. By contrast `utils.isRegExp` uses a brand check (`Object.prototype.toString`); the missing guard here is an internal inconsistency, not a platform limitation.\n\n\n### Trust Boundary Note\n\n`qs.stringify` alone treats its input as caller-constructed, so serializing a hostile object could be argued outside its contract. This report does not depend on that framing: the malicious shape is produced by **`qs.parse`, whose input is untrusted by design**. `qs.parse` normally strips a `constructor` key via its prototype guard, but with the documented options `plainObjects: true` or `allowPrototypes: true` the key survives and lands as an own property. Feeding the parsed object back into `qs.stringify` \u2014 the standard round-trip in gateways and request-forwarders \u2014 then hits the unchecked call. \n\n\n### PoC\n`poc02c_isBuffer_qs_only_roundtrip.js` \u2014 pure-`qs` chain, no `JSON.parse`; an untrusted query string alone reaches the throw:\n\n```js\n'use strict';\nvar qs = require('qs');\n\nvar untrustedQueryString = 'x%5Bconstructor%5D%5BisBuffer%5D=y'; \/\/ x[constructor][isBuffer]=y\n\nvar parsed = qs.parse(untrustedQueryString, { plainObjects: true });\nconsole.log('[parse] kept constructor key:', JSON.stringify(parsed));\n\ntry {\n    qs.stringify(parsed);\n    console.log('[stringify] no throw (unexpected)');\n} catch (e) {\n    console.log('[stringify] DoS reproduced ->', e.constructor.name + ':', e.message);\n}\n```\n\n`poc02_isBuffer.js` \u2014 the minimal defect:\n\n```js\n'use strict';\nvar qs = require('qs');\ntry {\n    qs.stringify(JSON.parse('{\"a\":{\"constructor\":{\"isBuffer\":\"x\"}}}'));\n} catch (e) {\n    console.log('[A] DoS reproduced ->', e.constructor.name + ':', e.message);\n}\n```\n\n`poc02b_isBuffer_async_crash.js` \u2014 worker death in an async sink:\n\n```js\n'use strict';\nvar qs = require('qs');\n\nfunction handleRequestAsync(clientJsonBody) {\n    try {\n        setImmediate(function () {                 \/\/ async continuation, outside the try\n            qs.stringify(JSON.parse(clientJsonBody)); \/\/ throws here, uncaught\n        });\n        console.log('[handler] returned 200 synchronously; async work scheduled');\n    } catch (e) {\n        console.log('[handler] caught synchronously (will NOT happen):', e.message);\n    }\n}\nprocess.on('exit', function (code) {\n    console.log('[proc] process exiting with code:', code);\n});\nhandleRequestAsync('{\"filters\":{\"constructor\":{\"isBuffer\":\"x\"}}}');\n```\n\n### Execution Steps\n\n```bash\ncd poc\nnpm install qs@6.15.3\nnode poc02c_isBuffer_qs_only_roundtrip.js  # pure qs parse->stringify -> TypeError\nnode poc02_isBuffer.js                      # minimal defect -> TypeError inside stringify\nnode poc02b_isBuffer_async_crash.js         # async sink -> uncaught throw -> exit code 1\n```\n\n### Reproduction Evidence\n\n`poc02c_isBuffer_qs_only_roundtrip.js` :\n\n```\n[parse] kept constructor key: {\"x\":{\"constructor\":{\"isBuffer\":\"y\"}}}\n[stringify] DoS reproduced -> TypeError: obj.constructor.isBuffer is not a function\n```\n\n`poc02_isBuffer.js`:\n\n```\n[A] DoS reproduced -> TypeError: obj.constructor.isBuffer is not a function\n```\n\n`poc02b_isBuffer_async_crash.js` :\n\n```\n[handler] returned 200 synchronously; async work scheduled\n[proc] process exiting with code: 1\nTypeError: obj.constructor.isBuffer is not a function\n    at Object.isBuffer (...\/qs\/lib\/utils.js:332:78)\n    at stringify (...\/qs\/lib\/stringify.js:127:45)\n=== EXIT CODE: 1 ===\n```\n\nThe pure-`qs` round-trip shows the malicious shape originates from `qs.parse` of an untrusted query string, with no `JSON.parse`. The synchronous `try\/catch` in the async case does not catch the throw; the process exits with code 1, denying service to all requests on that worker.\n\n### Impact\n\nAn unauthenticated request degrades any endpoint that re-serializes deserialized client data with `qs.stringify`. The primary impact is a per-request failure: the handler throws and the framework returns HTTP 500. Where the call sits in an unguarded async continuation, the throw escapes and the worker process exits, denying service to all requests it was handling, which means a higher impact that depends on the application's error handling, not on `qs`.\n\n### Recommended Fix\n\nReplace the duck-type with a brand check mirroring `utils.isRegExp`:\n\n```js\nvar isBuffer = function isBuffer(obj) {\n    if (!obj || typeof obj !== 'object') { return false; }\n    if (typeof Buffer !== 'undefined' && typeof Buffer.isBuffer === 'function') {\n        return Buffer.isBuffer(obj);\n    }\n    return Object.prototype.toString.call(obj) === '[object Uint8Array]';\n};\n```\n\nIf duck-typing must remain, require `typeof obj.constructor.isBuffer === 'function'` before invoking and wrap the call in `try\/catch`."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-4mjr-xmp4-gh2g](https://github.com/advisories/GHSA-4mjr-xmp4-gh2g)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 5.300000190734863,
+                    "security-severity": "5.300000190734863",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-4vj7-5mj6-jm8m",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-4vj7-5mj6-jm8m Improper Output Neutralization for Logs vulnerability in pkg:npm\/morgan@1.9.0"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nMorgan's `:remote-user` token extracts the Basic auth username from the `Authorization` header and writes it to the log stream without neutralizing control characters. An attacker can send a crafted `Authorization: Basic` header containing CR\/LF characters to inject forged log lines, corrupting the one-request-per-line structure of access logs.\n\nThe built-in `combined`, `common`, `default`, and `short` formats are affected, as well as any custom format that includes `:remote-user`.\n\n### Patches\n\nUsers should upgrade to version 1.11.0.\n\n### Workarounds\n\nUse a custom format string that does not include `:remote-user`."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-4vj7-5mj6-jm8m](https://github.com/advisories/GHSA-4vj7-5mj6-jm8m)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 5.300000190734863,
+                    "security-severity": "5.300000190734863",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "NONE",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-pxg6-pf52-xh8x",
+              "shortDescription": {
+                 "text": "low severity - GHSA-pxg6-pf52-xh8x Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection') vulnerability in pkg:npm\/cookie@0.3.1"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nThe cookie name could be used to set other fields of the cookie, resulting in an unexpected cookie value. For example, `serialize(\"userName=<script>alert('XSS3')<\/script>; Max-Age=2592000; a\", value)` would result in `\"userName=<script>alert('XSS3')<\/script>; Max-Age=2592000; a=test\"`, setting `userName` cookie to `<script>` and ignoring `value`.\n\nA similar escape can be used for `path` and `domain`, which could be abused to alter other fields of the cookie.\n\n### Patches\n\nUpgrade to 0.7.0, which updates the validation for `name`, `path`, and `domain`.\n\n### Workarounds\n\nAvoid passing untrusted or arbitrary values for these fields, ensure they are set by the application instead of user input.\n\n### References\n\n* https:\/\/github.com\/jshttp\/cookie\/pull\/167"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-pxg6-pf52-xh8x](https://github.com/advisories/GHSA-pxg6-pf52-xh8x)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-qwcr-r2fm-qrc7",
+              "shortDescription": {
+                 "text": "high severity - GHSA-qwcr-r2fm-qrc7 Asymmetric Resource Consumption (Amplification) vulnerability in pkg:npm\/body-parser@1.19.0"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nbody-parser <1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service.\n\n### Patches\n\nthis issue is patched in 1.20.3\n\n### References\n"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-qwcr-r2fm-qrc7](https://github.com/advisories/GHSA-qwcr-r2fm-qrc7)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 7.5,
+                    "security-severity": "7.5",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-27r3-jxmh-p828",
+              "shortDescription": {
+                 "text": "high severity - GHSA-27r3-jxmh-p828 Uncaught Exception vulnerability in pkg:npm\/body-parser@1.19.0"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nA single request can crash any application using `body-parser` with default options. When a request carries a `Content-Encoding` (for example `gzip`), `body-parser` pipes it into a decompression stream and, after reading the body, leaves that stream piped with no error listener. A payload of one valid compressed frame followed by trailing bytes decodes and the application responds normally, but the trailing bytes then reach the already-finished decoder, which emits an error that is re-thrown as an uncaught exception and terminates the process. No authentication or matching route is required, since parsing runs before routing.\n\n### Patches\n\nFixed in body-parser 2.4.0 and 1.20.9. Upgrade to one of these versions.\n\n### Workarounds\n\nPass `inflate: false` to the body-parser middleware if the application does not need to accept compressed request bodies. This rejects encoded requests before any decompression stream is created."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-27r3-jxmh-p828](https://github.com/advisories/GHSA-27r3-jxmh-p828)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 7.5,
+                    "security-severity": "7.5",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-w7fw-mjwx-w883",
+              "shortDescription": {
+                 "text": "low severity - GHSA-w7fw-mjwx-w883 Improper Input Validation vulnerability in pkg:npm\/qs@6.7.0"
+              },
+              "fullDescription": {
+                "text": "### Summary\nThe `arrayLimit` option in qs does not enforce limits for comma-separated values when `comma: true` is enabled, allowing attackers to cause denial-of-service via memory exhaustion. This is a bypass of the array limit enforcement, similar to the bracket notation bypass addressed in GHSA-6rw7-vpxm-498p (CVE-2025-15284).\n\n### Details\nWhen the `comma` option is set to `true` (not the default, but configurable in applications), qs allows parsing comma-separated strings as arrays (e.g., `?param=a,b,c` becomes `['a', 'b', 'c']`). However, the limit check for `arrayLimit` (default: 20) and the optional throwOnLimitExceeded occur after the comma-handling logic in `parseArrayValue`, enabling a bypass. This permits creation of arbitrarily large arrays from a single parameter, leading to excessive memory allocation.\n\n**Vulnerable code** (lib\/parse.js: lines ~40-50):\n```js\nif (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {\n    return val.split(',');\n}\n\nif (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) {\n    throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n}\n\nreturn val;\n```\nThe `split(',')` returns the array immediately, skipping the subsequent limit check. Downstream merging via `utils.combine` does not prevent allocation, even if it marks overflows for sparse arrays.This discrepancy allows attackers to send a single parameter with millions of commas (e.g., `?param=,,,,,,,,...`), allocating massive arrays in memory without triggering limits. It bypasses the intent of `arrayLimit`, which is enforced correctly for indexed (`a[0]=`) and bracket (`a[]=`) notations (the latter fixed in v6.14.1 per GHSA-6rw7-vpxm-498p).\n\n### PoC\n**Test 1 - Basic bypass:**\n```\nnpm install qs\n```\n\n```js\nconst qs = require('qs');\n\nconst payload = 'a=' + ','.repeat(25);  \/\/ 26 elements after split (bypasses arrayLimit: 5)\nconst options = { comma: true, arrayLimit: 5, throwOnLimitExceeded: true };\n\ntry {\n  const result = qs.parse(payload, options);\n  console.log(result.a.length);  \/\/ Outputs: 26 (bypass successful)\n} catch (e) {\n  console.log('Limit enforced:', e.message);  \/\/ Not thrown\n}\n```\n**Configuration:**\n- `comma: true`\n- `arrayLimit: 5`\n- `throwOnLimitExceeded: true`\n\nExpected: Throws \"Array limit exceeded\" error.\nActual: Parses successfully, creating an array of length 26.\n\n\n### Impact\nDenial of Service (DoS) via memory exhaustion.\n\n### Suggested Fix\nMove the `arrayLimit` check before the comma split in `parseArrayValue`, and enforce it on the resulting array length. Use `currentArrayLength` (already calculated upstream) for consistency with bracket notation fixes.\n\n**Current code** (lib\/parse.js: lines ~40-50):\n```js\nif (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {\n    return val.split(',');\n}\n\nif (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) {\n    throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n}\n\nreturn val;\n```\n\n**Fixed code:**\n```js\nif (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {\n    const splitArray = val.split(',');\n    if (splitArray.length > options.arrayLimit - currentArrayLength) {  \/\/ Check against remaining limit\n        if (options.throwOnLimitExceeded) {\n            throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n        } else {\n            \/\/ Optionally convert to object or truncate, per README\n            return splitArray.slice(0, options.arrayLimit - currentArrayLength);\n        }\n    }\n    return splitArray;\n}\n\nif (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) {\n    throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n}\n\nreturn val;\n```\nThis aligns behavior with indexed and bracket notations, reuses `currentArrayLength`, and respects `throwOnLimitExceeded`. Update README to note the consistent enforcement."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-w7fw-mjwx-w883](https://github.com/advisories/GHSA-w7fw-mjwx-w883)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 3.700000047683716,
+                    "security-severity": "3.700000047683716",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "HIGH",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "LOW",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-rv95-896h-c2vc",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-rv95-896h-c2vc URL Redirection to Untrusted Site ('Open Redirect') vulnerability in pkg:npm\/express@4.17.1"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nVersions of Express.js prior to 4.19.2 and pre-release alpha and beta versions before 5.0.0-beta.3 are affected by an open redirect vulnerability using malformed URLs.\n\nWhen a user of Express performs a redirect using a user-provided URL Express performs an encode [using `encodeurl`](https:\/\/github.com\/pillarjs\/encodeurl) on the contents before passing it to the `location` header. This can cause malformed URLs to be evaluated in unexpected ways by common redirect allow list implementations in Express applications, leading to an Open Redirect via bypass of a properly implemented allow list.\n\nThe main method impacted is `res.location()` but this is also called from within `res.redirect()`.\n\n### Patches\n\nhttps:\/\/github.com\/expressjs\/express\/commit\/0867302ddbde0e9463d0564fea5861feb708c2dd\nhttps:\/\/github.com\/expressjs\/express\/commit\/0b746953c4bd8e377123527db11f9cd866e39f94\n\nAn initial fix went out with `express@4.19.0`, we then patched a feature regression in `4.19.1` and added improved handling for the bypass in `4.19.2`.\n\n### Workarounds\n\nThe fix for this involves pre-parsing the url string with either `require('node:url').parse` or `new URL`. These are steps you can take on your own before passing the user input string to `res.location` or `res.redirect`.\n\n### Resources\n\nhttps:\/\/github.com\/expressjs\/express\/pull\/5539\nhttps:\/\/github.com\/koajs\/koa\/issues\/1800\nhttps:\/\/expressjs.com\/en\/4x\/api.html#res.location"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-rv95-896h-c2vc](https://github.com/advisories/GHSA-rv95-896h-c2vc)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 6.099999904632568,
+                    "security-severity": "6.099999904632568",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "REQUIRED",
+                    "cvssv3_scope": "CHANGED",
+                    "cvssv3_confidentialityImpact": "LOW",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "NONE",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-m6fv-jmcg-4jfg",
+              "shortDescription": {
+                 "text": "low severity - GHSA-m6fv-jmcg-4jfg Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in pkg:npm\/send@0.17.1"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `SendStream.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in send 0.19.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-m6fv-jmcg-4jfg](https://github.com/advisories/GHSA-m6fv-jmcg-4jfg)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 5.0,
+                    "security-severity": "5.0",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "HIGH",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "REQUIRED",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "LOW",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-g3hv-75wg-m249",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-g3hv-75wg-m249 Asymmetric Resource Consumption (Amplification) vulnerability in pkg:npm\/minimatch@5.1.9"
+              },
+              "fullDescription": {
+                "text": "minimatch 10.2.6 contains an attacker-controlled pattern amplification in firstPhasePreProcess() when optimizationLevel >= 2.\n\nresearcher: Reid Downing (b1nv0id)\nfiles: \n\n- src\/index.ts: 690-770\n- src\/index.ts: 780-796\n\nissue:\ninput-controlled growth of globParts during first-phase preprocessing, followed by quadratic second-phase processing.\n\nthe **\/..\/ transformation clones a globparts entry and appends the clone to the same globparts array:\n```\nparts.splice(gs, 1)\nconst other = parts.slice(0)\nother[gs] = '**'\nglobParts.push(other)\n```\nthis occurs inside a do...while (didSomething) fixpoint loop, allowing generated entries to be processed again.\n\nthe expanded globparts array is subsequently processed by secondPhasePreProcess(), which performs pairwise comparisons:\n```\nfor (let i = 0; i < globParts.length - 1; i++) {\n  for (let j = i + 1; j < globParts.length; j++) {\n    this.partsMatch(...)\n  }\n}\n```\nan attacker who can supply a glob pattern can therefore cause additional pattern entries to be generated during preprocessing, followed by quadratic pairwise processing, resulting in excessive cpu and memory consumption."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-g3hv-75wg-m249](https://github.com/advisories/GHSA-g3hv-75wg-m249)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-37ch-88jc-xwx2",
+              "shortDescription": {
+                 "text": "high severity - GHSA-37ch-88jc-xwx2 Inefficient Regular Expression Complexity vulnerability in pkg:npm\/path-to-regexp@0.1.7"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nA bad regular expression is generated any time you have three or more parameters within a single segment, separated by something that is not a period (`.`). For example, `\/:a-:b-:c` or `\/:a-:b-:c-:d`. The backtrack protection added in `path-to-regexp@0.1.12` only prevents ambiguity for two parameters. With three or more, the generated lookahead does not block single separator characters, so capture groups overlap and cause catastrophic backtracking.\n\n### Patches\n\nUpgrade to [path-to-regexp@0.1.13](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v.0.1.13)\n\nCustom regex patterns in route definitions (e.g., `\/:a-:b([^-\/]+)-:c([^-\/]+)`) are not affected because they override the default capture group.\n\n### Workarounds\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `\/:a-:b-:c` to `\/:a-:b([^-\/]+)-:c([^-\/]+)`.\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length.\n\n### References\n\n- [GHSA-9wv6-86v2-598j](https:\/\/github.com\/advisories\/GHSA-9wv6-86v2-598j)\n- [Detailed blog post: ReDoS the web](https:\/\/blakeembrey.com\/posts\/2024-09-web-redos\/)"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-37ch-88jc-xwx2](https://github.com/advisories/GHSA-37ch-88jc-xwx2)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 7.5,
+                    "security-severity": "7.5",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-9f6g-j8ch-79g4",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-9f6g-j8ch-79g4 Improper Output Neutralization for Logs vulnerability in pkg:npm\/morgan@1.9.0"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nMorgan writes attacker-controlled request data to the access log. Its escaping (added in 1.11.0 and 1.12.0) neutralizes control characters, the Unicode line separators, and backslash, but not the double quote (`0x22`), which is the field delimiter of the Apache combined log format morgan emits. An attacker who controls a quoted field (`:user-agent`, `:referrer`, the request URL, or the Basic auth `:remote-user`) can inject a double quote to close the field early and forge additional fields in the log record. The `combined`, `common`, and `default` formats, and any custom format that quotes a token, are affected. This is an incomplete fix of CVE-2026-5078 and CVE-2026-15603.\n\n### Patches\n\nUsers should upgrade to version 1.12.1.\n\n### Workarounds\n\nUpdate to version 1.12.1."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-9f6g-j8ch-79g4](https://github.com/advisories/GHSA-9f6g-j8ch-79g4)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 5.300000190734863,
+                    "security-severity": "5.300000190734863",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "NONE",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-hrpp-h998-j3pp",
+              "shortDescription": {
+                 "text": "high severity - GHSA-hrpp-h998-j3pp Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') vulnerability in pkg:npm\/qs@6.7.0"
+              },
+              "fullDescription": {
+                "text": "qs before 6.10.3 allows attackers to cause a Node process hang because an `__ proto__` key can be used. In many typical web framework use cases, an unauthenticated remote attacker can place the attack payload in the query string of the URL that is used to visit the application, such as `a[__proto__]=b&a[__proto__]&a[length]=100000000`. The fix was backported to qs 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, and 6.2.4."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-hrpp-h998-j3pp](https://github.com/advisories/GHSA-hrpp-h998-j3pp)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 7.5,
+                    "security-severity": "7.5",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-xxjr-mmjv-4gpg",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-xxjr-mmjv-4gpg Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') vulnerability in pkg:npm\/lodash@4.17.15"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nLodash versions 4.0.0 through 4.17.22 are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. \n\nThe issue permits deletion of properties but does not allow overwriting their original behavior.  \n\n### Patches\n\nThis issue is patched on 4.17.23."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-xxjr-mmjv-4gpg](https://github.com/advisories/GHSA-xxjr-mmjv-4gpg)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 6.5,
+                    "security-severity": "6.5",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-cm22-4g7w-348p",
+              "shortDescription": {
+                 "text": "low severity - GHSA-cm22-4g7w-348p Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in pkg:npm\/serve-static@1.14.1"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\npassing untrusted user input - even after sanitizing it - to `redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in serve-static 1.16.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-cm22-4g7w-348p](https://github.com/advisories/GHSA-cm22-4g7w-348p)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 5.0,
+                    "security-severity": "5.0",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "HIGH",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "REQUIRED",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "LOW",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-qw6h-vgh9-j6wx",
+              "shortDescription": {
+                 "text": "low severity - GHSA-qw6h-vgh9-j6wx Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting') vulnerability in pkg:npm\/express@4.17.1"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nIn express <4.20.0, passing untrusted user input - even after sanitizing it - to `response.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in express 4.20.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-qw6h-vgh9-j6wx](https://github.com/advisories/GHSA-qw6h-vgh9-j6wx)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 5.0,
+                    "security-severity": "5.0",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "HIGH",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "REQUIRED",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "LOW",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-29mw-wpgm-hmr9",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-29mw-wpgm-hmr9 Uncontrolled Resource Consumption vulnerability in pkg:npm\/lodash@4.17.15"
+              },
+              "fullDescription": {
+                "text": "All versions of package lodash prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the `toNumber`, `trim` and `trimEnd` functions. \n\nSteps to reproduce (provided by reporter Liyuan Chen):\n```js\nvar lo = require('lodash');\n\nfunction build_blank(n) {\n    var ret = \"1\"\n    for (var i = 0; i < n; i++) {\n        ret += \" \"\n    }\n    return ret + \"1\";\n}\nvar s = build_blank(50000) var time0 = Date.now();\nlo.trim(s) \nvar time_cost0 = Date.now() - time0;\nconsole.log(\"time_cost0: \" + time_cost0);\nvar time1 = Date.now();\nlo.toNumber(s) var time_cost1 = Date.now() - time1;\nconsole.log(\"time_cost1: \" + time_cost1);\nvar time2 = Date.now();\nlo.trimEnd(s);\nvar time_cost2 = Date.now() - time2;\nconsole.log(\"time_cost2: \" + time_cost2);\n```"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-29mw-wpgm-hmr9](https://github.com/advisories/GHSA-29mw-wpgm-hmr9)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 5.300000190734863,
+                    "security-severity": "5.300000190734863",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-rhx6-c78j-4q9w",
+              "shortDescription": {
+                 "text": "high severity - GHSA-rhx6-c78j-4q9w Inefficient Regular Expression Complexity vulnerability in pkg:npm\/path-to-regexp@0.1.7"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nThe regular expression that is vulnerable to backtracking can be generated in versions before 0.1.12 of `path-to-regexp`, originally reported in CVE-2024-45296\n\n### Patches\n\nUpgrade to 0.1.12.\n\n### Workarounds\n\nAvoid using two parameters within a single path segment, when the separator is not `.` (e.g. no `\/:a-:b`). Alternatively, you can define the regex used for both parameters and ensure they do not overlap to allow backtracking.\n\n### References\n\n- https:\/\/github.com\/advisories\/GHSA-9wv6-86v2-598j\n- https:\/\/blakeembrey.com\/posts\/2024-09-web-redos\/"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-rhx6-c78j-4q9w](https://github.com/advisories/GHSA-rhx6-c78j-4q9w)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 7.5,
+                    "security-severity": "7.5",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-gwg9-rgvj-4h5j",
+              "shortDescription": {
+                 "text": "critical severity - GHSA-gwg9-rgvj-4h5j Improper Control of Generation of Code ('Code Injection') vulnerability in pkg:npm\/morgan@1.9.0"
+              },
+              "fullDescription": {
+                "text": "Verisons of `morgan` before 1.9.1 are vulnerable to code injection when user input is allowed into the filter or combined with a prototype pollution attack.\n\n\n## Recommendation\n\nUpdate to version 1.9.1 or later."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-gwg9-rgvj-4h5j](https://github.com/advisories/GHSA-gwg9-rgvj-4h5j)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 9.800000190734863,
+                    "security-severity": "9.800000190734863",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "HIGH",
+                    "cvssv3_integrityImpact": "HIGH",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "CRITICAL",
+"cvssv3_version": "_3_0",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-76c9-3jph-rj3q",
+              "shortDescription": {
+                 "text": "low severity - GHSA-76c9-3jph-rj3q Improper Handling of Unexpected Data Type vulnerability in pkg:npm\/on-headers@1.0.2"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nA bug in on-headers versions `< 1.1.0` may result in response headers being inadvertently modified when an array is passed to `response.writeHead()`\n\n### Patches\n\nUsers should upgrade to `1.1.0`\n\n### Workarounds\n\nUses are encouraged to upgrade to `1.1.0`, but this issue can be worked around by passing an object to `response.writeHead()` rather than an array."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-76c9-3jph-rj3q](https://github.com/advisories/GHSA-76c9-3jph-rj3q)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 3.4000000953674316,
+                    "security-severity": "3.4000000953674316",
+                    "cvssv3_attackVector": "LOCAL",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "HIGH",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "LOW",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "NONE",
+                    "cvssv3_baseSeverity": "LOW",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-r5fr-rjxr-66jc",
+              "shortDescription": {
+                 "text": "high severity - GHSA-r5fr-rjxr-66jc Improper Control of Generation of Code ('Code Injection') vulnerability in pkg:npm\/lodash@4.17.15"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nThe fix for [CVE-2021-23337](https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm) added validation for the `variable` option in `_.template` but did not apply the same validation to `options.imports` key names. Both paths flow into the same `Function()` constructor sink.\n\nWhen an application passes untrusted input as `options.imports` key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time.\n\nAdditionally, `_.template` uses `assignInWith` to merge imports, which enumerates inherited properties via `for..in`. If `Object.prototype` has been polluted by any other vector, the polluted keys are copied into the imports object and passed to `Function()`.\n\n### Patches\n\nUsers should upgrade to version 4.18.0.\n\nThe fix applies two changes:\n1. Validate `importsKeys` against the existing `reForbiddenIdentifierChars` regex (same check already used for the `variable` option)\n2. Replace `assignInWith` with `assignWith` when merging imports, so only own properties are enumerated\n\n### Workarounds\n\nDo not pass untrusted input as key names in `options.imports`. Only use developer-controlled, static key names."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-r5fr-rjxr-66jc](https://github.com/advisories/GHSA-r5fr-rjxr-66jc)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 8.100000381469727,
+                    "security-severity": "8.100000381469727",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "HIGH",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "HIGH",
+                    "cvssv3_integrityImpact": "HIGH",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-qwph-4952-7xr6",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-qwph-4952-7xr6 Improper Verification of Cryptographic Signature vulnerability in pkg:npm\/jsonwebtoken@8.5.1"
+              },
+              "fullDescription": {
+                "text": "# Overview\n\nIn versions <=8.5.1 of jsonwebtoken library, lack of algorithm definition and a falsy secret or key in the `jwt.verify()` function can lead to signature validation bypass due to defaulting to the `none` algorithm for signature verification.\n\n# Am I affected?\nYou will be affected if all the following are true in the `jwt.verify()` function:\n- a token with no signature is received\n- no algorithms are specified \n- a falsy (e.g. null, false, undefined) secret or key is passed \n\n# How do I fix it?\n \nUpdate to version 9.0.0 which removes the default support for the none algorithm in the `jwt.verify()` method. \n\n# Will the fix impact my users?\n\nThere will be no impact, if you update to version 9.0.0 and you don\u2019t need to allow for the `none` algorithm. If you need 'none' algorithm, you have to explicitly specify that in `jwt.verify()` options."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-qwph-4952-7xr6](https://github.com/advisories/GHSA-qwph-4952-7xr6)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 6.400000095367432,
+                    "security-severity": "6.400000095367432",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "HIGH",
+                    "cvssv3_privilegesRequired": "LOW",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "LOW",
+                    "cvssv3_integrityImpact": "HIGH",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-35jh-r3h4-6jhm",
+              "shortDescription": {
+                 "text": "high severity - GHSA-35jh-r3h4-6jhm Improper Neutralization of Special Elements used in a Command ('Command Injection') vulnerability in pkg:npm\/lodash@4.17.15"
+              },
+              "fullDescription": {
+                "text": "`lodash` versions prior to 4.17.21 are vulnerable to Command Injection via the template function."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-35jh-r3h4-6jhm](https://github.com/advisories/GHSA-35jh-r3h4-6jhm)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 7.199999809265137,
+                    "security-severity": "7.199999809265137",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "HIGH",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "HIGH",
+                    "cvssv3_integrityImpact": "HIGH",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-hjrf-2m68-5959",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-hjrf-2m68-5959 Improper Authentication vulnerability in pkg:npm\/jsonwebtoken@8.5.1"
+              },
+              "fullDescription": {
+                "text": "# Overview\n\nVersions `<=8.5.1` of `jsonwebtoken` library can be misconfigured so that passing a poorly implemented key retrieval function (referring to the `secretOrPublicKey` argument from the [readme link](https:\/\/github.com\/auth0\/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback)) will result in incorrect verification of tokens. There is a possibility of using a different algorithm and key combination in verification  than the one that was used to sign the tokens. Specifically, tokens signed with an asymmetric public key could be verified with a symmetric HS256 algorithm. This can lead to successful validation of forged tokens. \n\n# Am I affected?\n\nYou will be affected if your application is supporting usage of both symmetric key and asymmetric key in jwt.verify() implementation with the same key retrieval function. \n\n# How do I fix it?\n \nUpdate to version 9.0.0.\n\n# Will the fix impact my users?\n\nThere is no impact for end users"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-hjrf-2m68-5959](https://github.com/advisories/GHSA-hjrf-2m68-5959)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 5.0,
+                    "security-severity": "5.0",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "HIGH",
+                    "cvssv3_privilegesRequired": "LOW",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "LOW",
+                    "cvssv3_integrityImpact": "LOW",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-ghr5-ch3p-vcr6",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-ghr5-ch3p-vcr6 Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution') vulnerability in pkg:npm\/ejs@3.1.6"
+              },
+              "fullDescription": {
+                "text": "The ejs (aka Embedded JavaScript templates) package before 3.1.10 for Node.js lacks certain pollution protection."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-ghr5-ch3p-vcr6](https://github.com/advisories/GHSA-ghr5-ch3p-vcr6)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 4.0,
+                    "security-severity": "4.0",
+                    "cvssv3_attackVector": "LOCAL",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-8cf7-32gw-wr33",
+              "shortDescription": {
+                 "text": "high severity - GHSA-8cf7-32gw-wr33 Use of a Broken or Risky Cryptographic Algorithm vulnerability in pkg:npm\/jsonwebtoken@8.5.1"
+              },
+              "fullDescription": {
+                "text": "# Overview\n\nVersions `<=8.5.1` of `jsonwebtoken` library could be misconfigured so that legacy, insecure key types are used for signature verification. For example, DSA keys could be used with the RS256 algorithm. \n\n# Am I affected?\n\nYou are affected if you are using an algorithm and a key type other than the combinations mentioned below\n\n| Key type |  algorithm                                    |\n|----------|------------------------------------------|\n| ec           | ES256, ES384, ES512                      |\n| rsa          | RS256, RS384, RS512, PS256, PS384, PS512 |\n| rsa-pss  | PS256, PS384, PS512                      |\n\nAnd for Elliptic Curve algorithms:\n\n| `alg` | Curve      |\n|-------|------------|\n| ES256 | prime256v1 |\n| ES384 | secp384r1  |\n| ES512 | secp521r1  |\n\n# How do I fix it?\n\nUpdate to version 9.0.0. This version validates for asymmetric key type and algorithm combinations. Please refer to the above mentioned algorithm \/ key type combinations for the valid secure configuration. After updating to version 9.0.0, If you still intend to continue with signing or verifying tokens using invalid key type\/algorithm value combinations, you\u2019ll need to set the `allowInvalidAsymmetricKeyTypes` option to `true` in the `sign()` and\/or `verify()` functions.\n\n# Will the fix impact my users?\n\nThere will be no impact, if you update to version 9.0.0 and you already use a valid secure combination of key type and algorithm. Otherwise,  use the  `allowInvalidAsymmetricKeyTypes` option  to `true` in the `sign()` and `verify()` functions to continue usage of invalid key type\/algorithm combination in 9.0.0 for legacy compatibility. \n\n"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-8cf7-32gw-wr33](https://github.com/advisories/GHSA-8cf7-32gw-wr33)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 8.100000381469727,
+                    "security-severity": "8.100000381469727",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "LOW",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "HIGH",
+                    "cvssv3_integrityImpact": "HIGH",
+                    "cvssv3_availabilityImpact": "NONE",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-6pq8-jhm2-2vcw",
+              "shortDescription": {
+                 "text": "medium severity - GHSA-6pq8-jhm2-2vcw Uncaught Exception vulnerability in pkg:npm\/qs@6.7.0"
+              },
+              "fullDescription": {
+                "text": "## Summary\n\n`qs.stringify(obj, { arrayFormat: 'comma' })` throws an uncaught `TypeError: Cannot convert object to primitive value` when an array in `obj` contains an element that carries an own, non-callable `toString` property (for example `{ a: [ { toString: 'x' } ] }`). A remote, unauthenticated attacker who can influence an object that the application later re-serializes with the comma array format triggers the throw. In a service that lacks a synchronous error boundary around the serialization call, the uncaught exception crashes the worker process, producing a denial of service.\n\n## Root Cause\n\nWhen `arrayFormat: 'comma'` is selected, the comma branch collapses the whole array into a single value via `Array.prototype.join`, or, under `encodeValuesOnly: true`, maps each element through the value encoder before joining. Both paths perform an implicit string coercion (`ToPrimitive` with hint `\"string\"`) on each element. For an object whose own `toString` is a non-callable value, coercion skips the shadowed non-callable `toString`, falls through to `Object.prototype.valueOf` (which returns the object rather than a primitive), and throws. The comma branch runs this coercion before the per-element null and skip handling in the main loop, so nothing downstream can neutralize the hostile element, and the throw is never caught inside the library.\n\n```text\nlib\/stringify.js  (comma-array branch)\n  line 152-154: obj = utils.maybeMap(obj, function (v) { return v == null ? v : encoder(v); });  \/\/ encodeValuesOnly path\n  line 156:     objKeys = [{ value: obj.length > 0 ? obj.join(',') || null : void undefined }];   \/\/ default comma path\nlib\/utils.js\n  line 292:     string = String(str);   \/\/ value encoder coercion reached via the encodeValuesOnly path\n```\n\n## Impact\n\nPrerequisites: the application calls `qs.stringify` with `arrayFormat: 'comma'` (a documented, supported option) on an object whose shape can be influenced by attacker input. Attacker-controllable sources include `qs.parse(input, { allowPrototypes: true })`, which retains a `toString` segment (Express 4's default query parser, Express 5's `extended` query parser, and body-parser's `extended` urlencoded parser all set it), `qs.parse(input, { plainObjects: true })`, whose null-prototype elements throw even without a `toString` key (eg, `a[][b]=c`), and `JSON.parse` of a request body, which needs no qs parse option at all. No authentication or user interaction is required. Demonstrated capability: a single request forces an uncaught synchronous `TypeError` in the serialization call. In a naive single-process Node service with no synchronous error boundary, this crashes the process and takes the service offline (availability impact). Under a framework such as Express that traps synchronous handler throws, the plausible outcome is a per-request 500 rather than a full outage; that lower-impact case is noted but not the worst credible supported deployment. There is no confidentiality or integrity impact, no memory unsafety, and no prototype pollution.\n\n## Proof of Concept\n\n`Install qs at the affected version (for example 6.16.0) and run the following script with Node.js. No network setup is required; it demonstrates the throw in isolation.`\n\n```js\nvar qs = require('qs');\n\n\/\/ Source A: qs.parse with allowPrototypes retains the hostile toString segment\nqs.stringify(qs.parse('a[0][toString]=x', { allowPrototypes: true }), { arrayFormat: 'comma' });\n\n\/\/ Source B: a JSON request body, no qs parse option needed\nqs.stringify(JSON.parse('{\"a\":[{\"toString\":\"x\"}]}'), { arrayFormat: 'comma' });\n\n\/\/ Also affected: the encodeValuesOnly sub-path\nqs.stringify(JSON.parse('{\"a\":[{\"toString\":\"x\"}]}'), { arrayFormat: 'comma', encodeValuesOnly: true });\n```\n\n```text\nA default-join (allowPrototypes) => THREW: TypeError: Cannot convert object to primitive value\nB default-join (JSON.parse) => THREW: TypeError: Cannot convert object to primitive value\nC encodeValuesOnly path => THREW: TypeError: Cannot convert object to primitive value\nN2 callable toString => NO THROW; output=\"a=z\"\nN3 isBuffer vector (CVE-2026-82417) => NO THROW; output=\"a%5Bconstructor%5D%5BisBuffer%5D=x\"\nqs version: 6.16.0\n```\n\n## Attack Chain\n\n1. **Exposure:** A remote, unauthenticated request reaches an endpoint whose handler eventually serializes attacker-influenced data with `qs.stringify(obj, { arrayFormat: 'comma' })`.\n2. **Control:** The attacker supplies data that becomes `{ a: [ { toString: <non-callable value> } ] }`, either via `a[0][toString]=x` parsed with `allowPrototypes`, or via a JSON body `{\"a\":[{\"toString\":\"x\"}]}`.\n3. **Path:** In `stringify`, the primitive\/buffer guard at `lib\/stringify.js:134` is false for an array, so control reaches the comma branch at `lib\/stringify.js:149`.\n4. **Guard:** On the `encodeValuesOnly` path, the closure `v == null ? v : encoder(v)` at `lib\/stringify.js:152-154` passes only `null`\/`undefined` through; a non-null object still reaches the encoder. The default path skips that closure entirely and reaches `obj.join(',')` at `lib\/stringify.js:156` with no guard at all.\n5. **Primitive:** The element is coerced to a string (`Array.prototype.join`, or `String(str)` at `lib\/utils.js:292`). `ToPrimitive` skips the non-callable own `toString`, `valueOf` returns the object, and a `TypeError` is thrown.\n6. **Result:** The uncaught synchronous exception propagates out of the serialization call, failing the request and, in a service without a synchronous error boundary, crashing the process (denial of service).\n\n## Bypass Evidence\n\nThis is a different element type on the code path CVE-2026-8723 (GHSA-q8mj-m7cp-5q26) patched, plus the default comma path, which that fix never covered. CVE-2026-8723 addressed a `TypeError` crash on `null`\/`undefined` entries in the comma plus `encodeValuesOnly` path. Its fix (commit 21f80b3) wraps the encoder in `function (v) { return v == null ? v : encoder(v); }`, so it only passes `null` and `undefined` through. A non-null element with a hostile own `toString` fails the `v == null` test, so the encoder still runs and still throws; the encodeValuesOnly case (case C above) throws on the exact fixed code. The default comma path (`encodeValuesOnly` unset, the library default) never entered that fix at all: `git log -S \"obj.join(','\" -- lib\/stringify.js` shows no security fix has ever touched the `obj.join(',')` line, and cases A and B throw with `encodeValuesOnly` unset. The related isBuffer hardening for CVE-2026-82417 (commit e83d321) is a different sink at the `lib\/stringify.js:134` guard, which is never entered for the array element; the negative control `{a:{constructor:{isBuffer:'x'}}}` serializes cleanly. Disproof attempts that failed: a `valueOf`-only object does not throw (it serializes to `[object Object]`), confirming the trigger is an element with no callable `toString` (an own non-callable `toString`, or a null-prototype object with no `toString` at all, as `qs.parse` produces under `plainObjects`); nested arrays (`{\"a\":[[{\"toString\":\"x\"}]]}`) throw the same way; a callable `toString` serializes cleanly; and the default (non-comma) array format serializes cleanly, confirming the comma format is required. All positive and negative cases were reproduced on the exact published 6.16.0 artifact.\n\n## Affected Versions\n\n- `Ecosystem: npm`\n- `Package: qs`\n- `Confirmed affected range: >= 6.7.0, <= 6.16.0`\n- `Latest release checked: 6.16.0 (npm latest; git tag v6.16.0)`\n- `Fix status: fixed in 6.16.1 (a952e75)`\n\nThe `arrayFormat: 'comma'` join sink was introduced in qs 6.7.0, so 6.7.0 is the lower boundary; releases before 6.7.0 lack the sink. No released version fixes this vector, and the latest published release (6.16.0) reproduces the throw, so the closed upper bound `<= 6.16.0` covers every affected release. The `encodeValuesOnly` sub-path was added later, but the default comma-join vector already affects 6.7.0, so 6.7.0 governs the lower boundary.\n\n## Suggested Fix\n\nThe comma array serialization must not allow an implicit string coercion of an array element to throw an uncaught exception. Coercion of each comma element should be performed defensively (for example by wrapping the join and per-element encode so that a coercion failure is caught and handled), and this protection must cover both the default `obj.join(',')` path and the `encodeValuesOnly` encoder path, not only the previously patched `null`\/`undefined` case. As an interim mitigation without a code change, applications can avoid `arrayFormat: 'comma'` when serializing data derived from untrusted input, sanitize parsed objects (avoid `allowPrototypes`\/`plainObjects` on untrusted input and strip unexpected own properties), or wrap `qs.stringify` calls in a synchronous error boundary so a coercion failure cannot crash the process.\n\nReported by zx (GitHub: @manus-pi).\n\n---\n\n## Independent report by @Lucidsec\n\nThe following was reported separately, after this advisory, and is merged here as a duplicate.\n\n### Summary\n\nIn project [qs](https:\/\/github.com\/ljharb\/qs), in versions `>= 6.7.0, <= 6.16.0` (every version that supports `arrayFormat: 'comma'`), `qs.stringify` with `arrayFormat: 'comma'` can throw an uncaught `TypeError: Cannot convert object to primitive value` when an array element has a non-callable own `toString`. It is fixed in 6.16.1. Related: CWE-248 and CWE-704.\n\n### Technical Details\n\n`qs.stringify` with `arrayFormat: 'comma'` joins an array at `lib\/stringify.js:156` via `obj.join(',')`. An element whose own `toString` is not callable makes `Array.prototype.join` throw. There is no type check and no catch on that path.\n\nA second path exists with `encodeValuesOnly`: at `lib\/stringify.js:151-154`, `maybeMap` only skips `v == null`, then `lib\/utils.js:292` does `String(str)` and throws the same `TypeError` (this second site exists since v6.11.1; before that, the same input throws at `join`).\n\nWho can trigger: someone who can shape an array element passed to `stringify`. The host must use non-default `arrayFormat: 'comma'`. Default `arrayFormat` `indices` does not fold arrays and is not affected. A parse-then-stringify path also needs `plainObjects: true` (null-prototype elements from `lib\/parse.js:200`) or `allowPrototypes: true` (which Express 4's default query parser, Express 5's `extended` query parser, and body-parser's `extended` urlencoded parser all set). Default `qs.parse('a[0][toString]=x')` returns `{}` because the prototype guard drops `toString`. Direct JSON handed to `stringify` can supply `{\"a\":[{\"toString\":\"x\"}]}`.\n\nCause: the comma fold at `lib\/stringify.js:149-156` collapses the array into a single value before the main loop at `lib\/stringify.js:172-212`, so `skipNulls` and `strictNullHandling` only ever see the joined value, never individual elements. `isNonNullishPrimitive` \/ `isBuffer` at `lib\/stringify.js:134` inspect the whole value, not each element. A normal object uses `Object.prototype.toString` and becomes `[object Object]`. An own non-callable `toString` is skipped, `valueOf` returns the object, and `join` throws. (The skipped TODO test at `test\/stringify.js:684-689` uses a plain `{ b: 1 }` element, which does not throw; it covers the separate question of what comma format should output for object elements, not this crash.) Earlier comma crash fixes did not cover object elements.\n\n### Impact\n\nOne small input makes that serialization path throw a synchronous, catchable `TypeError`. Behind a framework error boundary (eg, a synchronous Express handler), the request fails with a 500 and the process survives. In a host with no error boundary (eg, a bare `http.createServer` handler), the uncaught exception exits the process (the client sees `ECONNRESET`). Availability only.\n\n### Proof of Concept\n\n<details>\n<summary>Show the proof of concept<\/summary>\n\nChecked on the latest commit that was checked: `07b1d4d82c8f9301c105ea4b94fa2302cfd6e8b4`. Still present. Demonstrated.\n\n- Payload `{\"a\":[{\"toString\":\"x\"}]}` throws at `lib\/stringify.js:156`.\n- Baseline `{\"a\":[\"x\",\"y\"]}` returns 200 with body `a=x%2Cy`.\n- A plain object element stringifies to `a=%5Bobject%20Object%5D` and does not throw.\n- `encodeValuesOnly: true` throws via `utils.js:292`.\n- `plainObjects` parse plus comma throws.\n\n<\/details>\n\n### Suggested Fix\n\nBefore `join`, map elements with the existing primitive check; skip or replace non-primitives so `join` cannot throw. On the `encodeValuesOnly` path, do not send non-primitives into `String()`. Optionally guard `lib\/utils.js:292`. Add new regression tests."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-6pq8-jhm2-2vcw](https://github.com/advisories/GHSA-6pq8-jhm2-2vcw)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 5.300000190734863,
+                    "security-severity": "5.300000190734863",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "LOW",
+                    "cvssv3_baseSeverity": "MEDIUM",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-9wv6-86v2-598j",
+              "shortDescription": {
+                 "text": "high severity - GHSA-9wv6-86v2-598j Inefficient Regular Expression Complexity vulnerability in pkg:npm\/path-to-regexp@0.1.7"
+              },
+              "fullDescription": {
+                "text": "### Impact\n\nA bad regular expression is generated any time you have two parameters within a single segment, separated by something that is not a period (`.`). For example, `\/:a-:b`.\n\n### Patches\n\nFor users of 0.1, upgrade to `0.1.10`. All other users should upgrade to `8.0.0`.\n\nThese versions add backtrack protection when a custom regex pattern is not provided:\n\n- [0.1.10](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v0.1.10)\n- [1.9.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v1.9.0)\n- [3.3.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v3.3.0)\n- [6.3.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v6.3.0)\n\nThey do not protect against vulnerable user supplied capture groups. Protecting against explicit user patterns is out of scope for old versions and not considered a vulnerability.\n\nVersion [7.1.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v7.1.0) can enable `strict: true` and get an error when the regular expression might be bad.\n\nVersion [8.0.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v8.0.0) removes the features that can cause a ReDoS.\n\n### Workarounds\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `\/:a-:b` to `\/:a-:b([^-\/]+)`.\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length. For example, halving the attack string improves performance by 4x faster.\n\n### Details\n\nUsing `\/:a-:b` will produce the regular expression `\/^\\\/([^\\\/]+?)-([^\\\/]+?)\\\/?$\/`. This can be exploited by a path such as `\/a${'-a'.repeat(8_000)}\/a`. [OWASP](https:\/\/owasp.org\/www-community\/attacks\/Regular_expression_Denial_of_Service_-_ReDoS) has a good example of why this occurs, but the TL;DR is the `\/a` at the end ensures this route would never match but due to naive backtracking it will still attempt every combination of the `:a-:b` on the repeated 8,000 `-a`.\n\nBecause JavaScript is single threaded and regex matching runs on the main thread, poor performance will block the event loop and can lead to a DoS. In local benchmarks, exploiting the unsafe regex will result in performance that is over 1000x worse than the safe regex. In a more realistic environment using Express v4 and 10 concurrent connections, this translated to average latency of ~600ms vs 1ms.\n\n### References\n\n* [OWASP](https:\/\/owasp.org\/www-community\/attacks\/Regular_expression_Denial_of_Service_-_ReDoS)\n* [Detailed blog post](https:\/\/blakeembrey.com\/posts\/2024-09-web-redos\/)"
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-9wv6-86v2-598j](https://github.com/advisories/GHSA-9wv6-86v2-598j)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 7.5,
+                    "security-severity": "7.5",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "NONE",
+                    "cvssv3_integrityImpact": "NONE",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "HIGH",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            },{
+              "id": "GHSA-phwq-j96m-2c2q",
+              "shortDescription": {
+                 "text": "critical severity - GHSA-phwq-j96m-2c2q Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection') vulnerability in pkg:npm\/ejs@3.1.6"
+              },
+              "fullDescription": {
+                "text": "The ejs (aka Embedded JavaScript templates) package 3.1.6 for Node.js allows server-side template injection in settings[view options][outputFunctionName]. This is parsed as an internal option, and overwrites the outputFunctionName option with an arbitrary OS command (which is executed upon template compilation)."
+              },
+              "help": {
+                "text": "",
+                "markdown": "For more information see [GHSA-phwq-j96m-2c2q](https://github.com/advisories/GHSA-phwq-j96m-2c2q)\n\n\nIf this is a false positive - consider using the HTML report to generate a suppression file.\nFor more information see [How dependency-check works](https://dependency-check.github.io/DependencyCheck/general/internals.html),\n[How to read the HTML report](https://dependency-check.github.io/DependencyCheck/general/thereport.html), and\n[Suppressing false positives](https://dependency-check.github.io/DependencyCheck/general/suppression.html)."
+              },
+              "properties": {
+                    "cvssv3_baseScore": 9.800000190734863,
+                    "security-severity": "9.800000190734863",
+                    "cvssv3_attackVector": "NETWORK",
+                    "cvssv3_attackComplexity": "LOW",
+                    "cvssv3_privilegesRequired": "NONE",
+                    "cvssv3_userInteraction": "NONE",
+                    "cvssv3_scope": "UNCHANGED",
+                    "cvssv3_confidentialityImpact": "HIGH",
+                    "cvssv3_integrityImpact": "HIGH",
+                    "cvssv3_availabilityImpact": "HIGH",
+                    "cvssv3_baseSeverity": "CRITICAL",
+"cvssv3_version": "_3_1",                "source": "NPM"
+              }
+            }          ],
+        "properties": {
+          "disclaimer": "Dependency-Check is an open source tool performing a best effort analysis of 3rd party dependencies; false positives and false negatives may exist in the analysis performed by the tool. Use of the tool and the reporting provided constitutes acceptance for use in an AS IS condition, and there are NO warranties, implied or otherwise, with regard to the analysis or its use. Any use of the tool and the reporting provided is at the user's risk. In no event shall the copyright holder or OWASP be held liable for any damages whatsoever arising out of or in connection with the use of this tool, the analysis performed, or the resulting report.",
+          "nvd": "This product uses the NVD API but is not endorsed or certified by the NVD. This report contains data retrieved from the National Vulnerability Database: https://nvd.nist.gov",
+          "cisa": "This report may contain data retrieved from the CISA Known Exploited Vulnerability Catalog: https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+          "npm": "This report may contain data retrieved from the the Github Advisory Database (via NPM Audit API): https://github.com/advisories/",
+          "retirejs": "This report may contain data retrieved from the RetireJS community: https://retirejs.github.io/retire.js/",
+          "ossindex": "This report may contain data retrieved from the Sonatype Guide OSS Index API: https://www.sonatype.com/products/sonatype-guide/oss-index-users"
+            ,"NVD API Last Checked": "2026-11-01T20:34:51Z"
+            ,"NVD API Last Modified": "2026-11-01T20:17:32Z"
+          }
+        }
+      },
+      "artifacts": [
+{
+          "location": {
+            "uri": "file://\/src\/src\/routes\/admin.js"
+          },
+          "hashes": {
+            "md5": "1e176a0f35bf20f647f7e1e98d433010",
+            "sha1": "318a25135a90424dd9d64d4ca84ae5252c1f07cb",
+            "sha256": "cf0a0e831520a51e6a193512cdc0dba81e57ffbb5c08b12ba9f7ce3b63306495"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/routes\/api.js"
+          },
+          "hashes": {
+            "md5": "67eb1d0d9c54425a36bed9d3087a45c8",
+            "sha1": "274f5435b803f4bf9eec582834f0f15f61b40034",
+            "sha256": "98857099fcc83249fbebdd55d7e72e41e1f95408430256f64865b039f81e83ea"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/app.js"
+          },
+          "hashes": {
+            "md5": "16c6147afb4bcdc53a7e53a83e4df2e6",
+            "sha1": "a06cf795a09f97045a8a7d272ec0c83d6fa9362b",
+            "sha256": "7b569cc790e25167a1a306a4d776503aeba8a4d1d29fa9f82bf16004bb08d86e"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/middleware\/auth.js"
+          },
+          "hashes": {
+            "md5": "dc7eb85f5afc1feee358283fd78c6abb",
+            "sha1": "515943eab35097bbc01c41a24eef99b87b281a2e",
+            "sha256": "98a3d6ab8851b728cdb7773ef9cf62669b4e71a67edc2ed31a8df789f1f1f677"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/routes\/auth.js"
+          },
+          "hashes": {
+            "md5": "b4afa772318e1e3af75d2198335d70f1",
+            "sha1": "9cf5f398bbc6fe623e1e942573a2886320ca0f8a",
+            "sha256": "60ab49eb936b715a195a3732c2b6e7dbc4184feb9530c4c5be4f3db2ccf8ae45"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?body-parser"
+          },
+          "properties": {
+                    "id1": "pkg:npm\/body-parser@1.19.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/config.js"
+          },
+          "hashes": {
+            "md5": "55fe12c4967ff16879bd1c294512ca30",
+            "sha1": "89f96ff25188a3f38d37ff6459a87a417d192dfb",
+            "sha256": "db46d6a9ad0a21f8932e204bf25aa6d6dc1a9a4459bf4c28efa82b7399e70a23"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?cookie"
+          },
+          "properties": {
+                    "id2": "pkg:npm\/cookie@0.3.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/db.js"
+          },
+          "hashes": {
+            "md5": "e24bc5b99c954f4c9a8c01dc64b4123a",
+            "sha1": "44a1adf277f556455424f2db099020e42ba85a30",
+            "sha256": "faf4bd43ce5a1cb3b27651cf311a2058ad9dda9dca87dedfc652818dd96919dd"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?ejs"
+          },
+          "properties": {
+                    "id3": "pkg:npm\/ejs@3.1.6"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?express"
+          },
+          "properties": {
+                    "id4": "pkg:npm\/express@4.17.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?jsonwebtoken"
+          },
+          "properties": {
+                    "id5": "pkg:npm\/jsonwebtoken@8.5.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?lodash"
+          },
+          "properties": {
+                    "id6": "pkg:npm\/lodash@4.17.15"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?minimatch"
+          },
+          "properties": {
+                    "id7": "pkg:npm\/minimatch@5.1.9"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?morgan"
+          },
+          "properties": {
+                    "id8": "pkg:npm\/morgan@1.9.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/routes\/notes.js"
+          },
+          "hashes": {
+            "md5": "5d163c5ef9afbd9a8f826c3d7b72e711",
+            "sha1": "d173f28ab00e8d7259949826460d96eb4b75fab4",
+            "sha256": "3a34986f27f35c8c9146d059cd12f1707594f958dd61d608576ce9209ebe3886"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?on-headers"
+          },
+          "properties": {
+                    "id9": "pkg:npm\/on-headers@1.0.2"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/security\/password.js"
+          },
+          "hashes": {
+            "md5": "c05f21944af162c1afe640262cf29e67",
+            "sha1": "1f9516a2a7ca0feee8edf45f67adfb0f7ff71abb",
+            "sha256": "33732a4cd781c4d4c84c10513e45a0e19f3cd536b843d59f13d4c7f67bafad00"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?path-to-regexp"
+          },
+          "properties": {
+                    "id10": "pkg:npm\/path-to-regexp@0.1.7"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/routes\/profile.js"
+          },
+          "hashes": {
+            "md5": "8cce4fb9e571be39b573e560f618ee2c",
+            "sha1": "87d6c83a87b5717f878a7f99f9f3385305c50e5f",
+            "sha256": "ac763f08c1f3c8ac398d73d69cb289697e59e44dcb019369773885824ee1da10"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?qs"
+          },
+          "properties": {
+                    "id11": "pkg:npm\/qs@6.7.0"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?send"
+          },
+          "properties": {
+                    "id12": "pkg:npm\/send@0.17.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/package-lock.json?serve-static"
+          },
+          "properties": {
+                    "id13": "pkg:npm\/serve-static@1.14.1"
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/server.js"
+          },
+          "hashes": {
+            "md5": "7c4885b6778ea59455d02e9ec144b18a",
+            "sha1": "3a5b1eaf6c56ca2613afd29bd323d04a8ca596ba",
+            "sha256": "9cc865502a21e81f54b644749e6860c4edbb49fa27fdea759e3c2bdf5eadeb83"
+          },          "properties": {
+          }
+        }
+,{
+          "location": {
+            "uri": "file://\/src\/src\/security\/tokens.js"
+          },
+          "hashes": {
+            "md5": "6adae675ba024e25c9223ca01c2fb471",
+            "sha1": "7c210660cd8ea4ed7781dd84a47a88ac30afa5d5",
+            "sha256": "39bde2e75d6613ff3e7b29d2af5aad107a4b426fcb80f62a56d6f09fcd3fc221"
+          },          "properties": {
+          }
+        }
+      ],
+      "results": [
+ {
+          "ruleId": "GHSA-27r3-jxmh-p828",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-27r3-jxmh-p828 - ### Impact\n\nA single request can crash any application using `body-parser` with default options. When a request carries a `Content-Encoding` (for example `gzip`), `body-parser` pipes it into a decompression stream and, after reading the body, leaves that stream piped with no error listener. A payload of one valid compressed frame followed by trailing bytes decodes and the application responds normally, but the trailing bytes then reach the already-finished decoder, which emits an error that is re-thrown as an uncaught exception and terminates the process. No authentication or matching route is required, since parsing runs before routing.\n\n### Patches\n\nFixed in body-parser 2.4.0 and 1.20.9. Upgrade to one of these versions.\n\n### Workarounds\n\nPass `inflate: false` to the body-parser middleware if the application does not need to accept compressed request bodies. This rejects encoded requests before any decompression stream is created."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "e37534938ca1623f6dbe01b898d8b195"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?body-parser"
+                  ,"index": 5
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/body-parser@1.19.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-qwcr-r2fm-qrc7",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-qwcr-r2fm-qrc7 - ### Impact\n\nbody-parser <1.20.3 is vulnerable to denial of service when url encoding is enabled. A malicious actor using a specially crafted payload could flood the server with a large number of requests, resulting in denial of service.\n\n### Patches\n\nthis issue is patched in 1.20.3\n\n### References\n"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "ff8d90791ac24f45b5bbe8e087418998"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?body-parser"
+                  ,"index": 5
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/body-parser@1.19.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-v422-hmwv-36x6",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-v422-hmwv-36x6 - ### Impact\n\nWhen body-parser is configured with an invalid `limit` option value, such as an unparseable string or `NaN`, `bytes.parse()` returns `null` and the request body size check is silently skipped. Applications that rely on `limit` as their primary safeguard against oversized request bodies will accept arbitrarily large payloads, leading to excessive memory and CPU usage and denial of service.\n\nThis issue affects applications that pass a programmatically computed or user-configurable value to the `limit` option without validating it first.\n\n### Patches\n\nThis issue is fixed in [body-parser@2.3.0](https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/v2.3.0) and [body-parser@1.20.6](https:\/\/github.com\/expressjs\/body-parser\/releases\/tag\/v1.20.6) via [#698](https:\/\/github.com\/expressjs\/body-parser\/pull\/698). After the fix, invalid `limit` values throw a clear error at parser construction time instead of silently disabling enforcement. `null` and `undefined` continue to fall back to the default limit (`100kb`).\n\n### Workarounds\n\nValidate `limit` before passing it to body-parser. For example, parse the value with [`bytes.parse()`](https:\/\/github.com\/visionmedia\/bytes.js) at startup and reject any configuration where it returns `null` or a non-finite number.\n\n### References\n\n- [#698](https:\/\/github.com\/expressjs\/body-parser\/pull\/698): fix PR\n- [bytes.js](https:\/\/github.com\/visionmedia\/bytes.js): limit parser"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "f5ecd764991a573e34e7248f77ba874b"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?body-parser"
+                  ,"index": 5
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/body-parser@1.19.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-pxg6-pf52-xh8x",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-pxg6-pf52-xh8x - ### Impact\n\nThe cookie name could be used to set other fields of the cookie, resulting in an unexpected cookie value. For example, `serialize(\"userName=<script>alert('XSS3')<\/script>; Max-Age=2592000; a\", value)` would result in `\"userName=<script>alert('XSS3')<\/script>; Max-Age=2592000; a=test\"`, setting `userName` cookie to `<script>` and ignoring `value`.\n\nA similar escape can be used for `path` and `domain`, which could be abused to alter other fields of the cookie.\n\n### Patches\n\nUpgrade to 0.7.0, which updates the validation for `name`, `path`, and `domain`.\n\n### Workarounds\n\nAvoid passing untrusted or arbitrary values for these fields, ensure they are set by the application instead of user input.\n\n### References\n\n* https:\/\/github.com\/jshttp\/cookie\/pull\/167"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "8547e42d7d7ae72a2bc0f4acd53cf955"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?cookie"
+                  ,"index": 7
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/cookie@0.3.1"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-phwq-j96m-2c2q",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-phwq-j96m-2c2q - The ejs (aka Embedded JavaScript templates) package 3.1.6 for Node.js allows server-side template injection in settings[view options][outputFunctionName]. This is parsed as an internal option, and overwrites the outputFunctionName option with an arbitrary OS command (which is executed upon template compilation)."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "fae81da5e096e205b42c78e2da7ae02c"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?ejs"
+                  ,"index": 9
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/ejs@3.1.6"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-ghr5-ch3p-vcr6",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-ghr5-ch3p-vcr6 - The ejs (aka Embedded JavaScript templates) package before 3.1.10 for Node.js lacks certain pollution protection."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "47c539df4848da8dbd72d4f18794f7e0"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?ejs"
+                  ,"index": 9
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/ejs@3.1.6"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-rv95-896h-c2vc",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-rv95-896h-c2vc - ### Impact\n\nVersions of Express.js prior to 4.19.2 and pre-release alpha and beta versions before 5.0.0-beta.3 are affected by an open redirect vulnerability using malformed URLs.\n\nWhen a user of Express performs a redirect using a user-provided URL Express performs an encode [using `encodeurl`](https:\/\/github.com\/pillarjs\/encodeurl) on the contents before passing it to the `location` header. This can cause malformed URLs to be evaluated in unexpected ways by common redirect allow list implementations in Express applications, leading to an Open Redirect via bypass of a properly implemented allow list.\n\nThe main method impacted is `res.location()` but this is also called from within `res.redirect()`.\n\n### Patches\n\nhttps:\/\/github.com\/expressjs\/express\/commit\/0867302ddbde0e9463d0564fea5861feb708c2dd\nhttps:\/\/github.com\/expressjs\/express\/commit\/0b746953c4bd8e377123527db11f9cd866e39f94\n\nAn initial fix went out with `express@4.19.0`, we then patched a feature regression in `4.19.1` and added improved handling for the bypass in `4.19.2`.\n\n### Workarounds\n\nThe fix for this involves pre-parsing the url string with either `require('node:url').parse` or `new URL`. These are steps you can take on your own before passing the user input string to `res.location` or `res.redirect`.\n\n### Resources\n\nhttps:\/\/github.com\/expressjs\/express\/pull\/5539\nhttps:\/\/github.com\/koajs\/koa\/issues\/1800\nhttps:\/\/expressjs.com\/en\/4x\/api.html#res.location"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "8947140a229a64fd13c2ae30276ee504"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?express"
+                  ,"index": 10
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/express@4.17.1"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-qw6h-vgh9-j6wx",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-qw6h-vgh9-j6wx - ### Impact\n\nIn express <4.20.0, passing untrusted user input - even after sanitizing it - to `response.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in express 4.20.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "ee51d20fa5a14f7a039eafb5838ace27"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?express"
+                  ,"index": 10
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/express@4.17.1"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-8cf7-32gw-wr33",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-8cf7-32gw-wr33 - # Overview\n\nVersions `<=8.5.1` of `jsonwebtoken` library could be misconfigured so that legacy, insecure key types are used for signature verification. For example, DSA keys could be used with the RS256 algorithm. \n\n# Am I affected?\n\nYou are affected if you are using an algorithm and a key type other than the combinations mentioned below\n\n| Key type |  algorithm                                    |\n|----------|------------------------------------------|\n| ec           | ES256, ES384, ES512                      |\n| rsa          | RS256, RS384, RS512, PS256, PS384, PS512 |\n| rsa-pss  | PS256, PS384, PS512                      |\n\nAnd for Elliptic Curve algorithms:\n\n| `alg` | Curve      |\n|-------|------------|\n| ES256 | prime256v1 |\n| ES384 | secp384r1  |\n| ES512 | secp521r1  |\n\n# How do I fix it?\n\nUpdate to version 9.0.0. This version validates for asymmetric key type and algorithm combinations. Please refer to the above mentioned algorithm \/ key type combinations for the valid secure configuration. After updating to version 9.0.0, If you still intend to continue with signing or verifying tokens using invalid key type\/algorithm value combinations, you\u2019ll need to set the `allowInvalidAsymmetricKeyTypes` option to `true` in the `sign()` and\/or `verify()` functions.\n\n# Will the fix impact my users?\n\nThere will be no impact, if you update to version 9.0.0 and you already use a valid secure combination of key type and algorithm. Otherwise,  use the  `allowInvalidAsymmetricKeyTypes` option  to `true` in the `sign()` and `verify()` functions to continue usage of invalid key type\/algorithm combination in 9.0.0 for legacy compatibility. \n\n"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "9106862e2f9a1311fb825f7ae842c913"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?jsonwebtoken"
+                  ,"index": 11
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/jsonwebtoken@8.5.1"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-qwph-4952-7xr6",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-qwph-4952-7xr6 - # Overview\n\nIn versions <=8.5.1 of jsonwebtoken library, lack of algorithm definition and a falsy secret or key in the `jwt.verify()` function can lead to signature validation bypass due to defaulting to the `none` algorithm for signature verification.\n\n# Am I affected?\nYou will be affected if all the following are true in the `jwt.verify()` function:\n- a token with no signature is received\n- no algorithms are specified \n- a falsy (e.g. null, false, undefined) secret or key is passed \n\n# How do I fix it?\n \nUpdate to version 9.0.0 which removes the default support for the none algorithm in the `jwt.verify()` method. \n\n# Will the fix impact my users?\n\nThere will be no impact, if you update to version 9.0.0 and you don\u2019t need to allow for the `none` algorithm. If you need 'none' algorithm, you have to explicitly specify that in `jwt.verify()` options."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "47b3ee890cc0c24536a42a2539f1f171"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?jsonwebtoken"
+                  ,"index": 11
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/jsonwebtoken@8.5.1"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-hjrf-2m68-5959",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-hjrf-2m68-5959 - # Overview\n\nVersions `<=8.5.1` of `jsonwebtoken` library can be misconfigured so that passing a poorly implemented key retrieval function (referring to the `secretOrPublicKey` argument from the [readme link](https:\/\/github.com\/auth0\/node-jsonwebtoken#jwtverifytoken-secretorpublickey-options-callback)) will result in incorrect verification of tokens. There is a possibility of using a different algorithm and key combination in verification  than the one that was used to sign the tokens. Specifically, tokens signed with an asymmetric public key could be verified with a symmetric HS256 algorithm. This can lead to successful validation of forged tokens. \n\n# Am I affected?\n\nYou will be affected if your application is supporting usage of both symmetric key and asymmetric key in jwt.verify() implementation with the same key retrieval function. \n\n# How do I fix it?\n \nUpdate to version 9.0.0.\n\n# Will the fix impact my users?\n\nThere is no impact for end users"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "60443e6a98aabb71beabc3f39c624d6f"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?jsonwebtoken"
+                  ,"index": 11
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/jsonwebtoken@8.5.1"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-r5fr-rjxr-66jc",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-r5fr-rjxr-66jc - ### Impact\n\nThe fix for [CVE-2021-23337](https:\/\/github.com\/advisories\/GHSA-35jh-r3h4-6jhm) added validation for the `variable` option in `_.template` but did not apply the same validation to `options.imports` key names. Both paths flow into the same `Function()` constructor sink.\n\nWhen an application passes untrusted input as `options.imports` key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time.\n\nAdditionally, `_.template` uses `assignInWith` to merge imports, which enumerates inherited properties via `for..in`. If `Object.prototype` has been polluted by any other vector, the polluted keys are copied into the imports object and passed to `Function()`.\n\n### Patches\n\nUsers should upgrade to version 4.18.0.\n\nThe fix applies two changes:\n1. Validate `importsKeys` against the existing `reForbiddenIdentifierChars` regex (same check already used for the `variable` option)\n2. Replace `assignInWith` with `assignWith` when merging imports, so only own properties are enumerated\n\n### Workarounds\n\nDo not pass untrusted input as key names in `options.imports`. Only use developer-controlled, static key names."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "5cb1bd8dde6d33194fb66a5185847521"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?lodash"
+                  ,"index": 12
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/lodash@4.17.15"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-p6mc-m468-83gw",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-p6mc-m468-83gw - Versions of lodash prior to 4.17.19 are vulnerable to Prototype Pollution. The functions `pick`, `set`, `setWith`, `update`, `updateWith`, and `zipObjectDeep` allow a malicious user to modify the prototype of Object if the property identifiers are user-supplied. Being affected by this issue requires manipulating objects based on user-provided property values or arrays.\n\nThis vulnerability causes the addition or modification of an existing property that will exist on all objects and may lead to Denial of Service or Code Execution under specific circumstances."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "d2b11944077ae16151f34d81eff1be11"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?lodash"
+                  ,"index": 12
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/lodash@4.17.15"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-35jh-r3h4-6jhm",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-35jh-r3h4-6jhm - `lodash` versions prior to 4.17.21 are vulnerable to Command Injection via the template function."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "3023e7d646ec1cbd72be44954b60f7f3"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?lodash"
+                  ,"index": 12
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/lodash@4.17.15"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-f23m-r3pf-42rh",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-f23m-r3pf-42rh - ### Impact\n\nLodash versions 4.17.23 and earlier are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. The fix for [CVE-2025-13465](https:\/\/github.com\/lodash\/lodash\/security\/advisories\/GHSA-xxjr-mmjv-4gpg) only guards against string key members, so an attacker can bypass the check by passing array-wrapped path segments. This allows deletion of properties from built-in prototypes such as `Object.prototype`, `Number.prototype`, and `String.prototype`.\n\nThe issue permits deletion of prototype properties but does not allow overwriting their original behavior.\n\n### Patches\n\nThis issue is patched in 4.18.0.\n\n### Workarounds\n\nNone. Upgrade to the patched version."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "2a9b94bf436ae042f4cb52d1a1a05efd"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?lodash"
+                  ,"index": 12
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/lodash@4.17.15"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-xxjr-mmjv-4gpg",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-xxjr-mmjv-4gpg - ### Impact\n\nLodash versions 4.0.0 through 4.17.22 are vulnerable to prototype pollution in the `_.unset` and `_.omit` functions. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. \n\nThe issue permits deletion of properties but does not allow overwriting their original behavior.  \n\n### Patches\n\nThis issue is patched on 4.17.23."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "6dc58cee1ee9a8de898742acc93e5941"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?lodash"
+                  ,"index": 12
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/lodash@4.17.15"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-29mw-wpgm-hmr9",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-29mw-wpgm-hmr9 - All versions of package lodash prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the `toNumber`, `trim` and `trimEnd` functions. \n\nSteps to reproduce (provided by reporter Liyuan Chen):\n```js\nvar lo = require('lodash');\n\nfunction build_blank(n) {\n    var ret = \"1\"\n    for (var i = 0; i < n; i++) {\n        ret += \" \"\n    }\n    return ret + \"1\";\n}\nvar s = build_blank(50000) var time0 = Date.now();\nlo.trim(s) \nvar time_cost0 = Date.now() - time0;\nconsole.log(\"time_cost0: \" + time_cost0);\nvar time1 = Date.now();\nlo.toNumber(s) var time_cost1 = Date.now() - time1;\nconsole.log(\"time_cost1: \" + time_cost1);\nvar time2 = Date.now();\nlo.trimEnd(s);\nvar time_cost2 = Date.now() - time2;\nconsole.log(\"time_cost2: \" + time_cost2);\n```"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "1ac0b786aa37384d73a44e3441089150"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?lodash"
+                  ,"index": 12
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/lodash@4.17.15"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-g3hv-75wg-m249",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-g3hv-75wg-m249 - minimatch 10.2.6 contains an attacker-controlled pattern amplification in firstPhasePreProcess() when optimizationLevel >= 2.\n\nresearcher: Reid Downing (b1nv0id)\nfiles: \n\n- src\/index.ts: 690-770\n- src\/index.ts: 780-796\n\nissue:\ninput-controlled growth of globParts during first-phase preprocessing, followed by quadratic second-phase processing.\n\nthe **\/..\/ transformation clones a globparts entry and appends the clone to the same globparts array:\n```\nparts.splice(gs, 1)\nconst other = parts.slice(0)\nother[gs] = '**'\nglobParts.push(other)\n```\nthis occurs inside a do...while (didSomething) fixpoint loop, allowing generated entries to be processed again.\n\nthe expanded globparts array is subsequently processed by secondPhasePreProcess(), which performs pairwise comparisons:\n```\nfor (let i = 0; i < globParts.length - 1; i++) {\n  for (let j = i + 1; j < globParts.length; j++) {\n    this.partsMatch(...)\n  }\n}\n```\nan attacker who can supply a glob pattern can therefore cause additional pattern entries to be generated during preprocessing, followed by quadratic pairwise processing, resulting in excessive cpu and memory consumption."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "17f1e81281e4a1694a9c2aa166eaccbe"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?minimatch"
+                  ,"index": 13
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/minimatch@5.1.9"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-gwg9-rgvj-4h5j",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-gwg9-rgvj-4h5j - Verisons of `morgan` before 1.9.1 are vulnerable to code injection when user input is allowed into the filter or combined with a prototype pollution attack.\n\n\n## Recommendation\n\nUpdate to version 1.9.1 or later."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "7cc15712fc5b2c36c9b39e892adbc211"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?morgan"
+                  ,"index": 14
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/morgan@1.9.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-4vj7-5mj6-jm8m",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-4vj7-5mj6-jm8m - ### Impact\n\nMorgan's `:remote-user` token extracts the Basic auth username from the `Authorization` header and writes it to the log stream without neutralizing control characters. An attacker can send a crafted `Authorization: Basic` header containing CR\/LF characters to inject forged log lines, corrupting the one-request-per-line structure of access logs.\n\nThe built-in `combined`, `common`, `default`, and `short` formats are affected, as well as any custom format that includes `:remote-user`.\n\n### Patches\n\nUsers should upgrade to version 1.11.0.\n\n### Workarounds\n\nUse a custom format string that does not include `:remote-user`."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "324dab9ee9c12b81273de5114a3fd9a4"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?morgan"
+                  ,"index": 14
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/morgan@1.9.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-9f6g-j8ch-79g4",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-9f6g-j8ch-79g4 - ### Impact\n\nMorgan writes attacker-controlled request data to the access log. Its escaping (added in 1.11.0 and 1.12.0) neutralizes control characters, the Unicode line separators, and backslash, but not the double quote (`0x22`), which is the field delimiter of the Apache combined log format morgan emits. An attacker who controls a quoted field (`:user-agent`, `:referrer`, the request URL, or the Basic auth `:remote-user`) can inject a double quote to close the field early and forge additional fields in the log record. The `combined`, `common`, and `default` formats, and any custom format that quotes a token, are affected. This is an incomplete fix of CVE-2026-5078 and CVE-2026-15603.\n\n### Patches\n\nUsers should upgrade to version 1.12.1.\n\n### Workarounds\n\nUpdate to version 1.12.1."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "67d0b63b4e96b915effb3482bbddef9c"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?morgan"
+                  ,"index": 14
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/morgan@1.9.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-jxfw-x594-9x9m",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-jxfw-x594-9x9m - ### Impact\n\nMorgan writes attacker-controlled request data to the access log through its tokens. The 1.11.0 fix neutralizes C0 control characters, DEL, and backslash, but it does not escape the Unicode line separators `U+0085` (NEL), `U+2028` (LINE SEPARATOR), or `U+2029` (PARAGRAPH SEPARATOR). These code points are reachable through several tokens, including the request URL (`:url`), request headers such as `:user-agent` and `:referrer`, arbitrary `:req[header]` values, and the Basic auth username (`:remote-user`). NEL is valid `obs-text` in HTTP header values, so an attacker can place it in an ordinary request header.\n\nWhen such a value is logged, the raw code points survive into the emitted access-log record, and downstream ECMAScript-aware or Unicode-aware log processing splits the single physical record into multiple logical records. This allows an attacker to forge log entries. The built-in `combined`, `common`, `default`, and `short` formats are affected, as well as any custom format. This is an incomplete fix of CVE-2026-5078.\n\n### Patches\n\nUsers should upgrade to version 1.12.0.\n\n### Workarounds\n\nNone. The affected values include the request URL and request headers, which are core to access logging, so there is no practical format-based mitigation. Upgrade to 1.12.0."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "332435fac69cfb152a724399fffb1f2d"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?morgan"
+                  ,"index": 14
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/morgan@1.9.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-76c9-3jph-rj3q",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-76c9-3jph-rj3q - ### Impact\n\nA bug in on-headers versions `< 1.1.0` may result in response headers being inadvertently modified when an array is passed to `response.writeHead()`\n\n### Patches\n\nUsers should upgrade to `1.1.0`\n\n### Workarounds\n\nUses are encouraged to upgrade to `1.1.0`, but this issue can be worked around by passing an object to `response.writeHead()` rather than an array."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "c8019284479bdbce0507c394f599eb9c"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?on-headers"
+                  ,"index": 16
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/on-headers@1.0.2"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-37ch-88jc-xwx2",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-37ch-88jc-xwx2 - ### Impact\n\nA bad regular expression is generated any time you have three or more parameters within a single segment, separated by something that is not a period (`.`). For example, `\/:a-:b-:c` or `\/:a-:b-:c-:d`. The backtrack protection added in `path-to-regexp@0.1.12` only prevents ambiguity for two parameters. With three or more, the generated lookahead does not block single separator characters, so capture groups overlap and cause catastrophic backtracking.\n\n### Patches\n\nUpgrade to [path-to-regexp@0.1.13](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v.0.1.13)\n\nCustom regex patterns in route definitions (e.g., `\/:a-:b([^-\/]+)-:c([^-\/]+)`) are not affected because they override the default capture group.\n\n### Workarounds\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `\/:a-:b-:c` to `\/:a-:b([^-\/]+)-:c([^-\/]+)`.\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length.\n\n### References\n\n- [GHSA-9wv6-86v2-598j](https:\/\/github.com\/advisories\/GHSA-9wv6-86v2-598j)\n- [Detailed blog post: ReDoS the web](https:\/\/blakeembrey.com\/posts\/2024-09-web-redos\/)"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "899d98ff02fa763f6741cab311bdbb8e"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?path-to-regexp"
+                  ,"index": 18
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/path-to-regexp@0.1.7"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-9wv6-86v2-598j",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-9wv6-86v2-598j - ### Impact\n\nA bad regular expression is generated any time you have two parameters within a single segment, separated by something that is not a period (`.`). For example, `\/:a-:b`.\n\n### Patches\n\nFor users of 0.1, upgrade to `0.1.10`. All other users should upgrade to `8.0.0`.\n\nThese versions add backtrack protection when a custom regex pattern is not provided:\n\n- [0.1.10](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v0.1.10)\n- [1.9.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v1.9.0)\n- [3.3.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v3.3.0)\n- [6.3.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v6.3.0)\n\nThey do not protect against vulnerable user supplied capture groups. Protecting against explicit user patterns is out of scope for old versions and not considered a vulnerability.\n\nVersion [7.1.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v7.1.0) can enable `strict: true` and get an error when the regular expression might be bad.\n\nVersion [8.0.0](https:\/\/github.com\/pillarjs\/path-to-regexp\/releases\/tag\/v8.0.0) removes the features that can cause a ReDoS.\n\n### Workarounds\n\nAll versions can be patched by providing a custom regular expression for parameters after the first in a single segment. As long as the custom regular expression does not match the text before the parameter, you will be safe. For example, change `\/:a-:b` to `\/:a-:b([^-\/]+)`.\n\nIf paths cannot be rewritten and versions cannot be upgraded, another alternative is to limit the URL length. For example, halving the attack string improves performance by 4x faster.\n\n### Details\n\nUsing `\/:a-:b` will produce the regular expression `\/^\\\/([^\\\/]+?)-([^\\\/]+?)\\\/?$\/`. This can be exploited by a path such as `\/a${'-a'.repeat(8_000)}\/a`. [OWASP](https:\/\/owasp.org\/www-community\/attacks\/Regular_expression_Denial_of_Service_-_ReDoS) has a good example of why this occurs, but the TL;DR is the `\/a` at the end ensures this route would never match but due to naive backtracking it will still attempt every combination of the `:a-:b` on the repeated 8,000 `-a`.\n\nBecause JavaScript is single threaded and regex matching runs on the main thread, poor performance will block the event loop and can lead to a DoS. In local benchmarks, exploiting the unsafe regex will result in performance that is over 1000x worse than the safe regex. In a more realistic environment using Express v4 and 10 concurrent connections, this translated to average latency of ~600ms vs 1ms.\n\n### References\n\n* [OWASP](https:\/\/owasp.org\/www-community\/attacks\/Regular_expression_Denial_of_Service_-_ReDoS)\n* [Detailed blog post](https:\/\/blakeembrey.com\/posts\/2024-09-web-redos\/)"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "76c56784037c0ff8eca0873c5141a118"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?path-to-regexp"
+                  ,"index": 18
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/path-to-regexp@0.1.7"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-rhx6-c78j-4q9w",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-rhx6-c78j-4q9w - ### Impact\n\nThe regular expression that is vulnerable to backtracking can be generated in versions before 0.1.12 of `path-to-regexp`, originally reported in CVE-2024-45296\n\n### Patches\n\nUpgrade to 0.1.12.\n\n### Workarounds\n\nAvoid using two parameters within a single path segment, when the separator is not `.` (e.g. no `\/:a-:b`). Alternatively, you can define the regex used for both parameters and ensure they do not overlap to allow backtracking.\n\n### References\n\n- https:\/\/github.com\/advisories\/GHSA-9wv6-86v2-598j\n- https:\/\/blakeembrey.com\/posts\/2024-09-web-redos\/"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "5f53d6bd6c52fb697bf3e4882af127af"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?path-to-regexp"
+                  ,"index": 18
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/path-to-regexp@0.1.7"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-hrpp-h998-j3pp",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-hrpp-h998-j3pp - qs before 6.10.3 allows attackers to cause a Node process hang because an `__ proto__` key can be used. In many typical web framework use cases, an unauthenticated remote attacker can place the attack payload in the query string of the URL that is used to visit the application, such as `a[__proto__]=b&a[__proto__]&a[length]=100000000`. The fix was backported to qs 6.9.7, 6.8.3, 6.7.3, 6.6.1, 6.5.3, 6.4.1, 6.3.3, and 6.2.4."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "7dcd95c1dd97eddfeaec1f34017cc576"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?qs"
+                  ,"index": 20
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/qs@6.7.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-4mjr-xmp4-gh2g",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-4mjr-xmp4-gh2g - ### Summary\n\n`qs.stringify()` calls `utils.isBuffer()` on every value it serializes, and `utils.isBuffer()` invokes `obj.constructor.isBuffer(obj)` without checking that it is callable. A value whose own `constructor.isBuffer` is a non-function makes `qs` call a non-callable and throw `TypeError`. Such a value is produced **by `qs.parse` itself** from an untrusted query string when `plainObjects: true` or `allowPrototypes: true` is set, so a pure-`qs` `parse` \u2192 `stringify` round-trip \u2014 no `JSON.parse` \u2014 turns an unauthenticated query string into an uncaught throw.\n\nAn attacker-controlled `parse` input reaches the host application's availability asset \u2014 via `qs`'s own recommended `plainObjects` mitigation \u2014 and triggers an uncaught exception during a `parse` \u2192 `stringify` round-trip.\n\n### Details\n`utils.isBuffer` runs at `lib\/stringify.js:127` for every serialized value:\n\n```js\nif (isNonNullishPrimitive(obj) || utils.isBuffer(obj)) { ... }\n```\n\n`utils.isBuffer` (`lib\/utils.js:327-333`) invokes `obj.constructor.isBuffer` without verifying it is callable:\n\n```js\nvar isBuffer = function isBuffer(obj) {\n    if (!obj || typeof obj !== 'object') { return false; }\n    return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));\n};\n```\n\n`constructor` and `isBuffer` are ordinary keys. `qs.parse` with `plainObjects: true` or `allowPrototypes: true` keeps them as own properties, so the parsed value carries a non-function `constructor.isBuffer`; `stringify` then calls a non-callable and throws `TypeError`. By contrast `utils.isRegExp` uses a brand check (`Object.prototype.toString`); the missing guard here is an internal inconsistency, not a platform limitation.\n\n\n### Trust Boundary Note\n\n`qs.stringify` alone treats its input as caller-constructed, so serializing a hostile object could be argued outside its contract. This report does not depend on that framing: the malicious shape is produced by **`qs.parse`, whose input is untrusted by design**. `qs.parse` normally strips a `constructor` key via its prototype guard, but with the documented options `plainObjects: true` or `allowPrototypes: true` the key survives and lands as an own property. Feeding the parsed object back into `qs.stringify` \u2014 the standard round-trip in gateways and request-forwarders \u2014 then hits the unchecked call. \n\n\n### PoC\n`poc02c_isBuffer_qs_only_roundtrip.js` \u2014 pure-`qs` chain, no `JSON.parse`; an untrusted query string alone reaches the throw:\n\n```js\n'use strict';\nvar qs = require('qs');\n\nvar untrustedQueryString = 'x%5Bconstructor%5D%5BisBuffer%5D=y'; \/\/ x[constructor][isBuffer]=y\n\nvar parsed = qs.parse(untrustedQueryString, { plainObjects: true });\nconsole.log('[parse] kept constructor key:', JSON.stringify(parsed));\n\ntry {\n    qs.stringify(parsed);\n    console.log('[stringify] no throw (unexpected)');\n} catch (e) {\n    console.log('[stringify] DoS reproduced ->', e.constructor.name + ':', e.message);\n}\n```\n\n`poc02_isBuffer.js` \u2014 the minimal defect:\n\n```js\n'use strict';\nvar qs = require('qs');\ntry {\n    qs.stringify(JSON.parse('{\"a\":{\"constructor\":{\"isBuffer\":\"x\"}}}'));\n} catch (e) {\n    console.log('[A] DoS reproduced ->', e.constructor.name + ':', e.message);\n}\n```\n\n`poc02b_isBuffer_async_crash.js` \u2014 worker death in an async sink:\n\n```js\n'use strict';\nvar qs = require('qs');\n\nfunction handleRequestAsync(clientJsonBody) {\n    try {\n        setImmediate(function () {                 \/\/ async continuation, outside the try\n            qs.stringify(JSON.parse(clientJsonBody)); \/\/ throws here, uncaught\n        });\n        console.log('[handler] returned 200 synchronously; async work scheduled');\n    } catch (e) {\n        console.log('[handler] caught synchronously (will NOT happen):', e.message);\n    }\n}\nprocess.on('exit', function (code) {\n    console.log('[proc] process exiting with code:', code);\n});\nhandleRequestAsync('{\"filters\":{\"constructor\":{\"isBuffer\":\"x\"}}}');\n```\n\n### Execution Steps\n\n```bash\ncd poc\nnpm install qs@6.15.3\nnode poc02c_isBuffer_qs_only_roundtrip.js  # pure qs parse->stringify -> TypeError\nnode poc02_isBuffer.js                      # minimal defect -> TypeError inside stringify\nnode poc02b_isBuffer_async_crash.js         # async sink -> uncaught throw -> exit code 1\n```\n\n### Reproduction Evidence\n\n`poc02c_isBuffer_qs_only_roundtrip.js` :\n\n```\n[parse] kept constructor key: {\"x\":{\"constructor\":{\"isBuffer\":\"y\"}}}\n[stringify] DoS reproduced -> TypeError: obj.constructor.isBuffer is not a function\n```\n\n`poc02_isBuffer.js`:\n\n```\n[A] DoS reproduced -> TypeError: obj.constructor.isBuffer is not a function\n```\n\n`poc02b_isBuffer_async_crash.js` :\n\n```\n[handler] returned 200 synchronously; async work scheduled\n[proc] process exiting with code: 1\nTypeError: obj.constructor.isBuffer is not a function\n    at Object.isBuffer (...\/qs\/lib\/utils.js:332:78)\n    at stringify (...\/qs\/lib\/stringify.js:127:45)\n=== EXIT CODE: 1 ===\n```\n\nThe pure-`qs` round-trip shows the malicious shape originates from `qs.parse` of an untrusted query string, with no `JSON.parse`. The synchronous `try\/catch` in the async case does not catch the throw; the process exits with code 1, denying service to all requests on that worker.\n\n### Impact\n\nAn unauthenticated request degrades any endpoint that re-serializes deserialized client data with `qs.stringify`. The primary impact is a per-request failure: the handler throws and the framework returns HTTP 500. Where the call sits in an unguarded async continuation, the throw escapes and the worker process exits, denying service to all requests it was handling, which means a higher impact that depends on the application's error handling, not on `qs`.\n\n### Recommended Fix\n\nReplace the duck-type with a brand check mirroring `utils.isRegExp`:\n\n```js\nvar isBuffer = function isBuffer(obj) {\n    if (!obj || typeof obj !== 'object') { return false; }\n    if (typeof Buffer !== 'undefined' && typeof Buffer.isBuffer === 'function') {\n        return Buffer.isBuffer(obj);\n    }\n    return Object.prototype.toString.call(obj) === '[object Uint8Array]';\n};\n```\n\nIf duck-typing must remain, require `typeof obj.constructor.isBuffer === 'function'` before invoking and wrap the call in `try\/catch`."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "c65ca776e977cda99d774f38bade6d6e"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?qs"
+                  ,"index": 20
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/qs@6.7.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-6pq8-jhm2-2vcw",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-6pq8-jhm2-2vcw - ## Summary\n\n`qs.stringify(obj, { arrayFormat: 'comma' })` throws an uncaught `TypeError: Cannot convert object to primitive value` when an array in `obj` contains an element that carries an own, non-callable `toString` property (for example `{ a: [ { toString: 'x' } ] }`). A remote, unauthenticated attacker who can influence an object that the application later re-serializes with the comma array format triggers the throw. In a service that lacks a synchronous error boundary around the serialization call, the uncaught exception crashes the worker process, producing a denial of service.\n\n## Root Cause\n\nWhen `arrayFormat: 'comma'` is selected, the comma branch collapses the whole array into a single value via `Array.prototype.join`, or, under `encodeValuesOnly: true`, maps each element through the value encoder before joining. Both paths perform an implicit string coercion (`ToPrimitive` with hint `\"string\"`) on each element. For an object whose own `toString` is a non-callable value, coercion skips the shadowed non-callable `toString`, falls through to `Object.prototype.valueOf` (which returns the object rather than a primitive), and throws. The comma branch runs this coercion before the per-element null and skip handling in the main loop, so nothing downstream can neutralize the hostile element, and the throw is never caught inside the library.\n\n```text\nlib\/stringify.js  (comma-array branch)\n  line 152-154: obj = utils.maybeMap(obj, function (v) { return v == null ? v : encoder(v); });  \/\/ encodeValuesOnly path\n  line 156:     objKeys = [{ value: obj.length > 0 ? obj.join(',') || null : void undefined }];   \/\/ default comma path\nlib\/utils.js\n  line 292:     string = String(str);   \/\/ value encoder coercion reached via the encodeValuesOnly path\n```\n\n## Impact\n\nPrerequisites: the application calls `qs.stringify` with `arrayFormat: 'comma'` (a documented, supported option) on an object whose shape can be influenced by attacker input. Attacker-controllable sources include `qs.parse(input, { allowPrototypes: true })`, which retains a `toString` segment (Express 4's default query parser, Express 5's `extended` query parser, and body-parser's `extended` urlencoded parser all set it), `qs.parse(input, { plainObjects: true })`, whose null-prototype elements throw even without a `toString` key (eg, `a[][b]=c`), and `JSON.parse` of a request body, which needs no qs parse option at all. No authentication or user interaction is required. Demonstrated capability: a single request forces an uncaught synchronous `TypeError` in the serialization call. In a naive single-process Node service with no synchronous error boundary, this crashes the process and takes the service offline (availability impact). Under a framework such as Express that traps synchronous handler throws, the plausible outcome is a per-request 500 rather than a full outage; that lower-impact case is noted but not the worst credible supported deployment. There is no confidentiality or integrity impact, no memory unsafety, and no prototype pollution.\n\n## Proof of Concept\n\n`Install qs at the affected version (for example 6.16.0) and run the following script with Node.js. No network setup is required; it demonstrates the throw in isolation.`\n\n```js\nvar qs = require('qs');\n\n\/\/ Source A: qs.parse with allowPrototypes retains the hostile toString segment\nqs.stringify(qs.parse('a[0][toString]=x', { allowPrototypes: true }), { arrayFormat: 'comma' });\n\n\/\/ Source B: a JSON request body, no qs parse option needed\nqs.stringify(JSON.parse('{\"a\":[{\"toString\":\"x\"}]}'), { arrayFormat: 'comma' });\n\n\/\/ Also affected: the encodeValuesOnly sub-path\nqs.stringify(JSON.parse('{\"a\":[{\"toString\":\"x\"}]}'), { arrayFormat: 'comma', encodeValuesOnly: true });\n```\n\n```text\nA default-join (allowPrototypes) => THREW: TypeError: Cannot convert object to primitive value\nB default-join (JSON.parse) => THREW: TypeError: Cannot convert object to primitive value\nC encodeValuesOnly path => THREW: TypeError: Cannot convert object to primitive value\nN2 callable toString => NO THROW; output=\"a=z\"\nN3 isBuffer vector (CVE-2026-82417) => NO THROW; output=\"a%5Bconstructor%5D%5BisBuffer%5D=x\"\nqs version: 6.16.0\n```\n\n## Attack Chain\n\n1. **Exposure:** A remote, unauthenticated request reaches an endpoint whose handler eventually serializes attacker-influenced data with `qs.stringify(obj, { arrayFormat: 'comma' })`.\n2. **Control:** The attacker supplies data that becomes `{ a: [ { toString: <non-callable value> } ] }`, either via `a[0][toString]=x` parsed with `allowPrototypes`, or via a JSON body `{\"a\":[{\"toString\":\"x\"}]}`.\n3. **Path:** In `stringify`, the primitive\/buffer guard at `lib\/stringify.js:134` is false for an array, so control reaches the comma branch at `lib\/stringify.js:149`.\n4. **Guard:** On the `encodeValuesOnly` path, the closure `v == null ? v : encoder(v)` at `lib\/stringify.js:152-154` passes only `null`\/`undefined` through; a non-null object still reaches the encoder. The default path skips that closure entirely and reaches `obj.join(',')` at `lib\/stringify.js:156` with no guard at all.\n5. **Primitive:** The element is coerced to a string (`Array.prototype.join`, or `String(str)` at `lib\/utils.js:292`). `ToPrimitive` skips the non-callable own `toString`, `valueOf` returns the object, and a `TypeError` is thrown.\n6. **Result:** The uncaught synchronous exception propagates out of the serialization call, failing the request and, in a service without a synchronous error boundary, crashing the process (denial of service).\n\n## Bypass Evidence\n\nThis is a different element type on the code path CVE-2026-8723 (GHSA-q8mj-m7cp-5q26) patched, plus the default comma path, which that fix never covered. CVE-2026-8723 addressed a `TypeError` crash on `null`\/`undefined` entries in the comma plus `encodeValuesOnly` path. Its fix (commit 21f80b3) wraps the encoder in `function (v) { return v == null ? v : encoder(v); }`, so it only passes `null` and `undefined` through. A non-null element with a hostile own `toString` fails the `v == null` test, so the encoder still runs and still throws; the encodeValuesOnly case (case C above) throws on the exact fixed code. The default comma path (`encodeValuesOnly` unset, the library default) never entered that fix at all: `git log -S \"obj.join(','\" -- lib\/stringify.js` shows no security fix has ever touched the `obj.join(',')` line, and cases A and B throw with `encodeValuesOnly` unset. The related isBuffer hardening for CVE-2026-82417 (commit e83d321) is a different sink at the `lib\/stringify.js:134` guard, which is never entered for the array element; the negative control `{a:{constructor:{isBuffer:'x'}}}` serializes cleanly. Disproof attempts that failed: a `valueOf`-only object does not throw (it serializes to `[object Object]`), confirming the trigger is an element with no callable `toString` (an own non-callable `toString`, or a null-prototype object with no `toString` at all, as `qs.parse` produces under `plainObjects`); nested arrays (`{\"a\":[[{\"toString\":\"x\"}]]}`) throw the same way; a callable `toString` serializes cleanly; and the default (non-comma) array format serializes cleanly, confirming the comma format is required. All positive and negative cases were reproduced on the exact published 6.16.0 artifact.\n\n## Affected Versions\n\n- `Ecosystem: npm`\n- `Package: qs`\n- `Confirmed affected range: >= 6.7.0, <= 6.16.0`\n- `Latest release checked: 6.16.0 (npm latest; git tag v6.16.0)`\n- `Fix status: fixed in 6.16.1 (a952e75)`\n\nThe `arrayFormat: 'comma'` join sink was introduced in qs 6.7.0, so 6.7.0 is the lower boundary; releases before 6.7.0 lack the sink. No released version fixes this vector, and the latest published release (6.16.0) reproduces the throw, so the closed upper bound `<= 6.16.0` covers every affected release. The `encodeValuesOnly` sub-path was added later, but the default comma-join vector already affects 6.7.0, so 6.7.0 governs the lower boundary.\n\n## Suggested Fix\n\nThe comma array serialization must not allow an implicit string coercion of an array element to throw an uncaught exception. Coercion of each comma element should be performed defensively (for example by wrapping the join and per-element encode so that a coercion failure is caught and handled), and this protection must cover both the default `obj.join(',')` path and the `encodeValuesOnly` encoder path, not only the previously patched `null`\/`undefined` case. As an interim mitigation without a code change, applications can avoid `arrayFormat: 'comma'` when serializing data derived from untrusted input, sanitize parsed objects (avoid `allowPrototypes`\/`plainObjects` on untrusted input and strip unexpected own properties), or wrap `qs.stringify` calls in a synchronous error boundary so a coercion failure cannot crash the process.\n\nReported by zx (GitHub: @manus-pi).\n\n---\n\n## Independent report by @Lucidsec\n\nThe following was reported separately, after this advisory, and is merged here as a duplicate.\n\n### Summary\n\nIn project [qs](https:\/\/github.com\/ljharb\/qs), in versions `>= 6.7.0, <= 6.16.0` (every version that supports `arrayFormat: 'comma'`), `qs.stringify` with `arrayFormat: 'comma'` can throw an uncaught `TypeError: Cannot convert object to primitive value` when an array element has a non-callable own `toString`. It is fixed in 6.16.1. Related: CWE-248 and CWE-704.\n\n### Technical Details\n\n`qs.stringify` with `arrayFormat: 'comma'` joins an array at `lib\/stringify.js:156` via `obj.join(',')`. An element whose own `toString` is not callable makes `Array.prototype.join` throw. There is no type check and no catch on that path.\n\nA second path exists with `encodeValuesOnly`: at `lib\/stringify.js:151-154`, `maybeMap` only skips `v == null`, then `lib\/utils.js:292` does `String(str)` and throws the same `TypeError` (this second site exists since v6.11.1; before that, the same input throws at `join`).\n\nWho can trigger: someone who can shape an array element passed to `stringify`. The host must use non-default `arrayFormat: 'comma'`. Default `arrayFormat` `indices` does not fold arrays and is not affected. A parse-then-stringify path also needs `plainObjects: true` (null-prototype elements from `lib\/parse.js:200`) or `allowPrototypes: true` (which Express 4's default query parser, Express 5's `extended` query parser, and body-parser's `extended` urlencoded parser all set). Default `qs.parse('a[0][toString]=x')` returns `{}` because the prototype guard drops `toString`. Direct JSON handed to `stringify` can supply `{\"a\":[{\"toString\":\"x\"}]}`.\n\nCause: the comma fold at `lib\/stringify.js:149-156` collapses the array into a single value before the main loop at `lib\/stringify.js:172-212`, so `skipNulls` and `strictNullHandling` only ever see the joined value, never individual elements. `isNonNullishPrimitive` \/ `isBuffer` at `lib\/stringify.js:134` inspect the whole value, not each element. A normal object uses `Object.prototype.toString` and becomes `[object Object]`. An own non-callable `toString` is skipped, `valueOf` returns the object, and `join` throws. (The skipped TODO test at `test\/stringify.js:684-689` uses a plain `{ b: 1 }` element, which does not throw; it covers the separate question of what comma format should output for object elements, not this crash.) Earlier comma crash fixes did not cover object elements.\n\n### Impact\n\nOne small input makes that serialization path throw a synchronous, catchable `TypeError`. Behind a framework error boundary (eg, a synchronous Express handler), the request fails with a 500 and the process survives. In a host with no error boundary (eg, a bare `http.createServer` handler), the uncaught exception exits the process (the client sees `ECONNRESET`). Availability only.\n\n### Proof of Concept\n\n<details>\n<summary>Show the proof of concept<\/summary>\n\nChecked on the latest commit that was checked: `07b1d4d82c8f9301c105ea4b94fa2302cfd6e8b4`. Still present. Demonstrated.\n\n- Payload `{\"a\":[{\"toString\":\"x\"}]}` throws at `lib\/stringify.js:156`.\n- Baseline `{\"a\":[\"x\",\"y\"]}` returns 200 with body `a=x%2Cy`.\n- A plain object element stringifies to `a=%5Bobject%20Object%5D` and does not throw.\n- `encodeValuesOnly: true` throws via `utils.js:292`.\n- `plainObjects` parse plus comma throws.\n\n<\/details>\n\n### Suggested Fix\n\nBefore `join`, map elements with the existing primitive check; skip or replace non-primitives so `join` cannot throw. On the `encodeValuesOnly` path, do not send non-primitives into `String()`. Optionally guard `lib\/utils.js:292`. Add new regression tests."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "6fd295a8cf994496f1fc39dd24f7b4e2"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?qs"
+                  ,"index": 20
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/qs@6.7.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-6rw7-vpxm-498p",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-6rw7-vpxm-498p - ### Summary\n\nThe `arrayLimit` option in qs did not enforce limits for bracket notation (`a[]=1&a[]=2`), only for indexed notation (`a[0]=1`). This is a consistency bug; `arrayLimit` should apply uniformly across all array notations.\n\n**Note:** The default `parameterLimit` of 1000 effectively mitigates the DoS scenario originally described. With default options, bracket notation cannot produce arrays larger than `parameterLimit` regardless of `arrayLimit`, because each `a[]=value` consumes one parameter slot. The severity has been reduced accordingly.\n\n### Details\n\nThe `arrayLimit` option only checked limits for indexed notation (`a[0]=1&a[1]=2`) but did not enforce it for bracket notation (`a[]=1&a[]=2`).\n\n**Vulnerable code** (`lib\/parse.js:159-162`):\n```javascript\nif (root === '[]' && options.parseArrays) {\n    obj = utils.combine([], leaf);  \/\/ No arrayLimit check\n}\n```\n\n**Working code** (`lib\/parse.js:175`):\n```javascript\nelse if (index <= options.arrayLimit) {  \/\/ Limit checked here\n    obj = [];\n    obj[index] = leaf;\n}\n```\n\nThe bracket notation handler at line 159 uses `utils.combine([], leaf)` without validating against `options.arrayLimit`, while indexed notation at line 175 checks `index <= options.arrayLimit` before creating arrays.\n\n### PoC\n\n```javascript\nconst qs = require('qs');\nconst result = qs.parse('a[]=1&a[]=2&a[]=3&a[]=4&a[]=5&a[]=6', { arrayLimit: 5 });\nconsole.log(result.a.length);  \/\/ Output: 6 (should be max 5)\n```\n\n**Note on parameterLimit interaction:** The original advisory's \"DoS demonstration\" claimed a length of 10,000, but `parameterLimit` (default: 1000) caps parsing to 1,000 parameters. With default options, the actual output is 1,000, not 10,000.\n\n### Impact\n\nConsistency bug in `arrayLimit` enforcement. With default `parameterLimit`, the practical DoS risk is negligible since `parameterLimit` already caps the total number of parsed parameters (and thus array elements from bracket notation). The risk increases only when `parameterLimit` is explicitly set to a very high value."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "686f57be6b549afe2010910094ddc417"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?qs"
+                  ,"index": 20
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/qs@6.7.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-w7fw-mjwx-w883",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-w7fw-mjwx-w883 - ### Summary\nThe `arrayLimit` option in qs does not enforce limits for comma-separated values when `comma: true` is enabled, allowing attackers to cause denial-of-service via memory exhaustion. This is a bypass of the array limit enforcement, similar to the bracket notation bypass addressed in GHSA-6rw7-vpxm-498p (CVE-2025-15284).\n\n### Details\nWhen the `comma` option is set to `true` (not the default, but configurable in applications), qs allows parsing comma-separated strings as arrays (e.g., `?param=a,b,c` becomes `['a', 'b', 'c']`). However, the limit check for `arrayLimit` (default: 20) and the optional throwOnLimitExceeded occur after the comma-handling logic in `parseArrayValue`, enabling a bypass. This permits creation of arbitrarily large arrays from a single parameter, leading to excessive memory allocation.\n\n**Vulnerable code** (lib\/parse.js: lines ~40-50):\n```js\nif (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {\n    return val.split(',');\n}\n\nif (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) {\n    throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n}\n\nreturn val;\n```\nThe `split(',')` returns the array immediately, skipping the subsequent limit check. Downstream merging via `utils.combine` does not prevent allocation, even if it marks overflows for sparse arrays.This discrepancy allows attackers to send a single parameter with millions of commas (e.g., `?param=,,,,,,,,...`), allocating massive arrays in memory without triggering limits. It bypasses the intent of `arrayLimit`, which is enforced correctly for indexed (`a[0]=`) and bracket (`a[]=`) notations (the latter fixed in v6.14.1 per GHSA-6rw7-vpxm-498p).\n\n### PoC\n**Test 1 - Basic bypass:**\n```\nnpm install qs\n```\n\n```js\nconst qs = require('qs');\n\nconst payload = 'a=' + ','.repeat(25);  \/\/ 26 elements after split (bypasses arrayLimit: 5)\nconst options = { comma: true, arrayLimit: 5, throwOnLimitExceeded: true };\n\ntry {\n  const result = qs.parse(payload, options);\n  console.log(result.a.length);  \/\/ Outputs: 26 (bypass successful)\n} catch (e) {\n  console.log('Limit enforced:', e.message);  \/\/ Not thrown\n}\n```\n**Configuration:**\n- `comma: true`\n- `arrayLimit: 5`\n- `throwOnLimitExceeded: true`\n\nExpected: Throws \"Array limit exceeded\" error.\nActual: Parses successfully, creating an array of length 26.\n\n\n### Impact\nDenial of Service (DoS) via memory exhaustion.\n\n### Suggested Fix\nMove the `arrayLimit` check before the comma split in `parseArrayValue`, and enforce it on the resulting array length. Use `currentArrayLength` (already calculated upstream) for consistency with bracket notation fixes.\n\n**Current code** (lib\/parse.js: lines ~40-50):\n```js\nif (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {\n    return val.split(',');\n}\n\nif (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) {\n    throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n}\n\nreturn val;\n```\n\n**Fixed code:**\n```js\nif (val && typeof val === 'string' && options.comma && val.indexOf(',') > -1) {\n    const splitArray = val.split(',');\n    if (splitArray.length > options.arrayLimit - currentArrayLength) {  \/\/ Check against remaining limit\n        if (options.throwOnLimitExceeded) {\n            throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n        } else {\n            \/\/ Optionally convert to object or truncate, per README\n            return splitArray.slice(0, options.arrayLimit - currentArrayLength);\n        }\n    }\n    return splitArray;\n}\n\nif (options.throwOnLimitExceeded && currentArrayLength >= options.arrayLimit) {\n    throw new RangeError('Array limit exceeded. Only ' + options.arrayLimit + ' element' + (options.arrayLimit === 1 ? '' : 's') + ' allowed in an array.');\n}\n\nreturn val;\n```\nThis aligns behavior with indexed and bracket notations, reuses `currentArrayLength`, and respects `throwOnLimitExceeded`. Update README to note the consistent enforcement."
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "a9100283c9af729dd1843dbdc84c4c08"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?qs"
+                  ,"index": 20
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/qs@6.7.0"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-m6fv-jmcg-4jfg",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-m6fv-jmcg-4jfg - ### Impact\n\npassing untrusted user input - even after sanitizing it - to `SendStream.redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in send 0.19.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "d343fc60b26a7681707d25a55a8caaf4"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?send"
+                  ,"index": 21
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/send@0.17.1"
+                    }
+                ]
+              
+            }
+          ]
+          }, {
+          "ruleId": "GHSA-cm22-4g7w-348p",
+          "level": "warning",
+          "message": {
+            "text": "GHSA-cm22-4g7w-348p - ### Impact\n\npassing untrusted user input - even after sanitizing it - to `redirect()` may execute untrusted code\n\n### Patches\n\nthis issue is patched in serve-static 1.16.0\n\n### Workarounds\n\nusers are encouraged to upgrade to the patched version of express, but otherwise can workaround this issue by making sure any untrusted inputs are safe, ideally by validating them against an explicit allowlist\n\n### Details\n\nsuccessful exploitation of this vector requires the following:\n\n1. The attacker MUST control the input to response.redirect()\n1. express MUST NOT redirect before the template appears\n1. the browser MUST NOT complete redirection before:\n1. the user MUST click on the link in the template\n"
+          },
+          "partialFingerprints": {
+            "vulnerabilityHash": "43d7bd294de3f3a783bb29bd5de768ae"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file://\/src\/package-lock.json?serve-static"
+                  ,"index": 22
+                }
+              }
+                ,"logicalLocations": [
+                    {
+                    "fullyQualifiedName": "pkg:npm\/serve-static@1.14.1"
+                    }
+                ]
+              
+            }
+          ]
+          }      ]
+    }
+  ]
+}

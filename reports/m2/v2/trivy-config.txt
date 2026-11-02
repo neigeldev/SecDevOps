@@ -12,11 +12,35 @@ Report Summary
 ├────────────────────────────────────────┼────────────┼───────────────────┤
 │ infra/terraform/app/cloudfront.tf      │ terraform  │         0         │
 ├────────────────────────────────────────┼────────────┼───────────────────┤
-│ infra/terraform/app/rds.tf             │ terraform  │         0         │
+│ infra/terraform/app/rds.tf             │ terraform  │         1         │
 ├────────────────────────────────────────┼────────────┼───────────────────┤
 │ infra/terraform/app/security_groups.tf │ terraform  │         0         │
 └────────────────────────────────────────┴────────────┴───────────────────┘
 Legend:
 - '-': Not scanned
 - '0': Clean (no security findings detected)
+
+
+infra/terraform/app/rds.tf (terraform)
+======================================
+Tests: 1 (SUCCESSES: 0, FAILURES: 1)
+Failures: 1 (UNKNOWN: 0, LOW: 0, MEDIUM: 1, HIGH: 0, CRITICAL: 0)
+
+AWS-0077 (MEDIUM): Instance has very low backup retention period.
+════════════════════════════════════════
+RDS backup retention for clusters defaults to 1 day, this may not be enough to identify and respond to an issue. Backup retention periods should be set to a period that is a balance on cost and limiting risk.
+
+
+See https://avd.aquasec.com/misconfig/aws-0077
+────────────────────────────────────────
+ infra/terraform/app/rds.tf:92
+   via infra/terraform/app/rds.tf:64-103 (aws_db_instance.main)
+────────────────────────────────────────
+  64   resource "aws_db_instance" "main" {
+  ..   
+  92 [   backup_retention_period             = var.db_backup_retention_days
+ ...   
+ 103   }
+────────────────────────────────────────
+
 

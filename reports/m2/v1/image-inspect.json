@@ -1,6 +1,6 @@
 {
   "image": "securenotes:v1",
-  "size_mb": 1349,
+  "size_mb": 1360,
   "user": "root (por defecto)",
   "healthcheck": false,
   "entrypoint": [
@@ -15,5 +15,5 @@
     "JWT_SECRET",
     "DB_PASSWORD"
   ],
-  "layers": 10
+  "layers": 11
 }

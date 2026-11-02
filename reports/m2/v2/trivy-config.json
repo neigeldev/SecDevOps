@@ -3,19 +3,16 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a195bc-12f6-7c31-8137-27728852867c",
-  "CreatedAt": "2026-11-01T06:11:33.238801114Z",
-  "ArtifactID": "sha256:18d231472f55eaee139b71c615014ba0b7a445085341a316ce0f004afc3de2d6",
+  "ReportID": "01a19a07-c6a3-7f3a-974f-01f554a5369b",
+  "CreatedAt": "2026-11-02T02:12:43.3000017Z",
+  "ArtifactID": "sha256:d0c86bd29d1c114b72e1ebef7fd79275f0431f7a227b4e7d73a61db2300c7c11",
   "ArtifactName": "/src",
   "ArtifactType": "repository",
   "Metadata": {
-    "RepoURL": "https://github.com/neigeldev/SecDevOps",
+    "RepoURL": "https://github.com/neigeldev/SecDevOps.git",
     "Branch": "claude/sharp-lamport-tszvm0",
-    "Tags": [
-      "v2.0-secure"
-    ],
-    "Commit": "45cfda28092d0f3ca0f55d429b3a9e6c5da08056",
-    "CommitMsg": "feat(M3): línea base de seguridad de la cuenta AWS (CIS AWS Foundations)\n\nCorrige a nivel de cuenta los hallazgos CSPM que no dependen de la app:\n- CloudTrail multirregión con validación de integridad, cifrado KMS,\n  envío a CloudWatch Logs y eventos de datos S3; bucket endurecido\n  (bloqueo público, versionado, SSE-KMS, TLS obligatorio, access logging).\n- 15 filtros de métricas + alarmas CIS 4.1-4.15 -\u003e SNS cifrado.\n- IAM: política de contraseñas CIS, rol de soporte, rol de auditoría de\n  solo lectura para Prowler/ScoutSuite, IAM Access Analyzer.\n- Cifrado EBS por defecto, bloqueo público de S3 a nivel de cuenta, IMDSv2\n  por defecto, bloqueo de snapshots públicos, consola serie deshabilitada.\n- GuardDuty con alertas de severidad alta vía EventBridge -\u003e SNS.\n- Opcionales: Security Hub (CIS v3.0), AWS Config, contacto de seguridad,\n  presupuesto con alertas; endurecimiento de la VPC por defecto.\nCheckov: 0 fallos (excepciones justificadas en el código).\n\nCo-Authored-By: Claude Opus 5.5 \u003cnoreply@anthropic.com\u003e\nClaude-Session: https://claude.ai/code/session_01C74sqKw5rfHNZ12tPeqLVA",
+    "Commit": "cb0384628593e8092f47e5db5eefb7334229d7bc",
+    "CommitMsg": "fix(scripts): summarize.mjs resuelve bien la ruta del repo en Windows\n\nnew URL(import.meta.url).pathname devuelve /C:/... en Windows y\npath.resolve lo convertía en C:\\C:\\...; se usa fileURLToPath.\n\nCo-Authored-By: Claude Opus 5.5 \u003cnoreply@anthropic.com\u003e\nClaude-Session: https://claude.ai/code/session_01C74sqKw5rfHNZ12tPeqLVA",
     "Author": "Claude \u003cnoreply@anthropic.com\u003e",
     "Committer": "Claude \u003cnoreply@anthropic.com\u003e"
   },
@@ -43,7 +40,7 @@
       "Class": "config",
       "Type": "terraform",
       "MisconfSummary": {
-        "Successes": 89,
+        "Successes": 88,
         "Failures": 0
       }
     },
@@ -55,7 +52,103 @@
     {
       "Target": "infra/terraform/app/rds.tf",
       "Class": "config",
-      "Type": "terraform"
+      "Type": "terraform",
+      "MisconfSummary": {
+        "Successes": 0,
+        "Failures": 1
+      },
+      "Misconfigurations": [
+        {
+          "Type": "Terraform Security Check",
+          "ID": "AWS-0077",
+          "Title": "RDS Cluster and RDS instance should have backup retention longer than default 1 day",
+          "Description": "RDS backup retention for clusters defaults to 1 day, this may not be enough to identify and respond to an issue. Backup retention periods should be set to a period that is a balance on cost and limiting risk.\n",
+          "Message": "Instance has very low backup retention period.",
+          "Namespace": "builtin.aws.rds.aws0077",
+          "Query": "data.builtin.aws.rds.aws0077.deny",
+          "Resolution": "Explicitly set the retention period to greater than the default",
+          "Severity": "MEDIUM",
+          "PrimaryURL": "https://avd.aquasec.com/misconfig/aws-0077",
+          "References": [
+            "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupRetention",
+            "https://avd.aquasec.com/misconfig/aws-0077"
+          ],
+          "Status": "FAIL",
+          "CauseMetadata": {
+            "Resource": "aws_db_instance.main",
+            "Provider": "AWS",
+            "Service": "rds",
+            "StartLine": 92,
+            "EndLine": 92,
+            "Code": {
+              "Lines": [
+                {
+                  "Number": 64,
+                  "Content": "resource \"aws_db_instance\" \"main\" {",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "Highlighted": "\u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_db_instance\"\u001b[0m \u001b[38;5;37m\"main\"\u001b[0m {",
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 65,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 92,
+                  "Content": "  backup_retention_period             = var.db_backup_retention_days",
+                  "IsCause": true,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "Highlighted": "\u001b[0m  \u001b[38;5;245mbackup_retention_period\u001b[0m             = \u001b[38;5;33mvar\u001b[0m.db_backup_retention_days",
+                  "FirstCause": true,
+                  "LastCause": true
+                },
+                {
+                  "Number": 102,
+                  "Content": "",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": true,
+                  "FirstCause": false,
+                  "LastCause": false
+                },
+                {
+                  "Number": 103,
+                  "Content": "}",
+                  "IsCause": false,
+                  "Annotation": "",
+                  "Truncated": false,
+                  "Highlighted": "}",
+                  "FirstCause": false,
+                  "LastCause": false
+                }
+              ]
+            },
+            "Occurrences": [
+              {
+                "Resource": "aws_db_instance.main",
+                "Filename": "infra/terraform/app/rds.tf",
+                "Location": {
+                  "StartLine": 64,
+                  "EndLine": 103
+                }
+              }
+            ],
+            "RenderedCause": {
+              "Raw": "resource \"aws_db_instance\" \"main\" {\n  backup_retention_period = 1\n}",
+              "Highlighted": "\u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_db_instance\"\u001b[0m \u001b[38;5;37m\"main\"\u001b[0m {\n  \u001b[38;5;245mbackup_retention_period\u001b[0m = \u001b[38;5;37m1\n\u001b[0m}"
+            }
+          }
+        }
+      ]
     },
     {
       "Target": "infra/terraform/app/security_groups.tf",

@@ -3,8 +3,8 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a195bb-71ad-72e5-9162-33f1ea5725e2",
-  "CreatedAt": "2026-11-01T06:10:51.949193358Z",
+  "ReportID": "01a19903-dd82-73b3-9992-3ff74e994175",
+  "CreatedAt": "2026-11-01T21:28:49.794246779Z",
   "ArtifactName": "/src",
   "ArtifactType": "filesystem",
   "Results": [
@@ -414,8 +414,8 @@
               }
             ],
             "RenderedCause": {
-              "Raw": "resource \"aws_instance\" \"web\" {\n  user_data = \"#!/bin/bash\\nyum install -y docker git\\nservice docker start\\ndocker run -d --name db -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=securenotes postgres:latest\\ngit clone https://github.com/neigeldev/SecDevOps.git /opt/securenotes\\ncd /opt/securenotes/app \u0026\u0026 docker build -t securenotes .\\ndocker run -d --name app -p 3000:3000 --link db -e DB_HOST=db securenotes\\n\"\n}",
-              "Highlighted": "\u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_instance\"\u001b[0m \u001b[38;5;37m\"web\"\u001b[0m {\n  \u001b[38;5;245muser_data\u001b[0m = \u001b[38;5;37m\"#!/bin/bash\u001b[0m\\\u001b[38;5;37mnyum install -y docker git\u001b[0m\\\u001b[38;5;37mnservice docker start\u001b[0m\\\u001b[38;5;37mndocker run -d --name db -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=securenotes postgres:latest\u001b[0m\\\u001b[38;5;37mngit clone https://github.com/neigeldev/SecDevOps.git /opt/securenotes\u001b[0m\\\u001b[38;5;37mncd /opt/securenotes/app \u0026\u0026 docker build -t securenotes .\u001b[0m\\\u001b[38;5;37mndocker run -d --name app -p 3000:3000 --link db -e DB_HOST=db securenotes\u001b[0m\\\u001b[38;5;37mn\"\n\u001b[0m}"
+              "Raw": "resource \"aws_instance\" \"web\" {\n  user_data = \"#!/bin/bash\\r\\nyum install -y docker git\\r\\nservice docker start\\r\\ndocker run -d --name db -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=securenotes postgres:latest\\r\\ngit clone https://github.com/neigeldev/SecDevOps.git /opt/securenotes\\r\\ncd /opt/securenotes/app \u0026\u0026 docker build -t securenotes .\\r\\ndocker run -d --name app -p 3000:3000 --link db -e DB_HOST=db securenotes\\r\\n\"\n}",
+              "Highlighted": "\u001b[38;5;33mresource\u001b[0m \u001b[38;5;37m\"aws_instance\"\u001b[0m \u001b[38;5;37m\"web\"\u001b[0m {\n  \u001b[38;5;245muser_data\u001b[0m = \u001b[38;5;37m\"#!/bin/bash\u001b[0m\\\u001b[38;5;37mr\u001b[0m\\\u001b[38;5;37mnyum install -y docker git\u001b[0m\\\u001b[38;5;37mr\u001b[0m\\\u001b[38;5;37mnservice docker start\u001b[0m\\\u001b[38;5;37mr\u001b[0m\\\u001b[38;5;37mndocker run -d --name db -p 5432:5432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=securenotes postgres:latest\u001b[0m\\\u001b[38;5;37mr\u001b[0m\\\u001b[38;5;37mngit clone https://github.com/neigeldev/SecDevOps.git /opt/securenotes\u001b[0m\\\u001b[38;5;37mr\u001b[0m\\\u001b[38;5;37mncd /opt/securenotes/app \u0026\u0026 docker build -t securenotes .\u001b[0m\\\u001b[38;5;37mr\u001b[0m\\\u001b[38;5;37mndocker run -d --name app -p 3000:3000 --link db -e DB_HOST=db securenotes\u001b[0m\\\u001b[38;5;37mr\u001b[0m\\\u001b[38;5;37mn\"\n\u001b[0m}"
             }
           }
         },

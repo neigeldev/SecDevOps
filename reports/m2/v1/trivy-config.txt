@@ -279,17 +279,18 @@ Simplifies auditing, debugging, and managing security groups.
 
 See https://avd.aquasec.com/misconfig/aws-0124
 ────────────────────────────────────────
- infra/terraform/app/main.tf:47-52
+ infra/terraform/app/main.tf:40-45
    via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
 ────────────────────────────────────────
   21   resource "aws_security_group" "web" {
   ..   
-  47 ┌   egress {
-  48 │     from_port   = 0
-  49 │     to_port     = 0
-  50 │     protocol    = "-1"
-  51 │     cidr_blocks = ["0.0.0.0/0"]
-  52 └   }
+  40 ┌   ingress {
+  41 │     from_port   = 5432
+  42 │     to_port     = 5432
+  43 │     protocol    = "tcp"
+  44 │     cidr_blocks = ["0.0.0.0/0"]
+  45 └   }
+  ..   
   53   }
 ────────────────────────────────────────
 
@@ -303,18 +304,17 @@ Simplifies auditing, debugging, and managing security groups.
 
 See https://avd.aquasec.com/misconfig/aws-0124
 ────────────────────────────────────────
- infra/terraform/app/main.tf:40-45
+ infra/terraform/app/main.tf:47-52
    via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
 ────────────────────────────────────────
   21   resource "aws_security_group" "web" {
   ..   
-  40 ┌   ingress {
-  41 │     from_port   = 5432
-  42 │     to_port     = 5432
-  43 │     protocol    = "tcp"
-  44 │     cidr_blocks = ["0.0.0.0/0"]
-  45 └   }
-  ..   
+  47 ┌   egress {
+  48 │     from_port   = 0
+  49 │     to_port     = 0
+  50 │     protocol    = "-1"
+  51 │     cidr_blocks = ["0.0.0.0/0"]
+  52 └   }
   53   }
 ────────────────────────────────────────
 

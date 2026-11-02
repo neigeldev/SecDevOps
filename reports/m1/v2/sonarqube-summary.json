@@ -1,0 +1,28 @@
+{
+  "issues_total": 0,
+  "by_software_quality": {
+    "MAINTAINABILITY": 0,
+    "SECURITY": 0,
+    "RELIABILITY": 0
+  },
+  "by_impact_severity": {
+    "HIGH": 0,
+    "MEDIUM": 0,
+    "LOW": 0,
+    "INFO": 0,
+    "BLOCKER": 0
+  },
+  "security_hotspots": 0,
+  "hotspots_by_probability": {},
+  "measures": {
+    "bugs": "0",
+    "reliability_rating": "1.0",
+    "code_smells": "0",
+    "security_rating": "1.0",
+    "ncloc": "643",
+    "vulnerabilities": "0",
+    "security_hotspots": "0",
+    "sqale_rating": "1.0"
+  },
+  "quality_gate": "OK"
+}
