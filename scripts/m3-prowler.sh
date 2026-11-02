@@ -20,6 +20,8 @@ if [[ "${SUMMARY_ONLY:-0}" == "1" ]]; then
   log "SUMMARY_ONLY=1: se reutiliza el reporte existente de Prowler ($STAGE)"
 else
   log "Prowler ($STAGE) sobre la cuenta AWS en $AWS_REGION (tarda 5-15 min)"
+  # Prowler AÑADE al archivo si ya existe: se borran los reportes previos de esta etapa
+  rm -f "$OUT"/prowler-"$STAGE".* "$OUT/summary.json"
   rc=0
   docker run --rm \
     -e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e AWS_SESSION_TOKEN \
@@ -47,7 +49,18 @@ if (!fs.existsSync(f)) {
   console.log('  (sin JSON OCSF; revisa prowler.log)');
   process.exit(0);
 }
-const data = JSON.parse(fs.readFileSync(f, 'utf8'));
+// Si el archivo trae varios escaneos concatenados ("...}]{..." porque Prowler
+// añade al final), se usa solo el último.
+const raw = fs.readFileSync(f, 'utf8');
+let data;
+try {
+  data = JSON.parse(raw);
+} catch {
+  const parts = raw.split(/\}\s*\]\s*\{/);
+  const last = parts[parts.length - 1];
+  data = JSON.parse(parts.length > 1 ? '[{' + last : raw);
+  console.log(`  (el reporte contenía ${parts.length} escaneos concatenados; se resume el último)`);
+}
 let pass = 0, fail = 0; const sev = {};
 for (const r of data) {
   const status = (r.status_code || (r.status_detail && r.status) || '').toUpperCase();
