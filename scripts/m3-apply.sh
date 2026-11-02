@@ -31,15 +31,12 @@ if [[ "$WHAT" == "app" || "$WHAT" == "all" ]]; then
   APPDIR="$ROOT/infra/terraform/app"
   # 1) Crear primero ECR (y el resto) para conocer la URL del repositorio
   apply_dir "$APPDIR" -var "region=$AWS_REGION" -target=aws_ecr_repository.app
-  REPO="$(terraform -chdir="$APPDIR" output -raw ecr_repository_url)"
   TAG="$(terraform -chdir="$APPDIR" output -raw image 2>/dev/null | sed 's/.*://')"
   TAG="${TAG:-2.0.0}"
 
   # 2) Construir y publicar la imagen endurecida
-  log "Construyendo y publicando $REPO:$TAG"
-  aws ecr get-login-password --region "$AWS_REGION" | docker login --username AWS --password-stdin "${REPO%%/*}"
-  docker build -t "$REPO:$TAG" "$ROOT/app"
-  docker push "$REPO:$TAG"
+  #    (si la etiqueta ya existe en ECR se omite: las etiquetas son inmutables)
+  "$ROOT/scripts/m3-push-image.sh" "$TAG"
 
   # 3) Aplicar el resto de la infraestructura
   apply_dir "$APPDIR" -var "region=$AWS_REGION" -var "image_tag=$TAG"
