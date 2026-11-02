@@ -3,8 +3,10 @@
 // Uso: node scripts/summarize.mjs   (o ./scripts/summarize.sh)
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
+// fileURLToPath convierte bien file:///C:/... en Windows (pathname daba C:\\C:\\...)
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const R = path.join(ROOT, 'reports');
 const read = (p) => { try { return JSON.parse(fs.readFileSync(p, 'utf8')); } catch { return null; } };
 const exists = (p) => fs.existsSync(p);
