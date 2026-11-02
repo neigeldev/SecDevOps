@@ -10,11 +10,8 @@ OUT="$(report_dir m3 "prowler-$STAGE")"
 need docker
 need aws
 
-# shellcheck disable=SC2046
-ENVARGS=$(aws_env_args)
+export_aws_credentials
 assume_audit_role_if_present
-# Reexportar por si assume_audit_role_if_present rotó las credenciales
-mapfile -t ENVARR < <(printf '%s\n' $ENVARGS)
 
 if [[ "${SUMMARY_ONLY:-0}" == "1" ]]; then
   log "SUMMARY_ONLY=1: se reutiliza el reporte existente de Prowler ($STAGE)"

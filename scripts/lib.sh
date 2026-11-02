@@ -106,17 +106,19 @@ report_dir() {
   echo "$d"
 }
 
-# Credenciales AWS para contenedores (Prowler/ScoutSuite): exporta las de tu perfil
-# (incluye SSO) como variables de entorno.
-aws_env_args() {
+# Credenciales AWS para contenedores (Prowler/ScoutSuite): exporta en ESTE shell las de
+# tu perfil (incluye SSO) como variables de entorno, para pasarlas con "docker run -e".
+# Debe llamarse directamente (no dentro de $(...)): en un subshell los export se pierden.
+export_aws_credentials() {
   need aws
   local creds
-  creds="$(aws configure export-credentials --format env 2>/dev/null)" \
+  creds="$(aws configure export-credentials --format env 2>/dev/null | tr -d '\r')" \
     || die "No hay credenciales de AWS. Ejecuta 'aws configure' o 'aws sso login'."
+  [[ -n "$creds" ]] || die "No hay credenciales de AWS. Ejecuta 'aws configure' o 'aws sso login'."
   eval "$creds"
-  local args=(-e AWS_ACCESS_KEY_ID -e AWS_SECRET_ACCESS_KEY -e "AWS_DEFAULT_REGION=$AWS_REGION" -e "AWS_REGION=$AWS_REGION")
-  [[ -n "${AWS_SESSION_TOKEN:-}" ]] && args+=(-e AWS_SESSION_TOKEN)
-  printf '%s\n' "${args[@]}"
+  export AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY
+  if [[ -n "${AWS_SESSION_TOKEN:-}" ]]; then export AWS_SESSION_TOKEN; else unset AWS_SESSION_TOKEN; fi
+  [[ -n "${AWS_ACCESS_KEY_ID:-}" && -n "${AWS_SECRET_ACCESS_KEY:-}" ]] || die "No se pudieron exportar las credenciales de AWS."
 }
 
 # Asume el rol de auditoría de solo lectura si existe (creado por account-baseline)
@@ -127,7 +129,7 @@ assume_audit_role_if_present() {
     log "Usando el rol de auditoría de solo lectura: $arn"
     local out
     out="$(aws sts assume-role --role-arn "$arn" --role-session-name cspm-scan \
-      --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text)"
+      --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' --output text | tr -d '\r')"
     export AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN
     read -r AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN <<<"$out"
     unset AWS_PROFILE

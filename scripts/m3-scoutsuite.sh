@@ -8,8 +8,7 @@ OUT="$(report_dir m3 "scoutsuite-$STAGE")"
 need docker
 need aws
 
-# shellcheck disable=SC2034
-ENVARGS=$(aws_env_args)
+export_aws_credentials
 assume_audit_role_if_present
 
 log "ScoutSuite ($STAGE) sobre la cuenta AWS (instala la herramienta y escanea; 5-15 min)"
