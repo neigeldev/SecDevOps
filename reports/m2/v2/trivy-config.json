@@ -3,16 +3,16 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a19a07-c6a3-7f3a-974f-01f554a5369b",
-  "CreatedAt": "2026-11-02T02:12:43.3000017Z",
-  "ArtifactID": "sha256:d0c86bd29d1c114b72e1ebef7fd79275f0431f7a227b4e7d73a61db2300c7c11",
+  "ReportID": "01a19dd9-ca0a-7dc9-bc9d-90c7c57d757b",
+  "CreatedAt": "2026-11-02T20:00:58.378906265Z",
+  "ArtifactID": "sha256:3ac6338a1169bbb192fd92c695f1af13e67775af624e7f3dd0ff3b326d91cb26",
   "ArtifactName": "/src",
   "ArtifactType": "repository",
   "Metadata": {
     "RepoURL": "https://github.com/neigeldev/SecDevOps.git",
     "Branch": "claude/sharp-lamport-tszvm0",
-    "Commit": "cb0384628593e8092f47e5db5eefb7334229d7bc",
-    "CommitMsg": "fix(scripts): summarize.mjs resuelve bien la ruta del repo en Windows\n\nnew URL(import.meta.url).pathname devuelve /C:/... en Windows y\npath.resolve lo convertía en C:\\C:\\...; se usa fileURLToPath.\n\nCo-Authored-By: Claude Opus 5.5 \u003cnoreply@anthropic.com\u003e\nClaude-Session: https://claude.ai/code/session_01C74sqKw5rfHNZ12tPeqLVA",
+    "Commit": "d86cddd0886d0b3e03b4b325ef04f6d28ebc47d6",
+    "CommitMsg": "docs(informe): formato APA 7.ª edición\n\nTimes New Roman 12 a doble espacio, alineación izquierda con sangría de\n1,27 cm, número de página arriba a la derecha, portada de estudiante,\nresumen de un párrafo, encabezados sin numeración por niveles, tablas y\nfiguras con rótulo y nota APA, citas en el texto y referencias con\nsangría francesa (s. f., versión de software y fecha de recuperación).\n\nCo-Authored-By: Claude Opus 5.5 \u003cnoreply@anthropic.com\u003e\nClaude-Session: https://claude.ai/code/session_01C74sqKw5rfHNZ12tPeqLVA",
     "Author": "Claude \u003cnoreply@anthropic.com\u003e",
     "Committer": "Claude \u003cnoreply@anthropic.com\u003e"
   },

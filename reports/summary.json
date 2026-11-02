@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-02T02:12:55.923Z",
+  "generated": "2026-11-02T22:03:29.863Z",
   "m1": {
     "semgrep": {
       "v1": {
@@ -100,16 +100,16 @@
     },
     "zap": {
       "v1": {
-        "high": 0,
-        "medium": 3,
+        "high": 8,
+        "medium": 4,
         "low": 7,
-        "info": 6
+        "info": 8
       },
       "v2": {
         "high": 0,
-        "medium": 0,
+        "medium": 1,
         "low": 1,
-        "info": 5
+        "info": 7
       }
     }
   },
@@ -138,7 +138,7 @@
       "v2": {
         "CRITICAL": 0,
         "HIGH": 0,
-        "MEDIUM": 24,
+        "MEDIUM": 36,
         "LOW": 8,
         "secrets": 0
       }
@@ -181,26 +181,41 @@
   },
   "m3": {
     "prowler": {
-      "before": null,
+      "before": {
+        "stage": "before",
+        "pass": 59,
+        "fail": 83,
+        "fail_by_severity": {
+          "Low": 21,
+          "Medium": 41,
+          "High": 14,
+          "Critical": 7
+        }
+      },
       "after": {
         "stage": "after",
-        "pass": 352,
-        "fail": 95,
+        "pass": 354,
+        "fail": 96,
         "fail_by_severity": {
           "Medium": 40,
-          "Low": 30,
+          "Low": 29,
           "High": 20,
-          "Critical": 5
+          "Critical": 7
         }
       }
     },
     "scoutsuite": {
-      "before": null,
+      "before": {
+        "stage": "before",
+        "rules_danger": 10,
+        "rules_warning": 9,
+        "flagged_items": 41
+      },
       "after": {
         "stage": "after",
         "rules_danger": 6,
-        "rules_warning": 15,
-        "flagged_items": 47
+        "rules_warning": 14,
+        "flagged_items": 46
       }
     }
   }

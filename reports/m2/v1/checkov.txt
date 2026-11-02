@@ -20,13 +20,13 @@ Check: CKV_DOCKER_10: "Ensure that WORKDIR values are absolute paths"
 Check: CKV_DOCKER_1: "Ensure port 22 is not exposed"
 	PASSED for resource: /Dockerfile.
 	File: /Dockerfile:1-11
-Check: CKV2_DOCKER_1: "Ensure that sudo isn't used"
+Check: CKV2_DOCKER_11: "Ensure that the '--force-yes' option is not used, as it disables signature validation and allows packages to be downgraded which can leave the system in a broken or inconsistent state"
 	PASSED for resource: /Dockerfile.RUN
 	File: /Dockerfile:5-5
 Check: CKV2_DOCKER_9: "Ensure that packages with untrusted or missing GPG signatures are not used by dnf, tdnf, or yum via the '--nogpgcheck' option"
 	PASSED for resource: /Dockerfile.RUN
 	File: /Dockerfile:5-5
-Check: CKV2_DOCKER_11: "Ensure that the '--force-yes' option is not used, as it disables signature validation and allows packages to be downgraded which can leave the system in a broken or inconsistent state"
+Check: CKV2_DOCKER_1: "Ensure that sudo isn't used"
 	PASSED for resource: /Dockerfile.RUN
 	File: /Dockerfile:5-5
 Check: CKV2_DOCKER_17: "Ensure that 'chpasswd' is not used to set or remove passwords"
@@ -41,64 +41,64 @@ Check: CKV2_DOCKER_14: "Ensure that certificate validation isn't disabled for gi
 Check: CKV2_DOCKER_14: "Ensure that certificate validation isn't disabled for git by setting the environment variable 'GIT_SSL_NO_VERIFY' to any value"
 	PASSED for resource: /Dockerfile.ENV
 	File: /Dockerfile:8-8
-Check: CKV2_DOCKER_12: "Ensure that certificate validation isn't disabled for npm via the 'NPM_CONFIG_STRICT_SSL' environment variable"
-	PASSED for resource: /Dockerfile.RUN
-	File: /Dockerfile:5-5
-Check: CKV2_DOCKER_12: "Ensure that certificate validation isn't disabled for npm via the 'NPM_CONFIG_STRICT_SSL' environment variable"
-	PASSED for resource: /Dockerfile.ENV
-	File: /Dockerfile:7-7
-Check: CKV2_DOCKER_12: "Ensure that certificate validation isn't disabled for npm via the 'NPM_CONFIG_STRICT_SSL' environment variable"
-	PASSED for resource: /Dockerfile.ENV
-	File: /Dockerfile:8-8
-Check: CKV2_DOCKER_16: "Ensure that certificate validation isn't disabled with pip via the 'PIP_TRUSTED_HOST' environment variable"
-	PASSED for resource: /Dockerfile.RUN
-	File: /Dockerfile:5-5
-Check: CKV2_DOCKER_16: "Ensure that certificate validation isn't disabled with pip via the 'PIP_TRUSTED_HOST' environment variable"
-	PASSED for resource: /Dockerfile.ENV
-	File: /Dockerfile:7-7
-Check: CKV2_DOCKER_16: "Ensure that certificate validation isn't disabled with pip via the 'PIP_TRUSTED_HOST' environment variable"
-	PASSED for resource: /Dockerfile.ENV
-	File: /Dockerfile:8-8
 Check: CKV2_DOCKER_4: "Ensure that certificate validation isn't disabled with the pip '--trusted-host' option"
 	PASSED for resource: /Dockerfile.RUN
 	File: /Dockerfile:5-5
+Check: CKV2_DOCKER_12: "Ensure that certificate validation isn't disabled for npm via the 'NPM_CONFIG_STRICT_SSL' environment variable"
+	PASSED for resource: /Dockerfile.RUN
+	File: /Dockerfile:5-5
+Check: CKV2_DOCKER_12: "Ensure that certificate validation isn't disabled for npm via the 'NPM_CONFIG_STRICT_SSL' environment variable"
+	PASSED for resource: /Dockerfile.ENV
+	File: /Dockerfile:7-7
+Check: CKV2_DOCKER_12: "Ensure that certificate validation isn't disabled for npm via the 'NPM_CONFIG_STRICT_SSL' environment variable"
+	PASSED for resource: /Dockerfile.ENV
+	File: /Dockerfile:8-8
+Check: CKV2_DOCKER_16: "Ensure that certificate validation isn't disabled with pip via the 'PIP_TRUSTED_HOST' environment variable"
+	PASSED for resource: /Dockerfile.RUN
+	File: /Dockerfile:5-5
+Check: CKV2_DOCKER_16: "Ensure that certificate validation isn't disabled with pip via the 'PIP_TRUSTED_HOST' environment variable"
+	PASSED for resource: /Dockerfile.ENV
+	File: /Dockerfile:7-7
+Check: CKV2_DOCKER_16: "Ensure that certificate validation isn't disabled with pip via the 'PIP_TRUSTED_HOST' environment variable"
+	PASSED for resource: /Dockerfile.ENV
+	File: /Dockerfile:8-8
+Check: CKV2_DOCKER_5: "Ensure that certificate validation isn't disabled with the PYTHONHTTPSVERIFY environment variable"
+	PASSED for resource: /Dockerfile.RUN
+	File: /Dockerfile:5-5
+Check: CKV2_DOCKER_5: "Ensure that certificate validation isn't disabled with the PYTHONHTTPSVERIFY environment variable"
+	PASSED for resource: /Dockerfile.ENV
+	File: /Dockerfile:7-7
+Check: CKV2_DOCKER_5: "Ensure that certificate validation isn't disabled with the PYTHONHTTPSVERIFY environment variable"
+	PASSED for resource: /Dockerfile.ENV
+	File: /Dockerfile:8-8
+Check: CKV2_DOCKER_6: "Ensure that certificate validation isn't disabled with the NODE_TLS_REJECT_UNAUTHORIZED environment variable"
+	PASSED for resource: /Dockerfile.RUN
+	File: /Dockerfile:5-5
+Check: CKV2_DOCKER_6: "Ensure that certificate validation isn't disabled with the NODE_TLS_REJECT_UNAUTHORIZED environment variable"
+	PASSED for resource: /Dockerfile.ENV
+	File: /Dockerfile:7-7
+Check: CKV2_DOCKER_6: "Ensure that certificate validation isn't disabled with the NODE_TLS_REJECT_UNAUTHORIZED environment variable"
+	PASSED for resource: /Dockerfile.ENV
+	File: /Dockerfile:8-8
 Check: CKV2_DOCKER_3: "Ensure that certificate validation isn't disabled with wget"
-	PASSED for resource: /Dockerfile.RUN
-	File: /Dockerfile:5-5
-Check: CKV2_DOCKER_10: "Ensure that packages with untrusted or missing signatures are not used by rpm via the '--nodigest', '--nosignature', '--noverify', or '--nofiledigest' options"
-	PASSED for resource: /Dockerfile.RUN
-	File: /Dockerfile:5-5
-Check: CKV2_DOCKER_7: "Ensure that packages with untrusted or missing signatures are not used by apk via the '--allow-untrusted' option"
 	PASSED for resource: /Dockerfile.RUN
 	File: /Dockerfile:5-5
 Check: CKV2_DOCKER_8: "Ensure that packages with untrusted or missing signatures are not used by apt-get via the '--allow-unauthenticated' option"
 	PASSED for resource: /Dockerfile.RUN
 	File: /Dockerfile:5-5
-Check: CKV2_DOCKER_15: "Ensure that the yum and dnf package managers are not configured to disable SSL certificate validation via the 'sslverify' configuration option"
+Check: CKV2_DOCKER_7: "Ensure that packages with untrusted or missing signatures are not used by apk via the '--allow-untrusted' option"
 	PASSED for resource: /Dockerfile.RUN
 	File: /Dockerfile:5-5
-Check: CKV2_DOCKER_5: "Ensure that certificate validation isn't disabled with the PYTHONHTTPSVERIFY environment variable"
-	PASSED for resource: /Dockerfile.RUN
-	File: /Dockerfile:5-5
-Check: CKV2_DOCKER_5: "Ensure that certificate validation isn't disabled with the PYTHONHTTPSVERIFY environment variable"
-	PASSED for resource: /Dockerfile.ENV
-	File: /Dockerfile:7-7
-Check: CKV2_DOCKER_5: "Ensure that certificate validation isn't disabled with the PYTHONHTTPSVERIFY environment variable"
-	PASSED for resource: /Dockerfile.ENV
-	File: /Dockerfile:8-8
-Check: CKV2_DOCKER_6: "Ensure that certificate validation isn't disabled with the NODE_TLS_REJECT_UNAUTHORIZED environment variable"
-	PASSED for resource: /Dockerfile.RUN
-	File: /Dockerfile:5-5
-Check: CKV2_DOCKER_6: "Ensure that certificate validation isn't disabled with the NODE_TLS_REJECT_UNAUTHORIZED environment variable"
-	PASSED for resource: /Dockerfile.ENV
-	File: /Dockerfile:7-7
-Check: CKV2_DOCKER_6: "Ensure that certificate validation isn't disabled with the NODE_TLS_REJECT_UNAUTHORIZED environment variable"
-	PASSED for resource: /Dockerfile.ENV
-	File: /Dockerfile:8-8
 Check: CKV2_DOCKER_13: "Ensure that certificate validation isn't disabled for npm or yarn by setting the option strict-ssl to false"
 	PASSED for resource: /Dockerfile.RUN
 	File: /Dockerfile:5-5
 Check: CKV2_DOCKER_2: "Ensure that certificate validation isn't disabled with curl"
+	PASSED for resource: /Dockerfile.RUN
+	File: /Dockerfile:5-5
+Check: CKV2_DOCKER_15: "Ensure that the yum and dnf package managers are not configured to disable SSL certificate validation via the 'sslverify' configuration option"
+	PASSED for resource: /Dockerfile.RUN
+	File: /Dockerfile:5-5
+Check: CKV2_DOCKER_10: "Ensure that packages with untrusted or missing signatures are not used by rpm via the '--nodigest', '--nosignature', '--noverify', or '--nofiledigest' options"
 	PASSED for resource: /Dockerfile.RUN
 	File: /Dockerfile:5-5
 Check: CKV_DOCKER_3: "Ensure that a user for the container has been created"
@@ -153,10 +153,10 @@ Check: CKV2_AWS_56: "Ensure AWS Managed IAMFullAccess IAM policy is not used."
 Check: CKV2_AWS_41: "Ensure an IAM role is attached to EC2 instance"
 	PASSED for resource: aws_instance.web
 	File: /app/main.tf:85-111
-Check: CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
+Check: CKV_AWS_20: "S3 Bucket has an ACL defined which allows public READ access."
 	PASSED for resource: aws_s3_bucket.backups
 	File: /app/main.tf:113-115
-Check: CKV_AWS_20: "S3 Bucket has an ACL defined which allows public READ access."
+Check: CKV_AWS_19: "Ensure all data stored in the S3 bucket is securely encrypted at rest"
 	PASSED for resource: aws_s3_bucket.backups
 	File: /app/main.tf:113-115
 Check: CKV_AWS_57: "S3 Bucket has an ACL defined which allows public WRITE access."
@@ -240,12 +240,12 @@ Check: CKV_AWS_21: "Ensure all data stored in the S3 bucket have versioning enab
 Check: CKV2_AWS_61: "Ensure that an S3 bucket has a lifecycle configuration"
 	FAILED for resource: aws_s3_bucket.backups
 	File: /app/main.tf:113-115
+Check: CKV2_AWS_40: "Ensure AWS IAM policy does not allow full IAM privileges"
+	FAILED for resource: aws_iam_role_policy.web
+	File: /app/main.tf:67-78
 Check: CKV2_AWS_6: "Ensure that S3 bucket has a Public Access block"
 	FAILED for resource: aws_s3_bucket.backups
 	File: /app/main.tf:113-115
 Check: CKV_AWS_18: "Ensure the S3 bucket has access logging enabled"
 	FAILED for resource: aws_s3_bucket.backups
 	File: /app/main.tf:113-115
-Check: CKV2_AWS_40: "Ensure AWS IAM policy does not allow full IAM privileges"
-	FAILED for resource: aws_iam_role_policy.web
-	File: /app/main.tf:67-78

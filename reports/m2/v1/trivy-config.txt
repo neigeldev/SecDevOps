@@ -279,17 +279,17 @@ Simplifies auditing, debugging, and managing security groups.
 
 See https://avd.aquasec.com/misconfig/aws-0124
 ────────────────────────────────────────
- infra/terraform/app/main.tf:40-45
+ infra/terraform/app/main.tf:26-31
    via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
 ────────────────────────────────────────
   21   resource "aws_security_group" "web" {
   ..   
-  40 ┌   ingress {
-  41 │     from_port   = 5432
-  42 │     to_port     = 5432
-  43 │     protocol    = "tcp"
-  44 │     cidr_blocks = ["0.0.0.0/0"]
-  45 └   }
+  26 ┌   ingress {
+  27 │     from_port   = 22
+  28 │     to_port     = 22
+  29 │     protocol    = "tcp"
+  30 │     cidr_blocks = ["0.0.0.0/0"]
+  31 └   }
   ..   
   53   }
 ────────────────────────────────────────
@@ -328,17 +328,17 @@ Simplifies auditing, debugging, and managing security groups.
 
 See https://avd.aquasec.com/misconfig/aws-0124
 ────────────────────────────────────────
- infra/terraform/app/main.tf:33-38
+ infra/terraform/app/main.tf:40-45
    via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
 ────────────────────────────────────────
   21   resource "aws_security_group" "web" {
   ..   
-  33 ┌   ingress {
-  34 │     from_port   = 3000
-  35 │     to_port     = 3000
-  36 │     protocol    = "tcp"
-  37 │     cidr_blocks = ["0.0.0.0/0"]
-  38 └   }
+  40 ┌   ingress {
+  41 │     from_port   = 5432
+  42 │     to_port     = 5432
+  43 │     protocol    = "tcp"
+  44 │     cidr_blocks = ["0.0.0.0/0"]
+  45 └   }
   ..   
   53   }
 ────────────────────────────────────────
@@ -353,17 +353,17 @@ Simplifies auditing, debugging, and managing security groups.
 
 See https://avd.aquasec.com/misconfig/aws-0124
 ────────────────────────────────────────
- infra/terraform/app/main.tf:26-31
+ infra/terraform/app/main.tf:33-38
    via infra/terraform/app/main.tf:21-53 (aws_security_group.web)
 ────────────────────────────────────────
   21   resource "aws_security_group" "web" {
   ..   
-  26 ┌   ingress {
-  27 │     from_port   = 22
-  28 │     to_port     = 22
-  29 │     protocol    = "tcp"
-  30 │     cidr_blocks = ["0.0.0.0/0"]
-  31 └   }
+  33 ┌   ingress {
+  34 │     from_port   = 3000
+  35 │     to_port     = 3000
+  36 │     protocol    = "tcp"
+  37 │     cidr_blocks = ["0.0.0.0/0"]
+  38 └   }
   ..   
   53   }
 ────────────────────────────────────────

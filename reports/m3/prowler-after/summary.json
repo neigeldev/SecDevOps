@@ -1,11 +1,11 @@
 {
   "stage": "after",
-  "pass": 352,
-  "fail": 95,
+  "pass": 354,
+  "fail": 96,
   "fail_by_severity": {
     "Medium": 40,
-    "Low": 30,
+    "Low": 29,
     "High": 20,
-    "Critical": 5
+    "Critical": 7
   }
 }

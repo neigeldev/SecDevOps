@@ -1,0 +1,6 @@
+{
+  "stage": "before",
+  "rules_danger": 10,
+  "rules_warning": 9,
+  "flagged_items": 41
+}

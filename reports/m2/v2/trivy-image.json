@@ -3,9 +3,9 @@
   "Trivy": {
     "Version": "0.76.1"
   },
-  "ReportID": "01a19a06-8f3c-73b0-9a99-a6a9e641fb84",
-  "CreatedAt": "2026-11-02T02:11:23.580246097Z",
-  "ArtifactID": "sha256:7f3f88b1a57c3ca1fcadead4305abc29e3fddc65d7be1c4f7fdd960483139e57",
+  "ReportID": "01a19dda-6dac-7a3a-8178-af0e6cc87e98",
+  "CreatedAt": "2026-11-02T20:01:40.268673566Z",
+  "ArtifactID": "sha256:7a6a35efe18be2e10bc76f52921efc40700b6bdde0c20e4a0e6e484bbe06445f",
   "ArtifactName": "securenotes:v2",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -14,7 +14,7 @@
       "Family": "debian",
       "Name": "13.7"
     },
-    "ImageID": "sha256:768161ed5d7f8457f8d2ec1e344279d57314e89eee536c2ba348ce4e944cfb38",
+    "ImageID": "sha256:a7e31cc8746f507fcb478adc3859117879c87142f7db8b855881ec569f727f64",
     "DiffIDs": [
       "sha256:9486261b5a13f63ca6904b36721527ac8f19df53d300560138d69ae9b4c203de",
       "sha256:621c35e751a51a9a9dc3e80aa0b7fe8be2a93402ea6ccd307d30852cd7776cda",
@@ -49,7 +49,7 @@
       "securenotes:v2"
     ],
     "RepoDigests": [
-      "securenotes@sha256:768161ed5d7f8457f8d2ec1e344279d57314e89eee536c2ba348ce4e944cfb38"
+      "securenotes@sha256:a7e31cc8746f507fcb478adc3859117879c87142f7db8b855881ec569f727f64"
     ],
     "Reference": "securenotes:v2",
     "ImageConfig": {
@@ -2289,7 +2289,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:8d7df4f57ef6bde3b51ed6008bb77970eaa144dd696526fb70db2b63a237b932",
+          "Fingerprint": "sha256:1ea26f2280c78098195779457a80ee93c731bbff41ef575963cc1bf86a1547ba",
           "Title": "gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if",
           "Description": "A flaw was found in GCC. When an application calls the erase_if function on a binary heap priority queue in libstdc++, the library reallocates storage but fails to update its internal entry pointer. An attacker capable of triggering this operation can exploit this use-after-free condition, leading to a Denial of Service (DoS) via an application crash or potential memory corruption.",
           "Severity": "MEDIUM",
@@ -2332,6 +2332,142 @@
           "LastModifiedDate": "2026-11-01T05:18:55.76Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-114690",
+          "PkgID": "gcc-14-base@14.2.0-19",
+          "PkgName": "gcc-14-base",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gcc-14-base@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "b1ea1d46235e5bf5"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:1a4be5562d92d659f95e0b44b245ea5208bf5317481b9a351b07fad7fe5265ec",
+            "DiffID": "sha256:7db505d90756626f425c6c5468eca565c82f589b144ecaa4f411ad9bbf79e614"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-114690",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:6cce03ae8f2b9821bf892696f9fbbabc72f4bb0eeafad754c158f37aefc933fc",
+          "Title": "gcc: Confirmed out-of-bounds read/write in libstdc++ parallel `std",
+          "Description": "A flaw was found in GCC. An out-of-bounds memory access vulnerability exists in the libstdc++ parallel search implementation due to an undersized internal buffer. A local attacker can exploit this flaw by providing crafted search data to an application compiled with parallel mode, causing the process to crash and leading to a Denial of Service (DoS).",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-787"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 6.2
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-114690",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2478652",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-114690",
+            "https://www.cve.org/CVERecord?id=CVE-2026-114690"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.047Z",
+          "LastModifiedDate": "2026-10-30T19:18:11.513Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-114691",
+          "PkgID": "gcc-14-base@14.2.0-19",
+          "PkgName": "gcc-14-base",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gcc-14-base@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "b1ea1d46235e5bf5"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:1a4be5562d92d659f95e0b44b245ea5208bf5317481b9a351b07fad7fe5265ec",
+            "DiffID": "sha256:7db505d90756626f425c6c5468eca565c82f589b144ecaa4f411ad9bbf79e614"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-114691",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:633d1dc4284469e1fb2eee4706b457a3b73ec530a9cc4ac5f9c398427dcfcfab",
+          "Title": "gcc: Integer wrap in `std",
+          "Description": "A flaw was found in the libstdc++ component of GCC. An attacker who can provide an excessively large element count to a boolean vector (std::vector\u003cbool\u003e) constructor can trigger an integer wrap during internal memory calculations. This issue leaves the container in an inconsistent state, leading to out-of-bounds memory access and resulting in an application crash or a Denial of Service (DoS) during subsequent operations.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-190"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-114691",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2478508",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-114691",
+            "https://www.cve.org/CVERecord?id=CVE-2026-114691"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.257Z",
+          "LastModifiedDate": "2026-10-30T19:18:11.693Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-115455",
+          "PkgID": "gcc-14-base@14.2.0-19",
+          "PkgName": "gcc-14-base",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/gcc-14-base@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "b1ea1d46235e5bf5"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:1a4be5562d92d659f95e0b44b245ea5208bf5317481b9a351b07fad7fe5265ec",
+            "DiffID": "sha256:7db505d90756626f425c6c5468eca565c82f589b144ecaa4f411ad9bbf79e614"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-115455",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:fa9dc195bd1821405805531c3f671ed1a6583ca49a8d8e5d109bb6cea8f01f16",
+          "Title": "gcc: Stack overflow in std::bitset on libstdc++",
+          "Description": "A flaw was found in GCC libstdc++. When an application extracts data into a bitset from a wide-character stream, internal stack memory allocation fails to properly account for character size and alignment. An attacker capable of supplying crafted input to an affected application could trigger a stack-based buffer overflow leading denial of service (DoS).",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-787"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H",
+              "V3Score": 6.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-115455",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2562933",
+            "https://gcc.gnu.org/cgit/gcc/commit/?id=5d419c69ce2e6b86d7da75f18736904885674219",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-115455",
+            "https://www.cve.org/CVERecord?id=CVE-2026-115455"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.463Z",
+          "LastModifiedDate": "2026-10-30T08:16:55.59Z"
+        },
+        {
           "VulnerabilityID": "CVE-2026-95619",
           "PkgID": "gcc-14-base@14.2.0-19",
           "PkgName": "gcc-14-base",
@@ -2351,7 +2487,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:cd332c58bfbb559ed69e656210bf727542734fde83336d27d49233694b699023",
+          "Fingerprint": "sha256:49a7f91c5d8a455a9b3818e43758e87363c34452674e9cf804710360cde93bcf",
           "Title": "gcc: libstdc++ integer overflow in `new` operator",
           "Description": "A flaw was found in libstdc++. An integer overflow can occur when processing large inputs to the aligned operator new in the C++ library. This vulnerability could lead to an undersized memory allocation, potentially causing memory corruption or application instability.",
           "Severity": "MEDIUM",
@@ -2411,7 +2547,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:0163fc94db3f1e5feed0323db499bbe254139e45542260609c046c2cace40ddf",
+          "Fingerprint": "sha256:58e73d9503820e85ec50b055b374e5eb5175552022ed75756bcd59585ab603a4",
           "Title": "glibc: glibc: Heap buffer overflow via attacker-controlled fopen mode string",
           "Description": "Passing an effectively empty string to the `,ccs=` syntax extension of the mode argument in the `fopen` function in the GNU C Library version 2.45 or earlier may result in a heap buffer overflow when the mode string input to the function is attacker controlled.\n\n\n\nThis usage pattern is not seen in applications in common GNU/Linux distributions and applications that process user-supplied values for `ccs` should not pass them through without validation.",
           "Severity": "MEDIUM",
@@ -2433,12 +2569,12 @@
           "References": [
             "http://www.openwall.com/lists/oss-security/2026/08/27/6",
             "https://access.redhat.com/errata/RHSA-2026:79281",
+            "https://access.redhat.com/errata/RHSA-2026:80798",
             "https://access.redhat.com/security/cve/CVE-2026-18374",
-            "https://bugzilla.redhat.com/2513603",
-            "https://bugzilla.redhat.com/2513608",
             "https://bugzilla.redhat.com/2523249",
             "https://bugzilla.redhat.com/2523274",
             "https://bugzilla.redhat.com/2524870",
+            "https://bugzilla.redhat.com/2525256",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513603",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513608",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2523249",
@@ -2452,7 +2588,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-6791",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-77117",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-80489",
-            "https://errata.almalinux.org/9/ALSA-2026-79281.html",
+            "https://errata.almalinux.org/8/ALSA-2026-80798.html",
             "https://errata.rockylinux.org/RLSA-2026:79281",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-18374",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=34574",
@@ -2483,7 +2619,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:a1a55d296ecae2f11ff294472de8626add941e33500cdb6ab306035cbb1c596e",
+          "Fingerprint": "sha256:52fba89d5ea804ad9509e0c20089c989bc5c5713aea97986a522b301b099f300",
           "Title": "glibc: Buffer Overflow in strfmon right-justification padding",
           "Description": "Calling strfmon and strfmon_l in the GNU C Library version 2.38 to 2.44 can write past the end of the caller-supplied output buffer when a conversion uses right-justified width padding.\n\nExploitation requires an application code path that calls strfmon or strfmon_l with right-justified width padding into a destination buffer that is large enough for the padding to succeed but too small for the internal memmove call. The field width or format may be attacker-influenced or a fixed susceptible pattern in the caller.\n\nAt the time of publication, no network-facing application impact is known.",
           "Severity": "MEDIUM",
@@ -2546,7 +2682,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:390b18c6efdb83a616d2d28feaa19cccb8660343abd657ce445b7a70be75f90b",
+          "Fingerprint": "sha256:2db770aa9da8a02f1c6bd6f8d6a10e890e5fb0c80501c370bcecc1b351a14196",
           "Title": "glibc: Fix out-of-bounds array write in tdelete",
           "Description": "Calling tdelete on a sufficiently deep tree in the GNU C Library version 2.1 to 2.44 may write one pointer past the end of an alloca-allocated array on the stack, which may crash the application.\n\nThe tdelete implementation keeps an explicit stack of parent nodes for rebalancing, which is grown as needed while descending the tree.  Two rebalancing branches push an additional entry without checking the capacity, and write past the array when the stack is exactly full. Triggering this requires a node at a depth of exactly 40 (or 40 plus a multiple of 20), which implies a tree with at least a million nodes, so an attacker must drive a large number of insertions and deletions through an application that uses tsearch and tdelete.  The written value is a pointer into a tree node and is not directly attacker controlled.  No affected application in common distributions has been identified.",
           "Severity": "MEDIUM",
@@ -2567,12 +2703,12 @@
           },
           "References": [
             "https://access.redhat.com/errata/RHSA-2026:79281",
+            "https://access.redhat.com/errata/RHSA-2026:80798",
             "https://access.redhat.com/security/cve/CVE-2026-19542",
-            "https://bugzilla.redhat.com/2513603",
-            "https://bugzilla.redhat.com/2513608",
             "https://bugzilla.redhat.com/2523249",
             "https://bugzilla.redhat.com/2523274",
             "https://bugzilla.redhat.com/2524870",
+            "https://bugzilla.redhat.com/2525256",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513603",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513608",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2523249",
@@ -2586,7 +2722,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-6791",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-77117",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-80489",
-            "https://errata.almalinux.org/9/ALSA-2026-79281.html",
+            "https://errata.almalinux.org/8/ALSA-2026-80798.html",
             "https://errata.rockylinux.org/RLSA-2026:79281",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-19542",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=34506",
@@ -2618,7 +2754,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:1d8746fe8e8d941898d61778718b7b5ca82e526e69049e6e90ef66d9021bb369",
+          "Fingerprint": "sha256:22ef842335d234b9793a8da335dc2f542d6fe1bfc528393a4c4dbf74ad516b30",
           "Title": "glibc: glibc: Out-of-bounds write via TSIG record processing",
           "Description": "The deprecated functions ns_printrrf, ns_printrr and fp_nquery in the GNU C Library version 2.2 and newer fail to enforce the caller-supplied buffer length, and can result in an out-of-bounds write when printing TSIG records.",
           "Severity": "MEDIUM",
@@ -2639,6 +2775,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:42733",
             "https://access.redhat.com/errata/RHSA-2026:42952",
             "https://access.redhat.com/security/cve/CVE-2026-5435",
             "https://bugzilla.redhat.com/2459854",
@@ -2652,7 +2789,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-5435",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-5928",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-6238",
-            "https://errata.almalinux.org/9/ALSA-2026-42952.html",
+            "https://errata.almalinux.org/8/ALSA-2026-42733.html",
             "https://errata.rockylinux.org/RLSA-2026:42952",
             "https://inbox.sourceware.org/libc-alpha/cover.1777546194.git.fweimer@redhat.com/",
             "https://inbox.sourceware.org/libc-announce/7a655d55-276f-41fe-b550-feb3ebb2ce91@redhat.com/T/#u",
@@ -2687,7 +2824,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:52f96c3fe75a08a6f92bbc5283d24c5a405b98f05f36d0779ebc62fb1b1c0ec0",
+          "Fingerprint": "sha256:924d4dfca21d9e3453be3fc7170ec57baee84667bb63521933979530747d40f6",
           "Title": "glibc: glibc: Application crash or uninitialized memory read via crafted DNS response",
           "Description": "The deprecated functions ns_printrrf, ns_printrr and fp_nquery in the GNU C Library version 2.0.1 to version 2.43 fail to validate the RDATA content against the RDATA length in a DNS response when processing A6, CERT, LOC, TKEY or TSIG records, which may allow an attacker to craft a DNS response, causing a target application to crash or read uninitialized memory.\n\nThese functions are for application debugging only and hence not in the path of code executed by the DNS resolver.  Further, they have been deprecated since version 2.34 and should not be used by any new applications.  Applications should consider porting away from these interfaces since they may be removed in future versions.",
           "Severity": "MEDIUM",
@@ -2708,6 +2845,7 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:42733",
             "https://access.redhat.com/errata/RHSA-2026:42952",
             "https://access.redhat.com/security/cve/CVE-2026-6238",
             "https://bugzilla.redhat.com/2459854",
@@ -2721,7 +2859,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-5435",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-5928",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-6238",
-            "https://errata.almalinux.org/9/ALSA-2026-42952.html",
+            "https://errata.almalinux.org/8/ALSA-2026-42733.html",
             "https://errata.rockylinux.org/RLSA-2026:42952",
             "https://inbox.sourceware.org/libc-alpha/cover.1777546194.git.fweimer@redhat.com/",
             "https://inbox.sourceware.org/libc-announce/7a655d55-276f-41fe-b550-feb3ebb2ce91@redhat.com/T/#u",
@@ -2756,7 +2894,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:78e8e78c41aa67b18b8ea161b677e5b0cf71d14fc614131db9e7d3df2fe51243",
+          "Fingerprint": "sha256:a328aed1929e4201adc4dfe8664da8fe77ebb3e66dee7f7253969534b301527f",
           "Title": "glibc: glibc: Process abort due to invalid memory in wordexp",
           "Description": "Calling wordexp with WRDE_APPEND in the GNU C Library version 2.0 to version 2.43 can cause the interface to return invalid memory in the we_wordv member, which on subsequent calls to wordfree may abort the process.",
           "Severity": "MEDIUM",
@@ -2776,13 +2914,9 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:76777",
             "https://access.redhat.com/errata/RHSA-2026:79281",
             "https://access.redhat.com/security/cve/CVE-2026-6368",
-            "https://bugzilla.redhat.com/2513603",
-            "https://bugzilla.redhat.com/2513608",
-            "https://bugzilla.redhat.com/2523249",
-            "https://bugzilla.redhat.com/2523274",
-            "https://bugzilla.redhat.com/2524870",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513603",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513608",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2523249",
@@ -2796,7 +2930,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-6791",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-77117",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-80489",
-            "https://errata.almalinux.org/9/ALSA-2026-79281.html",
+            "https://errata.almalinux.org/8/ALSA-2026-76777.html",
             "https://errata.rockylinux.org/RLSA-2026:79281",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-6368",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=34090",
@@ -2829,7 +2963,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:44cd86b029ebbc66661a82db81c0e210862282df0364bfffa821c87e867b6665",
+          "Fingerprint": "sha256:83857585b829461e7e69d101caee630018485b3ec5b79a44cd58c4dc90e3ee33",
           "Title": "glibc: Glibc: Denial of Service via stack exhaustion during tilde expansion",
           "Description": "When expanding paths that begin with a tilde (~) followed by a username, the internal parse_tilde function extracts the username to determine the user's home directory.  The implementation allocates memory for this username directly on the stack using the strndupa macro. Because the size of this allocation was determined by the length of the user-supplied input without any bounds checks, passing an excessively long username e.g. thousands of characters, forces the thread to exhaust its stack space. Thus if an application passes untrusted, attacker-controlled input to the wordexp function, an attacker can trigger a stack clash.",
           "Severity": "MEDIUM",
@@ -2849,13 +2983,9 @@
             }
           },
           "References": [
+            "https://access.redhat.com/errata/RHSA-2026:76777",
             "https://access.redhat.com/errata/RHSA-2026:79281",
             "https://access.redhat.com/security/cve/CVE-2026-6791",
-            "https://bugzilla.redhat.com/2513603",
-            "https://bugzilla.redhat.com/2513608",
-            "https://bugzilla.redhat.com/2523249",
-            "https://bugzilla.redhat.com/2523274",
-            "https://bugzilla.redhat.com/2524870",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513603",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513608",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2523249",
@@ -2869,7 +2999,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-6791",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-77117",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-80489",
-            "https://errata.almalinux.org/9/ALSA-2026-79281.html",
+            "https://errata.almalinux.org/8/ALSA-2026-76777.html",
             "https://errata.rockylinux.org/RLSA-2026:79281",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-6791",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=34091",
@@ -2901,7 +3031,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:b3069dbfc5eebdded8f2e599e87e7b48a7ca7f07cf72bb90edcfd2866208620c",
+          "Fingerprint": "sha256:f52093b70114952eee9b1e1b473799ae18056e79fe3bb903b0ec33e53b91d747",
           "Title": "glibc: Non-progress DoS in SHIFT_JISX0213 -\u0026gt",
           "Description": "Converting crafted SHIFT_JISX0213 input to UCS-4 or the internal wide character encoding, for example with iconv, in the GNU C Library version 2.3 to 2.44 may result in the converter making no progress, causing the calling application to hang.\n\nSome SHIFT_JISX0213 sequences decode to two code points.  If the output buffer has room for only the first one, the converter stores the second in the conversion state and returns E2BIG, but it never clears that pending character after emitting it on the next call.  The converter then keeps emitting the pending character without consuming further input, so an application that retries the conversion loops forever. The input must be attacker controlled and the application must convert it with an output buffer small enough to split the two code points. Only the SHIFT_JISX0213 character set is affected, which is not commonly used.  The related defect in the EUC_JISX0213 converter is tracked separately as CVE-2026-80489.",
           "Severity": "MEDIUM",
@@ -2922,12 +3052,12 @@
           },
           "References": [
             "https://access.redhat.com/errata/RHSA-2026:79281",
+            "https://access.redhat.com/errata/RHSA-2026:80798",
             "https://access.redhat.com/security/cve/CVE-2026-77117",
-            "https://bugzilla.redhat.com/2513603",
-            "https://bugzilla.redhat.com/2513608",
             "https://bugzilla.redhat.com/2523249",
             "https://bugzilla.redhat.com/2523274",
             "https://bugzilla.redhat.com/2524870",
+            "https://bugzilla.redhat.com/2525256",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513603",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513608",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2523249",
@@ -2941,7 +3071,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-6791",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-77117",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-80489",
-            "https://errata.almalinux.org/9/ALSA-2026-79281.html",
+            "https://errata.almalinux.org/8/ALSA-2026-80798.html",
             "https://errata.rockylinux.org/RLSA-2026:79281",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-77117",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=34556",
@@ -2973,7 +3103,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:39c4f5f8accf253bce03fe191ab2760c5296f76c3b1dec6ca48506727dbdc6dc",
+          "Fingerprint": "sha256:d0bae664c7865bb6f1d640e287af29703074ea5bb2c4abf13053b4ef9fb5cd89",
           "Title": "glibc: Non-progress DoS in EUC_JISX0213 -\u003e UCS-4 conversion state",
           "Description": "Converting crafted EUC_JISX0213 input to UCS-4 or the internal wide character encoding, for example with iconv, in the GNU C Library version 2.3 to 2.44 may result in the converter making no progress, causing the calling application to hang.\n\nSome EUC_JISX0213 sequences decode to two code points.  If the output buffer has room for only the first one, the converter stores the second in the conversion state and returns E2BIG, but it never clears that pending character after emitting it on the next call.  The converter then keeps emitting the pending character without consuming further input, so an application that retries the conversion loops forever. The input must be attacker controlled and the application must convert it with an output buffer small enough to split the two code points. Only the EUC_JISX0213 character set is affected, which is not commonly used.  The related defect in SHIFT_JISX0213 converter is tracked separately as CVE-2026-77117.",
           "Severity": "MEDIUM",
@@ -2994,12 +3124,12 @@
           },
           "References": [
             "https://access.redhat.com/errata/RHSA-2026:79281",
+            "https://access.redhat.com/errata/RHSA-2026:80798",
             "https://access.redhat.com/security/cve/CVE-2026-80489",
-            "https://bugzilla.redhat.com/2513603",
-            "https://bugzilla.redhat.com/2513608",
             "https://bugzilla.redhat.com/2523249",
             "https://bugzilla.redhat.com/2523274",
             "https://bugzilla.redhat.com/2524870",
+            "https://bugzilla.redhat.com/2525256",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513603",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2513608",
             "https://bugzilla.redhat.com/show_bug.cgi?id=2523249",
@@ -3013,7 +3143,7 @@
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-6791",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-77117",
             "https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2026-80489",
-            "https://errata.almalinux.org/9/ALSA-2026-79281.html",
+            "https://errata.almalinux.org/8/ALSA-2026-80798.html",
             "https://errata.rockylinux.org/RLSA-2026:79281",
             "https://nvd.nist.gov/vuln/detail/CVE-2026-80489",
             "https://sourceware.org/bugzilla/show_bug.cgi?id=34568",
@@ -3045,7 +3175,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:cb8a54ce584741937d269d96f196dae32344b56e70fc8a589d0a3fe6d6972fb7",
+          "Fingerprint": "sha256:144a15061e2179dae508d1a07e7e86fa2c23cdcd19e928c2bec12c06172d5cb9",
           "Title": "glibc: glibc: Arbitrary code execution via directory traversal in LANGUAGE environment variable",
           "Description": "The gettext family of functions in the GNU C Library version 2.0 and later accept LANGUAGE environment variable entries that contain '/' or that are equal to \"..\", unless the program is setuid or setgid (AT_SECURE).  An attacker who can set LANGUAGE in the environment of a program that uses gettext can make it load a message catalog (.mo file) from an arbitrary location in the file system.  A crafted .mo file can crash the program through out-of-range offsets, or supply translations whose format directives do not match the arguments passed by the program.  That causes undefined behaviour in the printf family of functions and may allow arbitrary code execution with the privileges of the program.  The safety of message catalogs relies on them being installed in trusted, read-only locations, and the directory traversal bypasses this.\n\nThe fix for CVE-2014-0475 rejects \"..\" path components in locale names passed to setlocale or taken from the LC_ALL, LC_* and LANG environment variables.  gettext reads LANGUAGE directly and appends each colon-separated entry to the message catalog directory, so that fix did not cover LANGUAGE.\n\nLANGUAGE is only used when the LC_MESSAGES locale is not \"C\", \"C.\u003cencoding\u003e\" or \"POSIX\", so the attacker must also be able to select another installed locale, for example through LANG or LC_ALL.  Exploitation also requires that the attacker can place the crafted file in a location readable by the target program, and that the environment crosses a trust boundary without the program running as AT_SECURE.  An example is an SSH server that accepts LANGUAGE and LANG from clients through the AcceptEnv directive and restricts an account to a forced command; the attacker may use this to escape the restriction.",
           "Severity": "MEDIUM",
@@ -3092,7 +3222,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:e5f47a090f26c4d840a293015879918675eb9993af95a7746f4acc2fb768506b",
+          "Fingerprint": "sha256:458c91296a7473c926878ce9a2e8b7f56ce32362ade684ec1b3664bb3d5e035f",
           "Title": "glibc: glibc DNS stub resolver: Denial of Service via long search domain in configuration",
           "Description": "Initializing the DNS stub resolver from an /etc/resolv.conf file, or a LOCALDOMAIN environment variable, whose search list contains a domain of roughly 200 characters or more in the GNU C Library version 2.26 to 2.44 results in an assertion failure which aborts the process.\n\nThe resolver truncates the search list when copying it into the fixed-size _res.defdname buffer, then asserts that the copy is consistent with the full configuration.  The consistency check compared against the wrong size and did not handle a first entry that does not fit, so a correctly truncated list failed the assertion.  Any process that resolves names through the library is affected, including long-running processes that reload /etc/resolv.conf on the next query after it changes.  Search domains are commonly written to /etc/resolv.conf from data received over DHCP or from a VPN server, so an attacker on the local network may be able to trigger this without privileges on the target system, subject to validation by the network configuration software.",
           "Severity": "MEDIUM",
@@ -3159,7 +3289,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:2c2b6a18a5b70dd5ea8bfee31098291c3b762fc436d0cac332a659ba9fbe55e6",
+          "Fingerprint": "sha256:4f77a1972497b2e04d90a2d8b5d6ac0fce6402a179bcd702cacd2fbb3f40bcee",
           "Title": "glibc: glibc: Privilege escalation and arbitrary code execution via TOCTOU race condition in dynamic loader",
           "Description": "A time-of-check to time-of-use (TOCTOU) race condition in the dynamic loader (ld.so) of the GNU C Library (glibc) versions 2.14 through 2.44 allows a local attacker to escalate privileges. When expanding $ORIGIN in DT_RPATH for setuid/setgid (AT_SECURE) programs, glibc validates the lexically normalized search path against the trusted directories but then opens the raw, un-normalized path. On systems where the Linux fs.protected_hardlinks sysctl is disabled, a local attacker who hard-links such a program into an attacker-controlled directory and wins a race to replace an intermediate path component with a symbolic link can direct the loader outside the trusted directory, causing it to load an attacker-controlled shared object and execute arbitrary code with the elevated privileges of the program.\n\nExploitation requires an installed setuid or setgid binary whose DT_RPATH uses $ORIGIN followed by \"..\" traversal that normalizes into a trusted directory, and the ability to hard-link that binary and win the race by swapping a path component for a symbolic link. Major Linux-based OS distributions ship with fs.protected_hardlinks enabled by default and mitigate the vulnerability.",
           "Severity": "MEDIUM",
@@ -3205,7 +3335,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:1d73480518dbcb370efda0c98b4a23e3f2f527200b545f06a824ab02558611b1",
+          "Fingerprint": "sha256:e589af8f47123a2820425dab44b9f75fdee30f8ce8c28df01bd2c2a795769ff6",
           "Title": "glibc: nscd stack overflow leads to degraded DNS resolution",
           "Description": "The nscd service in the GNU C Library 2.3.4 onwards may crash due to a \nstack overflow when a malicious DNS server returns too large a response \nfor a DNS query, resulting in degraded DNS resolution for the system.\n\n\n\nExploitation of this bug needs a system that has nscd enabled and using \nan untrusted DNS server for name resolution, with the compromised DNS \nserver being capable of processing records large enough to result in a \nstack overflow in an nscd thread stack.  During experimentation, bind 9 \nwas unable to handle large records, but that could change in future or \nwith a different name server.  In typical installations, nscd is \nexecuted in an isolated context as its own user without a shell, due to \nwhich any compromise of that service is isolated.\n\n\n\nThere is a remote possibility of nscd cache corruption if an attacker \nmanages to get the stack pointer into a desired point in the heap, \npotentially resulting in other caches in nscd being overwritten with \ncorrupt data through the stack overflow, until the buggy code path \neventually results in a crash.\n\n\n\nFinally, a crash in nscd may result in performance degradation when \nresolving names, but it does not result in a denial of service.",
           "Severity": "MEDIUM",
@@ -3254,7 +3384,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:f9f9a376eb7f1055ef2d647666106364cfc4cc42eb31502075dbda19305244f3",
+          "Fingerprint": "sha256:d26c5ecdf4a23d433415244b491eaea9735efc1021298eac4d0caad745776189",
           "Title": "glibc: glibc: Local attacker can cause denial of service and information disclosure via stack-based buffer overflow.",
           "Description": "A stack-based buffer overflow in the dynamic loader (ld.so) of the GNU C Library (glibc) versions 2.14 through 2.44 allows a local attacker to crash or corrupt the memory of setuid/setgid (AT_SECURE) programs.\n\nWhen such a program's DT_RPATH or DT_RUNPATH begins with $ORIGIN and is followed by NUL or '/' the loader both reads past the end of the path buffer and writes past the end of a stack-allocated internal buffer. The corrupted loader stack can lead to a loader crash (denial of service) and limited disclosure of process memory.",
           "Severity": "MEDIUM",
@@ -3301,7 +3431,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:46b6fa0f41ea176dfa178cffaacd948c790da30ff914ede6c8ad1990082b4279",
+          "Fingerprint": "sha256:d677eaef9e43c9d098cffdab73c08ac4eecaf688ca64db0a3f810677ffef4fae",
           "Title": "glibc: glob implementation can cause excessive CPU and memory consumption due to crafted glob expressions",
           "Description": "The glob implementation in the GNU C Library (aka glibc or libc6) allows remote authenticated users to cause a denial of service (CPU and memory consumption) via crafted glob expressions that do not match any pathnames, as demonstrated by glob expressions in STAT commands to an FTP daemon, a different vulnerability than CVE-2010-2632.",
           "Severity": "LOW",
@@ -3358,7 +3488,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:af87d920e0a5427ec1797ac7f74c0805c579bc87ca9eb19e5e1e12aa9359bb4d",
+          "Fingerprint": "sha256:54e234f916b69dfa03b6a55cc97ead3591c9e955e310611c0eb207a49d0b01e0",
           "Title": "glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c",
           "Description": "In the GNU C Library (aka glibc or libc6) through 2.29, check_dst_limits_calc_pos_1 in posix/regexec.c has Uncontrolled Recursion, as demonstrated by '(\\227|)(\\\\1\\\\1|t1|\\\\\\2537)+' in grep.",
           "Severity": "LOW",
@@ -3417,7 +3547,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:86611be6a1caa073a26cbf1ee3c14f04bdd1811493783d3a0881d353b89cbc8d",
+          "Fingerprint": "sha256:233f73237d167e00d9e3d0038e75d86df37cf5d7aa19f339fdb8e6347b6bdcbe",
           "Title": "glibc: stack guard protection bypass",
           "Description": "GNU Libc current is affected by: Mitigation bypass. The impact is: Attacker may bypass stack guard protection. The component is: nptl. The attack vector is: Exploit stack buffer overflow vulnerability and use this bypass vulnerability to bypass stack guard. NOTE: Upstream comments indicate \"this is being treated as a non-security bug and no real threat.",
           "Severity": "LOW",
@@ -3470,7 +3600,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:cff42c12482b07facc916a9546ec55fb58d40edeff41614a47faeec66068dac3",
+          "Fingerprint": "sha256:d4db41ef2f5961b0aeeea353606f789f79681f1ba7f99673ad3d7a8c96a8e23a",
           "Title": "glibc: running ldd on malicious ELF leads to code execution because of wrong size computation",
           "Description": "GNU Libc current is affected by: Re-mapping current loaded library with malicious ELF file. The impact is: In worst case attacker may evaluate privileges. The component is: libld. The attack vector is: Attacker sends 2 ELF files to victim and asks to run ldd on it. ldd execute code. NOTE: Upstream comments indicate \"this is being treated as a non-security bug and no real threat.",
           "Severity": "LOW",
@@ -3526,7 +3656,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:6ec388de4ff5230e2342343ab6d83f024fed5fd7bb51e1fbed126a910ed5149a",
+          "Fingerprint": "sha256:e4d77d1eb86aa6e1e1aab92e1ac9088ac59d82197ee364c23ff4243132a17a6c",
           "Title": "glibc: ASLR bypass using cache of thread stack and heap",
           "Description": "GNU Libc current is affected by: Mitigation bypass. The impact is: Attacker may bypass ASLR using cache of thread stack and heap. The component is: glibc. NOTE: Upstream comments indicate \"this is being treated as a non-security bug and no real threat.",
           "Severity": "LOW",
@@ -3586,7 +3716,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:62efcd8cf1bc7297431a113b1150a87b8d97bb706fe5f25836ce8371cc89097b",
+          "Fingerprint": "sha256:9fa59234a37b402fd5b5f2ea78fac1f85d92246d84ce42b3c4d160a6aed4d733",
           "Title": "glibc: information disclosure of heap addresses of pthread_created thread",
           "Description": "GNU Libc current is affected by: Mitigation bypass. The impact is: Attacker may guess the heap addresses of pthread_created thread. The component is: glibc. NOTE: the vendor's position is \"ASLR bypass itself is not a vulnerability.",
           "Severity": "LOW",
@@ -3645,7 +3775,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:62cf04a734a4cadbf536b554efc3168dda560228fd7c547780cbb93585852e3e",
+          "Fingerprint": "sha256:5f0248da04c8352659d6aa0741e739a47d3f55557bc0e049e5ee71815243f347",
           "Title": "glibc: uncontrolled recursion in function check_dst_limits_calc_pos_1 in posix/regexec.c",
           "Description": "In the GNU C Library (aka glibc or libc6) through 2.29, check_dst_limits_calc_pos_1 in posix/regexec.c has Uncontrolled Recursion, as demonstrated by '(|)(\\\\1\\\\1)*' in grep, a different issue than CVE-2018-20796. NOTE: the software maintainer disputes that this is a vulnerability because the behavior occurs only with a crafted pattern",
           "Severity": "LOW",
@@ -3700,7 +3830,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:a8894a58d10230ef079491c0241ca650be3bc20c1cac2b9ac43d13bb23a17fcd",
+          "Fingerprint": "sha256:839d125bf04059da24410aa17afdd4f46137580229650a0bfb0a69fd7664f461",
           "Title": "glibc: glibc: Denial of Service via out-of-bounds read in strncasecmp",
           "Description": "The strncasecmp function in the GNU C Library 2.24 and later optimized for the Power8 architecture may read one byte beyond the input size limit, which may crash a program when that byte is not readable.\n\nThis condition may happen when the input strings to the strncasecmp function are attacker controlled in an application and they match all the way up to the edge of their page and the neighbouring page is either not mapped or is not readable.",
           "Severity": "LOW",
@@ -3747,7 +3877,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:8b4a8e4c401be23c08d2d95aa30055d722e91016f65432611939d95db3a06b4d",
+          "Fingerprint": "sha256:dc4f5cfd54d6afa6d75bc40659deb81f1ddc8f7fbcf84bffc3483d3e289cc2b9",
           "Title": "gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if",
           "Description": "A flaw was found in GCC. When an application calls the erase_if function on a binary heap priority queue in libstdc++, the library reallocates storage but fails to update its internal entry pointer. An attacker capable of triggering this operation can exploit this use-after-free condition, leading to a Denial of Service (DoS) via an application crash or potential memory corruption.",
           "Severity": "MEDIUM",
@@ -3788,6 +3918,142 @@
           ],
           "PublishedDate": "2026-09-28T19:16:48.83Z",
           "LastModifiedDate": "2026-11-01T05:18:55.76Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-114690",
+          "PkgID": "libgcc-s1@14.2.0-19",
+          "PkgName": "libgcc-s1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libgcc-s1@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "7ab1fb1391b2e39f"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:8224d91da70b7992430d3b04040ea38ecdef4a7b719bee38397c89aaa886e198",
+            "DiffID": "sha256:c16b2ec4b1493bad1b1de23d659c899e60abb166bda756d02792f0a03ba54a43"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-114690",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:c073d9f0703007971385b7ac373488388ee511b7676910accd3ae945acdfe859",
+          "Title": "gcc: Confirmed out-of-bounds read/write in libstdc++ parallel `std",
+          "Description": "A flaw was found in GCC. An out-of-bounds memory access vulnerability exists in the libstdc++ parallel search implementation due to an undersized internal buffer. A local attacker can exploit this flaw by providing crafted search data to an application compiled with parallel mode, causing the process to crash and leading to a Denial of Service (DoS).",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-787"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 6.2
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-114690",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2478652",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-114690",
+            "https://www.cve.org/CVERecord?id=CVE-2026-114690"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.047Z",
+          "LastModifiedDate": "2026-10-30T19:18:11.513Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-114691",
+          "PkgID": "libgcc-s1@14.2.0-19",
+          "PkgName": "libgcc-s1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libgcc-s1@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "7ab1fb1391b2e39f"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:8224d91da70b7992430d3b04040ea38ecdef4a7b719bee38397c89aaa886e198",
+            "DiffID": "sha256:c16b2ec4b1493bad1b1de23d659c899e60abb166bda756d02792f0a03ba54a43"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-114691",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:3977af8c5c343a0c14d9fc2a70b9aaae748906a63797f31347382d7dbbbda421",
+          "Title": "gcc: Integer wrap in `std",
+          "Description": "A flaw was found in the libstdc++ component of GCC. An attacker who can provide an excessively large element count to a boolean vector (std::vector\u003cbool\u003e) constructor can trigger an integer wrap during internal memory calculations. This issue leaves the container in an inconsistent state, leading to out-of-bounds memory access and resulting in an application crash or a Denial of Service (DoS) during subsequent operations.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-190"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-114691",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2478508",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-114691",
+            "https://www.cve.org/CVERecord?id=CVE-2026-114691"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.257Z",
+          "LastModifiedDate": "2026-10-30T19:18:11.693Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-115455",
+          "PkgID": "libgcc-s1@14.2.0-19",
+          "PkgName": "libgcc-s1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libgcc-s1@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "7ab1fb1391b2e39f"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:8224d91da70b7992430d3b04040ea38ecdef4a7b719bee38397c89aaa886e198",
+            "DiffID": "sha256:c16b2ec4b1493bad1b1de23d659c899e60abb166bda756d02792f0a03ba54a43"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-115455",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:7f70f2053509a64aa946651b5c63256e833cec76d2a55e1bad86954a8d929109",
+          "Title": "gcc: Stack overflow in std::bitset on libstdc++",
+          "Description": "A flaw was found in GCC libstdc++. When an application extracts data into a bitset from a wide-character stream, internal stack memory allocation fails to properly account for character size and alignment. An attacker capable of supplying crafted input to an affected application could trigger a stack-based buffer overflow leading denial of service (DoS).",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-787"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H",
+              "V3Score": 6.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-115455",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2562933",
+            "https://gcc.gnu.org/cgit/gcc/commit/?id=5d419c69ce2e6b86d7da75f18736904885674219",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-115455",
+            "https://www.cve.org/CVERecord?id=CVE-2026-115455"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.463Z",
+          "LastModifiedDate": "2026-10-30T08:16:55.59Z"
         },
         {
           "VulnerabilityID": "CVE-2026-95619",
@@ -3809,7 +4075,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:7fd3ab8cb59b1d6621d7999e6d63b7f9dabecc154c1761f84f61e147378de8b5",
+          "Fingerprint": "sha256:82329b5af7783528b0f985aa7ac24e2b118a9a468409b0c49db94658071ed3c7",
           "Title": "gcc: libstdc++ integer overflow in `new` operator",
           "Description": "A flaw was found in libstdc++. An integer overflow can occur when processing large inputs to the aligned operator new in the C++ library. This vulnerability could lead to an undersized memory allocation, potentially causing memory corruption or application instability.",
           "Severity": "MEDIUM",
@@ -3869,7 +4135,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:7b1f8b07a1688df44a0edea1820babcab9a09da3017d89a981b4c581429949a4",
+          "Fingerprint": "sha256:f94cab4fa90716ef63ae110d63bf36c6e98e4e728809a6b09cef86204742c1f9",
           "Title": "gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if",
           "Description": "A flaw was found in GCC. When an application calls the erase_if function on a binary heap priority queue in libstdc++, the library reallocates storage but fails to update its internal entry pointer. An attacker capable of triggering this operation can exploit this use-after-free condition, leading to a Denial of Service (DoS) via an application crash or potential memory corruption.",
           "Severity": "MEDIUM",
@@ -3912,6 +4178,142 @@
           "LastModifiedDate": "2026-11-01T05:18:55.76Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-114690",
+          "PkgID": "libgomp1@14.2.0-19",
+          "PkgName": "libgomp1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libgomp1@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "dca48fa7b9fb21ba"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:dd0d9bfd3bee080ad25a464362ec4f37ec5ca625695a4d7179fe69d207dc068d",
+            "DiffID": "sha256:1f5d28bd51650f429293f7730ede274b81dc0744aa918bc887133c4ad610258c"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-114690",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:57ae1f44766dd7a108d5581d79227f96895838e7e448357e460f013987be1f20",
+          "Title": "gcc: Confirmed out-of-bounds read/write in libstdc++ parallel `std",
+          "Description": "A flaw was found in GCC. An out-of-bounds memory access vulnerability exists in the libstdc++ parallel search implementation due to an undersized internal buffer. A local attacker can exploit this flaw by providing crafted search data to an application compiled with parallel mode, causing the process to crash and leading to a Denial of Service (DoS).",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-787"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 6.2
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-114690",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2478652",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-114690",
+            "https://www.cve.org/CVERecord?id=CVE-2026-114690"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.047Z",
+          "LastModifiedDate": "2026-10-30T19:18:11.513Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-114691",
+          "PkgID": "libgomp1@14.2.0-19",
+          "PkgName": "libgomp1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libgomp1@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "dca48fa7b9fb21ba"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:dd0d9bfd3bee080ad25a464362ec4f37ec5ca625695a4d7179fe69d207dc068d",
+            "DiffID": "sha256:1f5d28bd51650f429293f7730ede274b81dc0744aa918bc887133c4ad610258c"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-114691",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:65ea8051c036ac9fac4676ab91d795ccc227bb7f715188ac23d0cde704c1de94",
+          "Title": "gcc: Integer wrap in `std",
+          "Description": "A flaw was found in the libstdc++ component of GCC. An attacker who can provide an excessively large element count to a boolean vector (std::vector\u003cbool\u003e) constructor can trigger an integer wrap during internal memory calculations. This issue leaves the container in an inconsistent state, leading to out-of-bounds memory access and resulting in an application crash or a Denial of Service (DoS) during subsequent operations.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-190"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-114691",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2478508",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-114691",
+            "https://www.cve.org/CVERecord?id=CVE-2026-114691"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.257Z",
+          "LastModifiedDate": "2026-10-30T19:18:11.693Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-115455",
+          "PkgID": "libgomp1@14.2.0-19",
+          "PkgName": "libgomp1",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libgomp1@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "dca48fa7b9fb21ba"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:dd0d9bfd3bee080ad25a464362ec4f37ec5ca625695a4d7179fe69d207dc068d",
+            "DiffID": "sha256:1f5d28bd51650f429293f7730ede274b81dc0744aa918bc887133c4ad610258c"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-115455",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:2faea8982c407caa524f4e0bdb3da69d42c63c28d9d622e9a9e3938f5a67b3bb",
+          "Title": "gcc: Stack overflow in std::bitset on libstdc++",
+          "Description": "A flaw was found in GCC libstdc++. When an application extracts data into a bitset from a wide-character stream, internal stack memory allocation fails to properly account for character size and alignment. An attacker capable of supplying crafted input to an affected application could trigger a stack-based buffer overflow leading denial of service (DoS).",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-787"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H",
+              "V3Score": 6.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-115455",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2562933",
+            "https://gcc.gnu.org/cgit/gcc/commit/?id=5d419c69ce2e6b86d7da75f18736904885674219",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-115455",
+            "https://www.cve.org/CVERecord?id=CVE-2026-115455"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.463Z",
+          "LastModifiedDate": "2026-10-30T08:16:55.59Z"
+        },
+        {
           "VulnerabilityID": "CVE-2026-95619",
           "PkgID": "libgomp1@14.2.0-19",
           "PkgName": "libgomp1",
@@ -3931,7 +4333,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:2fa96e85bf440c972b775369e9ac4b7ecfa9e7a5a2b1123f8332903d9ba54353",
+          "Fingerprint": "sha256:f8cd54371d4473afcf4bdf84cf0fb3387266bbbe86a038bda333471195887ee6",
           "Title": "gcc: libstdc++ integer overflow in `new` operator",
           "Description": "A flaw was found in libstdc++. An integer overflow can occur when processing large inputs to the aligned operator new in the C++ library. This vulnerability could lead to an undersized memory allocation, potentially causing memory corruption or application instability.",
           "Severity": "MEDIUM",
@@ -3991,7 +4393,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:65dd19ac21f65bcfc7be3115c0a85215e64bed4050a6a8d32f6c78c836509c10",
+          "Fingerprint": "sha256:cc27c480bf20ff8a38f5e3fd90264059d896796448b07f84b49112eae6c61dfd",
           "Title": "gcc-toolset-15-gcc: gcc: gcc-toolset-16: gcc: Denial of Service via use-after-free in binary heap erase_if",
           "Description": "A flaw was found in GCC. When an application calls the erase_if function on a binary heap priority queue in libstdc++, the library reallocates storage but fails to update its internal entry pointer. An attacker capable of triggering this operation can exploit this use-after-free condition, leading to a Denial of Service (DoS) via an application crash or potential memory corruption.",
           "Severity": "MEDIUM",
@@ -4034,6 +4436,142 @@
           "LastModifiedDate": "2026-11-01T05:18:55.76Z"
         },
         {
+          "VulnerabilityID": "CVE-2026-114690",
+          "PkgID": "libstdc++6@14.2.0-19",
+          "PkgName": "libstdc++6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libstdc%2B%2B6@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "f3c7fbb9133e1166"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:7cc70dfd88cf2327bb827123c9156f7cb95de95b2f98f3a7a931296aacec5786",
+            "DiffID": "sha256:6e18ad80f3d64a8cbbcd1ff2e8a0d5ce7282cf664e816b86183a59d30a618e8a"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-114690",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:1a733cc5625ce4df4efd0b712f1a97caa2b467fa15cfb9bcb7210fb5356c39a6",
+          "Title": "gcc: Confirmed out-of-bounds read/write in libstdc++ parallel `std",
+          "Description": "A flaw was found in GCC. An out-of-bounds memory access vulnerability exists in the libstdc++ parallel search implementation due to an undersized internal buffer. A local attacker can exploit this flaw by providing crafted search data to an application compiled with parallel mode, causing the process to crash and leading to a Denial of Service (DoS).",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-787"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:L/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 6.2
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-114690",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2478652",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-114690",
+            "https://www.cve.org/CVERecord?id=CVE-2026-114690"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.047Z",
+          "LastModifiedDate": "2026-10-30T19:18:11.513Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-114691",
+          "PkgID": "libstdc++6@14.2.0-19",
+          "PkgName": "libstdc++6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libstdc%2B%2B6@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "f3c7fbb9133e1166"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:7cc70dfd88cf2327bb827123c9156f7cb95de95b2f98f3a7a931296aacec5786",
+            "DiffID": "sha256:6e18ad80f3d64a8cbbcd1ff2e8a0d5ce7282cf664e816b86183a59d30a618e8a"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-114691",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:c808aba302d6809e284005a2d354e0c166b127658a8e5e40690fb961d9d0fbad",
+          "Title": "gcc: Integer wrap in `std",
+          "Description": "A flaw was found in the libstdc++ component of GCC. An attacker who can provide an excessively large element count to a boolean vector (std::vector\u003cbool\u003e) constructor can trigger an integer wrap during internal memory calculations. This issue leaves the container in an inconsistent state, leading to out-of-bounds memory access and resulting in an application crash or a Denial of Service (DoS) during subsequent operations.",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-190"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H",
+              "V3Score": 5.9
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-114691",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2478508",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-114691",
+            "https://www.cve.org/CVERecord?id=CVE-2026-114691"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.257Z",
+          "LastModifiedDate": "2026-10-30T19:18:11.693Z"
+        },
+        {
+          "VulnerabilityID": "CVE-2026-115455",
+          "PkgID": "libstdc++6@14.2.0-19",
+          "PkgName": "libstdc++6",
+          "PkgIdentifier": {
+            "PURL": "pkg:deb/debian/libstdc%2B%2B6@14.2.0-19?arch=amd64\u0026distro=debian-13.7",
+            "UID": "f3c7fbb9133e1166"
+          },
+          "InstalledVersion": "14.2.0-19",
+          "Status": "affected",
+          "Layer": {
+            "Digest": "sha256:7cc70dfd88cf2327bb827123c9156f7cb95de95b2f98f3a7a931296aacec5786",
+            "DiffID": "sha256:6e18ad80f3d64a8cbbcd1ff2e8a0d5ce7282cf664e816b86183a59d30a618e8a"
+          },
+          "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2026-115455",
+          "DataSource": {
+            "ID": "debian",
+            "Name": "Debian Security Tracker",
+            "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
+          },
+          "Fingerprint": "sha256:a8bb1d3357f3978ba48d6db748b03dfc9e3c20f66766ed54592f27aba17a01b2",
+          "Title": "gcc: Stack overflow in std::bitset on libstdc++",
+          "Description": "A flaw was found in GCC libstdc++. When an application extracts data into a bitset from a wide-character stream, internal stack memory allocation fails to properly account for character size and alignment. An attacker capable of supplying crafted input to an affected application could trigger a stack-based buffer overflow leading denial of service (DoS).",
+          "Severity": "MEDIUM",
+          "CweIDs": [
+            "CWE-787"
+          ],
+          "VendorSeverity": {
+            "redhat": 2
+          },
+          "CVSS": {
+            "redhat": {
+              "V3Vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:H",
+              "V3Score": 6.5
+            }
+          },
+          "References": [
+            "https://access.redhat.com/security/cve/CVE-2026-115455",
+            "https://bugzilla.redhat.com/show_bug.cgi?id=2562933",
+            "https://gcc.gnu.org/cgit/gcc/commit/?id=5d419c69ce2e6b86d7da75f18736904885674219",
+            "https://nvd.nist.gov/vuln/detail/CVE-2026-115455",
+            "https://www.cve.org/CVERecord?id=CVE-2026-115455"
+          ],
+          "PublishedDate": "2026-10-30T08:16:55.463Z",
+          "LastModifiedDate": "2026-10-30T08:16:55.59Z"
+        },
+        {
           "VulnerabilityID": "CVE-2026-95619",
           "PkgID": "libstdc++6@14.2.0-19",
           "PkgName": "libstdc++6",
@@ -4053,7 +4591,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:f88ca260b75547e88996f10a5434202d02d411ce13c72bc0a8d2f18de8e07ba1",
+          "Fingerprint": "sha256:9bfc9a3f65b0c4aaafc14c622b7850db508bc9db223b685e2bc9b918002ed14e",
           "Title": "gcc: libstdc++ integer overflow in `new` operator",
           "Description": "A flaw was found in libstdc++. An integer overflow can occur when processing large inputs to the aligned operator new in the C++ library. This vulnerability could lead to an undersized memory allocation, potentially causing memory corruption or application instability.",
           "Severity": "MEDIUM",
@@ -4114,7 +4652,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:39cae9672442af287fad17b23287650321c6ea5f0258460947bf0f130021932d",
+          "Fingerprint": "sha256:2819b17a710e941964db4920b9f6004c2c7c48ba683abce1d7ac13f56f11b56f",
           "Title": "zlib: zlib: Denial of Service via infinite loop in CRC32 combine functions",
           "Description": "zlib before 1.3.2 allows CPU consumption via crc32_combine64 and crc32_combine_gen64 because x2nmodp can do right shifts within a loop that has no termination condition.",
           "Severity": "MEDIUM",
@@ -4182,7 +4720,7 @@
             "Name": "Debian Security Tracker",
             "URL": "https://salsa.debian.org/security-tracker-team/security-tracker"
           },
-          "Fingerprint": "sha256:e21e3e29f003fb19b609ab8264ac0e726170ab7750283009262b922b11275faf",
+          "Fingerprint": "sha256:14f0841658fb068652f2c3f41e6385a474d87362d6e213a903b6a27bd372266d",
           "Title": "zlib versions 1.3.1.2 through 1.3.2 contain a heap buffer overflow vul ...",
           "Description": "zlib versions 1.3.1.2 through 1.3.2 contain a heap buffer overflow vulnerability in the gz_vacate() function when processing non-blocking gzwrite() operations with stale external buffer pointers. Attackers can trigger the overflow by calling gzprintf() or gzvprintf() after a write stall, causing an unchecked memmove() to write beyond the internal input buffer boundary.",
           "Severity": "MEDIUM",

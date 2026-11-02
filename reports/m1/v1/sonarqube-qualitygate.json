@@ -1,1 +1,1 @@
-{"projectStatus":{"status":"OK","conditions":[],"ignoredConditions":false,"caycStatus":"compliant"}}
+{"projectStatus":{"status":"OK","conditions":[{"status":"OK","metricKey":"new_violations","comparator":"GT","errorThreshold":"0","actualValue":"0"}],"ignoredConditions":false,"period":{"mode":"PREVIOUS_VERSION","date":"2026-11-01T21:13:26+0000"},"caycStatus":"compliant"}}
