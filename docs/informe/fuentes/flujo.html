@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#fff;font-family:Arial,Helvetica,sans-serif}
+</style></head><body>
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="560" viewBox="0 0 1500 560" font-family="Arial">
+<defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" refX="16" refY="9" orient="auto"><path d="M0,0 L18,9 L0,18 z" fill="#37474f"/></marker></defs>
+<text x="750" y="42" text-anchor="middle" font-size="28" font-weight="bold" fill="#1a237e">Flujo DevSecOps del proyecto: la salida de cada módulo es la entrada del siguiente</text>
+<!-- boxes -->
+<g>
+<rect x="40" y="90" width="420" height="330" rx="16" fill="#e3f2fd" stroke="#1565c0" stroke-width="3"/>
+<text x="250" y="132" text-anchor="middle" font-size="26" font-weight="bold" fill="#0d47a1">Módulo 1 · Código</text>
+<text x="250" y="168" text-anchor="middle" font-size="19" fill="#263238">Aplicación SecureNotes (Node.js)</text>
+<text x="70" y="215" font-size="20" fill="#263238">• SAST: Semgrep, SonarQube</text>
+<text x="70" y="250" font-size="20" fill="#263238">• SCA: Dependency-Check, npm audit</text>
+<text x="70" y="285" font-size="20" fill="#263238">• DAST: OWASP ZAP</text>
+<text x="70" y="320" font-size="20" fill="#263238">• Pruebas de seguridad (node:test)</text>
+<text x="250" y="390" text-anchor="middle" font-size="19" font-style="italic" fill="#0d47a1">Salida: código corregido (v2)</text>
+</g>
+<g>
+<rect x="540" y="90" width="420" height="330" rx="16" fill="#e8f5e9" stroke="#2e7d32" stroke-width="3"/>
+<text x="750" y="132" text-anchor="middle" font-size="26" font-weight="bold" fill="#1b5e20">Módulo 2 · IaC</text>
+<text x="750" y="168" text-anchor="middle" font-size="19" fill="#263238">Dockerfile · Compose · Terraform</text>
+<text x="570" y="215" font-size="20" fill="#263238">• Checkov (políticas como código)</text>
+<text x="570" y="250" font-size="20" fill="#263238">• Trivy config + imagen + SBOM</text>
+<text x="570" y="285" font-size="20" fill="#263238">• Hadolint (Dockerfile)</text>
+<text x="570" y="320" font-size="20" fill="#263238">• Revisión en ejecución (runtime)</text>
+<text x="750" y="390" text-anchor="middle" font-size="19" font-style="italic" fill="#1b5e20">Salida: imagen e IaC endurecidas</text>
+</g>
+<g>
+<rect x="1040" y="90" width="420" height="330" rx="16" fill="#fff3e0" stroke="#e65100" stroke-width="3"/>
+<text x="1250" y="132" text-anchor="middle" font-size="26" font-weight="bold" fill="#bf360c">Módulo 3 · Nube (AWS)</text>
+<text x="1250" y="168" text-anchor="middle" font-size="19" fill="#263238">Despliegue con Terraform</text>
+<text x="1070" y="215" font-size="20" fill="#263238">• IAM, cifrado KMS, red, monitoreo</text>
+<text x="1070" y="250" font-size="20" fill="#263238">• Línea base CIS de la cuenta</text>
+<text x="1070" y="285" font-size="20" fill="#263238">• CSPM: Prowler, ScoutSuite</text>
+<text x="1070" y="320" font-size="20" fill="#263238">• Evidencia antes / después</text>
+<text x="1250" y="390" text-anchor="middle" font-size="19" font-style="italic" fill="#bf360c">Salida: app desplegada y evaluada</text>
+</g>
+<line x1="462" y1="255" x2="532" y2="255" stroke="#37474f" stroke-width="4" marker-end="url(#a)"/>
+<line x1="962" y1="255" x2="1032" y2="255" stroke="#37474f" stroke-width="4" marker-end="url(#a)"/>
+<!-- loop -->
+<rect x="150" y="460" width="1200" height="70" rx="35" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2.5"/>
+<text x="750" y="503" text-anchor="middle" font-size="22" fill="#4a148c"><tspan font-weight="bold">En cada módulo:</tspan> escanear v1 (vulnerable) → corregir → re-escanear v2 (segura) → consolidar</text>
+</svg></body></html>

@@ -1,0 +1,66 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;background:#fff}</style></head><body>
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="900" viewBox="0 0 1500 900" font-family="Arial">
+<defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" refX="16" refY="9" orient="auto"><path d="M0,0 L18,9 L0,18 z" fill="#37474f"/></marker></defs>
+<text x="750" y="40" text-anchor="middle" font-size="28" font-weight="bold" fill="#1a237e">Arquitectura desplegada en AWS (us-east-1)</text>
+<!-- user -->
+<rect x="40" y="110" width="200" height="90" rx="12" fill="#eceff1" stroke="#455a64" stroke-width="2.5"/>
+<text x="140" y="150" text-anchor="middle" font-size="22" font-weight="bold" fill="#263238">Usuario</text>
+<text x="140" y="180" text-anchor="middle" font-size="18" fill="#263238">Navegador</text>
+<line x1="242" y1="155" x2="322" y2="155" stroke="#37474f" stroke-width="4" marker-end="url(#a)"/>
+<text x="285" y="135" text-anchor="middle" font-size="17" fill="#263238">HTTPS</text>
+<!-- cloudfront -->
+<rect x="330" y="85" width="330" height="140" rx="12" fill="#ede7f6" stroke="#5e35b1" stroke-width="2.5"/>
+<text x="495" y="122" text-anchor="middle" font-size="22" font-weight="bold" fill="#311b92">CloudFront + AWS WAF</text>
+<text x="495" y="153" text-anchor="middle" font-size="17" fill="#263238">TLS · cabeceras de seguridad</text>
+<text x="495" y="178" text-anchor="middle" font-size="17" fill="#263238">OWASP, Log4j, SQLi, IP rep., rate limit</text>
+<text x="495" y="203" text-anchor="middle" font-size="17" fill="#263238">encabezado secreto de origen</text>
+<line x1="662" y1="155" x2="752" y2="155" stroke="#37474f" stroke-width="4" marker-end="url(#a)"/>
+<text x="707" y="135" text-anchor="middle" font-size="16" fill="#263238">HTTP:80</text>
+<!-- VPC -->
+<rect x="760" y="70" width="700" height="560" rx="14" fill="#fafafa" stroke="#1565c0" stroke-width="3" stroke-dasharray="10 6"/>
+<text x="780" y="100" font-size="20" font-weight="bold" fill="#0d47a1">VPC 10.20.0.0/16 · Flow Logs</text>
+<rect x="790" y="115" width="640" height="200" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+<text x="810" y="142" font-size="18" font-weight="bold" fill="#1b5e20">Subred pública</text>
+<rect x="840" y="155" width="540" height="145" rx="10" fill="#ffffff" stroke="#2e7d32" stroke-width="2.5"/>
+<text x="1110" y="185" text-anchor="middle" font-size="21" font-weight="bold" fill="#1b5e20">EC2 t3.micro · contenedor SecureNotes</text>
+<text x="1110" y="214" text-anchor="middle" font-size="17" fill="#263238">SG: entrada solo desde CloudFront · sin SSH (SSM)</text>
+<text x="1110" y="240" text-anchor="middle" font-size="17" fill="#263238">IMDSv2 · EBS cifrado (KMS) · rol IAM mínimo</text>
+<text x="1110" y="266" text-anchor="middle" font-size="17" fill="#263238">contenedor no root, solo lectura, cap_drop ALL</text>
+<line x1="1110" y1="302" x2="1110" y2="390" stroke="#37474f" stroke-width="4" marker-end="url(#a)"/>
+<text x="1125" y="350" font-size="17" fill="#263238">TLS · puerto 5432</text>
+<rect x="790" y="395" width="640" height="210" rx="10" fill="#fff8e1" stroke="#f9a825" stroke-width="2"/>
+<text x="810" y="422" font-size="18" font-weight="bold" fill="#e65100">Subredes privadas (2 AZ) · sin ruta a Internet · NACL</text>
+<rect x="840" y="440" width="540" height="145" rx="10" fill="#ffffff" stroke="#f57f17" stroke-width="2.5"/>
+<text x="1110" y="472" text-anchor="middle" font-size="21" font-weight="bold" fill="#e65100">RDS PostgreSQL 17</text>
+<text x="1110" y="502" text-anchor="middle" font-size="17" fill="#263238">cifrado KMS · rds.force_ssl=1 · no pública</text>
+<text x="1110" y="528" text-anchor="middle" font-size="17" fill="#263238">SG: solo desde la EC2 · backups automáticos</text>
+<text x="1110" y="554" text-anchor="middle" font-size="17" fill="#263238">logs exportados a CloudWatch</text>
+<!-- services -->
+<g font-size="17" fill="#263238">
+<rect x="40" y="290" width="660" height="340" rx="14" fill="#f5f5f5" stroke="#78909c" stroke-width="2"/>
+<text x="60" y="322" font-size="20" font-weight="bold" fill="#37474f">Servicios de soporte de la aplicación</text>
+<rect x="60" y="340" width="300" height="80" rx="10" fill="#fff" stroke="#6d4c41" stroke-width="2"/>
+<text x="210" y="372" text-anchor="middle" font-weight="bold">ECR</text><text x="210" y="398" text-anchor="middle">imagen inmutable + escaneo</text>
+<rect x="380" y="340" width="300" height="80" rx="10" fill="#fff" stroke="#c62828" stroke-width="2"/>
+<text x="530" y="372" text-anchor="middle" font-weight="bold">KMS (CMK)</text><text x="530" y="398" text-anchor="middle">rotación anual</text>
+<rect x="60" y="435" width="300" height="80" rx="10" fill="#fff" stroke="#00838f" stroke-width="2"/>
+<text x="210" y="467" text-anchor="middle" font-weight="bold">SSM Parameter Store</text><text x="210" y="493" text-anchor="middle">secretos SecureString</text>
+<rect x="380" y="435" width="300" height="80" rx="10" fill="#fff" stroke="#ad1457" stroke-width="2"/>
+<text x="530" y="467" text-anchor="middle" font-weight="bold">CloudWatch + SNS</text><text x="530" y="493" text-anchor="middle">logs, métricas y alarmas</text>
+<rect x="60" y="530" width="620" height="80" rx="10" fill="#fff" stroke="#283593" stroke-width="2"/>
+<text x="370" y="562" text-anchor="middle" font-weight="bold">IAM: rol de la EC2 de mínimo privilegio</text><text x="370" y="588" text-anchor="middle">leer /securenotes/* · descifrar · bajar imagen · escribir logs</text>
+</g>
+<!-- account baseline -->
+<rect x="40" y="670" width="1420" height="200" rx="14" fill="#e8eaf6" stroke="#283593" stroke-width="3"/>
+<text x="60" y="705" font-size="21" font-weight="bold" fill="#1a237e">Línea base de seguridad de la cuenta (account-baseline · CIS AWS Foundations)</text>
+<g font-size="18" fill="#263238">
+<text x="70" y="745">• CloudTrail multirregión (KMS, validación de integridad)</text>
+<text x="70" y="778">• 15 alarmas CIS en CloudWatch → SNS (correo)</text>
+<text x="70" y="811">• Política de contraseñas CIS · IAM Access Analyzer</text>
+<text x="70" y="844">• Rol de auditoría de solo lectura (Prowler / ScoutSuite)</text>
+<text x="770" y="745">• Cifrado EBS por defecto · IMDSv2 por defecto</text>
+<text x="770" y="778">• S3 Block Public Access a nivel de cuenta</text>
+<text x="770" y="811">• Bloqueo de snapshots EBS públicos · VPC por defecto endurecida</text>
+<text x="770" y="844">• Presupuesto con alertas de costo · contacto de seguridad</text>
+</g>
+</svg></body></html>
